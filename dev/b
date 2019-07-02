@@ -1,0 +1,1206 @@
+.:
+total 84K
+drwxrwxr-x  8 lg lg 4.0K Jul  1 14:41 analysis
+-rw-rw-r--  1 lg lg    0 Jul  2 07:25 b
+drwxrwxr-x  2 lg lg 4.0K Jul  1 08:04 bin
+drwxrwxr-x  4 lg lg 4.0K May 23 10:14 fortran
+lrwxrwxrwx  1 lg lg   66 Jul  1 14:41 get-pdbs-from-path.py -> /home/lg/ppath/Reduction/dev/performance/pca/get-pdbs-from-path.py
+drwxrwxr-x  4 lg lg 4.0K Apr 26 19:32 outvfh
+drwxrwxr-x  5 lg lg 4.0K Jul  1 14:41 performance
+-rwxr-xr-x  1 lg lg 4.0K Jan 29 12:11 pr00_main.py
+-rwxrwxr--  1 lg lg 3.1K Jan 30 08:13 pr01_createBins.py
+-rwxr-xr-x  1 lg lg 5.4K Apr 24 18:17 pr02_localReduction.R
+-rwxr-xr-x  1 lg lg 5.2K Jan 30 10:15 pr03_globalReduction.R
+-rw-rwxr--  1 lg lg 4.3K Jan  6  2018 README.txt
+drwxrwxr-x 17 lg lg 4.0K Apr 16 18:21 results
+-rwxrwxr-x  1 lg lg  155 Jul  1 14:41 run-main.sh
+-rwxrwxr-x  1 lg lg  474 Aug 20  2018 run.sh
+lrwxrwxrwx  1 lg lg   69 Jul  1 14:41 run-test-samples-pdbs.py -> /home/lg/ppath/Reduction/dev/performance/pca/run-test-samples-pdbs.py
+-rwxr-xr-x  1 lg lg  353 Jan 30 14:24 run-v100k100b.sh
+-rwxr-xr-x  1 lg lg  458 Apr 24 18:50 runvfh.sh
+drwxrwxr-x  2 lg lg 4.0K Jul  1 14:41 scripts
+lrwxrwxrwx  1 lg lg    8 Feb  1 14:09 shm -> /dev/shm
+lrwxrwxrwx  1 lg lg   42 Mar 30 15:09 tmscorelg.so -> /home/ppath/Reduction/dev/bin/tmscorelg.so
+lrwxrwxrwx  1 lg lg   44 Jul  1 14:41 vfh -> /SEQS/fhome/trajectories/r5c1/villinfhr-r5c1
+
+./analysis:
+total 24K
+drwxrwxr-x 2 lg lg 4.0K Jul  1 09:59 clustering
+drwxrwxr-x 2 lg lg 4.0K May 24 12:27 clustering-gromacs
+drwxrwxr-x 2 lg lg 4.0K Jul  2 00:52 distance-matrix
+drwxrwxr-x 7 lg lg 4.0K Jul  2 00:48 nmds
+drwxrwxr-x 7 lg lg 4.0K Jul  1 14:41 pca
+drwxrwxr-x 3 lg lg 4.0K Jul  1 14:41 plots
+
+./analysis/clustering:
+total 120K
+lrwxrwxrwx 1 lg lg   49 Apr 23 14:46 2RN2CA -> /home/lg/ppath/Reduction/dev/analysis/nmds/2RN2CA
+-rw-rw-r-- 1 lg lg  15K Apr 23 17:45 2RN2CA-clus-hc-dendogram.pdf
+-rw-rw-r-- 1 lg lg  13K Apr 23 18:24 2RN2CA-clus-hc-fviz-groups.pdf
+-rw-rw-r-- 1 lg lg  17K Apr 23 17:06 2RN2CA-clus-hc-fviz.pdf
+-rw-rw-r-- 1 lg lg 7.9K Apr 23 16:43 2RN2CA-clus-hc.pdf
+-rw-rw-r-- 1 lg lg  17K Apr 23 16:36 2RN2CA-clus-km.pdf
+-rw-rw-r-- 1 lg lg 7.0K Apr 23 17:08 2RN2-trajectory.pdf
+-rwxrwxr-x 1 lg lg 2.2K Apr 23 14:46 analysis-clustering.R
+-rw-rw-r-- 1 lg lg 2.7K Apr 24 07:41 hierarchical-pca.R
+lrwxrwxrwx 1 lg lg   55 Apr 23 17:16 test50 -> /home/lg/ppath/Reduction/dev/analysis/nmds/tests/test50
+-rw-rw-r-- 1 lg lg  345 Apr 23 23:36 test50-clus-hc-cluster
+-rw-rw-r-- 1 lg lg 2.0K Jul  1 09:59 test50-clus-hc-data.pdf
+-rw-rw-r-- 1 lg lg  345 Apr 23 23:38 test50-clus-hc-fviz.cluster
+-rw-rw-r-- 1 lg lg 2.0K Apr 23 23:38 test50-clus-hc-fviz.data
+-rw-rw-r-- 1 lg lg 6.7K Jul  1 09:59 test50-clus-hc-fviz-groups.pdf
+
+./analysis/clustering-gromacs:
+total 60K
+-rwxr--r-- 1 lg lg 1.3K Jan  3 06:18 apply-pulchra-trajectory.py
+lrwxrwxrwx 1 lg lg   29 Feb  1 14:09 a.txt -> options-create-trajectory.txt
+-rwxr-xr-x 1 lg lg 1.6K Jan 15 19:29 clustering-gromacs-trajectory.py
+-rwxrwxr-x 1 lg lg 3.9K Jan 17 20:56 create-gromacs-trajectory-bins.py
+-rwxrwxr-x 1 lg lg 2.0K Jan 16 18:05 create-gromacs-trajectory-mp.py
+-rwxr--r-- 1 lg lg 2.7K Jan 17 12:28 extract-pdbs-multiPDB.py
+-rwxr-xr-x 1 lg lg  841 Jan 15 20:12 full10k.sh
+-rwxr-xr-x 1 lg lg   81 Jan 15 19:29 full1kv.sh
+-rwxr-xr-x 1 lg lg   85 Jan 17 14:00 full30.sh
+-rwxrwxr-x 1 lg lg 1.6K Jan 17 13:56 get-pdbs-clustering.py
+-rwxr-xr-x 1 lg lg 1.3K Jan  8 23:33 gromacs-rms.py
+-rwxr-xr-x 1 lg lg 3.0K Jan 17 13:54 main-gromacs-clustering.py
+-rw-rw-r-- 1 lg lg    4 Jan  7 17:53 options-create-trajectory.txt
+-rw-rw-r-- 1 lg lg  329 Jan  3 08:26 process-gromacs.sh
+-rw-rw-r-- 1 lg lg  160 Jan  6 05:16 README.TXT
+-rwxrwxr-x 1 lg lg 1.5K Jan  8 18:10 split-multipdb.py
+
+./analysis/distance-matrix:
+total 44K
+-rwxr-xr-x 1 lg lg 3.2K Jan 22 19:38 calculate-distance-matrix-mp.py
+-rwxrwxr-x 1 lg lg 1.8K Jan 23 08:59 calculate-distance-matrix.R
+lrwxrwxrwx 1 lg lg   50 Feb  1 14:09 distmat.py -> /home/lg/ppath/01-Reduction/dev/scripts/distmat.py
+-rwxrwxr-x 1 lg lg  493 Jan 20 13:26 load-distance-matrix.R
+-rwxrwxr-x 1 lg lg 4.3K Jan 22 00:32 pathway-plotting.R
+-rwxrwxr-x 1 lg lg 4.3K Jan 22 00:32 pathway-plotting-rmsd.R
+-rwxrwxr-x 1 lg lg 4.3K Jul  1 14:41 pmat-distance-matrix.R
+-rwxrwxr-x 1 lg lg 4.4K Jul  1 14:41 pmat-distance-matrix-tms.R
+lrwxrwxrwx 1 lg lg   42 Jul  1 14:41 tmscorelg.so -> /home/ppath/Reduction/dev/bin/tmscorelg.so
+
+./analysis/nmds:
+total 2.8M
+-rw-rw-r-- 1 lg lg  19K Jul  2 00:46 2RN2CA.nmds
+-rw-rw-r-- 1 lg lg  19K Jul  2 00:46 2RN2CA-nmds.points
+-rw-rw-r-- 1 lg lg 1.8M Apr 20 16:01 2RN2CA.pmat
+-rw-rw-r-- 1 lg lg  19K Jul  2 00:46 2RN2CA.scores
+-rwxrwxr-x 1 lg lg 1.1K Apr 22 15:45 analysis-distmat.R
+-rwxrwxr-x 1 lg lg 1.9K Apr 22 12:43 analysis-nmds.R
+-rwxrwxr-x 1 lg lg 4.0K Jul  1 08:04 distance-matrix-mp.R
+-rwxrwxr-x 1 lg lg  235 Jul  1 09:59 distance-submatrix.R
+-rwxrwxr-x 1 lg lg 2.0K Jul  1 14:41 get-distance-submatrix.R
+-rwx--x--x 1 lg lg 2.0K Apr 26 10:43 nmds-metaMDS-mp.R
+-rwxrwxr-x 1 lg lg 3.2K Jul  1 14:41 nmds-monoMDS-plots.R
+-rwxrwxr-x 1 lg lg 2.4K Jul  1 09:59 nmds-monoMDS.R
+lrwxrwxrwx 1 lg lg   20 Apr 19 23:22 pmat.R -> distance-matrix-mp.R
+lrwxrwxrwx 1 lg lg   20 Apr 25 12:33 subm.R -> distance-submatrix.R
+lrwxrwxrwx 1 lg lg   42 Apr 17 17:55 tmscorelg.so -> /home/ppath/Reduction/dev/bin/tmscorelg.so
+-rw-rw-r-- 1 lg lg  79K Apr 22 23:34 villinfh-distance-matrix-plo.png
+drwxrwxr-x 2 lg lg 4.0K Jul  2 00:46 villinfh-nmds-dmat
+drwxrwxr-x 2 lg lg 4.0K Jul  2 00:46 villinfh-nmds-dnat
+drwxrwxr-x 2 lg lg 4.0K Jul  2 00:46 villinfh-nmds-full
+-rw-rw-r-- 1 lg lg 118K Jul  1 09:59 villinfh-nmds-nmds.pdf
+-rw-rw-r-- 1 lg lg 667K Apr 26 11:20 villinfh-nmds.points
+drwxrwxr-x 3 lg lg 4.0K Jul  2 00:48 villinfh-nmds-red3k
+drwxrwxr-x 2 lg lg 4.0K Jul  2 00:48 villinfh-nmds-red7k
+
+./analysis/nmds/villinfh-nmds-dmat:
+total 1.2M
+-rwxrwxr-x 1 lg lg 2.0K Jul  2 00:46 nmds-metaMDS-mp.R
+-rwxrwxr-x 1 lg lg 3.0K Jul  2 00:46 nmds-monoMDS.R
+-rw-rw-r-- 1 lg lg  89K Jul  2 00:46 smooth.pdf
+-rw-rw-r-- 1 lg lg   14 Jul  2 00:46 villinfh-full-nmds.times
+-rw-rw-r-- 1 lg lg 7.5K Jul  2 00:46 villinfh-nmds-nmds.pdf
+-rw-rw-r-- 1 lg lg 165K Jul  2 00:46 villinfh-nmds.pdf
+-rw-rw-r-- 1 lg lg 667K Jul  2 00:46 villinfh-nmds.points
+-rw-rw-r-- 1 lg lg 121K Jul  2 00:46 villinfh-nmds-rainb02.pdf
+-rw-rw-r-- 1 lg lg 118K Jul  2 00:46 villinfh-nmds-topo.pdf
+
+./analysis/nmds/villinfh-nmds-dnat:
+total 1.7M
+-rw-rw-r-- 1 lg lg  19K Jul  2 00:46 2RN2CA.scores
+-rwxrwxr-x 1 lg lg 2.5K Jul  2 00:46 nmds-monoMDS.R
+-rw-rw-r-- 1 lg lg 578K Jul  2 00:46 pca-villinfh-pdbs.scores
+-rw-rw-r-- 1 lg lg 282K Jul  2 00:46 pca-villinfhrb.pdbs
+-rw-rw-r-- 1 lg lg 283K Jul  2 00:46 pca-villinfhr.pdbs
+-rw-rw-r-- 1 lg lg 548K Jul  2 00:46 pca-villinfhr-pdbs.scores
+
+./analysis/nmds/villinfh-nmds-full:
+total 900K
+lrwxrwxrwx 1 lg lg   57 Jul  2 00:46 nmds-monoMDS.R -> /home/lg/ppath/Reduction/dev/analysis/nmds/nmds-monoMDS.R
+lrwxrwxrwx 1 lg lg   89 Jul  2 00:46 pca-villinfhrb-reduced0k-pdbs-trajectory.pdf -> /home/ppath/Reduction/paper_bmc/img/eval-pca/pca-villinfhrb-reduced0k-pdbs-trajectory.pdf
+-rw-rw-r-- 1 lg lg  89K Jul  2 00:46 smooth.pdf
+-rw-rw-r-- 1 lg lg   14 Jul  2 00:46 villinfh-full-nmds.times
+-rw-rw-r-- 1 lg lg 7.5K Jul  2 00:46 villinfh-nmds-nmds.pdf
+-rw-rw-r-- 1 lg lg 667K Jul  2 00:46 villinfh-nmds.points
+-rw-rw-r-- 1 lg lg 121K Jul  2 00:46 villinfh-nmds-rainb02.pdf
+lrwxrwxrwx 1 lg lg   25 Jul  2 00:46 villinfh.pmat -> /SEQS/fhome/villinfh.pmat
+
+./analysis/nmds/villinfh-nmds-red3k:
+total 380K
+drwxrwxr-x 2 lg lg 4.0K Jul  2 00:46 2RN2
+lrwxrwxrwx 1 lg lg   64 Jul  2 00:46 get-distance-submatrix.R -> /home/ppath/Reduction/dev/analysis/nmds/get-distance-submatrix.R
+lrwxrwxrwx 1 lg lg   57 Jul  2 00:46 nmds-monoMDS.R -> /home/lg/ppath/Reduction/dev/analysis/nmds/nmds-monoMDS.R
+-rw-rw-r-- 1 lg lg 132K Jul  2 00:46 old-pca-villinfhr-reduced3k-nmds.points
+-rw-rw-r-- 1 lg lg  11K Jul  2 00:46 pca-villinfhr-reduced3k-nmds.pdf
+-rw-rw-r-- 1 lg lg 132K Jul  2 00:46 pca-villinfhr-reduced3k-nmds.points
+-rw-rw-r-- 1 lg lg  35K Jul  2 00:46 pca-villinfhr-reduced3k-nmds-rainbow-fullpoints.pdf
+-rw-rw-r-- 1 lg lg  56K Jul  2 00:46 pca-villinfhr-reduced3k.pdbs
+-rwxrwxr-x 1 lg lg 2.4K Jul  2 00:46 plot-palette.R
+lrwxrwxrwx 1 lg lg   25 Jul  2 00:46 villinfh.pmat -> /SEQS/fhome/villinfh.pmat
+lrwxrwxrwx 1 lg lg   44 Jul  2 00:46 villinfhr-r5c1 -> /SEQS/fhome/trajectories/r5c1/villinfhr-r5c1
+
+./analysis/nmds/villinfh-nmds-red3k/2RN2:
+total 2.1M
+-rw-rw-r-- 1 lg lg 7.2K Jul  2 00:46 2RN2CA-pdbsGlobal-nmds.points
+-rw-rw-r-- 1 lg lg 5.8K Jul  2 00:46 2RN2CA-pdbsGlobal.pdf
+-rw-rw-r-- 1 lg lg 277K Jul  2 00:46 2RN2CA-pdbsGlobal.pmat
+-rw-rw-r-- 1 lg lg 1.8M Jul  2 00:46 2RN2CA.pmat
+
+./analysis/nmds/villinfh-nmds-red7k:
+total 756K
+lrwxrwxrwx 1 lg lg   54 Jul  2 00:46 nmds-monoMDS.R -> /home/ppath/Reduction/dev/analysis/nmds/nmds-monoMDS.R
+lrwxrwxrwx 1 lg lg   80 Jul  2 00:46 sel-pdbs-from-dmat.R -> /home/ppath/Reduction/dev/analysis/nmds/villinfh-nmds-red3k/sel-pdbs-from-dmat.R
+lrwxrwxrwx 1 lg lg   73 Jul  2 00:46 villinfh.pmat -> /home/ppath/Reduction/dev/analysis/nmds/villinfh-nmds-red3k/villinfh.pmat
+lrwxrwxrwx 1 lg lg   44 Jul  2 00:46 villinfhr -> /SEQS/fhome/trajectories/r5c1/villinfhr-r5c1
+-rw-rw-r-- 1 lg lg 316K Jul  2 00:46 villinfhr-red7k-pdbsGlobal-nmds.points
+-rw-rw-r-- 1 lg lg 169K Jul  2 00:46 villinfhr-red7k-pdbsGlobal.pdbs
+-rw-rw-r-- 1 lg lg 260K Jul  2 00:46 villinfhr-red7k-pdbsGlobal.scores
+
+./analysis/pca:
+total 60K
+-rwxrwxr-x 1 lg lg 1.6K Jul  1 09:59 analysis-pca.R
+-rwxrwxr-x 1 lg lg  502 Jul  1 09:59 links-from-pdbsFile.py
+-rwxrwxr-x 1 lg lg 2.4K Jul  1 09:59 pca-calc-pcas.R
+-rwxrwxr-x 1 lg lg 1.4K Jul  1 09:59 pca-create-trajectory.R
+-rwxrwxr-x 1 lg lg 2.0K Jul  1 09:59 pca-fviz-plot.R
+-rwxrwxr-x 1 lg lg  492 Jul  1 09:59 pca-run-analsys.sh
+-rwxrwxr-x 1 lg lg 3.4K Jul  1 09:59 pca-run-clustering.R
+-rwxrwxr-x 1 lg lg  678 Jul  1 09:59 renumbering-pdbs.py
+-rwxrwxr-x 1 lg lg  976 Jul  1 09:59 renumbering-pdbs-scores.py
+drwxrwxr-x 2 lg lg 4.0K Jul  1 14:41 scripts
+-rw-rw-r-- 1 lg lg  739 Jul  1 09:59 tutorial_dm.R
+drwxrwxr-x 5 lg lg 4.0K Jul  1 09:59 villinfh-pca
+drwxrwxr-x 2 lg lg 4.0K Jul  2 00:46 villinfhrb-3k
+drwxrwxr-x 2 lg lg 4.0K Jul  1 14:41 villinfhrb-7k
+drwxrwxr-x 2 lg lg 4.0K Jul  2 00:50 villinfhrb-fk
+
+./analysis/pca/scripts:
+total 7.4M
+-rwxrwxr-x 1 lg lg 1.6K Jul  1 14:41 analysis-pca.R
+-rwxrwxr-x 1 lg lg  502 Jul  1 14:41 links-from-pdbsFile.py
+-rwxrwxr-x 1 lg lg 2.9K Jul  1 14:41 pca-calc-pcas.R
+-rwxrwxr-x 1 lg lg 4.8K Jul  1 14:41 pca-clust-analysis-fviz.R
+-rwxrwxr-x 1 lg lg 1.4K Jul  1 14:41 pca-create-xyz-trajectory.R
+-rwxrwxr-x 1 lg lg 2.0K Jul  1 14:41 pca-fviz-plot.R
+-rwxrwxr-x 1 lg lg  492 Jul  1 14:41 pca-run-analsys.sh
+-rwxrwxr-x 1 lg lg 3.7K Jul  1 14:41 pca-run-clustering.R
+-rw-rw-r-- 1 lg lg  26K Jul  1 14:41 pca-villinfhr-reduced3k-clus-hc-fviz.cluster
+-rw-rw-r-- 1 lg lg 122K Jul  1 14:41 pca-villinfhr-reduced3k-clus-hc-fviz.data
+-rw-rw-r-- 1 lg lg  53K Jul  1 14:41 pca-villinfhr-reduced3k-clus-hc-fviz-groups.pdf
+-rw-rw-r-- 1 lg lg 5.2M Jul  1 14:41 pca-villinfhr-reduced3k.pca
+-rw-rw-r-- 1 lg lg  901 Jul  1 14:41 pca-villinfhr-reduced3k.pvar
+-rw-rw-r-- 1 lg lg 2.0M Jul  1 14:41 pca-villinfhr-reduced3k.xyz
+-rwxrwxr-x 1 lg lg  976 Jul  1 14:41 renumbering-pdbs-scores.py
+-rw-rw-r-- 1 lg lg  739 Jul  1 14:41 tutorial_dm.R
+lrwxrwxrwx 1 lg lg   27 Jul  1 14:41 v.pca -> pca-villinfhr-reduced3k.pca
+
+./analysis/pca/villinfh-pca:
+total 24K
+lrwxrwxrwx 1 lg lg   57 Jul  1 09:59 pca-calc-pcas.R -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-calc-pcas.R
+lrwxrwxrwx 1 lg lg   65 Jul  1 09:59 pca-create-trajectory.R -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-create-trajectory.R
+lrwxrwxrwx 1 lg lg   57 Jul  1 09:59 pca-fviz-plot.R -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-fviz-plot.R
+lrwxrwxrwx 1 lg lg   60 Jul  1 09:59 pca-run-analsys.sh -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-run-analsys.sh
+lrwxrwxrwx 1 lg lg   62 Jul  1 09:59 pca-run-clustering.R -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-run-clustering.R
+drwxrwxr-x 2 lg lg 4.0K Jul  1 09:59 villinfhrb-3k
+drwxrwxr-x 2 lg lg 4.0K Jul  1 09:59 villinfhrb-7k
+drwxrwxr-x 2 lg lg 4.0K Jul  1 09:59 villinfhrb-fk
+
+./analysis/pca/villinfh-pca/villinfhrb-3k:
+total 13M
+lrwxrwxrwx 1 lg lg   57 Jul  1 09:59 fplot.R -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-fviz-plot.R
+-rw-rw-r-- 1 lg lg   88 Jul  1 09:59 params.txt
+lrwxrwxrwx 1 lg lg   57 Jul  1 09:59 pcas.R -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-calc-pcas.R
+-rw-rw-r-- 1 lg lg  22K Jul  1 09:59 pca-villinfh-reduced3k.pdf
+-rw-rw-r-- 1 lg lg 115K Jul  1 09:59 pca-villinfh-reduced3k.scores
+-rw-rw-r-- 1 lg lg 5.2M Jul  1 09:59 pca-villinfhr-reduced3k.pca
+-rw-rw-r-- 1 lg lg  64K Jul  1 09:59 pca-villinfhr-reduced3k-pca-clus.pdf
+-rw-rw-r-- 1 lg lg  56K Jul  1 09:59 pca-villinfhr-reduced3k.pdbs
+-rw-rw-r-- 1 lg lg 2.0M Jul  1 09:59 pca-villinfhr-reduced3k.xyz
+lrwxrwxrwx 1 lg lg   62 Jul  1 09:59 pclus.R -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-run-clustering.R
+lrwxrwxrwx 1 lg lg   64 Jul  1 09:59 plinks -> /home/lg/ppath/Reduction/dev/analysis/pca/links-from-pdbsFile.py
+lrwxrwxrwx 1 lg lg   60 Jul  1 09:59 prun -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-run-analsys.sh
+lrwxrwxrwx 1 lg lg   65 Jul  1 09:59 ptrj -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-create-trajectory.R
+lrwxrwxrwx 1 lg lg   42 Jul  1 09:59 tmscorelg.so -> /home/ppath/Reduction/dev/bin/tmscorelg.so
+-rw-rw-r-- 1 lg lg  26K Jul  1 09:59 villinfhr-reduced3k-clus-hc-fviz.cluster
+-rw-rw-r-- 1 lg lg 122K Jul  1 09:59 villinfhr-reduced3k-clus-hc-fviz.data
+-rw-rw-r-- 1 lg lg  30K Jul  1 09:59 villinfhr-reduced3k-clus-hc-fviz-groups-plot.pdf
+-rw-rw-r-- 1 lg lg 5.2M Jul  1 09:59 villinfhr-reduced3k.pca
+-rw-rw-r-- 1 lg lg  64K Jul  1 09:59 villinfhr-reduced3k-pca-clus.pdf
+-rw-rw-r-- 1 lg lg  22K Jul  1 09:59 villinfhr-reduced3k.pdf
+
+./analysis/pca/villinfh-pca/villinfhrb-7k:
+total 31M
+lrwxrwxrwx 1 lg lg   63 Jul  1 09:59 distance-matrix-mp.R -> /home/lg/ppath/Reduction/dev/analysis/nmds/distance-matrix-mp.R
+lrwxrwxrwx 1 lg lg   57 Jul  1 09:59 fplot.R -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-fviz-plot.R
+-rw-rw-r-- 1 lg lg  142 Jul  1 09:59 params.txt
+lrwxrwxrwx 1 lg lg   57 Jul  1 09:59 pcas.R -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-calc-pcas.R
+-rw-rw-r-- 1 lg lg  13M Jul  1 09:59 pca-villinfhb-reduced7k.pca
+-rw-rw-r-- 1 lg lg 138K Jul  1 09:59 pca-villinfhb-reduced7k-pca-clus.pdf
+-rw-rw-r-- 1 lg lg 134K Jul  1 09:59 pca-villinfhb-reduced7k.pdbs
+-rw-rw-r-- 1 lg lg  44K Jul  1 09:59 pca-villinfhb-reduced7k.pdf
+-rw-rw-r-- 1 lg lg 260K Jul  1 09:59 pca-villinfhb-reduced7k.scores
+-rw-rw-r-- 1 lg lg 4.8M Jul  1 09:59 pca-villinfhb-reduced7k.xyz
+lrwxrwxrwx 1 lg lg   62 Jul  1 09:59 pclus.R -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-run-clustering.R
+lrwxrwxrwx 1 lg lg   64 Jul  1 09:59 plinks -> /home/lg/ppath/Reduction/dev/analysis/pca/links-from-pdbsFile.py
+lrwxrwxrwx 1 lg lg   60 Jul  1 09:59 prun -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-run-analsys.sh
+lrwxrwxrwx 1 lg lg   65 Jul  1 09:59 ptrj -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-create-trajectory.R
+-rw-rw-r-- 1 lg lg   12 Jul  1 09:59 time-pca-red7k.log
+lrwxrwxrwx 1 lg lg   42 Jul  1 09:59 tmscorelg.so -> /home/ppath/Reduction/dev/bin/tmscorelg.so
+-rw-rw-r-- 1 lg lg  63K Jul  1 09:59 villinfhb-reduced7k-clus-hc-fviz.cluster
+-rw-rw-r-- 1 lg lg 293K Jul  1 09:59 villinfhb-reduced7k-clus-hc-fviz.data
+-rw-rw-r-- 1 lg lg  59K Jul  1 09:59 villinfhb-reduced7k-clus-hc-fviz-groups.pdf
+-rw-rw-r-- 1 lg lg  13M Jul  1 09:59 villinfhb-reduced7k.pca
+-rw-rw-r-- 1 lg lg 138K Jul  1 09:59 villinfhb-reduced7k-pca-clus.pdf
+lrwxrwxrwx 1 lg lg   23 Jul  1 09:59 v.pca -> villinfhb-reduced7k.pca
+
+./analysis/pca/villinfh-pca/villinfhrb-fk:
+total 1.6M
+lrwxrwxrwx 1 lg lg   57 Jul  1 09:59 pcas.R -> /home/lg/ppath/Reduction/dev/analysis/pca/pca-calc-pcas.R
+-rw-rw-r-- 1 lg lg 275K Jul  1 09:59 pca-villinfhrb-pca-clus.pdf
+-rw-rw-r-- 1 lg lg 282K Jul  1 09:59 pca-villinfhrb-reduced0k-pdbs.pdbs
+-rw-rw-r-- 1 lg lg  82K Jul  1 09:59 pca-villinfhrb-reduced0k-pdbs.pdf
+-rw-rw-r-- 1 lg lg 283K Jul  1 09:59 pca-villinfhr.pdbs
+-rw-rw-r-- 1 lg lg 138K Jul  1 09:59 villinfhrb-clus-hc-fviz.cluster
+-rw-rw-r-- 1 lg lg 116K Jul  1 09:59 villinfhrb-full-clus-hc-fviz-clus-groups.pdf
+-rw-rw-r-- 1 lg lg  81K Jul  1 09:59 villinfhrb-full.pdf
+-rw-rw-r-- 1 lg lg 275K Jul  1 09:59 villinfhrb-pca-clus.pdf
+
+./analysis/pca/villinfhrb-3k:
+total 14M
+-rw-rw-r-- 1 lg lg  24K Jul  1 14:41 analysis-pca-villinfhr-reduced3k-pca-clus.pdf
+-rw-rw-r-- 1 lg lg  33K Jul  1 14:41 analysis-pca-villinfhr-reduced3k-pca.pdf
+-rw-rw-r-- 1 lg lg  86K Jul  2 00:46 hclust-dendogram.pdf
+-rw-rw-r-- 1 lg lg 4.9K Jul  1 14:41 nbclusters-elbow.pdf
+-rw-rw-r-- 1 lg lg 5.1K Jul  1 14:41 nbclusters-gap.pdf
+-rw-rw-r-- 1 lg lg 4.8K Jul  1 14:41 nbclusters-silhouette.pdf
+-rw-rw-r-- 1 lg lg 5.2M Jul  1 14:41 org-villinfhr-reduced3k.pca
+-rw-rw-r-- 1 lg lg   88 Jul  1 14:41 params.txt
+lrwxrwxrwx 1 lg lg   65 Jul  1 14:41 pcas.R -> /home/lg/ppath/Reduction/dev/analysis/pca/scripts/pca-calc-pcas.R
+-rw-rw-r-- 1 lg lg  22K Jul  1 14:41 pca-villinfh-reduced3k.pdf
+-rw-rw-r-- 1 lg lg  26K Jul  1 14:41 pca-villinfhr-reduced3k-clus-hc-fviz.cluster
+-rw-rw-r-- 1 lg lg 122K Jul  1 14:41 pca-villinfhr-reduced3k-clus-hc-fviz.data
+-rw-rw-r-- 1 lg lg  53K Jul  1 14:41 pca-villinfhr-reduced3k-clus-hc-fviz-groups.pdf
+-rw-rw-r-- 1 lg lg  40K Jul  1 14:41 pca-villinfhr-reduced3k-clus-hc-fviz-silhouette.pdf
+-rw-rw-r-- 1 lg lg  65K Jul  1 14:41 pca-villinfhr-reduced3k-org-pca-clus.pdf
+-rw-rw-r-- 1 lg lg  81K Jul  1 14:41 pca-villinfhr-reduced3k-org-pca-full-palette.pdf
+-rw-rw-r-- 1 lg lg 5.2M Jul  1 14:41 pca-villinfhr-reduced3k.pca
+-rw-rw-r-- 1 lg lg  24K Jul  1 14:41 pca-villinfhr-reduced3k-pca-clus.pdf
+-rw-rw-r-- 1 lg lg  33K Jul  1 14:41 pca-villinfhr-reduced3k-pca.pdf
+-rw-rw-r-- 1 lg lg  56K Jul  1 14:41 pca-villinfhr-reduced3k.pdbs
+-rw-rw-r-- 1 lg lg  901 Jul  1 14:41 pca-villinfhr-reduced3k.pvar
+-rw-rw-r-- 1 lg lg 2.0M Jul  1 14:41 pca-villinfhr-reduced3k.xyz
+lrwxrwxrwx 1 lg lg   72 Jul  1 14:41 pclus.R -> /home/ppath/Reduction/dev/analysis/pca/scripts/pca-clust-analysis-fviz.R
+lrwxrwxrwx 1 lg lg   42 Jul  1 14:41 tmscorelg.so -> /home/ppath/Reduction/dev/bin/tmscorelg.so
+-rw-rw-r-- 1 lg lg  26K Jul  1 14:41 villinfhr-reduced3k-clus-hc-fviz.cluster
+-rw-rw-r-- 1 lg lg 122K Jul  1 14:41 villinfhr-reduced3k-clus-hc-fviz.data
+-rw-rw-r-- 1 lg lg  30K Jul  1 14:41 villinfhr-reduced3k-clus-hc-fviz-groups-plot.pdf
+-rw-rw-r-- 1 lg lg  64K Jul  1 14:41 villinfhr-reduced3k-pca-clus.pdf
+-rw-rw-r-- 1 lg lg  22K Jul  1 14:41 villinfhr-reduced3k.pdf
+
+./analysis/pca/villinfhrb-7k:
+total 31M
+-rw-rw-r-- 1 lg lg  48K Jul  1 14:41 analysis-pca-villinfhb-reduced7k-pca-clus.pdf
+-rw-rw-r-- 1 lg lg  58K Jul  1 14:41 analysis-pca-villinfhb-reduced7k-pca.pdf
+lrwxrwxrwx 1 lg lg   63 Jul  1 14:41 distance-matrix-mp.R -> /home/lg/ppath/Reduction/dev/analysis/nmds/distance-matrix-mp.R
+-rw-rw-r-- 1 lg lg  142 Jul  1 14:41 params.txt
+lrwxrwxrwx 1 lg lg   65 Jul  1 14:41 pcas.R -> /home/lg/ppath/Reduction/dev/analysis/pca/scripts/pca-calc-pcas.R
+-rw-rw-r-- 1 lg lg  63K Jul  1 14:41 pca-villinfhb-reduced7k-clus-hc-fviz.cluster
+-rw-rw-r-- 1 lg lg 293K Jul  1 14:41 pca-villinfhb-reduced7k-clus-hc-fviz.data
+-rw-rw-r-- 1 lg lg 112K Jul  1 14:41 pca-villinfhb-reduced7k-clus-hc-fviz-groups.pdf
+-rw-rw-r-- 1 lg lg  80K Jul  1 14:41 pca-villinfhb-reduced7k-clus-hc-fviz-silhouette.pdf
+-rw-rw-r-- 1 lg lg  13M Jul  1 14:41 pca-villinfhb-reduced7k.pca
+-rw-rw-r-- 1 lg lg 134K Jul  1 14:41 pca-villinfhb-reduced7k.pdbs
+-rw-rw-r-- 1 lg lg  44K Jul  1 14:41 pca-villinfhb-reduced7k.pdf
+-rw-rw-r-- 1 lg lg  905 Jul  1 14:41 pca-villinfhb-reduced7k.pvar
+-rw-rw-r-- 1 lg lg 260K Jul  1 14:41 pca-villinfhb-reduced7k.scores
+-rw-rw-r-- 1 lg lg 4.8M Jul  1 14:41 pca-villinfhb-reduced7k.xyz
+lrwxrwxrwx 1 lg lg   72 Jul  1 14:41 pclus.R -> /home/ppath/Reduction/dev/analysis/pca/scripts/pca-clust-analysis-fviz.R
+-rw-rw-r-- 1 lg lg   12 Jul  1 14:41 time-pca-red7k.log
+lrwxrwxrwx 1 lg lg   42 Jul  1 14:41 tmscorelg.so -> /home/ppath/Reduction/dev/bin/tmscorelg.so
+-rw-rw-r-- 1 lg lg  63K Jul  1 14:41 villinfhb-reduced7k-clus-hc-fviz.cluster
+-rw-rw-r-- 1 lg lg 293K Jul  1 14:41 villinfhb-reduced7k-clus-hc-fviz.data
+-rw-rw-r-- 1 lg lg  59K Jul  1 14:41 villinfhb-reduced7k-clus-hc-fviz-groups.pdf
+-rw-rw-r-- 1 lg lg  13M Jul  1 14:41 villinfhb-reduced7k.pca
+-rw-rw-r-- 1 lg lg 138K Jul  1 14:41 villinfhb-reduced7k-pca-clus.pdf
+lrwxrwxrwx 1 lg lg   23 Jul  1 14:41 v.pca -> villinfhb-reduced7k.pca
+
+./analysis/pca/villinfhrb-fk:
+total 3.3M
+-rw-rw-r-- 1 lg lg 138K Jul  1 14:41 analysis-pca-villinfhrb-clus-hc-fviz.cluster
+-rw-rw-r-- 1 lg lg 625K Jul  1 14:41 analysis-pca-villinfhrb-clus-hc-fviz.data
+-rw-rw-r-- 1 lg lg 235K Jul  1 14:41 analysis-pca-villinfhrb-clus-hc-fviz-groups.pdf
+-rw-rw-r-- 1 lg lg 161K Jul  1 14:41 analysis-pca-villinfhrb-clus-hc-fviz-silhouette.pdf
+-rw-rw-r-- 1 lg lg  91K Jul  1 14:41 analysis-pca-villinfhrb-pca-clus.pdf
+-rw-rw-r-- 1 lg lg 102K Jul  1 14:41 analysis-pca-villinfhrb-pca.pdf
+-rw-rw-r-- 1 lg lg  895 Jul  1 14:41 analysis-pca-villinfhrb.pvar
+lrwxrwxrwx 1 lg lg   43 Jul  1 14:41 analysis-pca-villinfhrb.xyz -> /SEQS/paper_bmc/villinfh/pca-villinfhrb.xyz
+-rw-rw-r-- 1 lg lg 275K Jul  1 14:41 old-pca-villinfhrb-pca-clus.pdf
+lrwxrwxrwx 1 lg lg   65 Jul  1 14:41 pcas.R -> /home/lg/ppath/Reduction/dev/analysis/pca/scripts/pca-calc-pcas.R
+-rw-rw-r-- 1 lg lg 235K Jul  1 14:41 pca-villinfhrb-clus-hc-fviz-groups.pdf
+-rw-rw-r-- 1 lg lg  92K Jul  1 14:41 pca-villinfhrb-pca-clus.pdf
+-rw-rw-r-- 1 lg lg 103K Jul  1 14:41 pca-villinfhrb-pca.pdf
+-rw-rw-r-- 1 lg lg  895 Jul  1 14:41 pca-villinfhrb.pvar
+-rw-rw-r-- 1 lg lg 282K Jul  1 14:41 pca-villinfhrb-reduced0k-pdbs.pdbs
+-rw-rw-r-- 1 lg lg  82K Jul  1 14:41 pca-villinfhrb-reduced0k-pdbs.pdf
+-rw-rw-r-- 1 lg lg 283K Jul  1 14:41 pca-villinfhr.pdbs
+lrwxrwxrwx 1 lg lg   72 Jul  1 14:41 pclus.R -> /home/ppath/Reduction/dev/analysis/pca/scripts/pca-clust-analysis-fviz.R
+-rw-rw-r-- 1 lg lg 138K Jul  1 14:41 villinfhrb-clus-hc-fviz.cluster
+-rw-rw-r-- 1 lg lg 116K Jul  1 14:41 villinfhrb-full-clus-hc-fviz-clus-groups.pdf
+-rw-rw-r-- 1 lg lg  81K Jul  1 14:41 villinfhrb-full.pdf
+-rw-rw-r-- 1 lg lg 275K Jul  1 14:41 villinfhrb-pca-clus.pdf
+
+./analysis/plots:
+total 20K
+lrwxrwxrwx 1 lg lg   61 Jul  1 14:41 analysis-nmds-2RN2CA-nmds.points -> /home/lg/ppath/Reduction/dev/analysis/nmds/2RN2CA-nmds.points
+lrwxrwxrwx 1 lg lg   81 Jul  1 14:41 analysis-trajectory-2RN2CA-pdbsGlobal.scores -> /home/lg/ppath/Reduction/dev/results/2RN2/2RN2-40b08t22k/2RN2CA-pdbsGlobal.scores
+drwxrwxr-x 2 lg lg 4.0K Jul  2 00:52 data
+-rwxrwxr-x 1 lg lg 3.6K Jul  1 14:41 plot-analysis.R
+lrwxrwxrwx 1 lg lg   15 Jul  1 14:41 pl.R -> plot-analysis.R
+-rwxrwxr-x 1 lg lg  111 Jul  1 14:41 run-plots.sh
+
+./analysis/plots/data:
+total 26M
+-rw-rw-r-- 1 lg lg 2.9M Jul  1 14:41 analysis-villinfhr-fullkb-pca-clus-palette.pdf
+-rw-rw-r-- 1 lg lg 7.7M Jul  1 14:41 analysis-villinfhr-fullkb-pca-clus-palette.svg
+-rw-rw-r-- 1 lg lg  91K Jul  1 14:41 analysis-villinfhr-fullkb-pca-clus.pdf
+-rw-rw-r-- 1 lg lg  75K Jul  1 14:41 analysis-villinfhr-fullk-nb-fullk-pdbs-trj-palette.pdf
+-rw-rw-r-- 1 lg lg 117K Jul  1 14:41 analysis-villinfhr-fullk-nmds-palette.pdf
+-rw-rw-r-- 1 lg lg  75K Jul  1 14:41 analysis-villinfhr-fullnb-trj-pdbs-palette.pdf
+-rw-rw-r-- 1 lg lg  32K Jul  1 14:41 analysis-villinfhr-red3k-nmds-palette.pdf
+-rw-rw-r-- 1 lg lg  24K Jul  1 14:41 analysis-villinfhr-red3k-pca-clus.pdf
+-rw-rw-r-- 1 lg lg 607K Jul  1 14:41 analysis-villinfhr-red3k-pca-palette.pdf
+-rw-rw-r-- 1 lg lg 1.6M Jul  1 14:41 analysis-villinfhr-red3k-pca-palette.svg
+-rw-rw-r-- 1 lg lg  22K Jul  1 14:41 analysis-villinfhr-red3k-pdbsGlobal-trj-palette.pdf
+-rw-rw-r-- 1 lg lg 1.4M Jul  1 14:41 analysis-villinfhr-red7kb-pca-clus-palette.pdf
+-rw-rw-r-- 1 lg lg 3.7M Jul  1 14:41 analysis-villinfhr-red7kb-pca-clus-palette.svg
+-rw-rw-r-- 1 lg lg  48K Jul  1 14:41 analysis-villinfhr-red7kb-pca-clus.pdf
+-rw-rw-r-- 1 lg lg  62K Jul  1 14:41 analysis-villinfhr-red7k-pdbsGlobal-nmds-palette.pdf
+-rw-rw-r-- 1 lg lg  44K Jul  1 14:41 analysis-villinfhr-red7k-pdbsGlobal-trj-palette.pdf
+lrwxrwxrwx 1 lg lg   59 Jul  1 14:41 plot-analysis.R -> /home/lg/ppath/Reduction/dev/analysis/plots/plot-analysis.R
+lrwxrwxrwx 1 lg lg   73 Jul  1 14:41 renumbering-pdbs-scores.py -> /home/ppath/Reduction/dev/analysis/pca/scripts/renumbering-pdbs-scores.py
+-rw-rw-r-- 1 lg lg  73K Jul  1 14:41 villinfh-fullk-nb-fullk-pdbs-trj-palette.pdf
+-rw-rw-r-- 1 lg lg 548K Jul  1 14:41 villinfh-fullk-nb-fullk-pdbs-trj.scores
+-rw-rw-r-- 1 lg lg 117K Jul  1 14:41 villinfh-fullk-nmds-palette.pdf
+-rw-rw-r-- 1 lg lg 667K Jul  1 14:41 villinfh-fullk-nmds.points
+lrwxrwxrwx 1 lg lg   74 Jul  1 14:41 villinfhr -> /home/ppath/Reduction/dev/analysis/nmds/villinfh-nmds-red3k/villinfhr-r5c1
+-rw-rw-r-- 1 lg lg  32K Jul  1 14:41 villinfhr-red3k-nmds-palette.pdf
+-rw-rw-r-- 1 lg lg 132K Jul  1 14:41 villinfhr-red3k-nmds.points
+-rw-rw-r-- 1 lg lg 5.2M Jul  1 14:41 villinfhr-red3k-pca.pca
+-rw-rw-r-- 1 lg lg  22K Jul  1 14:41 villinfhr-red3k-pdbsGlobal-trj-palette.pdf
+-rw-rw-r-- 1 lg lg  56K Jul  1 14:41 villinfhr-red3k-pdbsGlobal-trj.pdbs
+-rw-rw-r-- 1 lg lg 109K Jul  1 14:41 villinfhr-red3k-pdbsGlobal-trj.scores
+-rw-rw-r-- 1 lg lg  62K Jul  1 14:41 villinfhr-red7k-pdbsGlobal-nmds-palette.pdf
+-rw-rw-r-- 1 lg lg 316K Jul  1 14:41 villinfhr-red7k-pdbsGlobal-nmds.points
+-rw-rw-r-- 1 lg lg  43K Jul  1 14:41 villinfhr-red7k-pdbsGlobal-trj-palette.pdf
+-rw-rw-r-- 1 lg lg 260K Jul  1 14:41 villinfhr-red7k-pdbsGlobal-trj.scores
+
+./bin:
+total 524K
+lrwxrwxrwx 1 lg lg   58 Jul  1 08:04 extract-pdbs-multiPDB.py -> /home/ppath/Reduction/dev/scripts/extract-pdbs-multiPDB.py
+lrwxrwxrwx 1 lg lg   49 Mar 15 08:23 pdbs2calphas.py -> /home/ppath/Reduction/dev/scripts/pdbs2calphas.py
+lrwxrwxrwx 1 lg lg   18 Feb  1 14:09 plot -> plotpath-tmscore.R
+lrwxrwxrwx 1 lg lg   52 Mar 14 17:09 plotpath-tmscore.R -> /home/ppath/Reduction/dev/scripts/plotpath-tmscore.R
+lrwxrwxrwx 1 lg lg    7 Feb  1 14:09 tms -> TMscore
+-rwxrwxr-x 1 lg lg 522K Jan  2  2018 TMscore
+lrwxrwxrwx 1 lg lg   46 Mar 14 17:08 tmscorelg.so -> /home/ppath/Reduction/dev/fortran/tmscorelg.so
+lrwxrwxrwx 1 lg lg   46 Mar 14 18:11 tmscorelib.R -> /home/ppath/Reduction/dev/scripts/tmscorelib.R
+
+./fortran:
+total 496K
+-rw-r--r-- 1 lg lg  98K Mar 13 17:26 2rn2-native-min.pdb
+-rw-rw-r-- 1 lg lg  125 Mar 14 16:14 compile-tmscore-lib.sh
+drwxrwxr-x 2 lg lg 4.0K Mar 14 16:15 old
+-rw-r--r-- 1 lg lg  83K Feb  1  2008 pathway0-000.pdb
+drwxrwxr-x 2 lg lg 4.0K Apr 11 00:10 tmp
+-rw-rw-r-- 1 lg lg  42K Aug 24  2018 TMscore.f
+-rw-rw-r-- 1 lg lg  23K Mar 14 23:44 tmscorelg.f
+-rw-rw-r-- 1 lg lg 101K Mar 14 18:12 tmscorelg.o
+-rwxrwxr-x 1 lg lg  93K Mar 14 18:12 tmscorelg.so
+-rwxr-xr-x 1 lg lg 5.3K Mar 14 01:30 tmscore-lib.R
+-rwxr-xr-x 1 lg lg 1.5K Mar 14 23:35 tmscorelib.R
+-rw-rw-r-- 1 lg lg  18K Aug 24  2018 TMscore_subroutine.f
+
+./fortran/old:
+total 356K
+-rw-rw-r-- 1 lg lg  18K Jan 30 07:56 old_tmscorelg.f
+-rw-rw-r-- 1 lg lg  68K Mar 13 12:51 tmscorelg.o
+-rwxrwxr-x 1 lg lg  66K Mar 13 12:51 tmscorelg.so
+-rw-rw-r-- 1 lg lg 101K Mar 14 01:30 tmscorenew.o
+-rwxrwxr-x 1 lg lg  93K Mar 14 01:30 tmscorenew.so
+
+./fortran/tmp:
+total 536K
+-rw-rw-r-- 1 lg lg 269K Apr 10 14:58 b
+-rw-rw-r-- 1 lg lg 8.4K Mar 15 08:25 p0.pdb
+-rw-rw-r-- 1 lg lg 8.4K Mar 15 08:25 p100.pdb
+-rw-rw-r-- 1 lg lg 8.4K Mar 15 08:25 p428.pdb
+lrwxrwxrwx 1 lg lg   16 Apr 10 14:26 tms -> tmscorelg-prog.R
+-rw-rw-r-- 1 lg lg  24K Apr 10 14:58 tmscorelg-lib.f
+-rw-rw-r-- 1 lg lg 102K Apr 10 14:58 tmscorelg-lib.o
+-rwxrwxr-x 1 lg lg  93K Apr 10 14:58 tmscorelg-lib.so
+-rwxr-xr-x 1 lg lg 1.5K Apr 10 16:22 tmscorelg-prog.R
+
+./outvfh:
+total 12K
+lrwxrwxrwx 1 lg lg   36 Apr 24 16:43 native_2f4k_Amb_CA.pdb -> /SEQS/natives/native_2f4k_Amb_CA.pdb
+drwxrwxr-x 2 lg lg 4.0K Apr 26 19:31 out-villinfhr-100b03t5k4c-reduction-2h
+drwxrwxr-x 2 lg lg 4.0K Apr 30 07:03 out-villinfhr-100b08t50k4c-reduction7k
+-rw-rw-r-- 1 lg lg   13 Apr 24 18:53 time-0.8.log
+
+./outvfh/out-villinfhr-100b03t5k4c-reduction-2h:
+total 688K
+-rw-rw-r-- 1 lg lg   91 Apr 24 18:33 params.txt
+lrwxrwxrwx 1 lg lg   42 Apr 24 18:33 pdbs -> /home/ppath/Reduction/dev/outvfh/villinfhr
+-rw-rw-r-- 1 lg lg 4.9K Apr 24 18:33 pdbsGlobal.pdbs
+-rw-rw-r-- 1 lg lg 5.8K Apr 24 18:33 pdbsGlobal.pdf
+-rw-rw-r-- 1 lg lg 7.5K Apr 24 18:33 pdbsGlobal.scores
+-rw-rw-r-- 1 lg lg 4.9K Apr 24 18:33 pdbsLocal.pdbs
+-rw-rw-r-- 1 lg lg 5.9K Apr 24 18:33 pdbsLocal.pdf
+-rw-rw-r-- 1 lg lg 7.6K Apr 24 18:33 pdbsLocal.scores
+-rw-rw-r-- 1 lg lg  82K Apr 24 18:34 pdbs.pdf
+-rw-rw-r-- 1 lg lg 548K Apr 24 18:34 pdbs.scores
+-rw-rw-r-- 1 lg lg   12 Apr 24 18:33 time-03tm.log
+
+./outvfh/out-villinfhr-100b08t50k4c-reduction7k:
+total 1.2M
+-rw-rw-r-- 1 lg lg  111 Apr 24 22:37 params.txt
+lrwxrwxrwx 1 lg lg   42 Apr 24 18:50 pdbs -> /home/ppath/Reduction/dev/outvfh/villinfhr
+-rw-rw-r-- 1 lg lg 169K Apr 24 18:53 pdbsGlobal.pdbs
+-rw-rw-r-- 1 lg lg  44K Apr 24 18:53 pdbsGlobal.pdf
+-rw-rw-r-- 1 lg lg 260K Apr 24 18:53 pdbsGlobal.scores
+-rw-rw-r-- 1 lg lg 262K Apr 24 18:50 pdbsLocal.pdbs
+-rw-rw-r-- 1 lg lg  62K Apr 24 18:53 pdbsLocal.pdf
+-rw-rw-r-- 1 lg lg 403K Apr 24 18:53 pdbsLocal.scores
+
+./performance:
+total 12K
+drwxrwxr-x 3 lg lg 4.0K Jul  1 14:41 cores
+drwxrwxr-x 9 lg lg 4.0K Jul  1 14:41 methods
+drwxrwxr-x 5 lg lg 4.0K Jul  1 14:41 pca-cores
+
+./performance/cores:
+total 188K
+-rw-rw-r-- 1 lg lg   87 Jul  1 14:41 org-times-villin-100k-cores.txt
+drwxrwxr-x 2 lg lg 4.0K Jul  1 14:41 results-multicore-test-100k
+-rwxrwxr-x 1 lg lg  95K Jul  1 14:41 results-multicore-test-100k.tgz
+-rw-rw-r-- 1 lg lg   65 Jul  1 14:41 times-1Cores.times
+-rw-rw-r-- 1 lg lg   63 Jul  1 14:41 times-2Cores.times
+-rw-rw-r-- 1 lg lg   59 Jul  1 14:41 times-4Cores.times
+-rw-rw-r-- 1 lg lg   59 Jul  1 14:41 times-8Cores.times
+lrwxrwxrwx 1 lg lg   87 Jul  1 14:41 times-plot-cores.R -> /home/ppath/Reduction/dev/results/out-cluslg-villin-100k-times-cores/times-plot-cores.R
+-rw-rw-r-- 1 lg lg  16K Jul  1 14:41 times-villin-100k-cores-ink.pdf
+-rw-rw-r-- 1 lg lg  24K Jul  1 14:41 times-villin-100k-cores-ink.svg
+-rw-rw-r-- 1 lg lg 4.8K Jul  1 14:41 times-villin-100k-cores.pdf
+-rw-rw-r-- 1 lg lg  103 Jul  1 14:41 times-villin-100k-cores.txt
+-rw-rw-r-- 1 lg lg  12K Jul  1 14:41 trj-performance-size-vs-cores.ods
+
+./performance/cores/results-multicore-test-100k:
+total 2.5M
+-rwxrwxr-x 1 lg lg    6 Jul  1 14:41 1Cores-2JOF100k-001000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 1Cores-2JOF100k-005000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 1Cores-2JOF100k-010000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 1Cores-2JOF100k-020000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 1Cores-2JOF100k-030000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 1Cores-2JOF100k-040000.names.time
+-rwxrwxr-x 1 lg lg    8 Jul  1 14:41 1Cores-2JOF100k-060000.names.time
+-rwxrwxr-x 1 lg lg    8 Jul  1 14:41 1Cores-2JOF100k-080000.names.time
+-rwxrwxr-x 1 lg lg    8 Jul  1 14:41 1Cores-2JOF100k-100000.names.time
+-rwxrwxr-x 1 lg lg    6 Jul  1 14:41 2Cores-2JOF100k-001000.names.time
+-rwxrwxr-x 1 lg lg    6 Jul  1 14:41 2Cores-2JOF100k-005000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 2Cores-2JOF100k-010000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 2Cores-2JOF100k-020000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 2Cores-2JOF100k-030000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 2Cores-2JOF100k-040000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 2Cores-2JOF100k-060000.names.time
+-rwxrwxr-x 1 lg lg    8 Jul  1 14:41 2Cores-2JOF100k-080000.names.time
+-rwxrwxr-x 1 lg lg    8 Jul  1 14:41 2Cores-2JOF100k-100000.names.time
+-rwxrwxr-x 1 lg lg    5 Jul  1 14:41 4Cores-2JOF100k-001000.names.time
+-rwxrwxr-x 1 lg lg    6 Jul  1 14:41 4Cores-2JOF100k-005000.names.time
+-rwxrwxr-x 1 lg lg    6 Jul  1 14:41 4Cores-2JOF100k-010000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 4Cores-2JOF100k-020000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 4Cores-2JOF100k-030000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 4Cores-2JOF100k-040000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 4Cores-2JOF100k-060000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 4Cores-2JOF100k-080000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 4Cores-2JOF100k-100000.names.time
+-rwxrwxr-x 1 lg lg    5 Jul  1 14:41 8Cores-2JOF100k-001000.names.time
+-rwxrwxr-x 1 lg lg    6 Jul  1 14:41 8Cores-2JOF100k-005000.names.time
+-rwxrwxr-x 1 lg lg    6 Jul  1 14:41 8Cores-2JOF100k-010000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 8Cores-2JOF100k-020000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 8Cores-2JOF100k-030000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 8Cores-2JOF100k-040000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 8Cores-2JOF100k-060000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 8Cores-2JOF100k-080000.names.time
+-rwxrwxr-x 1 lg lg    7 Jul  1 14:41 8Cores-2JOF100k-100000.names.time
+-rwxrwxr-x 1 lg lg 2.3M Jul  1 14:41 a.log
+-rw-rw-r-- 1 lg lg   65 Jul  1 14:41 times-1Cores.times
+-rw-rw-r-- 1 lg lg   63 Jul  1 14:41 times-2Cores.times
+-rw-rw-r-- 1 lg lg   59 Jul  1 14:41 times-4Cores.times
+-rw-rw-r-- 1 lg lg   59 Jul  1 14:41 times-8Cores.times
+
+./performance/methods:
+total 84K
+drwxrwxr-x 2 lg lg 4.0K Jul  1 14:41 clustering
+-rw-rw-r-- 1 lg lg 2.9K Jul  1 14:41 clustering.tgz
+drwxrwxr-x 2 lg lg 4.0K Jul  1 10:12 fastreduction
+drwxrwxr-x 2 lg lg 4.0K Jul  1 14:41 fastreduction-dirs
+-rwxrwxr-x 1 lg lg 2.1K Jul  1 14:41 multi-plot.R
+drwxrwxr-x 2 lg lg 4.0K Jul  1 14:41 nmds
+drwxrwxr-x 2 lg lg 4.0K Jul  1 14:41 pca
+-rw-rw-r-- 1 lg lg 1.8K Jul  1 14:41 pca.tgz
+-rwxrwxr-x 1 lg lg 1.1K Jul  1 14:41 plot-lines-pca-fd-cores.R
+-rw-rw-r-- 1 lg lg  227 Jul  1 14:41 README.txt
+drwxrwxr-x 2 lg lg 4.0K Jul  1 14:41 samples
+drwxrwxr-x 3 lg lg 4.0K Jul  1 14:41 scripts
+-rw-rw-r-- 1 lg lg  10K Jul  1 14:41 times-multi-X.times.ods
+-rwxrwxr-x 1 lg lg  632 Jul  1 14:41 times-plot-2.R
+-rw-rw-r-- 1 lg lg  347 Jul  1 14:41 trj-performance-times.csv
+-rw-rw-r-- 1 lg lg 5.7K Jul  1 14:41 trj-performance-times.pdf
+-rw-rw-r-- 1 lg lg 5.2K Jul  1 14:41 trj-performance-times.xlsx
+
+./performance/methods/clustering:
+total 40K
+-rw-rw-r-- 1 lg lg  608 Jul  1 14:41 b.sh
+-rw-rw-r-- 1 lg lg   55 Jul  1 14:41 clustering-performance.times
+lrwxrwxrwx 1 lg lg   64 Jul  1 14:41 samples -> /home/lg/ppath/Reduction/dev/performance/methods/scripts/samples
+lrwxrwxrwx 1 lg lg   81 Jul  1 14:41 test-run-samples-pdbs.py -> /home/lg/ppath/Reduction/dev/performance/methods/scripts/test-run-samples-pdbs.py
+-rw-rw-r-- 1 lg lg   50 Jul  1 14:41 time-performance-dell.times
+-rwxrwxr-x 1 lg lg  166 Jul  1 14:41 times-clustering-java-lengths-100k.times
+-rw-rw-r-- 1 lg lg   45 Jul  1 14:41 times-clustering.time
+-rwxrwxr-x 1 lg lg 4.8K Jul  1 14:41 trj-clust-plots.R
+-rwxrwxr-x 1 lg lg 3.8K Jul  1 14:41 trj-clust.R
+
+./performance/methods/fastreduction:
+total 112K
+lrwxrwxrwx 1 lg lg   20 Jul  1 10:12 2JOF-50k-CA -> /dev/shm/2JOF-50k-CA
+-rw-rw-r-- 1 lg lg  600 Jul  1 10:12 a.sh
+-rwxrwxr-x 1 lg lg 8.0K Jul  1 10:12 fastreduction-bins-in-files.R
+-rwxrwxr-x 1 lg lg 8.2K Jul  1 10:12 fastreduction-mem-pamglobal.R
+-rwxrwxr-x 1 lg lg 8.5K Jul  1 10:12 fastreduction.R
+lrwxrwxrwx 1 lg lg   36 Jul  1 10:12 native_2f4k_Amb_CA.pdb -> /SEQS/natives/native_2f4k_Amb_CA.pdb
+-rwxrwxr-x 1 lg lg 4.3K Jul  1 10:12 pmat-distance-matrix.R
+-rwxrwxr-x 1 lg lg 4.4K Jul  1 10:12 pmat-distance-matrix-tms.R
+-rwxrwxr-x 1 lg lg 4.4K Jul  1 10:12 pr00_main.py
+-rwxrwxr-x 1 lg lg 3.5K Jul  1 10:12 pr01_createBins.py
+-rwxrwxr-x 1 lg lg 5.7K Jul  1 10:12 pr02_localReduction.R
+-rwxrwxr-x 1 lg lg 5.5K Jul  1 10:12 pr03_globalReduction.R
+-rwxrwxr-x 1 lg lg  203 Jul  1 10:12 run-main.sh
+-rw-rw-r-- 1 lg lg    7 Jul  1 10:12 time50k.time
+-rw-rw-r-- 1 lg lg   52 Jul  1 10:12 times-1x-fred.times
+-rw-rw-r-- 1 lg lg   50 Jul  1 10:12 times-2x-fred.times
+-rw-rw-r-- 1 lg lg   50 Jul  1 10:12 times-3x-fred.times
+-rw-rw-r-- 1 lg lg   50 Jul  1 10:12 times-4x-fred.times
+-rw-rw-r-- 1 lg lg   50 Jul  1 10:12 times-fastreduction-4x.time
+-rwxrwxr-x 1 lg lg   60 Jul  1 10:12 times-samples0.times
+lrwxrwxrwx 1 lg lg   42 Jul  1 10:12 tmscorelg.so -> /home/ppath/Reduction/dev/bin/tmscorelg.so
+
+./performance/methods/fastreduction-dirs:
+total 48K
+-rw-rw-r-- 1 lg lg   91 Jul  1 14:41 fastred-performance.time
+lrwxrwxrwx 1 lg lg   36 Jul  1 14:41 native_2f4k_Amb_CA.pdb -> /SEQS/natives/native_2f4k_Amb_CA.pdb
+-rwxrwxr-x 1 lg lg 5.4K Jul  1 14:41 new_pr03_globalReduction.R
+-rwxrwxr-x 1 lg lg 4.3K Jul  1 14:41 pmat-distance-matrix.R
+-rwxrwxr-x 1 lg lg 4.0K Jul  1 14:41 pr00_main.py
+-rwxrwxr-x 1 lg lg 3.1K Jul  1 14:41 pr01_createBins.py
+-rwxrwxr-x 1 lg lg 5.4K Jul  1 14:41 pr02_localReduction.R
+-rwxrwxr-x 1 lg lg 5.4K Jul  1 14:41 pr03_globalReduction.R
+-rwxrwxr-x 1 lg lg  210 Jul  1 14:41 run-main.sh
+lrwxrwxrwx 1 lg lg   42 Jul  1 14:41 tmscorelg.so -> /home/ppath/Reduction/dev/bin/tmscorelg.so
+
+./performance/methods/nmds:
+total 20K
+-rw-rw-r-- 1 lg lg   70 Jul  1 14:41 nmds-performance.times
+-rwxrwxr-x 1 lg lg 4.3K Jul  1 14:41 pmat-distance-matrix.R
+-rw-rw-r-- 1 lg lg  373 Jul  1 14:41 run-nmds-performance.sh
+lrwxrwxrwx 1 lg lg   42 Jul  1 14:41 tmscorelg.so -> /home/ppath/Reduction/dev/bin/tmscorelg.so
+-rwxrwxr-x 1 lg lg 1.9K Jul  1 14:41 trj-nmds.R
+
+./performance/methods/pca:
+total 28K
+-rw-rw-r-- 1 lg lg  524 Jul  1 14:41 a.sh
+-rw-rw-r-- 1 lg lg   55 Jul  1 14:41 pca-performance-dell.times
+-rw-rw-r-- 1 lg lg   55 Jul  1 14:41 pca-performance-old.times
+lrwxrwxrwx 1 lg lg   64 Jul  1 14:41 samples -> /home/lg/ppath/Reduction/dev/performance/methods/scripts/samples
+lrwxrwxrwx 1 lg lg   81 Jul  1 14:41 test-run-samples-pdbs.py -> /home/lg/ppath/Reduction/dev/performance/methods/scripts/test-run-samples-pdbs.py
+-rw-rw-r-- 1 lg lg   46 Jul  1 14:41 times-pca.time
+-rwxrwxr-x 1 lg lg 3.2K Jul  1 14:41 trj-pca.R
+
+./performance/methods/samples:
+total 0
+lrwxrwxrwx 1 lg lg 25 Jul  1 14:41 2JOF -> /SEQS/anton/2JOF/2JOF-99k
+
+./performance/methods/scripts:
+total 16K
+lrwxrwxrwx 1 lg lg   20 Jul  1 14:41 2JOF -> /dev/shm/2JOF-50k-CA
+drwxrwxr-x 2 lg lg 4.0K Jul  1 14:41 samples
+-rwxrwxr-x 1 lg lg  604 Jul  1 14:41 test-create-pdbs-samples.py
+-rwxrwxr-x 1 lg lg 2.7K Jul  1 14:41 test-get-pdbs-from-path.py
+-rwxrwxr-x 1 lg lg  489 Jul  1 14:41 test-run-samples-pdbs.py
+
+./performance/methods/scripts/samples:
+total 2.1M
+-rw-rw-r-- 1 lg lg 4.0K Jul  1 14:41 2JOF-00200.names
+-rw-rw-r-- 1 lg lg  20K Jul  1 14:41 2JOF-01000.names
+-rw-rw-r-- 1 lg lg  98K Jul  1 14:41 2JOF-05000.names
+-rw-rw-r-- 1 lg lg 196K Jul  1 14:41 2JOF-10000.names
+-rw-rw-r-- 1 lg lg 294K Jul  1 14:41 2JOF-15000.names
+-rw-rw-r-- 1 lg lg 391K Jul  1 14:41 2JOF-20000.names
+-rw-rw-r-- 1 lg lg 489K Jul  1 14:41 2JOF-25000.names
+-rw-rw-r-- 1 lg lg 586K Jul  1 14:41 2JOF-30000.names
+
+./performance/pca-cores:
+total 60K
+lrwxrwxrwx 1 lg lg   61 Jul  1 14:41 multi-plot.R -> /home/lg/ppath/Reduction/dev/performance/methods/multi-plot.R
+drwxrwxr-x 2 lg lg 4.0K Jul  1 14:41 old
+-rw-rw-r-- 1 lg lg 5.8K Jul  1 14:41 org-performance-methods-multicore-sizes-jave.pdf
+-rw-rw-r-- 1 lg lg 5.4K Jul  1 14:41 performance-methods-100k-multi-cores.pdf
+-rw-rw-r-- 1 lg lg  519 Jul  1 14:41 performance-methods-multicore-sizes-jave.csv
+-rw-rw-r-- 1 lg lg  16K Jul  1 14:41 performance-methods-multicore-sizes-jave.ods
+-rw-rw-r-- 1 lg lg 5.8K Jul  1 14:41 performance-methods-multicore-sizes-jave.pdf
+drwxrwxr-x 2 lg lg 4.0K Jul  1 14:41 times-pca-cores-100k-jave
+drwxrwxr-x 3 lg lg 4.0K Jul  1 14:41 times-reduction-pam-local
+
+./performance/pca-cores/old:
+total 32K
+-rw-rw-r-- 1 lg lg 5.1K Jul  1 14:41 trj-performance-cores-vs-sizes-100k.xlsx
+-rw-rw-r-- 1 lg lg  112 Jul  1 14:41 trj-performance-methods-cores.txt
+-rw-rw-r-- 1 lg lg  100 Jul  1 14:41 trj-performance-pca-vs-fastred-cores.txt
+-rw-rw-r-- 1 lg lg 4.9K Jul  1 14:41 trj-performance-pca-vs-fastred-cores.xlsx
+-rw-rw-r-- 1 lg lg 6.2K Jul  1 14:41 trj-performance-sizes-cores-times.xlsx
+
+./performance/pca-cores/times-pca-cores-100k-jave:
+total 44K
+-rwxrwxr-x 1 lg lg  5 Jul  1 14:41 8Cores-2JOF100k-001000.names.time
+-rwxrwxr-x 1 lg lg  5 Jul  1 14:41 8Cores-2JOF100k-005000.names.time
+-rwxrwxr-x 1 lg lg  6 Jul  1 14:41 8Cores-2JOF100k-010000.names.time
+-rwxrwxr-x 1 lg lg  6 Jul  1 14:41 8Cores-2JOF100k-020000.names.time
+-rwxrwxr-x 1 lg lg  6 Jul  1 14:41 8Cores-2JOF100k-030000.names.time
+-rwxrwxr-x 1 lg lg  6 Jul  1 14:41 8Cores-2JOF100k-040000.names.time
+-rwxrwxr-x 1 lg lg  6 Jul  1 14:41 8Cores-2JOF100k-060000.names.time
+-rwxrwxr-x 1 lg lg  7 Jul  1 14:41 8Cores-2JOF100k-080000.names.time
+-rwxrwxr-x 1 lg lg  7 Jul  1 14:41 8Cores-2JOF100k-100000.names.time
+-rwxrwxr-x 1 lg lg 46 Jul  1 14:41 times-pca-dell.times
+-rw-rw-r-- 1 lg lg 54 Jul  1 14:41 times-pca-lengths-java.times
+
+./performance/pca-cores/times-reduction-pam-local:
+total 20K
+drwxrwxr-x 2 lg lg 4.0K Jul  1 14:41 times
+-rw-rw-r-- 1 lg lg   56 Jul  1 14:41 times-1C-paml.times
+-rw-rw-r-- 1 lg lg   53 Jul  1 14:41 times-2C-paml.times
+-rw-rw-r-- 1 lg lg   51 Jul  1 14:41 times-4C-paml.times
+-rw-rw-r-- 1 lg lg   51 Jul  1 14:41 times-8C-paml.times
+
+./performance/pca-cores/times-reduction-pam-local/times:
+total 144K
+-rwxrwxr-x 1 lg lg 5 Jul  1 14:41 1Cores-2JOF100k-001000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 1Cores-2JOF100k-005000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 1Cores-2JOF100k-010000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 1Cores-2JOF100k-020000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 1Cores-2JOF100k-030000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 1Cores-2JOF100k-040000.names.time
+-rwxrwxr-x 1 lg lg 7 Jul  1 14:41 1Cores-2JOF100k-060000.names.time
+-rwxrwxr-x 1 lg lg 7 Jul  1 14:41 1Cores-2JOF100k-080000.names.time
+-rwxrwxr-x 1 lg lg 7 Jul  1 14:41 1Cores-2JOF100k-100000.names.time
+-rwxrwxr-x 1 lg lg 5 Jul  1 14:41 2Cores-2JOF100k-001000.names.time
+-rwxrwxr-x 1 lg lg 5 Jul  1 14:41 2Cores-2JOF100k-005000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 2Cores-2JOF100k-010000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 2Cores-2JOF100k-020000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 2Cores-2JOF100k-030000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 2Cores-2JOF100k-040000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 2Cores-2JOF100k-060000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 2Cores-2JOF100k-080000.names.time
+-rwxrwxr-x 1 lg lg 7 Jul  1 14:41 2Cores-2JOF100k-100000.names.time
+-rwxrwxr-x 1 lg lg 5 Jul  1 14:41 4Cores-2JOF100k-001000.names.time
+-rwxrwxr-x 1 lg lg 5 Jul  1 14:41 4Cores-2JOF100k-005000.names.time
+-rwxrwxr-x 1 lg lg 5 Jul  1 14:41 4Cores-2JOF100k-010000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 4Cores-2JOF100k-020000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 4Cores-2JOF100k-030000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 4Cores-2JOF100k-040000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 4Cores-2JOF100k-060000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 4Cores-2JOF100k-080000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 4Cores-2JOF100k-100000.names.time
+-rwxrwxr-x 1 lg lg 5 Jul  1 14:41 8Cores-2JOF100k-001000.names.time
+-rwxrwxr-x 1 lg lg 5 Jul  1 14:41 8Cores-2JOF100k-005000.names.time
+-rwxrwxr-x 1 lg lg 5 Jul  1 14:41 8Cores-2JOF100k-010000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 8Cores-2JOF100k-020000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 8Cores-2JOF100k-030000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 8Cores-2JOF100k-040000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 8Cores-2JOF100k-060000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 8Cores-2JOF100k-080000.names.time
+-rwxrwxr-x 1 lg lg 6 Jul  1 14:41 8Cores-2JOF100k-100000.names.time
+
+./results:
+total 60K
+drwxr-xr-x 7 lg lg 4.0K Mar 13 11:23 1FCA1
+drwxr-xr-x 4 lg lg 4.0K Apr 15 22:59 2JOF
+drwxrwxr-x 3 lg lg 4.0K Apr 16 16:10 2RN2
+drwxr-xr-x 5 lg lg 4.0K Jan 21 11:35 2YCC
+drwxrwxr-x 4 lg lg 4.0K Jul  1 08:04 fhome
+drwxr-xr-x 8 lg lg 4.0K May 24 12:26 out-clusgr-2JOF-100k500b
+drwxr-xr-x 8 lg lg 4.0K May 24 12:26 out-clusgr-2JOF-700k
+drwxr-xr-x 2 lg lg 4.0K Feb  1 12:13 out-cluslg-2JOF-700k-100b04t10k45c
+drwxr-xr-x 2 lg lg 4.0K May 25 09:16 out-cluslg-villin-100k-100b03t10k45c
+drwxr-xr-x 2 lg lg 4.0K May 25 09:16 out-cluslg-villin-100k-100b04t10k45c
+drwxr-xr-x 2 lg lg 4.0K May 25 09:16 out-cluslg-villin-100k-100b06t10k45c
+drwxr-xr-x 2 lg lg 4.0K May 25 09:16 out-cluslg-villin-100k-100b08t10k45c
+drwxr-xr-x 8 lg lg 4.0K Feb 10 12:47 out-cluslg-villin-100k-times-bins
+drwxr-xr-x 9 lg lg 4.0K Jul  1 14:41 out-cluslg-villin-100k-times-cores
+drwxr-xr-x 2 lg lg 4.0K Apr 25 08:03 out-cluslg-villin-Full-500b04t10k45c
+
+./results/1FCA1:
+total 20K
+drwxr-xr-x 2 lg lg 4.0K Mar 13 11:21 1FCA1
+drwxr-xr-x 2 lg lg 4.0K Aug 16  2018 1FCA1-40b05t07k
+drwxr-xr-x 2 lg lg 4.0K Mar 13 11:23 1FCA1-40b05t10k
+drwxr-xr-x 4 lg lg 4.0K Aug 16  2018 1FCA1w-40b05t07k
+drwxr-xr-x 2 lg lg 4.0K Mar 13 11:24 1FCA-40b05t08k
+
+./results/1FCA1/1FCA1:
+total 8.0K
+-rw-r--r-- 1 lg lg 7.3K Aug  8  2018 1FCA1.pdf
+
+./results/1FCA1/1FCA1-40b05t07k:
+total 28K
+-rw-r--r-- 1 lg lg   81 Aug 16  2018 params.txt
+-rw-r--r-- 1 lg lg 4.7K Aug 16  2018 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg 4.9K Aug 16  2018 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 6.0K Aug 16  2018 pdbs.pdf
+
+./results/1FCA1/1FCA1-40b05t10k:
+total 28K
+-rw-r--r-- 1 lg lg   82 Aug 16  2018 params.txt
+-rw-r--r-- 1 lg lg 4.8K Aug 16  2018 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg 4.9K Aug 16  2018 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 6.0K Aug 16  2018 pdbs.pdf
+
+./results/1FCA1/1FCA1w-40b05t07k:
+total 8.0K
+drwxr-xr-x 2 lg lg 4.0K Aug 16  2018 pdfs
+drwxr-xr-x 2 lg lg 4.0K Aug 16  2018 pdfsw
+
+./results/1FCA1/1FCA1w-40b05t07k/pdfs:
+total 24K
+-rw-r--r-- 1 lg lg 5.9K Aug 16  2018 1FCA1.pdf
+-rw-r--r-- 1 lg lg 4.6K Aug 16  2018 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg 4.8K Aug 16  2018 pdbsLocal.pdf
+
+./results/1FCA1/1FCA1w-40b05t07k/pdfsw:
+total 24K
+-rw-r--r-- 1 lg lg 6.0K Aug 16  2018 1FCA1.pdf
+-rw-r--r-- 1 lg lg 4.6K Aug 16  2018 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg 4.8K Aug 16  2018 pdbsLocal.pdf
+
+./results/1FCA1/1FCA-40b05t08k:
+total 28K
+-rw-r--r-- 1 lg lg   86 Aug 16  2018 params.txt
+-rw-r--r-- 1 lg lg 4.7K Aug 16  2018 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg 4.9K Aug 16  2018 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 6.0K Aug 16  2018 pdbs.pdf
+
+./results/2JOF:
+total 12K
+-rw-r--r-- 1 lg lg   92 Aug 18  2018 params.txt
+drwxrwxr-x 2 lg lg 4.0K Jul  1 23:30 pdfs-full
+drwxr-xr-x 2 lg lg 4.0K Apr 15 22:59 pdfs-full-500b05t10k
+
+./results/2JOF/pdfs-full:
+total 48M
+-rw-rw-r-- 1 lg lg 3.9M Apr 15 14:34 2JOFca-full-narrow-standard.pdf
+-rw-r--r-- 1 lg lg  27M Jan 26 10:24 2JOFca-full-native.scores
+-rw-r--r-- 1 lg lg 3.9M Jan 26 14:30 2JOFca-full-wide-standard.pdf
+-rw-rw-r-- 1 lg lg 4.0M Apr 15 15:21 2JOFca-full-width-paper.pdf
+lrwxrwxrwx 1 lg lg   31 Apr 15 14:31 native-2JOFca.pdb -> /SEQS/natives/native-2JOFca.pdb
+-rw-r--r-- 1 lg lg 9.3M Apr 15 16:49 out-cluslg-villin-Full-500b04t10k45c-min.tgz
+
+./results/2JOF/pdfs-full-500b05t10k:
+total 35M
+lrwxrwxrwx 1 lg lg   31 Apr 15 22:59 native-2JOFca.pdb -> /SEQS/natives/native-2JOFca.pdb
+-rw-r--r-- 1 lg lg  170 Aug 20  2018 params.txt
+-rw-rw-r-- 1 lg lg 109K Apr 15 22:57 pdbsGlobal.pdf
+-rw-rw-r-- 1 lg lg 549K Apr 15 22:19 pdbsGlobal.scores
+-rw-r--r-- 1 lg lg 3.5M Aug 20  2018 pdbsLocal-org.pdf
+-rw-rw-r-- 1 lg lg 4.0M Apr 15 22:56 pdbs.pdf
+-rw-r--r-- 1 lg lg  27M Jan 26 10:24 pdbs.scores
+
+./results/2RN2:
+total 4.0K
+drwxrwxr-x 4 lg lg 4.0K Jul  1 14:41 2RN2-40b08t22k
+lrwxrwxrwx 1 lg lg   46 Apr 16 15:51 2rn2-native-CA.pdb -> /SEQS/paper_bmc/2RN2/native/2rn2-native-CA.pdb
+lrwxrwxrwx 1 lg lg   27 Apr 16 15:49 2RN2-pdbs -> /SEQS/paper_bmc/2RN2/pdbsCA
+
+./results/2RN2/2RN2-40b08t22k:
+total 56K
+-rw-rw-r-- 1 lg lg 2.2K Jul  1 14:41 2RN2CA-pdbsGlobal.pdbs
+-rw-rw-r-- 1 lg lg 6.8K Jul  1 14:41 2RN2CA-pdbsGlobal.scores
+lrwxrwxrwx 1 lg lg   57 Apr 16 16:10 2rn2-native-CA.pdb -> /home/ppath/Reduction/dev/results/2RN2/2rn2-native-CA.pdb
+drwxrwxr-x 2 lg lg 4.0K Apr 16 16:08 bins
+drwxrwxr-x 2 lg lg 4.0K Apr 16 16:08 binsLocal
+-rw-rw-r-- 1 lg lg   91 Apr 16 16:08 params.txt
+lrwxrwxrwx 1 lg lg   35 Apr 16 16:10 pdbs -> /home/ppath/Reduction/dev/2RN2-pdbs
+-rw-rw-r-- 1 lg lg 4.9K Apr 16 16:08 pdbsGlobal.pdbs
+-rw-rw-r-- 1 lg lg 5.8K Apr 16 16:08 pdbsGlobal.pdf
+-rw-rw-r-- 1 lg lg 7.7K Apr 16 16:08 pdbsGlobal.scores
+-rw-rw-r-- 1 lg lg 7.2K Apr 16 16:08 pdbsLocal.pdbs
+
+./results/2RN2/2RN2-40b08t22k/bins:
+total 44K
+-rw-rw-r-- 1 lg lg 720 Apr 16 16:08 bin001.pdbs
+-rw-rw-r-- 1 lg lg 720 Apr 16 16:08 bin002.pdbs
+-rw-rw-r-- 1 lg lg 720 Apr 16 16:08 bin003.pdbs
+-rw-rw-r-- 1 lg lg 720 Apr 16 16:08 bin004.pdbs
+-rw-rw-r-- 1 lg lg 720 Apr 16 16:08 bin005.pdbs
+-rw-rw-r-- 1 lg lg 720 Apr 16 16:08 bin006.pdbs
+-rw-rw-r-- 1 lg lg 720 Apr 16 16:08 bin007.pdbs
+-rw-rw-r-- 1 lg lg 720 Apr 16 16:08 bin008.pdbs
+-rw-rw-r-- 1 lg lg 720 Apr 16 16:08 bin009.pdbs
+-rw-rw-r-- 1 lg lg 720 Apr 16 16:08 bin010.pdbs
+-rw-rw-r-- 1 lg lg 522 Apr 16 16:08 bin011.pdbs
+
+./results/2RN2/2RN2-40b08t22k/binsLocal:
+total 44K
+-rw-rw-r-- 1 lg lg 612 Apr 16 16:08 bin001.pdbs
+-rw-rw-r-- 1 lg lg 648 Apr 16 16:08 bin002.pdbs
+-rw-rw-r-- 1 lg lg 702 Apr 16 16:08 bin003.pdbs
+-rw-rw-r-- 1 lg lg 648 Apr 16 16:08 bin004.pdbs
+-rw-rw-r-- 1 lg lg 666 Apr 16 16:08 bin005.pdbs
+-rw-rw-r-- 1 lg lg 558 Apr 16 16:08 bin006.pdbs
+-rw-rw-r-- 1 lg lg 468 Apr 16 16:08 bin007.pdbs
+-rw-rw-r-- 1 lg lg 486 Apr 16 16:08 bin008.pdbs
+-rw-rw-r-- 1 lg lg 630 Apr 16 16:08 bin009.pdbs
+-rw-rw-r-- 1 lg lg 288 Apr 16 16:08 bin010.pdbs
+-rw-rw-r-- 1 lg lg  54 Apr 16 16:08 bin011.pdbs
+
+./results/2YCC:
+total 12K
+drwxr-xr-x 2 lg lg 4.0K Aug 16  2018 2YCC-40b05t07k
+drwxr-xr-x 2 lg lg 4.0K Aug 16  2018 2YCC-40b05t08k
+drwxr-xr-x 2 lg lg 4.0K Jan 21 10:58 2YCC-b40t05k2
+
+./results/2YCC/2YCC-40b05t07k:
+total 28K
+-rw-r--r-- 1 lg lg   85 Aug 16  2018 params.txt
+-rw-r--r-- 1 lg lg 4.6K Aug 16  2018 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg 4.9K Aug 16  2018 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 5.9K Aug 16  2018 pdbs.pdf
+
+./results/2YCC/2YCC-40b05t08k:
+total 28K
+-rw-r--r-- 1 lg lg   81 Aug 16  2018 params.txt
+-rw-r--r-- 1 lg lg 4.7K Aug 16  2018 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg 4.9K Aug 16  2018 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 6.2K Aug 16  2018 pdbs.pdf
+
+./results/2YCC/2YCC-b40t05k2:
+total 24K
+-rw-r--r-- 1 lg lg 7.6K Aug  8  2018 2YCC.pdf
+-rw-r--r-- 1 lg lg 4.8K Aug  8  2018 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg 5.3K Aug  8  2018 pdbsLocal.pdf
+
+./results/fhome:
+total 584K
+drwxr-xr-x 2 lg lg 4.0K Apr 26 19:33 out-villinfh-500b07t20k-reduced3k
+-rw-rw-r-- 1 lg lg 574K Jul  1 08:04 out-villinfh-500b07t20k.tgz
+drwxrwxr-x 2 lg lg 4.0K Apr 26 19:33 out-villinfhr-100b08t50k4c-reduction7k
+
+./results/fhome/out-villinfh-500b07t20k-reduced3k:
+total 2.0M
+lrwxrwxrwx 1 lg lg   52 Apr 16 18:25 2f4k-native_Amb_CA.pdb -> /SEQS/fhome/trajectories/r5c1/2f4k-native_Amb_CA.pdb
+-rw-r--r-- 1 lg lg   88 Apr 16 18:09 params.txt
+-rw-r--r-- 1 lg lg  77K Apr 16 18:09 pdbsGlobal.pdbs
+-rw-rw-r-- 1 lg lg  22K Apr 16 18:26 pdbsGlobal.pdf
+-rw-rw-r-- 1 lg lg  56K Apr 24 15:42 pdbsGlobal-renumbered.pdbs
+-rw-r--r-- 1 lg lg 115K Apr 16 18:17 pdbsGlobal.scores
+-rw-r--r-- 1 lg lg  22K Apr 16 18:17 pdbsGlobal-std.pdf
+-rw-r--r-- 1 lg lg 237K Apr 16 18:19 pdbsLocal.pdbs
+-rw-r--r-- 1 lg lg  54K Apr 16 18:19 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 353K Apr 16 18:19 pdbsLocal.scores
+-rw-rw-r-- 1 lg lg  81K Apr 16 18:26 pdbs.pdf
+-rw-rw-r-- 1 lg lg 283K Apr 24 14:28 pdbs-renumbered.pdbs
+-rw-r--r-- 1 lg lg 578K Apr 16 18:18 pdbs.scores
+-rw-r--r-- 1 lg lg  81K Apr 16 18:18 pdbs-std.pdf
+
+./results/fhome/out-villinfhr-100b08t50k4c-reduction7k:
+total 1.2M
+-rw-rw-r-- 1 lg lg   92 Apr 24 18:50 params.txt
+lrwxrwxrwx 1 lg lg   42 Apr 24 22:23 pdbs -> /home/ppath/Reduction/dev/outvfh/villinfhr
+-rw-rw-r-- 1 lg lg 169K Apr 24 18:53 pdbsGlobal.pdbs
+-rw-rw-r-- 1 lg lg  44K Apr 24 18:53 pdbsGlobal.pdf
+-rw-rw-r-- 1 lg lg 260K Apr 24 18:53 pdbsGlobal.scores
+-rw-rw-r-- 1 lg lg 262K Apr 24 18:50 pdbsLocal.pdbs
+-rw-rw-r-- 1 lg lg  62K Apr 24 18:53 pdbsLocal.pdf
+-rw-rw-r-- 1 lg lg 403K Apr 24 18:53 pdbsLocal.scores
+
+./results/out-clusgr-2JOF-100k500b:
+total 32K
+lrwxrwxrwx 1 lg lg   60 Feb  1 14:09 2jof-native.pdb -> /shared/data/DBs/trajectories/anton/2JOFca/2JOFca-native.pdb
+drwxr-xr-x 2 lg lg 4.0K Jan 21 11:00 clus0.1
+drwxr-xr-x 2 lg lg 4.0K Jan 21 11:00 clus0.3
+drwxr-xr-x 2 lg lg 4.0K Jan 19 16:54 clus0.6
+drwxr-xr-x 2 lg lg 4.0K Jan 19 16:54 clus0.9
+drwxr-xr-x 2 lg lg 4.0K Jan 19 16:54 clus1.2
+drwxr-xr-x 2 lg lg 4.0K Jan 19 16:54 clus1.5
+-rw-r--r-- 1 lg lg   71 Jan 18 23:29 time.txt
+
+./results/out-clusgr-2JOF-100k500b/clus0.1:
+total 3.2M
+-rw-r--r-- 1 lg lg 3.2M Jan 18 15:31 clus.log
+
+./results/out-clusgr-2JOF-100k500b/clus0.3:
+total 1.2M
+-rw-r--r-- 1 lg lg 1.2M Jan 19 10:02 clus.log
+-rw-r--r-- 1 lg lg  22K Jan 19 16:47 pdbsc.pdf
+
+./results/out-clusgr-2JOF-100k500b/clus0.6:
+total 1.2M
+-rw-r--r-- 1 lg lg 1.2M Jan 19 09:59 clus.log
+
+./results/out-clusgr-2JOF-100k500b/clus0.9:
+total 1.2M
+-rw-r--r-- 1 lg lg 1.2M Jan 19 10:13 clus.log
+
+./results/out-clusgr-2JOF-100k500b/clus1.2:
+total 1.2M
+-rw-r--r-- 1 lg lg 1.2M Jan 19 10:06 clus.log
+
+./results/out-clusgr-2JOF-100k500b/clus1.5:
+total 1.2M
+-rw-r--r-- 1 lg lg 1.2M Jan 19 10:02 clus.log
+
+./results/out-clusgr-2JOF-700k:
+total 28K
+drwxr-xr-x 2 lg lg 4.0K Jan 25 00:05 clus0.02
+drwxr-xr-x 2 lg lg 4.0K Jan 25 00:07 clus0.1
+drwxr-xr-x 2 lg lg 4.0K Jan 25 00:06 clus0.2
+drwxr-xr-x 2 lg lg 4.0K May 24 12:27 clus0.3
+drwxr-xr-x 2 lg lg 4.0K Jan 25 00:07 clus0.6
+drwxr-xr-x 2 lg lg 4.0K Jan 25 00:08 clus1.1
+-rw-r--r-- 1 lg lg   51 Jan 24 23:41 times.txt
+
+./results/out-clusgr-2JOF-700k/clus0.02:
+total 4.0M
+-rw-r--r-- 1 lg lg 3.9M Jan 24 14:37 clus.log
+
+./results/out-clusgr-2JOF-700k/clus0.1:
+total 3.3M
+-rw-r--r-- 1 lg lg 2.7M Jan 23 20:20 clus.log
+-rw-r--r-- 1 lg lg 264K Jan 24 20:33 pdbsc.pdf
+-rw-r--r-- 1 lg lg 372K Jan 24 20:33 pdbsc.scores
+
+./results/out-clusgr-2JOF-700k/clus0.2:
+total 2.3M
+-rw-r--r-- 1 lg lg 1.9M Jan 24 18:53 clus.log
+-rw-r--r-- 1 lg lg 148K Jan 24 20:34 pdbsc.pdf
+-rw-r--r-- 1 lg lg 201K Jan 24 20:34 pdbsc.scores
+
+./results/out-clusgr-2JOF-700k/clus0.3:
+total 1.3M
+-rw-r--r-- 1 lg lg 1.2M Jan 24 19:23 clus.log
+-rw-r--r-- 1 lg lg  22K Jan 24 20:34 pdbsc.pdf
+-rw-r--r-- 1 lg lg  21K Jan 24 20:34 pdbsc.scores
+
+./results/out-clusgr-2JOF-700k/clus0.6:
+total 1.2M
+-rw-r--r-- 1 lg lg 1.2M Jan 24 19:52 clus.log
+
+./results/out-clusgr-2JOF-700k/clus1.1:
+total 1.2M
+-rw-r--r-- 1 lg lg 1.2M Jan 24 19:05 clus.log
+
+./results/out-cluslg-2JOF-700k-100b04t10k45c:
+total 2.2M
+-rw-r--r-- 1 lg lg   86 Jan 23 15:42 params.txt
+-rw-r--r-- 1 lg lg  56K Jan 25 09:55 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg 189K Jan 25 09:51 pdbsGlobal.scores
+-rw-r--r-- 1 lg lg 297K Jan 23 19:02 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 1.2M Jan 25 09:59 pdbsLocal.scores
+-rw-r--r-- 1 lg lg 468K Jan 23 00:25 pdbs.pdf
+-rw-r--r-- 1 lg lg  113 Jan 23 19:11 times.txt
+
+./results/out-cluslg-villin-100k-100b03t10k45c:
+total 732K
+-rw-r--r-- 1 lg lg   88 Jan 24 20:19 params.txt
+-rw-r--r-- 1 lg lg  40K Jan 25 00:58 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg  44K Jan 25 00:58 pdbsGlobal.scores
+-rw-r--r-- 1 lg lg  68K Jan 25 00:58 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg  82K Jan 25 00:58 pdbsLocal.scores
+-rw-r--r-- 1 lg lg 491K Jan 24 21:33 pdbs.pdf
+
+./results/out-cluslg-villin-100k-100b04t10k45c:
+total 1.4M
+-rw-r--r-- 1 lg lg   88 Jan 24 14:10 params.txt
+-rw-r--r-- 1 lg lg  47K Feb  1 12:22 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg 237K Feb  1 12:22 pdbsGlobal.scores
+-rw-r--r-- 1 lg lg 161K Feb  1 12:22 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 942K Feb  1 12:22 pdbsLocal.scores
+
+./results/out-cluslg-villin-100k-100b06t10k45c:
+total 2.1M
+-rw-r--r-- 1 lg lg   88 Jan 24 22:40 params.txt
+-rw-r--r-- 1 lg lg  59K Jan 25 00:46 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg  68K Jan 25 00:46 pdbsGlobal.scores
+-rw-r--r-- 1 lg lg 349K Jan 25 00:52 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 473K Jan 25 00:52 pdbsLocal.scores
+-rw-r--r-- 1 lg lg 491K Jan 25 00:53 pdbs.pdf
+-rw-r--r-- 1 lg lg 673K Jan 25 00:53 pdbs.scores
+-rw-r--r-- 1 lg lg  108 Jan 24 23:28 times.txt
+
+./results/out-cluslg-villin-100k-100b08t10k45c:
+total 3.3M
+-rw-r--r-- 1 lg lg   88 Jan 24 23:29 params.txt
+-rw-r--r-- 1 lg lg 254K Jan 25 08:34 pdbsGlobal.names
+-rw-r--r-- 1 lg lg 107K Jan 25 01:01 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg 135K Jan 25 01:01 pdbsGlobal.scores
+-rw-r--r-- 1 lg lg 1.2M Jan 25 08:34 pdbsLocal.names
+-rw-r--r-- 1 lg lg 477K Jan 25 01:05 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 650K Jan 25 01:05 pdbsLocal.scores
+-rw-r--r-- 1 lg lg 491K Jan 24 23:53 pdbs.pdf
+-rw-r--r-- 1 lg lg  114 Jan 25 08:33 times.txt
+
+./results/out-cluslg-villin-100k-times-bins:
+total 40K
+drwxr-xr-x 2 lg lg 4.0K Feb  7 09:51 outv100k-0100-bins
+drwxr-xr-x 2 lg lg 4.0K Feb  4 23:22 outv100k-0200-bins
+drwxr-xr-x 2 lg lg 4.0K Feb  4 23:05 outv100k-0400-bins
+drwxr-xr-x 2 lg lg 4.0K Feb  4 23:05 outv100k-0600-bins
+drwxr-xr-x 2 lg lg 4.0K Feb  4 23:04 outv100k-0800-bins
+drwxr-xr-x 2 lg lg 4.0K Feb  4 23:04 outv100k-1000-bins
+-rw-rw-r-- 1 lg lg  151 Feb  8 16:34 times-bins-v100k.txt
+-rwxrwxr-x 1 lg lg  880 Feb 10 11:23 times-plot.R
+-rw-rw-r-- 1 lg lg 5.3K Feb 10 11:23 times-villin-100k-bins.pdf
+
+./results/out-cluslg-villin-100k-times-bins/outv100k-0100-bins:
+total 2.2M
+-rw-r--r-- 1 lg lg  54K Feb  4 00:15 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg 269K Feb  4 00:15 pdbsGlobal.scores
+-rw-r--r-- 1 lg lg 261K Feb  4 00:15 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 1.6M Feb  4 00:15 pdbsLocal.scores
+-rw-r--r-- 1 lg lg   14 Feb  4 00:15 times-outv100k-100-bins.log
+
+./results/out-cluslg-villin-100k-times-bins/outv100k-0200-bins:
+total 2.1M
+-rw-r--r-- 1 lg lg  32K Feb  4 15:26 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg 145K Feb  4 15:26 pdbsGlobal.scores
+-rw-r--r-- 1 lg lg 262K Feb  4 15:26 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 1.6M Feb  4 15:26 pdbsLocal.scores
+-rw-r--r-- 1 lg lg 123K Feb  4 15:26 times-outv100k-200-bins.log
+
+./results/out-cluslg-villin-100k-times-bins/outv100k-0400-bins:
+total 1.9M
+-rw-r--r-- 1 lg lg  20K Feb  4 15:33 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg  74K Feb  4 15:33 pdbsGlobal.scores
+-rw-r--r-- 1 lg lg 262K Feb  4 15:33 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 1.6M Feb  4 15:33 pdbsLocal.scores
+-rw-r--r-- 1 lg lg   14 Feb  4 15:33 times-outv100k-400-bins.log
+
+./results/out-cluslg-villin-100k-times-bins/outv100k-0600-bins:
+total 1.9M
+-rw-r--r-- 1 lg lg  15K Feb  4 15:38 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg  51K Feb  4 15:38 pdbsGlobal.scores
+-rw-r--r-- 1 lg lg 262K Feb  4 15:39 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 1.6M Feb  4 15:39 pdbsLocal.scores
+-rw-r--r-- 1 lg lg   14 Feb  4 15:38 times-outv100k-600-bins.log
+
+./results/out-cluslg-villin-100k-times-bins/outv100k-0800-bins:
+total 1.9M
+-rw-r--r-- 1 lg lg  13K Feb  4 15:51 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg  38K Feb  4 15:51 pdbsGlobal.scores
+-rw-r--r-- 1 lg lg 262K Feb  4 15:51 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 1.6M Feb  4 15:51 pdbsLocal.scores
+-rw-r--r-- 1 lg lg   14 Feb  4 15:51 times-outv100k-800-bins.log
+
+./results/out-cluslg-villin-100k-times-bins/outv100k-1000-bins:
+total 1.9M
+-rw-r--r-- 1 lg lg  11K Feb  4 15:59 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg  31K Feb  4 15:59 pdbsGlobal.scores
+-rw-r--r-- 1 lg lg 262K Feb  4 15:59 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 1.6M Feb  4 15:59 pdbsLocal.scores
+-rw-r--r-- 1 lg lg   14 Feb  4 15:59 times-outv100k-1000-bins.log
+
+./results/out-cluslg-villin-100k-times-cores:
+total 52K
+drwxr-xr-x 2 lg lg 4.0K Feb  3 08:11 outv100k-01
+drwxrwxr-x 2 lg lg 4.0K Feb  2 00:24 outv100k-02
+drwxr-xr-x 2 lg lg 4.0K Feb  1 14:27 outv100k-05
+drwxr-xr-x 2 lg lg 4.0K Feb  1 14:28 outv100k-10
+drwxr-xr-x 2 lg lg 4.0K Feb  1 14:28 outv100k-20
+drwxr-xr-x 2 lg lg 4.0K Feb  1 14:28 outv100k-30
+drwxr-xr-x 2 lg lg 4.0K Feb  3 08:11 outv100k-40
+lrwxrwxrwx 1 lg lg   52 Feb  1 14:31 plotpath-tmscore.R -> /home/ppath/Reduction/dev/scripts/plotpath-tmscore.R
+-rw-rw-r-- 1 lg lg  451 Feb  1 18:36 test.R
+-rwxrwxr-x 1 lg lg 1.4K Jul  1 14:41 times-plot-cores.R
+-rwxrwxr-x 1 lg lg  632 Jul  1 08:04 times-plot.R
+-rw-rw-r-- 1 lg lg 4.8K Feb  2 13:49 times-villin-100k-cores.pdf
+-rw-rw-r-- 1 lg lg   87 Feb  2 14:54 times-villin-100k-cores.txt
+
+./results/out-cluslg-villin-100k-times-cores/outv100k-01:
+total 4.0K
+-rw-r--r-- 1 lg lg 15 Jan 30 16:17 times-outv100k-1.log
+
+./results/out-cluslg-villin-100k-times-cores/outv100k-02:
+total 4.0K
+-rw-r--r-- 1 lg lg 14 Feb  1 19:00 times-outv100k-2.log
+
+./results/out-cluslg-villin-100k-times-cores/outv100k-05:
+total 4.0K
+-rw-r--r-- 1 lg lg 14 Jan 30 16:00 times-outv100k-5.log
+
+./results/out-cluslg-villin-100k-times-cores/outv100k-10:
+total 4.0K
+-rw-r--r-- 1 lg lg 14 Jan 30 15:56 times-outv100k-10.log
+
+./results/out-cluslg-villin-100k-times-cores/outv100k-20:
+total 4.0K
+-rw-r--r-- 1 lg lg 14 Jan 30 15:54 times-outv100k-20.log
+
+./results/out-cluslg-villin-100k-times-cores/outv100k-30:
+total 4.0K
+-rw-r--r-- 1 lg lg 14 Jan 30 15:52 times-outv100k-30.log
+
+./results/out-cluslg-villin-100k-times-cores/outv100k-40:
+total 4.0K
+-rw-r--r-- 1 lg lg 14 Jan 30 15:51 times-outv100k-40.log
+
+./results/out-cluslg-villin-Full-500b04t10k45c:
+total 29M
+-rw-r--r-- 1 lg lg   94 Jan 31 00:48 params.txt
+-rw-r--r-- 1 lg lg  64K Feb  1 09:00 pdbsGlobal.pdf
+-rw-r--r-- 1 lg lg 340K Feb  1 09:00 pdbsGlobal.scores
+-rw-r--r-- 1 lg lg 879K Feb  1 09:01 pdbsLocal.pdf
+-rw-r--r-- 1 lg lg 5.8M Feb  1 09:01 pdbsLocal.scores
+-rw-r--r-- 1 lg lg 2.6M Feb  1 08:49 pdbs.pdf
+-rw-r--r-- 1 lg lg  19M Feb  1 08:49 pdbs.scores
+-rw-r--r-- 1 lg lg   15 Jan 31 01:00 times-outvFull-45.log
+
+./scripts:
+total 88K
+-rwxrwxr-x 1 lg lg  631 Apr 15 22:25 assign-PDB-scores-to-PDB-names.py
+-rwxr-xr-x 1 lg lg 3.2K Jan 22 19:38 calculate-distance-matrix-mp.py
+-rwxrwxr-x 1 lg lg 1.8K Jan 22 13:06 calculate-distance-matrix.R
+-rwxrwxr-x 1 lg lg 3.7K Apr 18 16:26 distance-matrix-mp.R
+-rwxr-xr-x 1 lg lg 3.2K Jan 23 08:45 distance-matrix.py
+-rwxrwxr-x 1 lg lg 2.4K Jul  1 08:04 extract-pdbs-from-path.py
+-rwxrwxr-x 1 lg lg 2.7K Jul  1 08:04 extract-pdbs-multiPDB.py
+-rwxrwxr-x 1 lg lg 2.4K Jul  1 14:41 get-pdbs-from-path.py
+-rwxrwxr-x 1 lg lg 2.7K Jul  1 14:41 get-pdbs-multiPDB.py
+-rwxrwxr-x 1 lg lg  650 Jan 22 20:07 join-pdbs-multiPDB.py
+-rwxr-xr-x 1 lg lg 4.3K Jan 22 00:02 old-pathway-plotting-tmscore.R
+-rwxr-xr-x 1 lg lg  876 Mar 15 08:25 pdbs2calphas.py
+-rwxr-xr-x 1 lg lg 5.5K Apr 12 20:55 plotpath-tmscore-gromacs.R
+-rwxrwxr-x 1 lg lg 8.2K Jul  1 14:41 plotpath-tmscore.R
+-rwxr-xr-x 1 lg lg 4.6K Jan 29 14:57 plotp.R
+-rwxrwxr-x 1 lg lg  542 Jan 19 09:21 rms-ranges-clust.py
+-rwxr-xr-x 1 lg lg 1.5K Mar 14 23:35 tmscorelib.R

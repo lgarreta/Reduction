@@ -1,0 +1,9 @@
+"Methods"	"Runtime"
+"16x"	90.0
+"8x"	130.0
+"4x"	245.0
+"PCA"	251.95
+"2x"	491.0
+"1x"	977.0
+"Clust" NA
+"nMDS"    NA

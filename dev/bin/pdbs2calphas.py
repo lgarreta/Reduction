@@ -1,0 +1,1 @@
+/home/ppath/Reduction/dev/scripts/pdbs2calphas.py

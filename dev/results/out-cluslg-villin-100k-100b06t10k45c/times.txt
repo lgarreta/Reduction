@@ -1,0 +1,4 @@
+>>>> START TIME:  Thu Jan 24 22:40:58 -05 2019
+>>>> END TIME:  Thu Jan 24 22:56:49 -05 2019
+
+TOTAL: 15m:51s

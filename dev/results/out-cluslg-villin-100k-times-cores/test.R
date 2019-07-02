@@ -1,0 +1,10 @@
+x<-1:10
+y<-x*x
+par(yaxt="n")
+plot(x, y, type="b")
+lablist.x<-as.vector(c(1:10))
+lablist.y<-as.vector(c("zero", "twenty", "forty", "sixty", "eighty", "one hundred"))
+axis(1, at=seq(1, 10, by=1), labels = FALSE)
+text(x = seq(1, 10, by=1), par("usr")[3] - 0.2, labels = lablist.x, srt = 45, pos = 1, xpd = TRUE)
+axis(2, at=seq(0, 100, by=20), labels = FALSE)
+text(y = seq(0, 100, by=20), par("usr")[1], labels = lablist.y, srt = 45, pos = 2, xpd = TRUE)

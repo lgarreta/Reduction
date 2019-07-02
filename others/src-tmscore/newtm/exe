@@ -1,0 +1,4 @@
+rm -f tms
+gfortran -static -O3 -ffast-math -lm -o tms TMscorenew.f
+./tms pathway0-000.pdb 2rn2-native-min.pdb 
+read

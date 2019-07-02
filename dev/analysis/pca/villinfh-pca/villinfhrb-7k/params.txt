@@ -1,0 +1,7 @@
+Protein name: villinfhr
+Size of bins : 100
+TM-score trhreshold : 0.8
+K representatives : 50
+
+Time reduction: 516.56 user
+Time pca: 41.65 user

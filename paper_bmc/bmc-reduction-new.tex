@@ -1,0 +1,708 @@
+%% LyX 2.3.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[spanish,twocolumn]{bmcart}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{calc}
+\usepackage{graphicx}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newenvironment{lyxlist}[1]
+	{\begin{list}{}
+		{\settowidth{\labelwidth}{#1}
+		 \setlength{\leftmargin}{\labelwidth}
+		 \addtolength{\leftmargin}{\labelsep}
+		 \renewcommand{\makelabel}[1]{##1\hfil}}}
+	{\end{list}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+%% BioMed_Central_Tex_Template_v1.06
+\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+\usepackage{charter}
+
+%\usepackage[draft]{graphicx}
+
+%%  If you wish to display your graphics for   %%
+%%  your own use using includegraphic or       %%
+%%  includegraphics, then comment out the      %%
+%%  following two lines of code.               %%
+%%  NB: These line *must* be included when     %%
+%%  submitting to BMC.                         %%
+%%  All figure files must be submitted as      %%
+%%  separate graphics through the BMC          %%
+%%  submission process, not included in the    %%
+%%  submitted article.                         %%
+%
+%\def\includegraphic{}
+%\def\includegraphics{}
+
+\startlocaldefs
+\endlocaldefs
+
+% For micro seconds and picoseconds units
+\usepackage[load=prefixed]{siunitx}
+
+% For fixing placing wide figures in two-column doc
+\usepackage{dblfloatfix}
+\usepackage{multicol}
+%\usepackage{float}
+
+%Controlling figure and table placement in LaTeX
+\usepackage[section]{placeins}
+
+\renewcommand{\topfraction}{.85}
+ \renewcommand{\bottomfraction}{.7}
+ \renewcommand{\textfraction}{.15}
+ \renewcommand{\floatpagefraction}{.66}
+ \renewcommand{\dbltopfraction}{.66}
+ \renewcommand{\dblfloatpagefraction}{.66}
+ \setcounter{topnumber}{9}
+ \setcounter{bottomnumber}{9}
+ \setcounter{totalnumber}{20}
+ \setcounter{dbltopnumber}{9}
+
+% Colors
+\definecolor{dg}{rgb}{0.12, 0.3, 0.17}
+
+\makeatother
+
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>}}
+
+\begin{document}
+\begin{frontmatter}
+\begin{fmbox}
+\dochead{Research}
+\title{Un algoritmo paralelo para la reducción de trayectorias de plegamiento
+usando una estrategia rápida de agrupamiento}
+
+\maketitle
+\author[
+   addressref={aff1},                   % id's of addresses, e.g. {aff1,aff2}   
+   noteref={n1},                        % id's of article notes, if any
+   email={1uis.garreta@correounivalle.edu.co}   % email address
+]{\inits{LG}\fnm{Luis} \snm{Garreta}}
+\author[
+   addressref={aff2},
+   email={mmartinez@ebi.ac.uk}
+]{\inits{MM}\fnm{Mauricio} \snm{Martinez}}
+\author[
+   addressref={aff1},
+   corref={aff1},                       % id of corresponding address, if any
+   email={pedro.moreno@correounivalle.edu.co}
+]{\inits{PM}\fnm{Pedro A} \snm{Moreno}}
+
+\address[id=aff1]{%                           % unique id
+  \orgname{Escuela de Ingeniería de Sistemas y Computación, Universidad del Valle}, % university, etc
+  %\street{},                     %
+  %\postcode{}                                % post or zip code
+  \city{Santiago de Cali},                              % city
+  \cny{Colombia}                                    % country
+}
+\address[id=aff2]{%
+  \orgname{The European Bioinformatics Institute (EMBL-EBI)},
+  %\street{D\"{u}sternbrooker Weg 20},
+  %\postcode{24105}
+  \city{Hinxton, Cambridgeshire},
+  \cny{UK}
+}
+
+\begin{artnotes}
+\note[id=n1]{Equal contributor} % note, connected to author
+\end{artnotes}
+
+%\end{fmbox}% comment this for two column layout
+\begin{abstractbox}
+\begin{abstract}
+\parttitle{Background} La simulación del proceso de plegamiento de
+proteínas es una de las principales herramientas para estudiar y comprender
+los mecanismos subyacentes en este proceso. Hoy en día estas simulaciones
+están llegando a unos tiempos de simulación que hasta hace algunos
+años eran imposibles de alcanzar y como consecuencia las trayectorias
+generadas son muy grandes. Analizar este tipo de trayectorias trae
+complicaciones debido a su tamaño y por lo tanto se necesita crear
+herramientas que logren reducirlas de tal manera que se logren preservar
+tanto los eventos principales como el orden temporal en el que ellos
+ocurren.
+
+\parttitle{Results} Introducimos aquí un algoritmo de reducción para
+trayectorias grandes de plegamiento de proteínas que se caracteriza
+por dividir la trayectoria en segmentos y mediante una estrategia
+rápida de agrupamiento tomar los eventos más disimilares para luego
+seleccionar entre ellos a los \emph{k} eventos más representativos.
+El algoritmo aprovecha el orden temporal implícito en la trayectoria
+para realizar en cada segmento comparaciones locales, entre eventos
+vecinos, y así evitar realizar una comparación de todos contra todos
+que es muy costosa computacionalmente. 
+
+\parttitle{Conclusions} El esquema anterior permite que el algoritmo
+sea muy rápido y que los eventos seleccionados conserven su orden
+temporal dentro de la trayectoria. Además, el particionamiento en
+segmentos permite al algoritmo realizar la reducción por cada segmento
+de forma independiente y por lo tanto realizarse las reducciones de
+forma paralela lo que lo vuelve aún más rápido cuando se ejecuta en
+máquinas con procesadores de múltiples cores, como los PCs que se
+consiguen en el mercado hoy en día. Para mostrar la efectividad del
+algoritmo propuesto realizamos reducciones sobre tres conjuntos de
+trajectorias disponibles públicamente: las del supercomputador Anton,
+las del proyecto folding@home, y las del servidor de desplegamiento
+de Parasol.
+\end{abstract}
+\begin{keyword}
+\kwd{Protein folding simulations}
+\kwd{Protein structure comparison}
+\kwd{Protein structure clustering}
+\end{keyword}
+
+\end{abstractbox}
+\end{fmbox}% uncomment this for two column layout 
+\end{frontmatter}
+
+\section*{Background}
+
+\textcolor{red}{En este artículo presentamos un algoritmo para reducir
+trayectorias de plegamiento de proteínas el cual obtiene rápidamente
+conformaciones representativas conservando tanto su estructura tridimensional
+(3D) como su orden temporal, y que además es altamente paralelizable.
+}Las proteínas desempeñan funciones fundamentales en todos los seres
+vivos, pero para ser funcionales deben a partir de su cadena de aminoácidos
+(AA) plegarse hasta alcanzar una forma 3D única o estado nativo, lo
+que se conoce como el proceso de plegamiento de las proteínas. Entender
+los mecanismos y reglas de este proceso ha sido uno de los objetivos
+más perseguidos dentro de la biología y una \textcolor{blue}{herramienta
+teórica importante para estudiarlo son las trayectorias de plegamiento,
+que describen la evolución del plegamiento de una proteína mediante
+la secuencia de estados que esta atraviesa en función del tiempo durante
+su proceso de plegamiento (Figura ).}
+
+\begin{figure}[h]
+\includegraphics[viewport=0bp 0bp 224bp 127bp]{img/trajectory-description-2RN2-pdbs}
+
+\caption{Trayectoria de plegamiento de una proteína. La evolución del plegamiento
+se mide a cada paso comparando la estructura actual (imágenes fondo
+blanco) frente a la estructura nativa (imágen fondo negro) mediante
+la métrica TM-Score \cite{Zhan2004}. Eje horizontal: tiempo de simulacion
+desde t\_0 (inicial) hasta t\_n (final). Eje vertical: valor del TM-Score,
+desde 0 (diferentes) hasta 1 (similares).\label{fig:Trayectoria-de-plegamiento.}}
+\end{figure}
+
+\textcolor{blue}{Estas trayectorias son simuladas principalmente por
+el método }de dinámica molecular (DM), el cual por su costo computacional
+está limitado a proteínas pequeñas (< 100 AA) y a tiempos muy cortos
+(pico o microsegundos). Sin embargo, nuevos avances tecnológicos evidencian
+un progreso notable en estas simulaciones. Recientemente en el 2016
+se puso en operación la supercomputadora Anton-2 \cite{Shaw2014},
+diez veces más rápida que su predecesora Anton-1 \cite{Shaw2008},
+diseñada especialmente para el plegamiento de proteínas y de la cual
+ya se reportó en el 2011 las simulaciones completas de 12 proteínas
+\cite{Shaw2011}, varias en el orden de los milisegundos. Como una
+alternativa más económica a estas supercomputadoras, en el 2014 se
+usó unidades de procesamiento gráfico (GPUs) y se reportó las simulaciones
+de 17 proteínas en el orden de los microsegundos \textcolor{blue}{\cite{Nguyen2014}.
+}Y años antes, en el 2007 utilizando computadoras de escritorio unidas
+a través de computación distribuida en el proyecto folding@home se
+realizaron varias simulaciones en el orden de los microsegundos del
+plegamiento de la proteína villin headpiece\textcolor{blue}{{} \cite{Larson2009}}.
+
+\textcolor{purple}{Estos avances muestran un crecimiento notable en
+estas simulaciones con tiempos en el orden de los micro y milisegundos,
+y con trayectorias de millones de conformaciones. Muchas de estas
+trayectorias ya se están colocando a disposición pública, pero debido
+al gran número de conformaciones, su procesamiento y análisis en computadoras
+convencionales es muy costoso en tiempo computacional. Por lo tanto
+se necesiten nuevos algoritmos capaces de reducir estas trayectorias
+de una forma rápida, aprovechendo eficientemente los recursos de este
+tipo de máquinas, y buscando conservar la mayor información posible
+tanto a nivel de representación como a nivel de orden temporal.}
+
+Para realizar estas reducciones se han usado dos enfoques: la reducción
+de la dimensionalidad \cite{Duan2013} y el agrupamiento \cite{Peng2018}.
+En el primer enfoque se transforma una conformación a un conjunto
+reducido de variables que la representan lo mejor posible. Para esto
+se han usado tanto técnicas lineales como no-lineales (e.g. análisis
+de componentes principales (PCA), escalamiento multi-dimensional \cite{RajanSchulten10},
+Isomap \cite{Das2006}, diffusion maps \cite{Kim2015}). Sin embargo,
+aunque se logra la reducción de las conformaciones, se pierde su representatividad
+como estructuras 3D (Figura \ref{fig:lost-info-dimensionality}.A).
+Además, estas técnicas consumen mucho tiempo cuando las trayectorias
+son muy grandes, ya que tienen que transformar todas sus conformaciones.
+
+\textcolor{blue}{En el segundo enfoque, agrupamiento, se asignan las
+conformaciones a grupos que comparten las mismas características (e.g.
+similaridad con la estructura nativa) y se toma de cada grupo ya sea
+un representante promedio ó sus características generales. Aquí se
+se han usado tanto agrupamientos particionales como jerárquicos (e.g.
+k-means \cite{Doerr2017}, linkage \cite{Shao2007}). Sin embargo,
+los grupos pierden su orden temporal ya que pueden abarcar conformaciones
+que ocurren a tiempos muy distintos (}Figura \ref{fig:lost-info-dimensionality}.\textcolor{blue}{B).
+Además, se tienen que comparar todos los pares de conformaciones,
+lo cual es una operación costosa y más aún cuando las trayectorias
+son muy grandes.}
+
+\begin{figure}[h]
+\includegraphics[viewport=0bp 0bp 210bp 134bp,clip,scale=1.05]{img/2RN2-trajectory-weakness}
+
+\caption{\csentence{Perdida de información en las reducciones.} La reducción
+de la dimensionalidad (Parte de arriba) transforma las conformaciones
+a un nuevo conjunto de valores y pierden su información estructural.
+Mientras que en el agrupamiento (parte de abajo), las representantes
+R1 y R2 pierden su orden temporal ya que los grupos G1 y G2 contienen
+conformaciones C3 y C4 que se traslapan en el tiempo.\protect \\
+\label{fig:lost-info-dimensionality}}
+\end{figure}
+
+\textcolor{blue}{Nuestro algoritmo reduce una trayectoria de plegamiento
+en tres fases (Figura \ref{fig:Algorithm-Description}): primero divide
+la trayectoria en pequeñas subtrayectorias que luego las reduce de
+manera individual, independiente y paralela. Segundo toma cada subtrayectoria
+y extrae de forma muy rápida sus conformaciones características y
+elimina las redundantes utilizando la estrategia de agrupamiento rápido
+de Hobohm and Sander (1992). }\textcolor{purple}{Y tercero toma la
+conformaciones características y selecciona las más representativas
+mediante una estrategia tipo k-medoides \cite{Kaufman1990}, la cual
+al trabajar sobre pocas conformaciones, mejora sustancialmente su
+desempeño. Al final, los resultados de cada reducción se unen para
+obtener la reducción total de la trayectoria.}
+
+Además, a diferencia de otras técnicas de reducción de trayectorias,
+nuestro algoritmo tiene la ventaja de no cambiar la representación
+de las conformaciones como lo hacen las técnicas de reducción de dimensionalidad,
+ni de perder el orden temporal como lo hacen las técnicas de agrupamiento.
+El resultado de nuestro algoritmo es un conjunto de conformaciones
+representativas de la trayectoria que siguen conservando tanto su
+estructura 3D como su orden temporal.
+
+\begin{figure}[!h]
+\includegraphics[scale=1.2]{img/algorithm-description-general}
+
+\caption{Algoritmo de reducción. La trayectoria se divide en subtrayectorias
+(líneas discontinuas) que se reducen individualmente. Mediante una
+estrategia de agrupamiento rápido \cite{Hobohm1992} se seleccionan
+las conformaciones características (puntos rojos) y se ignoran las
+redundantes (puntos azules). Después, mediante un agrupamiento tipo
+k-medoides \textcolor{purple}{\cite{Kaufman1990}} se extraen las
+representativas que forman la subtrayectoria reducida. \label{fig:Algorithm-Description}}
+\end{figure}
+
+La implementación del algoritmo está en lenguaje R excepto la comparación
+entre conformaciones, que usa la métrica TM-Score para comparar pares
+de estructuras de proteínas \cite{Zhang2004}, y que por ser la parte
+que más se repite está implementada en lenguaje Fortran.
+
+\section*{Métodos}
+
+\subsection*{Conjuntos de datos de proteínas}
+
+Para mostrar las reducciones que realiza nuestro algoritmo tomamos
+las trayectorias de tres proteínas de diferentes proyectos: la trayectoria
+de la proteína Trp-cage, simulada con dinámica molecular en la supercomputadora
+Anton por D.E Shaw Research \textcolor{purple}{\cite{Shaw2011}, }tiempo
+de simulación de 208 \us, y pasos de tiempo de 200 \ps. La trayectoria
+de la proteína villin-headpiece, simulada con dinámica molecular utilizando
+computación distribuida en el proyecto folding@home \textcolor{blue}{\cite{PandeEnsign07}},
+tiempo de simulación 8 \us, y pasos de tiempo de 50 \ps; y la trayectoria
+de la proteína Ribonuclease H, simulada con el método Probabilistic
+Roadmap Method \cite{Amato2010} con 429 pasos de simulación, que
+corresponden a eventos de desplegamiento y no a pasos de tiempo.
+
+
+\subsection*{Comparaciones con nMDS, PCA, y clustering}
+
+\textcolor{purple}{Comparamos los resultados de nuestro algoritmo
+frente a los resultados de tres métodos comúnmente utilizados en reducción
+de trayectorias de plegamiento \cite{Doerr2017}: escalamiento multidimensional
+no-métrico (nMDS), análisis de componentes principales (PCA), y agrupamientos
+(Figura \ref{fig:Comparaciones-PCA-nMDS-3}). }Para la reducción con
+nMDS, calculamos la matriz de \emph{disimilaridades} entre las conformaciones
+mediante la métrica TM-score \cite{Zhang2004}, con esta matriz calculamos
+los nuevos puntos para un espacio geométrico de 2D mediante la función
+\emph{monoMDS} del paquete \emph{vegan} del sistema R \cite{Oksanen2019},
+y los desplegamos sobre un plano 2D. Para la reducción con PCA caracterizamos
+cada conformación con las coordenadas XYZ de sus átomos, calculamos
+los componentes principales mediante la función \emph{pca.xyz} del
+paquete \emph{Bio3D} del sistema R \cite{Grant2006}, y seleccionamos
+los dos primeros componentes que explican la mayor varianza. Y para
+el agrupamiento, caracterizamos cada conformación con sus dos primeros
+componentes principales y realizamos un agrupamiento jerárquico con
+el método \emph{complete linkage }de la función \emph{hclust} del
+paquete \emph{stats }del sistema R \cite{RCoreTeam2018}. El número
+de grupos k=7 lo seleccionamos mediante un enfoque de promedios Silhouette
+al variar k desde 1 hasta 10 utilizando la función \emph{fviz\_nbclust}
+del paquete \emph{factoextra} del sistema R \cite{Kassambara2017}.
+
+\section*{Implementación}
+
+El algoritmo reduce una trayectoria de plegamiento de proteínas en
+tres fases: particionamiento, selección, y extracción (Figura \ref{fig:Algorithm-Description}).
+Cada fase conlleva una estrategia para mejorar la eficiencia del algoritmo
+cuando las trayectorias de plegamiento son muy grandes.
+
+\subsection*{Fase 1: Particionamiento y Paralelización}
+
+Dividimos la trayectoria en subtrayectorias con el objetivo de reducirlas
+de forma independiente y paralela (líneas verticales punteadas, Figura
+\ref{fig:Algorithm-Description}).
+
+Esta estrategia de particionamiento tiene un doble objetivo: primero,
+reducir localmente cada subtrayectoria y así enfocarnos en sus características
+particulares, lo que al final resulta en la obtención de las características
+globales de toda la trayectoria. Y segundo, que sus reducciones se
+puedan realizar en paralelo y así mejorar notoriamente la eficiencia
+del algoritmo a la hora de ejecutarlo en una máquina con tecnología
+multi-core (Figura \ref{fig:Algorithm-Parallel}).
+
+\begin{figure}[h]
+\begin{centering}
+\includegraphics{img/algorithm-description-parallel}
+\par\end{centering}
+\caption{Parallel Reduction. La reducción de cada subtrayectoria S1...Sm se
+ejecuta en paralelo aprovechando la tecnología multi-core de las máquinas
+actuales. Los resultados tanto del proceso de selección de características
+(S'1...S'm) como los del de extracción de representativas (S''1...S''m)
+son independientes de los de las otras subtrayectorias. Al final los
+resultados de cada procesamiento se unen para obtener la trayectoria
+total reducida. \label{fig:Algorithm-Parallel}}
+\end{figure}
+
+
+\subsection*{Fase 2: Extracción y Filtración}
+
+Esta fase del algoritmo extrae rápidamente de cada subtrayectoria
+las conformaciones características y filtra las redundantes. Para
+hacerlo de manera eficiente, modificamos la estrategia de agrupamiento
+rápido de Hobohm and Sander (1992) para trabajar con estructuras de
+proteínas y en vez agruparlas busque las más disimilares.
+
+El algoritmo aprovecha el orden temporal implícito en las subtrayectorias
+para organizar las conformaciones en orden creciente de tiempo de
+simulación (flecha horizontal negra, Figura \ref{fig:Algorithm-Description}).
+\textcolor{blue}{Se asigna la primera conformación como la primera
+representante característica (punto rojo en t0, }Figura \ref{fig:Algorithm-Description}\textcolor{blue}{),
+y se toma la siguiente conformación y se comparan. Si son diferentes,
+entonces se convierte en una nueva representante (puntos rojos, }Figura
+\ref{fig:Algorithm-Description}\textcolor{blue}{), de lo contrario
+es redundante y se filtra (puntos azules, }Figura \ref{fig:Algorithm-Description}\textcolor{blue}{).
+Después, se toma la siguiente conformación y se continua el mismo
+proceso hasta terminar con todas.}
+
+\subsection*{Fase 3: Búsqueda y Selección}
+
+Esta última fase del algoritmo toma como entrada las conformaciones
+características de la fase anterior y realiza una búsqueda completa
+de las conformaciones que más las representen. Hablamos de completa
+porque la búsqueda implica comparar todas las conformaciones entre
+si, es decir calcular su matriz de disimilaridades. Por esta razón
+es que esta búsqueda es factible hacerla ahora y no antes ya que se
+hace sobre un conjunto mucho menor de conformaciones que el que se
+tiene al inicio por cada subtrayectoria, .
+
+Para encontrar estas conformaciones representantes calculamos las
+\emph{k }conformaciones cuya disimilaridad media a todas las demás
+integrantes del grupo es mínima, lo que se conoce como \emph{medoides
+}y el algoritmo que usamos para realizar esto es el particionamiento
+alrededor de medoides PAM \cite{Kaufman1990}.
+
+Esta fase necesita tres datos de entrada: el conjunto de conformaciones
+características de la fase anterior (C), el umbral mínimo de TM-score
+para aceptar dos conformaciones como similares (T), y el número deseado
+de representantes seleccionadas (\emph{K)}.
+
+
+\subsection*{Comparación entre Estructuras de Proteínas \label{sec:Comparing-Structures}}
+
+\textcolor{blue}{Para la comparación de las estructuras de las conformaciones
+utilizamos la métrica TM-score (Template Modeling score) \cite{Zhang2004}.
+}El TM-score es más preciso que otras métricas usadas en comparación
+de estructuras, como el Root Mean Square-Deviation (RMSD), ya que
+es más robusta a variaciones locales.
+
+Nuestro algoritmo requiere como uno de sus parámetro de entrada un
+valor de puntaje mínimo de TM-score para aceptar como similares a
+dos conformaciones. Este parámetro se usa después tanto en la fase
+de extracción de características, al comparar las conformaciones para
+encontrar disimilares y remover redundantes, como en la fase de selección
+de representativas, al calcular la matriz de distancias de todas las
+conformaciones.
+
+Para tener una aproximación del rango de valores de este puntaje mínimo,
+los puntajes del TM-score \textcolor{blue}{varian de 0 a 1, donde
+1 indica un emparejamiento perfecto. Además, }las estadísticas hechas
+por sus autores \cite{zhang2010} muestran que un puntaje < 0.17 indica
+dos estructuras aleatorias, sin relación de similaridad, y un puntaje
+> 0.5 indica que las estructuras tienen un grado de similaridad que
+no está dado por el azar.
+
+\section*{Resultados y Discusión}
+
+\begin{figure*}[!t]
+\begin{raggedright}
+\colorbox{white}{\begin{minipage}[c]{0.98\textwidth}%
+\begin{lyxlist}{00.00.0000}
+\item [{%
+\fbox{\begin{minipage}[t][1\totalheight][b]{0.2\columnwidth}%
+\textbf{A:~Trp-cage}\\
+\textbf{ (PDB 2JOF)}\\
+\\
+\includegraphics[scale=0.15]{img/natives/native-2f4k}%
+\end{minipage}}~~~~~%
+\fbox{\begin{minipage}[t][1\totalheight][b]{0.7\columnwidth}%
+\includegraphics[viewport=0bp 0bp 1440bp 330bp,clip,scale=0.2]{img/trajectory-2JOF-full-pdbs}\\
+\includegraphics[viewport=0bp 0bp 1440bp 330bp,clip,scale=0.2]{img/trajectory-2JOF-full-pdbsGlobal}%
+\end{minipage}}}]~
+\end{lyxlist}
+%
+\end{minipage}}
+\par\end{raggedright}
+\begin{raggedright}
+\colorbox{white}{\begin{minipage}[c]{0.98\textwidth}%
+\begin{lyxlist}{00.00.0000}
+\item [{%
+\fbox{\begin{minipage}[t][1\totalheight][b]{0.2\columnwidth}%
+\textbf{B: Villin headpiece}\\
+\textbf{(PDB 2F4K)}\\
+\\
+\includegraphics[scale=0.15]{img/natives/native-2f4k}%
+\end{minipage}}~~~~~%
+\fbox{\begin{minipage}[t][1\totalheight][b]{0.7\columnwidth}%
+\includegraphics[viewport=0bp 30bp 1440bp 330bp,clip,scale=0.2]{img/trajectory-2F4Kfh-r5c1-full-pdbs}\\
+\includegraphics[viewport=0bp 0bp 1440bp 330bp,clip,scale=0.2]{img/trajectory-2F4Kfh-r5c1-full-pdbsGlobal}%
+\end{minipage}}}]~
+\end{lyxlist}
+%
+\end{minipage}}
+\par\end{raggedright}
+\begin{raggedright}
+\colorbox{white}{\begin{minipage}[c]{0.98\textwidth}%
+\begin{lyxlist}{00.00.0000}
+\item [{%
+\fbox{\begin{minipage}[t][1\totalheight][b]{0.2\columnwidth}%
+\textbf{C:~Ribonuclease H (PDB 2RN2)}\\
+\\
+\includegraphics[scale=0.15]{img/natives/native-2rn2}%
+\end{minipage}}~~~~~%
+\fbox{\begin{minipage}[t][1\totalheight][b]{0.7\columnwidth}%
+\includegraphics[viewport=0bp 30bp 1440bp 330bp,clip,scale=0.2]{img/trajectory-2RN2-pdbs}\\
+\includegraphics[viewport=0bp 0bp 1440bp 330bp,clip,scale=0.2]{img/trajectory-2RN2-pdbsGlobal}%
+\end{minipage}}}]~
+\end{lyxlist}
+%
+\end{minipage}}
+\par\end{raggedright}
+\caption{Reducciones de nuestro algoritmo a tres trayectorias de plegamiento.
+Recuadro izquierdo: nombre, código PDB y estructura nativa de la proteína.
+Recuadro derecho: trayectoria original en la parte de arriba y la
+trayectoria reducida en la parte inferior. (A) Trayectoria de la proteína
+Trp-cage reducida en un 98\%, de 1044001 a 20881 conformaciones. (B)
+Trayectoriade la proteína villin-headpiece reducida en un 80\%, de
+15201 a 3011conformaciones. (C) Trayectoria de la proteína Ribonuclease
+H reducidaen un 49\%, de 429 a 217 conformaciones.\label{fig:Trajectory-Results}}
+\end{figure*}
+
+
+\subsection*{Reducciones de tres trayectorias de plegamiento}
+
+Utilizamos nuestro algoritmo para reducir las trayectorias de tres
+proteínas tomadas de distintos proyectos de simulación: Trp-cage (Supercomputador
+Anton \textcolor{purple}{\cite{Shaw2011}}, villin-headpiece (folding@home
+\textcolor{blue}{\cite{PandeEnsign07}}), y la Ribonuclease H (Folding
+server \cite{Amato2010}) (ver detalles de las simulaciones en la
+sección de Métodos). Los resultados se muestran en la figura \ref{fig:Trajectory-Results}
+donde se presenta para cada proteína en el recuadro izquierdo sus
+detalles, y en el derecho sus dos trayectorias: la original (arriba)
+y la reducida (abajo).
+
+\textcolor{red}{Como se puede observar de la figura \ref{fig:Trajectory-Results},
+los resultados de las reducciones son conformaciones de la misma trayectoria,
+las cuales siguen conservando tanto su estructura como su orden temporal.}\textcolor{purple}{{}
+}\textcolor{blue}{Este resultado es importante ya que estas reducciones,
+al ser un resumen de la trayectoria original, se pueden usar enteramente
+como entrada para análisis más complejos que pueden volverse imprácticos
+cuando tratan con trayectorias muy grandes.} Otros técnicas de reducción
+usadas en análisis de trayectorias o bien transforman las conformaciones
+en estructuras de menos dimensiones, solo interpretables cuando se
+observan en conjunto, como el caso de \textcolor{red}{MDS, Isomap,
+y diffusion maps \cite{Duan2014,Kim2015}; }o crean grupos de ellas
+que resaltan alguna similaridad ya sea estructural o energética, sin
+importar su orden temporal, como en el caso de los agrupamientos \cite{Peng2018}.
+\textcolor{blue}{Además, debido a que varias de estas técnicas se
+basan en el cálculo de las distancias entre pares de conformaciones,
+el alto costo computacional de realizar esos cálculos para millones
+o incluso miles de conformaciones, las puede volver imprácticas sino
+se utilizan trayectorias reducidas como las que produce nuestro algoritmo.}
+
+\textcolor{teal}{Sin embargo, aunque las conformaciones de las trayectorias
+reducidas conservan el orden temporal que tienen en la trayectoria
+original, el tiempo de simulación en que suceden no se conserva explícitamente.}\textcolor{purple}{{}
+Es decir, las reducciones no describen pasos de tiempo sino pasos
+de plegamiento, }\textcolor{red}{que se refieren a la secuencia de
+eventos destacados que resumen el plegamiento de la proteína y no
+al tiempo exacto en que estos ocurren.} No obstante, para obtener
+estos tiempos, se puede tomar el nombre o identificador de la conformación
+de interés en la trayectoria reducida y localizar su tiempo en la
+trayectoria original.
+
+\textcolor{purple}{}
+
+
+\subsection*{Comparación frente a otros métodos de reducción\label{sec:Comparing-other-methods}}
+
+Para las comparaciones utilizamos los datos de la simulación de plegamiento
+de la proteína villin-headpiece del proyecto folding@home \cite{Larson2009}.
+Tomamos la trayectoria original y calculamos su reducción por los
+métodos de nMDS y PCA. Luego, calculamos dos reducciones con nuestro
+algoritmo sobre esta trayectoria y a los datos resultantes le calculamos
+nuevamente las reducciones por nMDS y PCA. Los resultados se muestran
+en la figura \ref{fig:Comparaciones-PCA-nMDS}, donde cada fila contiene
+tres despliegues en 2D: de la trayectoria, del patrón resultante de
+la reducción por nMDS, y del agrupamiento al proyectar los dos primeros
+componentes del PCA.
+
+\begin{figure}[!th]
+\fbox{\begin{minipage}[t]{0.9\columnwidth}%
+\textbf{A: Original Trajectory}
+
+\includegraphics[viewport=0bp 10bp 720bp 260bp,clip,scale=0.28]{/home/lg/ppath/Reduction/paper_bmc/img/analysis/villinfh-fullk-nb-fullk-pdbs-trj-palette}
+
+\includegraphics[viewport=0bp 0bp 360bp 360bp,clip,scale=0.2]{img/analysis/villinfh-fullk-nmds-palette}~~~~~~~~~~~~~~~~~\includegraphics[scale=0.2]{img/analysis/pca-villinfhrb-clus-hc-fviz-groups}%
+\end{minipage}}
+
+\fbox{\begin{minipage}[t]{0.9\columnwidth}%
+\textbf{B: Reduded Trajectory by 52\%}
+
+\includegraphics[viewport=0bp 10bp 720bp 260bp,clip,scale=0.28]{img/analysis/villinfhr-red7k-pdbsGlobal-trj-palette}
+
+\includegraphics[viewport=0bp 0bp 360bp 330bp,clip,scale=0.2]{img/analysis/villinfhr-red7k-pdbsGlobal-nmds-palette}~~~~\includegraphics[scale=0.2]{img/analysis/pca-villinfhb-reduced7k-clus-hc-fviz-groups}%
+\end{minipage}}
+
+\fbox{\begin{minipage}[t]{0.9\columnwidth}%
+\textbf{C: Reduded Trajectory by 80\%}
+
+\includegraphics[viewport=0bp 10bp 720bp 260bp,clip,scale=0.28]{img/analysis/villinfhr-red3k-pdbsGlobal-trj-palette}
+
+\includegraphics[viewport=0bp 0bp 360bp 330bp,clip,scale=0.2]{img/analysis/villinfhr-red3k-nmds-palette}\includegraphics[scale=0.2]{img/analysis/pca-villinfhr-reduced3k-clus-hc-fviz-groups}%
+\end{minipage}}
+
+\caption{Comparación frente a otros métodos.\label{fig:Comparaciones-PCA-nMDS}}
+\end{figure}
+
+\textcolor{purple}{Observamos que las reducciones de la trayectoria
+original producen un despliegue en 2D característico en ambos métodos
+de reducción: un patrón de círculos de puntos, para el nMDS; y una
+estructura de 7 grupos, para el agrupamiento por PCA (fila superior,
+figura \ref{fig:Comparaciones-PCA-nMDS}). Así mismo, este mismo despliegue
+se repite en gran medida en las dos reducciones calculadas por nuestro
+algoritmo, la de compresión media del 52\% y la de compresión alta
+del 80\% (filas central e inferior de la figura \ref{fig:Comparaciones-PCA-nMDS},
+respectivamente).}
+
+\textcolor{blue}{Lo anterior nos indica que nuestras reducciones preservan
+en gran medida los eventos principales de la trayectoria al observar
+que tanto las reducciones con nMDS y PCA siguen conservando el mismo
+patrón y la misma estructura de grupos.} Además, nuestro algoritmo
+presenta ventajas adicionales sobre los otros métodos de reducción.\textcolor{purple}{{}
+Primero, el cálculo de las reducciones es más eficiente que el de
+nMDS ya que no necesita la matriz de disimilaridades, que es sumamente
+costosa de calcular cuando el número de conformaciones es grande.}
+Segundo, la interpretación de los resultados es directa ya que los
+resultados son conformaciones de la proteína y no transformaciones
+de los datos, como en el caso del nMDS y PCA, o grupos de conformaciones,
+como en el caso de los agrupamientos. Y tercero, el orden temporal
+se conserva ya que el resultado es una nueva trayectoria, a diferencia
+del agrupamiento en donde los grupos resultantes pueden contener conformaciones
+que ocurren en tiempos muy distintos.
+
+\subsection*{Desempeño del algoritmo}
+
+Medimos el desempeño de nuestro algoritmo en dos situaciones: primero
+comparando los tiempos que toma en reducir subtrayectorias de diferentes
+tamaños frente a los tiempos que toman otros métodos de reducción
+(Figura \ref{fig:Performance-methods}.A); y segundo, comparando los
+tiempos que toma en reducir una subtrayectoria cuando utiliza múltiples
+núcleos (Figura \ref{fig:Performance-methods}.B). Las subtrayectorias
+las tomamos de las 100000 primeras conformaciones de la trayectoria
+de la proteína Trp-cage (ver Métodos).
+
+\begin{figure*}[!t]
+\begin{centering}
+\textbf{}%
+\begin{minipage}[t]{0.98\columnwidth}%
+\begin{flushleft}
+\textbf{A: Running time}
+\par\end{flushleft}
+\begin{center}
+\includegraphics[clip,scale=0.3]{img/performance/performance-methods-multicore-sizes-jave}
+\par\end{center}%
+\end{minipage}~~~~~~~~~%
+\begin{minipage}[t]{0.9\columnwidth}%
+\begin{flushleft}
+\textbf{B: Running with multiple cores}
+\par\end{flushleft}
+\begin{flushleft}
+\includegraphics[scale=0.3]{img/performance/times-villin-100k-cores-ink}
+\par\end{flushleft}%
+\end{minipage}
+\par\end{centering}
+\caption{Desempeño del algoritmo propuesto frente a otros métodos y ejecución
+con múltiples núcleos. (A) Comparación del algoritmos con nMDS, PCA,
+y agrupamiento. nMDS y clustering toman demasiado tiempo, aún con
+trayectorias medianamente largas. En cambio, PCA es el más eficiente
+junto con nuestro algoritmo FR1 cuando se ejecuta con un núcleo, pero
+si utiliza dos núcleos, el tiempo se disminuye a la mitad y se vuelve
+más eficiente que PCA. (B) Ejecución del algoritmo con múltiples núcleos.
+Al duplicar el número de núcleos de procesamiento el tiempo se disminuye
+casi a la mitad y por lo tanto la aceleración crece casi de forma
+lineal, por lo menos hasta los 8 núcleos (8x). Después de esto, la
+aceleración sigue siendo apreciable hasta casi después de los 30 núcleos.\protect \\
+\label{fig:Performance-methods}}
+\end{figure*}
+
+De la figura \ref{fig:Performance-methods}.A observamos que tanto
+nMDS como clustering (líneas azul y magenta, respectivamente) se vuelven
+imprácticos para reducir trayectorias medianamente largas. De forma
+contraria, PCA (línea roja) es el más eficiente junto con nuestro
+algoritmo cuando se ejecuta con un solo núcleo (FR1, línea continua
+negra). Sin embargo, cuando este ultimo utiliza dos núcleos (FR2,
+línea discontinua negra), el tiempo se reduce a la mitad y se vuelve
+más eficiente que PCA. Este comportamiento lo podemos ver más claramente
+en la figura \ref{fig:Performance-methods}.B, donde se muestran los
+tiempos y la aceleración que alcanza el algoritmo a medida que se
+ejecuta con más núcleos. Cada que duplicamos el número de núcleos,
+el tiempo de ejecución se disminuye casi a la mitad, hasta los 8 núcleos
+esta relación se conserva y luego la disminución es menor hasta volverse
+mínima pasados los 30 núcleos.
+
+Todo lo anterior nos muestra que el algoritmo presenta un buen desempeño
+comparado con los otros métodos, y que este mejora más cuando aprovecha
+su paralelismo y se ejecuta con más de un núcleo. Como consecuencia,
+la aceleración de nuestro algoritmo escala de forma lineal con el
+número de núcleos que utiliza, por lo menos hasta 8x, es decir, la
+velocidad de ejecución cuando utiliza 8 núcleos es 8 veces más que
+cuando utiliza solo uno. Además, con 32 núcleos todavía se logra una
+aceleración de 16x, después de lo cual esta se mantiene sin mayor
+aumento (ver recuadro figura \ref{fig:Performance-methods}.B). Ahora,
+considerando que la tecnología multi-core ya está presente en muchas
+de los computadores de hoy día, el algoritmo tiene la capacidad de
+aprovechar esta tecnología para reducir trayectorias largas en tiempos
+cortos, cercanos e incluso mejores que los que toman algunos de los
+métodos más eficientes usados en reducción de trayectorias de plegamiento.
+
+\section*{Conclusiones}
+\begin{enumerate}
+\item 
+\end{enumerate}
+\bibliographystyle{bmc-mathphys}
+\bibliography{reduccion-trayectorias}
+
+------------------
+
+\begin{backmatter}
+
+\end{backmatter}
+\end{document}
+\end{document}
