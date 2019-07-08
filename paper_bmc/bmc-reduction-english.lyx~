@@ -439,8 +439,23 @@ parttitle{Background}
 
 \end_inset
 
- The simulations are one of the most important tools for studying and understand
-ing the underlying mechanisms of the protein folding process.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename tmp-img-abstract-plaku2017.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The simulations are one of the most important tools for studying and understandi
+ng the underlying mechanisms of the protein folding process.
  Protein folding simulations have experienced substantial progress in the
  last years, they are performed using diverse technologies and they are
  reaching the microseconds and greater timescales, which generates very
@@ -627,9 +642,9 @@ Background
 \begin_layout Standard
 
 \color red
-In this article we present a parallel algorithm to reduce protein folding
- trajectories which quickly obtains representative conformations, conserving
- both their three-dimensional structure (3D) and their temporal order.
+We present a parallel algorithm to reduce protein folding trajectories which
+ quickly obtains representative conformations, conserving both their three-dimen
+sional structure (3D) and their temporal order.
  
 \color inherit
 Proteins play a fundamental role in all living beings, but to be functional,
@@ -640,9 +655,7 @@ Proteins play a fundamental role in all living beings, but to be functional,
 Understanding the mechanisms and rules of this process has been one of the
  most pursued objectives of computational biology, and an important theoretical
  tool to study it has been the simulations of protein folding.
- These simulations generate folding trajectories which describe the sequence
- of states that proteins follow as a function of time during their folding
- process (Figure 
+ These simulations generate folding trajectories (Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Folding-Trajectory"
@@ -652,7 +665,8 @@ noprefix "false"
 
 \end_inset
 
-).
+), which describe the sequence of states that proteins follow as a function
+ of time during their folding process.
 \color inherit
 
 \begin_inset Note Note
@@ -670,6 +684,111 @@ Understanding the protein folding mechanism remains a grand challenge in
  each consisting of a series of 3D conformations of the protein under study.
  As a result, effectively managing and analyzing such trajectories is becoming
  increasingly important.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/trayectory-description/trajectory-description-2RN2-pdbs.pdf
+	lyxscale 200
+	BoundingBox 0bp 0bp 224bp 127bp
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Protein folding trajectory.
+ The evolution of the folding is measured at each step by comparing the
+ structure at time 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$t_i$
+\end_layout
+
+\end_inset
+
+ to the native structure (black image background) using a structure comparison
+ metric, in this work we use the TM-Score (see Methods).
+ X-axis: Simulation time from 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$t_0$
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$t_n$
+\end_layout
+
+\end_inset
+
+.
+ Y-axis: TM-score value, from 0 (different) to 1 (similar).
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Folding-Trajectory"
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Trayectoria de plegamiento de una proteína.
+ El eje horizontal (Time steps) describe la secuencia de eventos o conformacione
+s de la proteína (estructuras 3D) a lo largo del tiempo de la simulación.
+ t_0 y t_n son el tiempo inicial (proteína desplegada) y final (proteína
+ plegada) respectivamente.
+ El eje vertical (TM-score) describe la evolución del plegamiento al comparar
+ mediante la métrica TM-score 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhan2004"
+literal "false"
+
+\end_inset
+
+ la estructura del tiempo actual con la estructura nativa de la proteina.
+ TM-score varia de 0 a 1, donde 1 significa estructuras similares
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -903,67 +1022,12 @@ But due to their large number of conformations, their processing and analysis
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/trajectory-description-2RN2-pdbs.pdf
-	lyxscale 200
-	BoundingBox 0bp 0bp 224bp 127bp
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Protein folding trajectory.
- The evolution of the folding is measured at each step by comparing the
- current structure (white background images) to the native structure (black
- background image) using a structure comparison method, in this work we
- use the TM-Score [# Zhan2004].
- Horizontal axis: simulation time from t_0 (initial) to t_n (final).
- Vertical axis: TM-Score value, from 0 (different) to 1 (similar).
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Folding-Trajectory"
-
-\end_inset
-
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Trayectoria de plegamiento de una proteína.
- El eje horizontal (Time steps) describe la secuencia de eventos o conformacione
-s de la proteína (estructuras 3D) a lo largo del tiempo de la simulación.
- t_0 y t_n son el tiempo inicial (proteína desplegada) y final (proteína
- plegada) respectivamente.
- El eje vertical (TM-score) describe la evolución del plegamiento al comparar
- mediante la métrica TM-score 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Zhan2004"
-literal "false"
-
-\end_inset
-
- la estructura del tiempo actual con la estructura nativa de la proteina.
- TM-score varia de 0 a 1, donde 1 significa estructuras similares
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset Graphics
+	filename tmp-img-computational-methdos-background.png
 
 \end_inset
 
@@ -1093,11 +1157,11 @@ noprefix "false"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/2RN2-trajectory-weakness.pdf
+	filename img/reduction-weakness/2RN2-trajectory-weakness.pdf
 	scale 105
 	BoundingBox 0bp 0bp 210bp 104bp
 
@@ -1194,6 +1258,64 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Nuestro algoritmo reduce una trayectoria de plegamiento primero dividiéndola
+ en segmentos que luego se procesan en paralelo, primero extrayendo rápidiamente
+ sus eventos caracterísiticos, y luego seleccionando exhaustivamente de
+ estos ultimos a los más representativos.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To reduce a folding trajectory, the proposed algorithm divides the path
+ into segments that are processed in parallel.
+ For each segment, characteristic events are quickly extracted using the
+ rapid clustering strategy of Hobohm and Sander (1992) adapted for protein
+ folding trajectories; and from these results, the most representative events
+ are selected by a strategy of k-medoids 
+\color purple
+\lang spanish
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kaufman1990"
+literal "false"
+
+\end_inset
+
+.The results of each segment are joined to form the reduced trajectory with
+ the most representative conformations of the original trajectory, while
+ retaining both its 3D representation as their temporal order.
+\end_layout
+
+\begin_layout Standard
+The algorithm is implemented in the R language, except the function for
+ pairwise structure comparison, the TM-score 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang2004"
+literal "false"
+
+\end_inset
+
+, which is the function executed more times and that is implemented in the
+ Fortran language.
+\end_layout
+
+\begin_layout Standard
+
+\color blue
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 
 \color blue
 Our algorithm reduces a folding trajectory in three stages (Figure 
@@ -1221,112 +1343,11 @@ literal "false"
 \end_inset
 
 .
-
-\color purple
- At the end, the results of each segment are joined to form the reduced
- trajectory containing the most representative conformations of the original
- trajectory, preserving their 3D representation and their temporal order.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement !h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/algorithm-description-general.pdf
-	lyxscale 150
-	scale 120
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Proposed reduction algorithm.
- Stage 1: Trajectory is divided into segments (dashed lines) and each is
- reduced individually.
- Stage 2: For each segment, characteristic conformations are extracted (red
- dots) and the redundant ones are ignored (blue dots).
- Stage 3: The most representatives are selected from the previous conformations.
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Algorithm-Description"
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-La trayectoria se divide en subtrayectorias (líneas discontinuas) que se
- reducen individualmente.
- Mediante una estrategia de agrupamiento rápido 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Hobohm1992"
-literal "false"
-
-\end_inset
-
- se selecciona la primera conformación como primera característica (t0)
- y se compara la siguiente con las características existentes.
- Si son disimilares se adicionan como nueva características (puntos rojos),
- de lo contrario, son redundantes y se ignora (puntos azules), y se sigue
- así con el resto.
- Después, mediante una estrategia tipo k-medoides 
-\color purple
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Kaufman1990"
-literal "false"
-
-\end_inset
-
-
-\color inherit
- se agrupan las características y de cada grupo se extraen las representativas
- que forman la subtrayectoria reducida.
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The algorithm is implemented in the R language, except the function for
- pair-wise structure comparison, which is the function executed more times
- and that is implemented in the Fortran language.
- For structure pair-wise comparison, the algorithm uses the TM-Score metric
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Zhang2004"
-literal "false"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section*
@@ -1334,15 +1355,14 @@ Methods
 \end_layout
 
 \begin_layout Subsection*
-Protein Datasets
+Data sets of protein folding trajectories
 \end_layout
 
 \begin_layout Standard
-To evaluate the results and performance of the proposed algorithm, we used
- the trajectories of three proteins: Trp-cage, villin-headpiece, and Ribonucleas
-e H.
- The Trp-cage trajectory was simulated with molecular dynamics using the
- Anton Supercomputer 
+To evaluate the results and performance of the proposed algorithm we used
+ three publicly available protein folding trajectories: the trajectory of
+ the trp-cage protein, simulated with molecular dynamics using the Anton
+ Supercomputer 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Shaw2011"
@@ -1381,8 +1401,8 @@ ps
 \end_inset
 
 time step, and 1044001 conformations.
- The villin-headpiece trajectory was simulated with molecular dynamics using
- the folding@home distributed computing platform 
+ The trajectory of the villin-headpiece protein, simulated with molecular
+ dynamics using the folding@home distributed computing platform 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "PandeEnsign07"
@@ -1421,8 +1441,8 @@ ps
 \end_inset
 
  time step, and 15201 conformations.
- And the Ribonuclease H trajectory was simulated with the Probabilistic
- Roadmap Method (PRM) 
+ And the trajectory of the ribonuclease H protein, simulated with the Probabilis
+tic Roadmap Method (PRM) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Amato2010"
@@ -1430,8 +1450,26 @@ literal "true"
 
 \end_inset
 
-, with 429 folding steps or unfolding events (the PRM is an unfolding method
- and uses folding steps instead of time steps).
+, with 429 folding steps each corresponding to a conformation as the PRM
+ generates trajectories  
+\end_layout
+
+\begin_layout Standard
+The PRM generates trajectories that shows the most factible sequence of
+ protein conformations starting in a 
+\end_layout
+
+\begin_layout Standard
+to that derivates to the native protein.
+ Instead of simulation time, the PRM
+\end_layout
+
+\begin_layout Standard
+instead of simulation time as the PRM generates unfolding pathways 
+\begin_inset Newline newline
+\end_inset
+
+and it uses folding steps instead of time steps).
 \begin_inset Note Note
 status collapsed
 
@@ -1482,10 +1520,145 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection*
-Comparaciones con nMDS, PCA, y clustering
+Pairwise comparison of protein structures using the TM-score 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Comparing-Structures"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+In this work, we used the TM-score metric for pairwise comparison of protein
+ structures 
+\color blue
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang2004"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+.
+ This metric is used in both the proposed algorithm and in the thecniques
+ for reduction of protein folding used to compare its results.
+ The TM-score is more sensitive to the global topology than local variations,
+ and so it estimates the pairwise similarity of protein structures much
+ more accurately than the Root Mean Square-Deviation (RMSD), a common metric
+ used for the same purpose.
+ The TM-score ranges from 0 to 1, where 1 is a perfect match.
+ Based on statistics 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zhang2010"
+literal "false"
+
+\end_inset
+
+, a Tm-score lower than 0.17 indicates two random structures with no relation
+ of similarity, and a Tm-score higher than 0.5 indicates that the structures
+ have a degree of similarity that is not given by chance.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Nuestro algoritmo requiere como uno de sus parámetro de entrada un valor
+ de puntaje mínimo de TM-score para aceptar como similares a dos conformaciones.
+ Este parámetro se usa después tanto en la fase de extracción de características
+, al comparar las conformaciones para encontrar disimilares y remover redundante
+s, como en la fase de selección de representativas, al calcular la matriz
+ de distancias de todas las conformaciones.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Techniques for reduction of protein folding trajectories
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Techniques-for-reduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color purple
+To compare the results of the proposed algorithm we used three common techniques
+ for protein folding reduction 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Doerr2017"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+: a non-metric multidimensional scaling method (nMDS), principal component
+ analysis (PCA), and a complete-linkage clustering.
+\end_layout
+
+\begin_layout Standard
+The nMDS reduction was carried out using the R-function monoMDS 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Oksanen2019"
+literal "false"
+
+\end_inset
+
+, taking as input the dissimilarity matrix obtained from the pairwise comparison
+ of all the protein conformations of the folding trajectory.
+ The PCA reduction was carried out using the R-function pca.xyz 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Grant2006"
+literal "false"
+
+\end_inset
+
+, taking as input a matrix with the 3D coordinates of the Cα atoms of all
+ the protein conformations of the folding trajectory.
+ And the complete-linkage clustering reduction was carried out using the
+ R-function hclust 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RCoreTeam2018"
+literal "false"
+
+\end_inset
+
+, taking as input a matrix with the first two principal components from
+ the previous PCA reduction.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+with one row per protein conformation and columns for the Cartesian coordinates
+ (x, y and z columns).
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 
 \color purple
 Comparamos los resultados de nuestro algoritmo frente a los resultados de
@@ -1509,9 +1682,10 @@ noprefix "false"
 
 \end_inset
 
-).
- 
-\color inherit
+)
+\end_layout
+
+\begin_layout Plain Layout
 Para la reducción con nMDS, calculamos la matriz de 
 \emph on
 disimilaridades
@@ -1542,7 +1716,10 @@ literal "false"
 \end_inset
 
 , y los desplegamos sobre un plano 2D.
- Para la reducción con PCA caracterizamos cada conformación con las coordenadas
+\end_layout
+
+\begin_layout Plain Layout
+Para la reducción con PCA caracterizamos cada conformación con las coordenadas
  XYZ de sus átomos, calculamos los componentes principales mediante la función
  
 \emph on
@@ -1561,7 +1738,10 @@ literal "false"
 \end_inset
 
 , y seleccionamos los dos primeros componentes que explican la mayor varianza.
- Y para el agrupamiento, caracterizamos cada conformación con sus dos primeros
+\end_layout
+
+\begin_layout Plain Layout
+Y para el agrupamiento, caracterizamos cada conformación con sus dos primeros
  componentes principales y realizamos un agrupamiento jerárquico con el
  método 
 \emph on
@@ -1602,6 +1782,11 @@ literal "false"
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
+
 \begin_inset Note Note
 status collapsed
 
@@ -1710,12 +1895,17 @@ X,Y
 \end_layout
 
 \begin_layout Section*
-Implementación
+Implementation
 \end_layout
 
 \begin_layout Standard
-El algoritmo reduce una trayectoria de plegamiento de proteínas en tres
- fases: particionamiento, selección, y extracción (Figura 
+The proposed algorithm reduces a trajectory of protein folding in three
+ steps: partitioning, extraction, and selection.
+ The first step runs only once, while the other two runs several times independe
+ntly, allowing them to run in parallel.
+ Each step involves a strategy to improve the efficiency of the algorithm
+ when working with large protein folding trajectories.
+ Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Algorithm-Description"
@@ -1725,19 +1915,125 @@ noprefix "false"
 
 \end_inset
 
-).
- Cada fase conlleva una estrategia para mejorar la eficiencia del algoritmo
- cuando las trayectorias de plegamiento son muy grandes.
+ shows the overview of the algorithm and the steps are given below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/algorithm-description-general.pdf
+	lyxscale 150
+	scale 120
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Overview of the proposed algorithm.
+ Step 1: Divide the trajectory into segments (vertical dashed lines) and
+ reduce each individually.
+ Each segment has n conformations from time 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$t_1$
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$t_n$
+\end_layout
+
+\end_inset
+
+.
+ Step 2: For each segment, extract characteristic conformations (blue dots)
+ and remove redundant ones (red dots).
+ Stage 3: Select the most representatives from the previous conformations.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Algorithm-Description"
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+La trayectoria se divide en subtrayectorias (líneas discontinuas) que se
+ reducen individualmente.
+ Mediante una estrategia de agrupamiento rápido 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hobohm1992"
+literal "false"
+
+\end_inset
+
+ se selecciona la primera conformación como primera característica (t0)
+ y se compara la siguiente con las características existentes.
+ Si son disimilares se adicionan como nueva características (puntos rojos),
+ de lo contrario, son redundantes y se ignora (puntos azules), y se sigue
+ así con el resto.
+ Después, mediante una estrategia tipo k-medoides 
+\color purple
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kaufman1990"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+ se agrupan las características y de cada grupo se extraen las representativas
+ que forman la subtrayectoria reducida.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
-Fase 1: Particionamiento y Paralelización
+Step 1: Partitioning
 \end_layout
 
 \begin_layout Standard
-Dividimos la trayectoria en subtrayectorias con el objetivo de reducirlas
- de forma independiente y paralela (líneas verticales punteadas, Figura
- 
+Divide the trajectory into segments to reduce them locally and in parallel
+ (dotted vertical lines, Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Algorithm-Description"
@@ -1748,16 +2044,21 @@ noprefix "false"
 \end_inset
 
 ).
-\end_layout
-
-\begin_layout Standard
-Esta estrategia de particionamiento tiene un doble objetivo: primero, reducir
- localmente cada subtrayectoria y así enfocarnos en sus características
- particulares, lo que al final resulta en la obtención de las características
- globales de toda la trayectoria.
- Y segundo, que sus reducciones se puedan realizar en paralelo y así mejorar
- notoriamente la eficiencia del algoritmo a la hora de ejecutarlo en una
- máquina con tecnología multi-core (Figura 
+ This is carried out by dividing the trajectory from the start to the end
+ in segments with 
+\emph on
+N
+\emph default
+ conformations each, where 
+\emph on
+N
+\emph default
+ is an input parameter.
+ Local reductions allow to focus on the particular characteristics of each
+ segment that will determine the global characteristics of the trajectory.
+ And parallel reductions allow to improve the algorithm efficiency when
+ it runs on machines with more than one processor (e.g.
+ multi-core computers) (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Algorithm-Parallel"
@@ -1768,6 +2069,35 @@ noprefix "false"
 \end_inset
 
 ).
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Each segment contains 
+\emph on
+N
+\emph default
+ conformations and the number of segments per trajectory is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$M={S/N}$
+\end_layout
+
+\end_inset
+
+, where 
+\emph on
+S
+\emph default
+ is the total number of conformations of the trajectory.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1775,7 +2105,7 @@ noprefix "false"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1792,28 +2122,12 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Parallel Reduction.
- La reducción de cada subtrayectoria S1...Sm se ejecuta en paralelo aprovechando
- la tecnología multi-core de las máquinas actuales.
- Los resultados tanto del proceso de selección de características (S'1...S'm)
- como los del de extracción de representativas (S''1...S''m) son independientes
- de los de las otras subtrayectorias.
- Al final los resultados de cada procesamiento se unen para obtener la trayector
-ia total reducida.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Flowchart of the algorithm.
- Fase1: División de la trayectoria en subtrayectorias (s1, ...
- , sn).
- Fase2: Extracción de conformaciones características.
- Fase3: Extracción de conformaciones representativas.
- Las reducciones se realizan en paralelo y al final se unen los resultados.
-\end_layout
-
-\end_inset
-
+Parallel processing of trajectory segments.
+ The trajectory is divided into m segments (S1, ..., Sm), and each segment
+ is processed separately and in parallel on a machine with n processing
+ cores.
+ The results of the extraction and selection steps (S1 ', ..., Sm') are independent
+ of each other and join to form the reduced trajectory.
  
 \begin_inset CommandInset label
 LatexCommand label
@@ -1835,37 +2149,22 @@ name "fig:Algorithm-Parallel"
 \end_layout
 
 \begin_layout Subsection*
-Fase 2: Extracción y Filtración
+Stage 2: Extraction
 \end_layout
 
 \begin_layout Standard
-Esta fase del algoritmo extrae rápidamente de cada subtrayectoria las conformaci
-ones características y filtra las redundantes.
- Para hacerlo de manera eficiente, modificamos la estrategia de agrupamiento
- rápido de Hobohm and Sander (1992) para trabajar con estructuras de proteínas
- y en vez agruparlas busque las más disimilares.
+Quickly extract the characteristic conformations of each segment and eliminate
+ the redundant ones.
+ This is carried out efficiently by means of a rapid clustering approach
+ that performs relatively few pairwise comparisons and, instead of grouping
+ similar conformations of a segment, extracts the most dissimilar ones.
 \end_layout
 
 \begin_layout Standard
-El algoritmo aprovecha el orden temporal implícito en las subtrayectorias
- para organizar las conformaciones en orden creciente de tiempo de simulación
- (flecha horizontal negra, Figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Algorithm-Description"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-).
+Here, we improved the fast clustering algorithm of Hobohm and Sander (1992)
+ to work with a trajectory segment and exploit the implicit order of its
+ conformations given by its simulation time (black horizontal line, Figure
  
-\color blue
-Se asigna la primera conformación como la primera representante característica
- (punto rojo en t0, 
-\color inherit
-Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Algorithm-Description"
@@ -1875,70 +2174,68 @@ noprefix "false"
 
 \end_inset
 
-
-\color blue
-), y se toma la siguiente conformación y se comparan.
- Si son diferentes, entonces se convierte en una nueva representante (puntos
- rojos, 
-\color inherit
-Figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Algorithm-Description"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-
-\color blue
-), de lo contrario es redundante y se filtra (puntos azules, 
-\color inherit
-Figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Algorithm-Description"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-
-\color blue
 ).
- Después, se toma la siguiente conformación y se continua el mismo proceso
- hasta terminar con todas.
+ The algorithm selects the initial conformation at time 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$t_1$
+\end_layout
+
+\end_inset
+
+ as the first characteristic.
+ Then, the algorithm compares the previous characteristic with the following
+ conformation.
+ If dissimilar, then the conformation becomes a new characteristic, otherwise,
+ the conformation is redundant and is removed (red dots, Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Algorithm-Description"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ The process continues with the rest of conformations until finishing in
+ the final one at time 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$t_n$
+\end_layout
+
+\end_inset
+
+, thus producing the set of representative characteristics of the segment
+ (green dots, Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Algorithm-Description"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Subsection*
-Fase 3: Búsqueda y Selección
+Step 3: Selection
 \end_layout
 
 \begin_layout Standard
-Esta última fase del algoritmo toma como entrada las conformaciones característi
-cas de la fase anterior y realiza una búsqueda completa de las conformaciones
- que más las representen.
- Hablamos de completa porque la búsqueda implica comparar todas las conformacion
-es entre si, es decir calcular su matriz de disimilaridades.
- Por esta razón es que esta búsqueda es factible hacerla ahora y no antes
- ya que se hace sobre un conjunto mucho menor de conformaciones que el que
- se tiene al inicio por cada subtrayectoria, .
-\end_layout
-
-\begin_layout Standard
-Para encontrar estas conformaciones representantes calculamos las 
-\emph on
-k 
-\emph default
-conformaciones cuya disimilaridad media a todas las demás integrantes del
- grupo es mínima, lo que se conoce como 
-\emph on
-medoides 
-\emph default
-y el algoritmo que usamos para realizar esto es el particionamiento alrededor
- de medoides PAM 
+Take the conformations of previously extracted characteristics and cluster
+ them to select the most representative characteristics.
+ To find these representatives, the algorithm uses a k-medoids strategy
+ (PAM algorithm 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Kaufman1990"
@@ -1946,10 +2243,22 @@ literal "false"
 
 \end_inset
 
-.
+) that calculates the k conformations (medoids) whose average difference
+ between all the other members of the group is minimal.
 \end_layout
 
 \begin_layout Standard
+However, the PAM algorithm needs as input the dissimilarity matrix with
+ the pairwise comparison of all-versus-all conformations of the trajectory
+ segment, which is an intensive computational task when the number of conformati
+ons is very large.
+ But, this task is feasible to perform since the algorithm is working here
+ with a reduced set of characteristic conformations (previous step) of a
+ trajectory segment and not of the complete trajectory.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 Esta fase necesita tres datos de entrada: el conjunto de conformaciones
  características de la fase anterior (C), el umbral mínimo de TM-score para
  aceptar dos conformaciones como similares (T), y el número deseado de represent
@@ -1958,6 +2267,11 @@ antes seleccionadas (
 K)
 \emph default
 .
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1983,75 +2297,18 @@ k
 
 \end_layout
 
-\begin_layout Subsection*
-Comparación entre Estructuras de Proteínas 
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Comparing-Structures"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\color blue
-Para la comparación de las estructuras de las conformaciones utilizamos
- la métrica TM-score (Template Modeling score) 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Zhang2004"
-literal "false"
-
-\end_inset
-
-.
- 
-\color inherit
-El TM-score es más preciso que otras métricas usadas en comparación de estructur
-as, como el Root Mean Square-Deviation (RMSD), ya que es más robusta a variacion
-es locales.
-\end_layout
-
-\begin_layout Standard
-Nuestro algoritmo requiere como uno de sus parámetro de entrada un valor
- de puntaje mínimo de TM-score para aceptar como similares a dos conformaciones.
- Este parámetro se usa después tanto en la fase de extracción de características
-, al comparar las conformaciones para encontrar disimilares y remover redundante
-s, como en la fase de selección de representativas, al calcular la matriz
- de distancias de todas las conformaciones.
-\end_layout
-
-\begin_layout Standard
-Para tener una aproximación del rango de valores de este puntaje mínimo,
- los puntajes del TM-score 
-\color blue
-varian de 0 a 1, donde 1 indica un emparejamiento perfecto.
- Además, 
-\color inherit
-las estadísticas hechas por sus autores 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "zhang2010"
-literal "false"
-
-\end_inset
-
- muestran que un puntaje < 0.17 indica dos estructuras aleatorias, sin relación
- de similaridad, y un puntaje > 0.5 indica que las estructuras tienen un
- grado de similaridad que no está dado por el azar.
-\end_layout
-
 \begin_layout Section*
-Resultados y Discusión
+Results and Discussion
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+To demonstrate the ability and performance of our algorithm in reducing
+ protein folding trayectories, we carried out three tests: (1) Reduction
+ of protein folding trajectories, (2) Comparison with other reduction techniques
+, and (3) Performance comparisons.
+\end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Float figure
 placement !t
 wide true
@@ -2076,7 +2333,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "white"
-status collapsed
+status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
@@ -2087,7 +2344,7 @@ has_inner_box 1
 inner_pos "b"
 use_parbox 0
 use_makebox 0
-width "20col%"
+width "30col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -2096,22 +2353,77 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
 \series bold
 A:
-\begin_inset space ~
-\end_inset
-
-Trp-cage
 \begin_inset Newline newline
 \end_inset
 
- (PDB 2JOF)
+Protein name: 
 \series default
+Trp-cage
+\series bold
 
+\begin_inset Newline newline
+\end_inset
+
+PDB code: 
+\series default
+2JOF
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Simulation time:
+\series default
+ 208 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+us
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Time step:
+\series default
+ 200 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ps
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+No.
+ of conformations:
+\series default
+ 1044001 
 \begin_inset Newline newline
 \end_inset
 
@@ -2121,9 +2433,9 @@ Trp-cage
 
 
 \begin_inset Graphics
-	filename img/natives/native-2f4k.png
+	filename img/natives/native-2jof.png
 	lyxscale 25
-	scale 15
+	scale 25
 	rotateOrigin leftBottom
 
 \end_inset
@@ -2161,7 +2473,7 @@ has_inner_box 1
 inner_pos "b"
 use_parbox 0
 use_makebox 0
-width "70col%"
+width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -2170,15 +2482,14 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/trajectory-2JOF-full-pdbs.png
+	filename img/trajectories/trajectory-2JOF-full-pdbs.png
 	lyxscale 20
-	scale 20
-	BoundingBox 0bp 0bp 1920bp 440bp
-	clip
+	scale 15
+	BoundingBox 0bp 0bp 1920bp 480bp
 
 \end_inset
 
@@ -2188,7 +2499,7 @@ status open
 
 
 \begin_inset Graphics
-	filename img/trajectory-2JOF-full-pdbsGlobal.pdf
+	filename img/trajectories/trajectory-2JOF-full-pdbsGlobal.pdf
 	lyxscale 30
 	scale 20
 	BoundingBox 0bp 0bp 1410bp 337bp
@@ -2227,7 +2538,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "white"
-status collapsed
+status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
@@ -2238,7 +2549,7 @@ has_inner_box 1
 inner_pos "b"
 use_parbox 0
 use_makebox 0
-width "20col%"
+width "30col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -2247,18 +2558,77 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
 \series bold
-B: Villin headpiece
+B:
 \begin_inset Newline newline
 \end_inset
 
-(PDB 2F4K)
+Protein name: 
 \series default
+Villin headpiece
+\series bold
 
+\begin_inset Newline newline
+\end_inset
+
+PDB code: 
+\series default
+2F4K
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Simulation time:
+\series default
+ 8 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+us
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Time step:
+\series default
+ 50 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ps
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+No.
+ of conformations:
+\series default
+ 15201 
 \begin_inset Newline newline
 \end_inset
 
@@ -2270,7 +2640,7 @@ B: Villin headpiece
 \begin_inset Graphics
 	filename img/natives/native-2f4k.png
 	lyxscale 25
-	scale 15
+	scale 25
 	rotateOrigin leftBottom
 
 \end_inset
@@ -2308,7 +2678,7 @@ has_inner_box 1
 inner_pos "b"
 use_parbox 0
 use_makebox 0
-width "70col%"
+width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -2317,11 +2687,11 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/trajectory-2F4Kfh-r5c1-full-pdbs.pdf
+	filename img/trajectories/trajectory-2F4Kfh-r5c1-full-pdbs.pdf
 	lyxscale 30
 	scale 20
 	BoundingBox 0bp 0bp 1440bp 360bp
@@ -2335,7 +2705,7 @@ status open
 
 
 \begin_inset Graphics
-	filename img/trajectory-2F4Kfh-r5c1-full-pdbsGlobal.pdf
+	filename img/trajectories/trajectory-2F4Kfh-r5c1-full-pdbsGlobal.pdf
 	lyxscale 30
 	scale 20
 	BoundingBox 0bp 0bp 1410bp 337bp
@@ -2374,7 +2744,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "white"
-status collapsed
+status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
@@ -2385,7 +2755,7 @@ has_inner_box 1
 inner_pos "b"
 use_parbox 0
 use_makebox 0
-width "20col%"
+width "30col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -2394,18 +2764,35 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
 \series bold
 C:
-\begin_inset space ~
+\begin_inset Newline newline
 \end_inset
 
-Ribonuclease H (PDB 2RN2)
+Protein name: 
 \series default
+Ribonuclease H
+\series bold
 
+\begin_inset Newline newline
+\end_inset
+
+PDB code: 
+\series default
+2RN2
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+No.
+ of conformations
+\series default
+ 429
 \begin_inset Newline newline
 \end_inset
 
@@ -2417,7 +2804,7 @@ Ribonuclease H (PDB 2RN2)
 \begin_inset Graphics
 	filename img/natives/native-2rn2.png
 	lyxscale 25
-	scale 15
+	scale 25
 	rotateOrigin leftBottom
 
 \end_inset
@@ -2455,7 +2842,7 @@ has_inner_box 1
 inner_pos "b"
 use_parbox 0
 use_makebox 0
-width "70col%"
+width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -2464,11 +2851,11 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/trajectory-2RN2-pdbs.pdf
+	filename img/trajectories/trajectory-2RN2-pdbs.pdf
 	lyxscale 30
 	scale 20
 	BoundingBox 0bp 0bp 1440bp 330bp
@@ -2482,7 +2869,7 @@ status open
 
 
 \begin_inset Graphics
-	filename img/trajectory-2RN2-pdbsGlobal.pdf
+	filename img/trajectories/trajectory-2RN2-pdbsGlobal.pdf
 	lyxscale 30
 	scale 20
 	clip
@@ -2506,8 +2893,121 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Reducciones de tres trayectorias de plegamiento.
- Recuadro izquierdo: nombre, código PDB y estructura nativa de la proteína.
+Plot images of the TM-score values for the original and reduced trajectories.
+ Protein and simulation details on the left box .
+ Trajectories on the right box: original (upper part), and reduced (lower
+ part).
+ (A) Trajectory of trp-cage protein, 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+simulation time of 208 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+us
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset space ~
+\end_inset
+
+with time steps of 200 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ps
+\end_layout
+
+\end_inset
+
+,
+\end_layout
+
+\end_inset
+
+ reduced by 98%, from 1044001 to 20881 conformations.
+ (B) Trajectory of the villin-headpiece protein, reduced by 80%, from 15201
+ to 3011 conformations.
+ (C) Trajectory of ribonuclease H protein, reduced by 49%, from 429 to 217
+ conformations.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Trajectory-Results"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Folding steps refers to temporal ordering instead of simulation times.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Time steps correspond to the moment at which each conformation appears during
+ the simulation.
+ While in the original trajectories the time steps correspond to time intervals
+ of picosecods, in the reduced trajectories the time steps provide only
+ a temporal ordering 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+are not associated with any real time, they do
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+in the originall trajectories represent the interval at which 
+\begin_inset Newline newline
+\end_inset
+
+Time steps (x-axis) in the original trajectories correspond to the interval
+ time each conformation was sampled 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+although these time steps in the reduced trajectory cannot be associated
+ with any real time, they do provide a temporal ordering.
+ In
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Recuadro izquierdo: nombre, código PDB y estructura nativa de la proteína.
  Recuadro derecho: trayectoria original en la parte de arriba y la trayectoria
  reducida en la parte inferior.
  La trayectoria original muestra en el eje horizontal los pasos de tiempo
@@ -2520,13 +3020,6 @@ Reducciones de tres trayectorias de plegamiento.
  a 3011conformaciones.
  (C) Trayectoria de la proteína Ribonuclease H reducida en un 49%, de 429
  a 217 conformaciones.
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Trajectory-Results"
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -2545,6 +3038,10 @@ name "fig:Trajectory-Results"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -2558,7 +3055,7 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -2574,7 +3071,7 @@ begin{figure*}[!b]
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align left
 \begin_inset Box Frameless
 position "c"
@@ -2725,7 +3222,7 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align left
 \begin_inset Box Frameless
 position "c"
@@ -2872,7 +3369,7 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align left
 \begin_inset Box Frameless
 position "c"
@@ -3018,7 +3515,7 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -3060,7 +3557,16 @@ end{figure*}
 \end_layout
 
 \begin_layout Subsection*
-Reducciones de tres trayectorias de plegamiento
+Reducciones de tr
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Reduction of three protein folding trajectories
 \begin_inset Note Note
 status collapsed
 
@@ -3081,41 +3587,9 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Realizamos la reducción de las trayectorias de tres proteínas tomadas de
- distintos proyectos de simulación: Trp-cage (Supercomputador Anton 
-\color purple
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Shaw2011"
-literal "false"
-
-\end_inset
-
-
-\color inherit
-, villin-headpiece (folding@home 
-\color blue
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "PandeEnsign07"
-literal "false"
-
-\end_inset
-
-
-\color inherit
-), y la Ribonuclease H (Folding server 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Amato2010"
-literal "true"
-
-\end_inset
-
-) (ver detalles de las simulaciones en la sección de Métodos).
- Los resultados se muestran en la figura 
+We tested our algorithm on three folding trajectories from different simulation
+ projects (see Methods).
+ The figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Trajectory-Results"
@@ -3125,9 +3599,25 @@ noprefix "false"
 
 \end_inset
 
- donde se presenta para cada proteína en el recuadro izquierdo sus detalles,
- y en el derecho sus dos trayectorias: la original (arriba) y la reducida
- (abajo).
+ shows the results of these reductions, the details of the proteins are
+ in the box on the left and both the original and reduced trajectories are
+ in the box on the right.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Although these time steps cannot be associateh with any real time, they
+ do provide a temporal ordering.
+ In
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3740,6 +4230,19 @@ Comparación frente a otros métodos de reducción
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Comparing-other-methods"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Benchmarked methods and parameters used (CD-HIT)
+\end_layout
 
 \end_inset
 

@@ -47,13 +47,13 @@
      showgrid="false"
      units="in"
      width="4in"
-     inkscape:zoom="3.9638772"
-     inkscape:cx="135.8206"
-     inkscape:cy="37.303376"
+     inkscape:zoom="1.9819386"
+     inkscape:cx="212.80798"
+     inkscape:cy="13.418762"
      inkscape:window-x="-2"
      inkscape:window-y="-2"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g24"
+     inkscape:current-layer="g10"
      showguides="false" /><g
      id="g10"
      inkscape:groupmode="layer"
@@ -86,17 +86,15 @@
 
 
 
-
 <text
    transform="matrix(1,0,0,-1,488.25,7.2)"
    style="font-variant:normal;font-weight:normal;font-size:30px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:4.8780489"
    id="text32"><tspan
+     x="0 18.33 24.99 49.98 66.660004 75 90 98.339996 115.02 131.7"
+     y="0"
      sodipodi:role="line"
      id="tspan30"
-     style="stroke-width:4.8780489"
-     x="0"
-     y="0">Simulation time</tspan></text>
-
+     style="stroke-width:4.8780489">Time steps</tspan></text>
 
 
 
@@ -126,58 +124,81 @@
    style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
    d="m 206.06072,130.63839 v -1.476" /><text
    id="text50"
-   style="font-variant:normal;font-weight:normal;font-size:6.00000015px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;font-style:normal;font-stretch:normal;text-anchor:start;text-align:start;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+   style="font-variant:normal;font-weight:normal;font-size:5.00000013px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;font-style:normal;font-stretch:normal;text-anchor:start;text-align:start;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
    transform="scale(1,-1)"
    x="18.729042"
    y="-123.82479"><tspan
-     style="stroke-width:1;-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:6.00000015px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+     style="stroke-width:1;-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:5.00000013px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
      id="tspan48"
      sodipodi:role="line"
      x="18.729042"
      y="-123.82479">t<tspan
-   style="font-size:6.00000015px;baseline-shift:sub;-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+   style="font-size:5.00000013px;baseline-shift:sub;-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
    id="tspan80">0</tspan></tspan></text>
-
 
 
 
 <text
    id="text54"
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.00000015px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1"
    transform="scale(1,-1)"
-   x="110.17896"
+   x="64.800545"
    y="-123.82479"><tspan
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.00000015px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr;text-anchor:start;stroke-width:1;"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:1"
      id="tspan52"
      sodipodi:role="line"
      y="-123.82479"
-     x="110.17896"> t<tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.00000015px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr;baseline-shift:sub;text-anchor:start;"
+     x="64.800545"> t<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;baseline-shift:sub;text-anchor:start"
    id="tspan83">i</tspan></tspan></text>
 
 
 
+<text
+   id="text58"
+   style="font-variant:normal;font-weight:normal;font-size:5.00000013px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;font-style:normal;font-stretch:normal;text-anchor:start;text-align:start;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+   transform="scale(1,-1)"
+   x="110.01292"
+   y="-123.82479"><tspan
+     style="stroke-width:1;-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:5.00000013px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+     id="tspan56"
+     sodipodi:role="line"
+     y="-123.82479"
+     x="110.01292">t<tspan
+   style="font-size:5.00000013px;baseline-shift:sub;-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+   id="tspan74">200</tspan></tspan></text>
 
 
 
-
+<text
+   id="text62"
+   style="font-variant:normal;font-weight:normal;font-size:5.00000013px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;font-style:normal;font-stretch:normal;text-anchor:start;text-align:start;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+   transform="scale(1,-1)"
+   x="156.45976"
+   y="-123.82479"><tspan
+     style="stroke-width:1;-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:5.00000013px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+     id="tspan60"
+     sodipodi:role="line"
+     x="156.45976"
+     y="-123.82479">t<tspan
+   style="font-size:5.00000013px;baseline-shift:sub;-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+   id="tspan76">300</tspan></tspan></text>
 
 
 
 <text
    id="text66"
-   style="font-variant:normal;font-weight:normal;font-size:6.00000015px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;font-style:normal;font-stretch:normal;text-anchor:start;text-align:start;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+   style="font-variant:normal;font-weight:normal;font-size:5.00000013px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;font-style:normal;font-stretch:normal;text-anchor:start;text-align:start;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
    transform="scale(1,-1)"
    x="204.40662"
    y="-123.82479"><tspan
-     style="stroke-width:1;-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:6.00000015px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+     style="stroke-width:1;-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:5.00000013px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
      id="tspan64"
      sodipodi:role="line"
      y="-123.82479"
      x="204.40662">t<tspan
-   style="font-size:6.00000015px;baseline-shift:sub;-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+   style="font-size:5.00000013px;baseline-shift:sub;-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
    id="tspan78">n</tspan></tspan></text>
-
 
 
 
@@ -222,7 +243,6 @@
 
 
 
-
 <text
    id="text88"
    style="font-variant:normal;font-weight:normal;font-size:4.92000008px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1"
@@ -234,7 +254,6 @@
      sodipodi:role="line"
      y="9.7855186"
      x="145.4558 148.19131 149.55907">0.2</tspan></text>
-
 
 
 
@@ -252,7 +271,6 @@
 
 
 
-
 <text
    id="text96"
    style="font-variant:normal;font-weight:normal;font-size:4.92000008px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1"
@@ -264,7 +282,6 @@
      sodipodi:role="line"
      y="9.7855186"
      x="175.85114 178.58665 179.95442">0.6</tspan></text>
-
 
 
 
@@ -282,7 +299,6 @@
 
 
 
-
 <text
    id="text104"
    style="font-variant:normal;font-weight:normal;font-size:4.92000008px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1"
@@ -293,7 +309,6 @@
      id="tspan102"
      y="9.7855186"
      x="206.38901">1.0</tspan></text>
-
 
 
 
