@@ -1359,10 +1359,9 @@ Data sets of protein folding trajectories
 \end_layout
 
 \begin_layout Standard
-To evaluate the results and performance of the proposed algorithm we used
- three publicly available protein folding trajectories: the trajectory of
- the trp-cage protein, simulated with molecular dynamics using the Anton
- Supercomputer 
+In this work, we used the trajectories from three protein folding simulations
+ projects, the first two of these used Molecular Dynamics simulations: Anton
+ supercomputer 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Shaw2011"
@@ -1370,7 +1369,25 @@ literal "false"
 
 \end_inset
 
-, with a simulation time of 208 
+ and folding@home 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PandeEnsign07"
+literal "false"
+
+\end_inset
+
+, and the third used the Probabilistic Roadmap Method 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Amato2010"
+literal "true"
+
+\end_inset
+
+, and Parasol folding server using .
+ One trajectory was taken from each: the trajectory of the trp-cage protein
+ from the Anton supercomputer project, with a simulation time of 208 
 \begin_inset ERT
 status open
 
@@ -1401,16 +1418,8 @@ ps
 \end_inset
 
 time step, and 1044001 conformations.
- The trajectory of the villin-headpiece protein, simulated with molecular
- dynamics using the folding@home distributed computing platform 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "PandeEnsign07"
-literal "false"
-
-\end_inset
-
-, with a simulation time of 8 
+ The trajectory of the villin-headpiece protein from the folding@home projec,
+ simulated, with a simulation time of 8 
 \begin_inset ERT
 status open
 
@@ -1441,55 +1450,18 @@ ps
 \end_inset
 
  time step, and 15201 conformations.
- And the trajectory of the ribonuclease H protein, simulated with the Probabilis
-tic Roadmap Method (PRM) 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Amato2010"
-literal "true"
-
-\end_inset
-
-, with 429 conformations each corresponding to one folding step.
- Folding step represents a
+ And the trajectory of the ribonuclease H protein from the Parasol folding
+ server project, with 429 folding steps each corresponding to 429 conformations.
 \end_layout
 
 \begin_layout Standard
-The PRM does not have time information as it computes trajectories by connecting
- "nearby" conformations from a graph or roadmap representing the 
-\end_layout
-
-\begin_layout Standard
-from a denatured starting state to the native state.
-\end_layout
-
-\begin_layout Standard
-generates a sequence of unfolding events instead of 
-\end_layout
-
-\begin_layout Standard
-folding steps each corresponding to a conformation as the PRM generates
- trajectories  
-\end_layout
-
-\begin_layout Standard
-The PRM generates trajectories that shows the most factible sequence of
- protein conformations starting in a 
-\end_layout
-
-\begin_layout Standard
-to that derivates to the native protein.
- Instead of simulation time, the PRM
-\end_layout
-
-\begin_layout Standard
-instead of simulation time as the PRM generates unfolding pathways 
-\begin_inset Newline newline
-\end_inset
-
-and it uses folding steps instead of time steps).
+A time step in MD trajectories is the time length at which conformations
+ are sampled or evaluated during the simulation.
+ While a folding step, in the PRM and in our reduced trajectories, represents
+ the most likely conformation occurring during a time interval or from a
+ set of likely candidate conformations.
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Subsection*
 Algoritmo de Hobohm y Sander para agrupamiento rápidos
