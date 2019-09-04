@@ -45,10 +45,11 @@ plotNMDS <- function (pointsFile, colors) {
 			 cex.axis=1.5,cex.lab=2.0)
 		#textxy (x,y, labs=npoints, cex=1)
 
+		# plot heatmap
 		#legend_image <- as.raster(as.matrix(xcolors, ncol=1))
-		#par(mar = c(3,1,1,4))
+		#par(mar = c(3,1,1,2))
 		#plot(c(0,2),c(0,1),type = 'n', axes = F,xlab = '', ylab = '', 
-		#	 main = 'rainbow (0.2)', cex.main=1.5)
+		#	 main = 'Folding steps', cex.main=1.5)
 		#text(x=1, y = seq(0,1,l=5), labels = seq(0,1,l=5))
 		#rasterImage(legend_image, -1, 0, 0.5,1)
 	dev.off()

@@ -8,7 +8,7 @@ library (MASS)      # write.matrix: To write matrix to file
 
 options(width=300)
 args <-commandArgs (TRUE)
-args = c("pca-villinfhr-reduced3k.xyz")
+#args = c("pca-villinfhr-reduced3k.xyz")
 
 #-------------------------------------------------------------
 # Main function
@@ -34,7 +34,7 @@ main <- function () {
 	msg ("Computing PCA anlysis...")
 	pc <<- pca.xyz (xyzMatrix)
 	pcs = pc$z[,1:2]
-	pc$z[,2] = -1*pcs [,2]
+	pc$z[,2] = 1*pcs [,2]
 	variances = pc$sdev^2/sum(pc$sdev^2)
 	propVariances = round (variances *100, 2)
 	labPC1 = paste ("PC1 (", propVariances[1], "%)", sep= "")

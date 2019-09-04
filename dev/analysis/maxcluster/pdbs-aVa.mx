@@ -1,0 +1,174 @@
+INFO  : Reading PDB list file 'pdbs.lst'
+INFO  : Successfully read 0 PDBsINFO  : Successfully read 20 PDBsINFO  : Successfully read 40 PDBsINFO  : Successfully read 50 / 50 PDBs from list file 'pdbs.lst'
+INFO  : Successfully read 50 Chain structures
+INFO  : Processed 0 of 1225 MAXSUBsINFO  : Processed 20 of 1225 MAXSUBsINFO  : Processed 40 of 1225 MAXSUBsINFO  : Processed 60 of 1225 MAXSUBsINFO  : Processed 80 of 1225 MAXSUBsINFO  : Processed 100 of 1225 MAXSUBsINFO  : Processed 120 of 1225 MAXSUBsINFO  : Processed 140 of 1225 MAXSUBsINFO  : Processed 160 of 1225 MAXSUBsINFO  : Processed 180 of 1225 MAXSUBsINFO  : Processed 200 of 1225 MAXSUBsINFO  : Processed 220 of 1225 MAXSUBsINFO  : Processed 240 of 1225 MAXSUBsINFO  : Processed 260 of 1225 MAXSUBsINFO  : Processed 280 of 1225 MAXSUBsINFO  : Processed 300 of 1225 MAXSUBsINFO  : Processed 320 of 1225 MAXSUBsINFO  : Processed 340 of 1225 MAXSUBsINFO  : Processed 360 of 1225 MAXSUBsINFO  : Processed 380 of 1225 MAXSUBsINFO  : Processed 400 of 1225 MAXSUBsINFO  : Processed 420 of 1225 MAXSUBsINFO  : Processed 440 of 1225 MAXSUBsINFO  : Processed 460 of 1225 MAXSUBsINFO  : Processed 480 of 1225 MAXSUBsINFO  : Processed 500 of 1225 MAXSUBsINFO  : Processed 520 of 1225 MAXSUBsINFO  : Processed 540 of 1225 MAXSUBsINFO  : Processed 560 of 1225 MAXSUBsINFO  : Processed 580 of 1225 MAXSUBsINFO  : Processed 600 of 1225 MAXSUBsINFO  : Processed 620 of 1225 MAXSUBsINFO  : Processed 640 of 1225 MAXSUBsINFO  : Processed 660 of 1225 MAXSUBsINFO  : Processed 680 of 1225 MAXSUBsINFO  : Processed 700 of 1225 MAXSUBsINFO  : Processed 720 of 1225 MAXSUBsINFO  : Processed 740 of 1225 MAXSUBsINFO  : Processed 760 of 1225 MAXSUBsINFO  : Processed 780 of 1225 MAXSUBsINFO  : Processed 800 of 1225 MAXSUBsINFO  : Processed 820 of 1225 MAXSUBsINFO  : Processed 840 of 1225 MAXSUBsINFO  : Processed 860 of 1225 MAXSUBsINFO  : Processed 880 of 1225 MAXSUBsINFO  : Processed 900 of 1225 MAXSUBsINFO  : Processed 920 of 1225 MAXSUBsINFO  : Processed 940 of 1225 MAXSUBsINFO  : Processed 960 of 1225 MAXSUBsINFO  : Processed 980 of 1225 MAXSUBsINFO  : Processed 1000 of 1225 MAXSUBsINFO  : Processed 1020 of 1225 MAXSUBsINFO  : Processed 1040 of 1225 MAXSUBsINFO  : Processed 1060 of 1225 MAXSUBsINFO  : Processed 1080 of 1225 MAXSUBsINFO  : Processed 1100 of 1225 MAXSUBsINFO  : Processed 1120 of 1225 MAXSUBsINFO  : Processed 1140 of 1225 MAXSUBsINFO  : Processed 1160 of 1225 MAXSUBsINFO  : Processed 1180 of 1225 MAXSUBsINFO  : Processed 1200 of 1225 MAXSUBsINFO  : Processed 1220 of 1225 MAXSUBs
+INFO  : CPU time = 0.26 seconds
+INFO  : ======================================
+INFO  : 3Djury (Threshold: >    20 pairs @ > 0.200)
+INFO  : ======================================
+INFO  : Rank     Model    Pairs       File
+INFO  :     1 :       10      177       pdbs/villinfh-00010.pdb
+INFO  :     2 :       13      158       pdbs/villinfh-00013.pdb
+INFO  :     3 :       15      123       pdbs/villinfh-00015.pdb
+INFO  :     4 :       14      121       pdbs/villinfh-00014.pdb
+INFO  :     5 :        6      116       pdbs/villinfh-00006.pdb
+INFO  :     6 :        4      114       pdbs/villinfh-00004.pdb
+INFO  :     7 :       47      108       pdbs/villinfh-00047.pdb
+INFO  :     8 :       16      100       pdbs/villinfh-00016.pdb
+INFO  :     9 :        5       93       pdbs/villinfh-00005.pdb
+INFO  :    10 :       48       88       pdbs/villinfh-00048.pdb
+INFO  :    11 :       49       80       pdbs/villinfh-00049.pdb
+INFO  :    12 :       27       79       pdbs/villinfh-00027.pdb
+INFO  :    13 :       17       78       pdbs/villinfh-00017.pdb
+INFO  :    14 :        9       75       pdbs/villinfh-00009.pdb
+INFO  :    15 :       12       75       pdbs/villinfh-00012.pdb
+INFO  :    16 :       40       75       pdbs/villinfh-00040.pdb
+INFO  :    17 :        2       74       pdbs/villinfh-00002.pdb
+INFO  :    18 :       11       74       pdbs/villinfh-00011.pdb
+INFO  :    19 :       43       60       pdbs/villinfh-00043.pdb
+INFO  :    20 :       44       60       pdbs/villinfh-00044.pdb
+INFO  :    21 :       28       58       pdbs/villinfh-00028.pdb
+INFO  :    22 :       24       56       pdbs/villinfh-00024.pdb
+INFO  :    23 :       25       56       pdbs/villinfh-00025.pdb
+INFO  :    24 :       41       55       pdbs/villinfh-00041.pdb
+INFO  :    25 :        7       54       pdbs/villinfh-00007.pdb
+INFO  :    26 :       26       54       pdbs/villinfh-00026.pdb
+INFO  :    27 :       45       54       pdbs/villinfh-00045.pdb
+INFO  :    28 :       46       54       pdbs/villinfh-00046.pdb
+INFO  :    29 :       50       54       pdbs/villinfh-00050.pdb
+INFO  :    30 :       35       53       pdbs/villinfh-00035.pdb
+INFO  :    31 :       36       53       pdbs/villinfh-00036.pdb
+INFO  :    32 :       39       53       pdbs/villinfh-00039.pdb
+INFO  :    33 :        1       33       pdbs/villinfh-00001.pdb
+INFO  :    34 :        3       33       pdbs/villinfh-00003.pdb
+INFO  :    35 :        8       33       pdbs/villinfh-00008.pdb
+INFO  :    36 :       18       33       pdbs/villinfh-00018.pdb
+INFO  :    37 :       19       33       pdbs/villinfh-00019.pdb
+INFO  :    38 :       20       33       pdbs/villinfh-00020.pdb
+INFO  :    39 :       21       33       pdbs/villinfh-00021.pdb
+INFO  :    40 :       22       33       pdbs/villinfh-00022.pdb
+INFO  :    41 :       23       33       pdbs/villinfh-00023.pdb
+INFO  :    42 :       29       33       pdbs/villinfh-00029.pdb
+INFO  :    43 :       30       33       pdbs/villinfh-00030.pdb
+INFO  :    44 :       31       33       pdbs/villinfh-00031.pdb
+INFO  :    45 :       32       33       pdbs/villinfh-00032.pdb
+INFO  :    46 :       33       33       pdbs/villinfh-00033.pdb
+INFO  :    47 :       34       33       pdbs/villinfh-00034.pdb
+INFO  :    48 :       37       33       pdbs/villinfh-00037.pdb
+INFO  :    49 :       38       33       pdbs/villinfh-00038.pdb
+INFO  :    50 :       42       33       pdbs/villinfh-00042.pdb
+INFO  : ======================================
+INFO  : Pairwise single linkage clustering
+INFO  : ======================================
+INFO  : Hierarchical Tree
+INFO  : ======================================
+INFO  : Node     Item 1   Item 2      Distance
+INFO  :     0 :       48       47        0.242  pdbs/villinfh-00048.pdb  pdbs/villinfh-00047.pdb
+INFO  :    -1 :       44       43        0.304  pdbs/villinfh-00044.pdb  pdbs/villinfh-00043.pdb
+INFO  :    -2 :       15       14        0.329  pdbs/villinfh-00015.pdb  pdbs/villinfh-00014.pdb
+INFO  :    -3 :        0       49        0.346                           pdbs/villinfh-00049.pdb
+INFO  :    -4 :       16       -2        0.356  pdbs/villinfh-00016.pdb                         
+INFO  :    -5 :       17       -4        0.358  pdbs/villinfh-00017.pdb                         
+INFO  :    -6 :       28       27        0.366  pdbs/villinfh-00028.pdb  pdbs/villinfh-00027.pdb
+INFO  :    -7 :       13       12        0.388  pdbs/villinfh-00013.pdb  pdbs/villinfh-00012.pdb
+INFO  :    -8 :       -5       -7        0.391                                                  
+INFO  :    -9 :       36       35        0.417  pdbs/villinfh-00036.pdb  pdbs/villinfh-00035.pdb
+INFO  :   -10 :       -3       46        0.417                           pdbs/villinfh-00046.pdb
+INFO  :   -11 :       -8       11        0.430                           pdbs/villinfh-00011.pdb
+INFO  :   -12 :       25       24        0.431  pdbs/villinfh-00025.pdb  pdbs/villinfh-00024.pdb
+INFO  :   -13 :        5        4        0.433  pdbs/villinfh-00005.pdb  pdbs/villinfh-00004.pdb
+INFO  :   -14 :      -11       10        0.440                           pdbs/villinfh-00010.pdb
+INFO  :   -15 :      -14        6        0.441                           pdbs/villinfh-00006.pdb
+INFO  :   -16 :       40       41        0.446  pdbs/villinfh-00040.pdb  pdbs/villinfh-00041.pdb
+INFO  :   -17 :       -6       26        0.446                           pdbs/villinfh-00026.pdb
+INFO  :   -18 :        9      -15        0.461  pdbs/villinfh-00009.pdb                         
+INFO  :   -19 :        8      -18        0.464  pdbs/villinfh-00008.pdb                         
+INFO  :   -20 :      -13        3        0.466                           pdbs/villinfh-00003.pdb
+INFO  :   -21 :       45       -1        0.468  pdbs/villinfh-00045.pdb                         
+INFO  :   -22 :        7        2        0.470  pdbs/villinfh-00007.pdb  pdbs/villinfh-00002.pdb
+INFO  :   -23 :      -19      -20        0.470                                                  
+INFO  :   -24 :       39      -16        0.470  pdbs/villinfh-00039.pdb                         
+INFO  :   -25 :      -10       50        0.476                           pdbs/villinfh-00050.pdb
+INFO  :   -26 :       42      -21        0.483  pdbs/villinfh-00042.pdb                         
+INFO  :   -27 :      -23      -22        0.489                                                  
+INFO  :   -28 :      -25      -26        0.493                                                  
+INFO  :   -29 :       32       34        0.497  pdbs/villinfh-00032.pdb  pdbs/villinfh-00034.pdb
+INFO  :   -30 :       20       19        0.501  pdbs/villinfh-00020.pdb  pdbs/villinfh-00019.pdb
+INFO  :   -31 :      -12       23        0.501                           pdbs/villinfh-00023.pdb
+INFO  :   -32 :      -29       33        0.502                           pdbs/villinfh-00033.pdb
+INFO  :   -33 :      -28      -24        0.503                                                  
+INFO  :   -34 :       18      -27        0.507  pdbs/villinfh-00018.pdb                         
+INFO  :   -35 :       22       21        0.510  pdbs/villinfh-00022.pdb  pdbs/villinfh-00021.pdb
+INFO  :   -36 :      -35      -31        0.511                                                  
+INFO  :   -37 :       -9       37        0.518                           pdbs/villinfh-00037.pdb
+INFO  :   -38 :      -17      -36        0.522                                                  
+INFO  :   -39 :      -30      -34        0.523                                                  
+INFO  :   -40 :       29      -38        0.525  pdbs/villinfh-00029.pdb                         
+INFO  :   -41 :      -39        1        0.525                           pdbs/villinfh-00001.pdb
+INFO  :   -42 :       38      -33        0.526  pdbs/villinfh-00038.pdb                         
+INFO  :   -43 :      -32      -37        0.532                                                  
+INFO  :   -44 :       31      -43        0.536  pdbs/villinfh-00031.pdb                         
+INFO  :   -45 :      -44      -40        0.545                                                  
+INFO  :   -46 :      -45      -41        0.546                                                  
+INFO  :   -47 :      -42      -46        0.551                                                  
+INFO  :   -48 :       30      -47        0.566  pdbs/villinfh-00030.pdb                         
+INFO  : ======================================
+INFO  : 1 Clusters @ Threshold  0.600 (0.6)
+INFO  : ======================================
+INFO  : Item     Cluster
+INFO  :     1 :        1                        pdbs/villinfh-00001.pdb
+INFO  :     2 :        1                        pdbs/villinfh-00002.pdb
+INFO  :     3 :        1                        pdbs/villinfh-00003.pdb
+INFO  :     4 :        1                        pdbs/villinfh-00004.pdb
+INFO  :     5 :        1                        pdbs/villinfh-00005.pdb
+INFO  :     6 :        1                        pdbs/villinfh-00006.pdb
+INFO  :     7 :        1                        pdbs/villinfh-00007.pdb
+INFO  :     8 :        1                        pdbs/villinfh-00008.pdb
+INFO  :     9 :        1                        pdbs/villinfh-00009.pdb
+INFO  :    10 :        1                        pdbs/villinfh-00010.pdb
+INFO  :    11 :        1                        pdbs/villinfh-00011.pdb
+INFO  :    12 :        1                        pdbs/villinfh-00012.pdb
+INFO  :    13 :        1                        pdbs/villinfh-00013.pdb
+INFO  :    14 :        1                        pdbs/villinfh-00014.pdb
+INFO  :    15 :        1                        pdbs/villinfh-00015.pdb
+INFO  :    16 :        1                        pdbs/villinfh-00016.pdb
+INFO  :    17 :        1                        pdbs/villinfh-00017.pdb
+INFO  :    18 :        1                        pdbs/villinfh-00018.pdb
+INFO  :    19 :        1                        pdbs/villinfh-00019.pdb
+INFO  :    20 :        1                        pdbs/villinfh-00020.pdb
+INFO  :    21 :        1                        pdbs/villinfh-00021.pdb
+INFO  :    22 :        1                        pdbs/villinfh-00022.pdb
+INFO  :    23 :        1                        pdbs/villinfh-00023.pdb
+INFO  :    24 :        1                        pdbs/villinfh-00024.pdb
+INFO  :    25 :        1                        pdbs/villinfh-00025.pdb
+INFO  :    26 :        1                        pdbs/villinfh-00026.pdb
+INFO  :    27 :        1                        pdbs/villinfh-00027.pdb
+INFO  :    28 :        1                        pdbs/villinfh-00028.pdb
+INFO  :    29 :        1                        pdbs/villinfh-00029.pdb
+INFO  :    30 :        1                        pdbs/villinfh-00030.pdb
+INFO  :    31 :        1                        pdbs/villinfh-00031.pdb
+INFO  :    32 :        1                        pdbs/villinfh-00032.pdb
+INFO  :    33 :        1                        pdbs/villinfh-00033.pdb
+INFO  :    34 :        1                        pdbs/villinfh-00034.pdb
+INFO  :    35 :        1                        pdbs/villinfh-00035.pdb
+INFO  :    36 :        1                        pdbs/villinfh-00036.pdb
+INFO  :    37 :        1                        pdbs/villinfh-00037.pdb
+INFO  :    38 :        1                        pdbs/villinfh-00038.pdb
+INFO  :    39 :        1                        pdbs/villinfh-00039.pdb
+INFO  :    40 :        1                        pdbs/villinfh-00040.pdb
+INFO  :    41 :        1                        pdbs/villinfh-00041.pdb
+INFO  :    42 :        1                        pdbs/villinfh-00042.pdb
+INFO  :    43 :        1                        pdbs/villinfh-00043.pdb
+INFO  :    44 :        1                        pdbs/villinfh-00044.pdb
+INFO  :    45 :        1                        pdbs/villinfh-00045.pdb
+INFO  :    46 :        1                        pdbs/villinfh-00046.pdb
+INFO  :    47 :        1                        pdbs/villinfh-00047.pdb
+INFO  :    48 :        1                        pdbs/villinfh-00048.pdb
+INFO  :    49 :        1                        pdbs/villinfh-00049.pdb
+INFO  :    50 :        1                        pdbs/villinfh-00050.pdb
+INFO  : ======================================
+INFO  : Centroids
+INFO  : ======================================
+INFO  : Cluster  Centroid  Size        Spread
+INFO  :     1 :       35       50        0.633  pdbs/villinfh-00035.pdb
+INFO  : ======================================

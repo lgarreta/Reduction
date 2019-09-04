@@ -5,7 +5,7 @@ USAGE: pca-run-clustering.R <PCAs file> => plots|clusters|data\n\n"
 
 options(width=300)
 args <-commandArgs (TRUE)
-args = c("v.pca")
+#args = c("v.pca")
 if (length (args) < 1) {
 	cat (USAGE)
 	quit()

@@ -69,7 +69,7 @@ hcut_cluster  <- function (pcas, propVariances, name) {
 	pdfFileData      = paste(name, "-clus-hc-fviz.data", sep="")
 	pdfFileCluster   = paste(name, "-clus-hc-fviz.cluster", sep="")
 	pca2 = pcas [,1:2]
-	pca2 [,2] = -1*pca2[,2] 
+	#pca2 [,2] = -1*pca2[,2] 
 
 	labPC1 = paste ("PC1 (", propVariances[1], "%)", sep= "")
 	labPC2 = paste ("PC2 (", propVariances[2], "%)", sep= "")
