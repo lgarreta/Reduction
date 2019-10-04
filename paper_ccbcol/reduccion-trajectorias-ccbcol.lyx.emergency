@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass extarticle
 \begin_preamble
 \usepackage[T1]{fontenc}
 \usepackage{charter}
@@ -44,7 +44,16 @@
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_package amsmath 1
@@ -71,10 +80,10 @@
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 2cm
-\topmargin 2cm
-\rightmargin 2cm
-\bottommargin 2cm
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -103,28 +112,76 @@ Algoritmo Rápido de Reducción de Trajectorias de Plegamiento de Proteínas
 Luis Ernesto Garreta U.
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Abstract
-En los últimos años se ha logrando realizar simulaciones de plegamiento
- de proteínas mucho más largas que llegan al orden de los milisegundos,
- lo que antes no se había realizado principalmente debido a las limitaciones
- en los recursos computacionales.
- Muchas de estos datos de trayectorias de plegamiento se están colocando
- a disposición pública para que sean analizados, sin embargo, debido a la
- inmensa cantidad de conformaciones de proteínas que resultan en estas trayector
-ias, su análisis se vuelve complejo.
- Por lo tanto, se vuelve necesario el desarrollo de métodos que logren obtener
- las conformaciones o grupos de conformaciones más representativas de la
- trayectoria teniendo en cuenta dos aspectos claves: el tiempo computacional
- y la calidad de los datos.
- En este trabajo, nosotros presentamos un algoritmo y una herramienta que
- realiza esta reducción de las trayectorias de plegamiento de proteínas
- teniendo en cuenta los dos aspectos anteriores.
+Gracias a los avances en hardware y software, las simulaciones de plegamiento
+ de proteínas están experimentando grandes progresos, alcanzando tiempos
+ de simulación sin precedentes, en el orden de los microsegundos y milisegundos.
+ Como consecuencia, las trayectorias generadas por estas simulaciones son
+ muy extensas, con miles y millones de conformaciones, lo que genera problemas
+ tanto en tiempo como en espacio para procesarlas y analizarlas.
+ Una manera de sobrepasar estos problemas es desarrollar algoritmos rápidos
+ para generar trayectorias reducidas que preserven tanto como sea posible
+ las características de las trayectorias originales, especialmente el orden
+ temporal y la estructura de las conformaciones.
  
 \end_layout
 
 \begin_layout Abstract
+En este artículo presentamos un algoritmo para reducir este tipo de trayectorias
+ que divide la trayectoria en segmentos y por cada segmento extrae los eventos
+ más disimilares, mediante una estrategia rápida de agrupamiento, y luego
+ selecciona a los más representativos, mediante una estrategia de agrupamiento
+ global.
+ El algoritmo aprovecha el orden temporal implícito en la trayectoria para
+ realizar en cada segmento comparaciones locales y evitar la comparación
+ de todos contra todos, que se vuelve impráctica computacionalmente cuando
+ son muchas conformaciones.
+ De esta manera, el algoritmo reduce muy rápidamente la trayectoria y las
+ conformaciones seleccionadas conservan tanto su estructura como su orden
+ temporal.
+ Además, la partición por segmentos permite al algoritmo reducir cada segmento
+ de forma independiente y paralela, lo que lo vuelve aún más rápido cuando
+ se ejecuta en máquinas multi-core, muy comunes hoy en día.
+\end_layout
+
+\begin_layout Abstract
 \begin_inset Note Note
-status open
+status collapsed
+
+\begin_layout Plain Layout
+Además, algo muy importante es que muchos de los proyectos que producen
+ estas simulaciones, están cada día más, colocando a disposición pública
+ estas trayectorias de plegamiento para su análisis.
+ Sin embargo, debido a la inmensa cantidad de conformaciones de proteínas
+ que resultan en estas trayectorias, su análisis se vuelve complejo y se
+ vuelve necesario desarrollar estrategias para reducirlas.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -163,13 +220,13 @@ Results:
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Introducción
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -222,19 +279,35 @@ Given that these data sets are becoming larger and are generated more quickly,
 \end_layout
 
 \begin_layout Standard
-Los métodos de simulación del proceso de plegamiento de proteínas han demostrado
- ser de gran utilidad para estudiar este proceso y tratar de entender las
- reglas que permiten a una cadena de aminoacidos determinar su estructura
- 3D y convertirse en una proteína activa.
-\end_layout
+Las simulaciones del plegamiento de proteínas han demostrado ser de gran
+ utilidad para estudiar las mecanismos subyacentes de este proceso, el cual
+ permite a una cadena de aminoácidos plegarse hasta alcanzar su estructura
+ tridimensional única y convertirse en una proteína activa habilitada para
+ ejecutar una función biológica.
+ Gracias a los avances en hardware y software, estas simulaciones han experiment
+ado grandes progresos, con tiempos de simulación en el orden de los milisegundos
+, y llevadas a cabo usando diferentes tecnologías, desde costosas supercomputado
+ras especializadas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shaw2011"
+literal "true"
 
-\begin_layout Standard
-Actualmente se están liberando con más frecuencia datos de simulaciones
- de plegamiento de proteínas para que la comunidad científica los analice
- y avance en el entendimiento de este proceso.
- Estas simulaciones alcanzan tiempos de simulación que antes no se lograban
- debido a las limitaciones en los recursos computacionales.
- Hace algunos años el proyecto folding@home 
+\end_inset
+
+, hasta, económicos arreglos de tarjetas gráficas 
+\color blue
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nguyen2014"
+literal "false"
+
+\end_inset
+
+,
+\color inherit
+ e incluso PCs distribuidos alrededor del mundo 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "PandeEnsign07"
@@ -242,11 +315,209 @@ literal "true"
 
 \end_inset
 
- liberó varias trayectorias de la simulación de la proteína Villin Headpiece
- la cual alcanzó el orden de los microsegundos utilizando computación distribuid
-a.
- Más recientemente, el grupo de David Shaw liberó simulaciones de varias
- proteínas en el orden de los milisegundos utilizando la supercomputadora
+.
+ Muchas de estas simulaciones alcanzan tiempos que antes no se lograban
+ debido a las limitaciones en los recursos computacionales, y las trayectorias
+ generadas por estas simulaciones se caracterizan por abarcar miles o millones
+ de conformaciones, lo cual a pesar de ser una gran ventaja porque se tiene
+ más detalle del proceso, así mismo es un problema debido al tiempo y recursos
+ computacionales necesarios para analizarlas.
+ 
+\color purple
+Por esta razón, se necesitan nuevos algoritmos capaces de reducir estas
+ trayectorias de una forma rápida, y que logren preservar la mayor información
+ posible tanto a nivel de representación como a nivel de orden temporal
+ de las conformaciones de la trayectoria.
+\end_layout
+
+\begin_layout Standard
+Para realizar estas reducciones se han utilizado diferentes técnicas que
+ básicamente caen en dos enfoques: la reducción de dimensionalidad 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Duan2013"
+literal "false"
+
+\end_inset
+
+ y el agrupamiento 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Peng2018"
+literal "false"
+
+\end_inset
+
+, las cuales más que reducir las trayectorias realizan un análisis sobre
+ ellas (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:lost-info-dimensionality"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Mientras que en el primer enfoque se transforma las conformaciones a una
+ forma simplificada para poder interpretar los resultados; en el segundo,
+ se obtienen conformaciones representativas de grupos de conformaciones
+ con propiedades comunes.
+ Sin embargo, aunque en el primer enfoque se conserva el orden temporal
+ de las conformaciones, su estructura se pierda ya que su representación
+ se modifica; por el contrario, aunque en el segundo enfoque se conserva
+ la estructura de las conformaciones, el orden temporal se pierde ya que
+ los grupos pueden contener conformaciones de tiempos muy diferentes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/2RN2-trajectory-weakness.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Perdida de información en las reducciones
+\series default
+.
+ La reducción de la dimensionalidad (Parte de arriba) pierde la información
+ estructural (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$C_5$
+\end_layout
+
+\end_inset
+
+ se transforma a un nuevo y reducido conjunto de variable 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$C'_5$
+\end_layout
+
+\end_inset
+
+ ).
+ Mientras que en el agrupamiento (parte de abajo), el orden temporal se
+ pierde (no todas las conformaciones de G1 ocurren antes que las de G2).
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:lost-info-dimensionality"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este artículo presentamos un algoritmo rápido para reducción de trayectorias
+ largas de plegamiento de proteínas que toma como base la estrategia de
+ Hobohm&Sander 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hobohm1992"
+literal "true"
+
+\end_inset
+
+ para agrupamientos rápidos y que se basa en tres estrategias: primero una
+ partición de la trayectoria en múltiples segmentos; segundo, una reducción
+ local muy rápida sobre cada una de ellos que aprovecha el orden temporal
+ de las conformaciones; y tercero, una reducción global que busca encontrar
+ las conformaciones más representativas de cada segmento.
+ Estas tres estrategias permiten que este algoritmo sea rápido, fácilmente
+ paralelizable, y produzca trayectorias reducidas que conservan tanto la
+ estructura como el orden temporal de las conformaciones.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\color purple
+Estos avances muestran un crecimiento notable en estas simulaciones con
+ tiempos en el orden de los micro y milisegundos, y con trayectorias de
+ millones de conformaciones.
+ Muchas de estas trayectorias ya se están colocando a disposición pública,
+ pero debido al gran número de conformaciones, su procesamiento y análisis
+ en computadoras convencionales es muy costoso en tiempo computacional.
+ Por lo tanto se necesiten nuevos algoritmos capaces de reducir estas trayectori
+as de una forma rápida, aprovechando eficientemente los recursos de este
+ tipo de máquinas, y buscando conservar la mayor información posible tanto
+ a nivel de representación como a nivel de orden temporal.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Estos progresos han dado iniciativa a varios proyectos de simulación que
+ han empezado a liberar sus resultados a través de trayectorias de plegamiento
+ de proteínas disponibles para analizar por la comunidad científica.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Por ejemplo, hace algunos años el proyecto folding@home 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PandeEnsign07"
+literal "true"
+
+\end_inset
+
+ liberó varias trayectorias de la simulación del plegamiento de la proteína
+ Villin Headpiece, las simulaciones realizadas con dinámica molecular alcanzaron
+ el orden de los microsegundos y se ejecutaron utilizando un enfoque de
+ computación distribuida.
+ Más recientemente, el grupo de David Shaw puso a disposición las trayectorias
+ de 12 proteínas simuladas con dinámica molecular y que alcanzaron el orden
+ de los milisegundos, para estas simulaciones se utilizó la supercomputadora
  Anton diseñada especialmente para simular dinámica molecular 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -256,14 +527,57 @@ literal "true"
 \end_inset
 
 .
- Todas estas simulaciones se caracterizan por generar trayectorias que abarcan
- miles o millones de conformaciones, lo cual es una gran ventaja porque
- se tiene más detalle del proceso, pero así mismo es un problema debido
- al tiempo y recursos computacionales necesarios para analizarlas.
+ Como una alternativa más económica a estas supercomputadoras, en el 2014
+ se usó unidades de procesamiento gráfico (GPUs) y se reportó las simulaciones
+ de 17 proteínas en el orden de los microsegundos 
+\color blue
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nguyen2014"
+literal "false"
+
+\end_inset
+
+.
  
+\color purple
+Así mismo, se han utilizado enfoques alternos a la dinámica molecular como
+ el Probabilistic Roadmap Method 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AmatoSong01,Amato2010"
+literal "false"
+
+\end_inset
+
+ que está implementado en el servidor público de plegamiento de
+\color inherit
+ Parasol (
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://parasol.tamu.edu/foldingserver/
+\end_layout
+
+\end_inset
+
+) donde se tienen disponibles las trayectorias de más de 80 trayectorias
+ de varias proteínas.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 Para reducir estas trayectorias los métodos actuales buscan conjuntos de
  conformaciones representativas, que generalmente utilizan métodos de agrupamien
 to donde se construye una matriz con las distancias entre cada una de las
@@ -279,7 +593,7 @@ s cuando se trata de muchas conformaciones y por esta razón los algoritmos
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Otra forma de reducir estas trayectorias es crear agrupamientos rápidos
  que no tengan que comparar todas las conformaciones, parecido a lo que
  realiza el algoritmo de Hobohm&Sander 
@@ -303,7 +617,7 @@ literal "true"
  seleccione los más importantes.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Nuestro enfoque trabaja sobre las trayectorias de plegamiento ya realizadas
  y disponibles como un conjunto de snapshots a determinado 
 \emph on
@@ -320,6 +634,11 @@ as por cada partición, por ejemplo se puede definir que cada 1000 conformacione
  se seleccionen 500 representativas, lo que reduce a la mitad el número
  de conformaciones, o cada 10000 conformaciones se selecciones 100, lo que
  la reduce a la trayectoria en 99%.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -377,7 +696,7 @@ How does a protein fold into its biologically functional three-dimensional
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Subsection
 Contexto
@@ -486,7 +805,15 @@ Antecedentes
 \end_layout
 
 \begin_layout Standard
-Para la reducción de trayectorias de simulación de plegamiento se han utilizado
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Subsection
+Técnicas de reducción de trayectorias de plegamiento
+\end_layout
+
+\begin_layout Plain Layout
+Para la reducción de trayectorias de plegamiento de proteínas se han utilizado
  varios métodos como los basados en agrupamientos, basados en transformaciones
  lineales como el análisis de componentes principales (PCA) y el escalamiento
  multidimensional (MDS), y los que cambia la representación de la estructura
@@ -494,7 +821,7 @@ Para la reducción de trayectorias de simulación de plegamiento se han utilizad
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Los basados en agrupamientos de estructuras se implementa en varias herramientas
  de simulación de plegamiento como el algoritmo de agrupamiento de GROMACS
  
@@ -525,7 +852,7 @@ literal "false"
   
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Entre los basados en transformaciones tanto lineales como no-lineales están
  los que usan PCA y MDS.
  Los que usan PCA 
@@ -560,7 +887,7 @@ literal "false"
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Para evitar el problema de la linearidad con el PCA, Rajan et al.
  2010 
 \begin_inset CommandInset citation
@@ -595,7 +922,7 @@ X,Y
  visualmente la ocurrencia de eventos en el tiempo.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Entre los que cambian la representación de la estructura Yang et al.
  2007 
 \begin_inset CommandInset citation
@@ -616,6 +943,11 @@ n más concisa.
  Sin embargo, la reducción cambia sustancialmente los elementos de la trayectori
 a al trasladar las estructuras 3D a representaciones 2D, perdiendo información
  implicita en la estructura.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -775,12 +1107,11 @@ s and molecular dynamics have led to successful simula- tions of folding
 \end_layout
 
 \begin_layout Standard
-Las simulaciones del plegamiento de proteínas son complejas y demandan gran
- cantidad de tiempo y recursos computacionales.
- Debido a estas limitaciones tecnológicas, hasta hace unos años estas simulacion
-es se realizaban para proteínas pequeñas y los tiempos simulados eran muy
- cortos, en el orden de los microsegundos mientras que una proteína se pliega
- en el orden de los milisegundos 
+Debido a que las simulaciones del plegamiento de proteínas son complejas
+ y demandan gran cantidad de recursos computacionales, hasta hace unos años
+ estas simulaciones se realizaban para proteínas pequeñas y los tiempos
+ simulados eran muy cortos, en el orden de los microsegundos mientras que
+ una proteína se pliega en el orden de los milisegundos 
 \begin_inset ERT
 status open
 
@@ -794,13 +1125,9 @@ cite{HuardWood06}
 \end_inset
 
 .
- Sin embargo, 
-\backslash
-
-\backslash
-en los últimos años los avances en el hardware han logrado avances de tal
- manera que se empiezan a mostrar resultados de simulaciones mucho más largas
- y de proteínas más grandes.
+ Sin embargo, en los últimos años los avances en el hardware han logrado
+ avances de tal manera que se empiezan a mostrar resultados de simulaciones
+ mucho más largas y de proteínas más grandes.
  Dos ejemplos de estos avances son los proyectos de folding@home y de la
  supercomputadora Anton.
  El proyecto foldin@home logró realizar hace algunos años una de las primeras
@@ -865,7 +1192,7 @@ literal "true"
 \end_layout
 
 \begin_layout Subsection
-Algoritmos Rápidos de Agrupamiento de Secuencias
+Algoritmos Rápidos de Agrupamiento 
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Algoritmos-Rápidos"
@@ -877,7 +1204,7 @@ name "subsec:Algoritmos-Rápidos"
 
 \begin_layout Standard
 Muchos de los algoritmos para realizar agrupamientos rápidos de secuencias
- biológicas se basan en las ideas del algoritmo de Hobohm y Sander 
+ biológicas se basan en el algoritmo de Hobohm&Sander 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Hobohm1992"
@@ -885,33 +1212,36 @@ literal "true"
 
 \end_inset
 
- que creó inicialmente para agrupar de forma rápida secuencias de proteínas.
+ creado inicialmente para agrupar de forma rápida secuencias de proteínas.
  El algoritmo determina las secuencias más representativas a través de dos
  actividades: un ordenamiento y una selección rápida.
- En el ordenamiento, las secuencias se organizan por longitud en orden descendie
-nte, luego se toma la primera secuencia (la más larga) como representativa
- del primer grupo.
- En la selección rápida, se compara el resto de secuencias con la representativa
- y se las incorpora al grupo si son cercanas (ejemplo, si son similares
- a nivel de secuencias), de lo contrario, pasa a ser la representativa de
- un nuevo grupo y se hace lo mismo con el resto de secuencias hasta terminar.
- Los aspectos determinantes del éxito del algoritmo son la relación de orden
- que se establezca al inicio y las propiedades que se tomen para comparar
- las secuencias.
- En secuencias de ADN y de proteínas estos aspectos funcionan bien ya que
- dos secuencias de más o menos de igual longitud tienen mayor probabilidad
- de ser similares que dos secuencias de longitudes completamente diferentes.
- Sin embargo en estructuras tridimensionales de proteínas que pertenecen
- a una misma trayectoria, la longitud y la similaridad de la secuencia va
- a ser la misma para todas la conformaciones, lo que implica redefinir estos
- aspectos en términos de las características de las estructuras 3D de proteínas
- de una misma trayectoria, como vamos a describir más adelante cuando mostremos
- nuestro algoritmo de reducción de trayectorias de plegamiento.
+ Las secuencias se organizan por longitud en orden descendiente y se selecciona
+ la primera (la más larga) como representativa del primer grupo.
+ Luego, se compara la siguiente secuencia con la representativa y si es
+ similar, de acuerdo a un umbral, se la incorpora al grupo.
+ De lo contrario, pasa a ser la representativa de un nuevo grupo y se hace
+ lo mismo con el resto de secuencias hasta terminar.
+ 
 \end_layout
 
 \begin_layout Standard
-Dos de las implementaciones más usadas de este algoritmo para agrupamiento
- rápido de secuencias son los programas CD-HIT 
+Los aspectos determinantes del éxito de este algoritmo son la relación de
+ orden que se establece al inicio y las características que se tomen para
+ comparar las secuencias.
+ En secuencias de ADN y de proteínas, estos aspectos funcionan bien ya que
+ dos secuencias con longitudes cercanas tienen mayor probabilidad de ser
+ similares que dos secuencias de longitudes muy diferentes.
+ Sin embargo, en el caso de trayectorias de plegamiento, todas las conformacione
+s tienen la misma secuencia de aminoácidos y por lo tanto son de igual longitud.
+ Esto implica definir la relación de similaridad tomando otras características,
+ como por ejemplo la estructura 3D de las conformaciones, que es diferente
+ para cada conformación, como vamos a ver más adelante cuando describamos
+ el algoritmo de reducción propuesto.
+\end_layout
+
+\begin_layout Standard
+Dos de las implementaciones más usadas de este algoritmo son los programas
+ CD-HIT 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Weizhong2002"
@@ -927,21 +1257,15 @@ literal "true"
 
 \end_inset
 
-.
- El programa CD-HIT realiza un ordenamiento por longitud de la secuencia
- como lo plantea el algoritmo de Hobhon, y para la selección utiliza un
- filtro de palabras cortas para comparar si dos secuencias son similares–evitand
-o el alineamiento de las mismas–y así asignarlas a un mismo grupo o crear
- uno nuevo.
- En el caso de secuencias de proteínas el programa usa por defecto una palabra
- de 10 aminoácidos o 
-\emph on
-decapeptido
-\emph default
-.
- En cambio el programa UCLUST utiliza para com parar las secuencias una
- función creada por los mismos autores que la llaman como USEARCH y que
- calcula la similitud entre las secuencias a partir de un alineamiento global.
+ para agrupamiento rápido de secuencias tanto de nucleóticos como de aminoácidos.
+ CD-HIT realiza un ordenamiento por longitud de la secuencia como lo plantea
+ el algoritmo de Hobhom&Sander, y para la selección utiliza un filtro de
+ palabras cortas–10 aminoácidos en el caso de proteínas–para comparar la
+ similaridad entre dos secuencias–evitando así el alineamiento de las mismas.
+ En cambio UCLUST utiliza para comparar las secuencias una función propia
+ que la llaman como USEARCH que calcula la similitud entre las secuencias
+ a partir de un alineamiento global, es decir un alineamiento que incluye
+ todos los nucleótidos de ambas secuencias.
 \end_layout
 
 \begin_layout Standard
@@ -1080,525 +1404,7 @@ s.ucr .edu/home/seed.
 \end_layout
 
 \begin_layout Section
-Algoritmo de Reducción de Trayectorias de Plegamiento
-\end_layout
-
-\begin_layout Standard
-La primera parte del algoritmo realiza un agrupamiento local rápido donde
- se aprovecha el ordenamiento temporal de las conformaciones implícito en
- la trayectoria.
- Para esto, se toma la idea del algoritmo propuesto por Hobohm et al.
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Hobohm1992"
-literal "false"
-
-\end_inset
-
- para la selección de conjuntos de proteínas.
- Se particiona la trayectoria en 
-\emph on
-M bins
-\emph default
- o secciones de 
-\emph on
-N 
-\emph default
-conformaciones contiguas en el tiempo de simulación.
- Para cada uno de los 
-\emph on
-bins
-\emph default
- se toma la primera estructura como cabeza del primer grupo y se la compara
- con la siguiente en orden de tiempo de simulación.
- Si presentan similaridad se adicionan al grupo; de lo contrario si es disimilar
- se crea un nuevo grupo y se toma a esta última estructura como cabeza del
- nuevo grupo.
- El proceso continua hasta terminar con todas las estructuras del 
-\emph on
-bin 
-\emph default
-y esto mismo se realiza para los demás 
-\emph on
-bins.
-
-\emph default
- En la segunda parte del algoritmo, toma cada conjunto de conformaciones
- cabeza de grupo seleccionadas en cada 
-\emph on
-bin
-\emph default
- y se crea una matriz de similaridades que se la usa para realizar un agrupamien
-to para seleccionar las 
-\emph on
-K
-\emph default
- estructuras más representativas de cada conjunto tomando los
-\emph on
- k-medoides
-\emph default
-.
- La unión de estas 
-\emph on
-K
-\emph default
- estructuras por 
-\emph on
-bin
-\emph default
- crea un nuevo conjunto mucho más reducido que el creado en el agrupamiento
- local.
- El orden temporal no se pierde ya que las 
-\emph on
-K
-\emph default
- estructuras seleccionadas por cada conjunto se las ordena de acuerdo a
- su tiempo original de simulación.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Itemize
-Descripción general algoritmo:
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-El algoritmo contiene tres fases: primero inicia particionando la trayectoria
- de plegamiento original en secciones o
-\emph on
- bins
-\emph default
- donde se ubican un número 
-\emph on
-N
-\emph default
- de estructuras de proteínas contiguas en el tiempo.
- Sobre cada 
-\emph on
-bin
-\emph default
- se aplica un agrupamiento local rápido (descrito abajo) y se obtiene un
- número mucho menor de estructuras representativas de ese 
-\emph on
-bin
-\emph default
-.
- Adicionalmente, sobre esa primera reducción se realiza un agrupamiento
- global detallado (descrito abajo) que simplifica cada 
-\emph on
-bin 
-\emph default
-a 
-\emph on
-K
-\emph default
- representativas.
- Al final, se obtienen dos conjuntos de estructuras que corresponden a las
- dos reducciónes, local y global de la trayectoria de plegamiento original.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Notas sobre paralelización del algoritmo
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-El algoritmo es fácilmente paralelizable ya que una vez particionada la
- trayectoría el proceso de reducción es el mismo para cada sección o 
-\emph on
-bin, 
-\emph default
-lo que permite que el procesamiento se reparta sobre cada 
-\emph on
-bin
-\emph default
-, es decir, tanto la reducción local como la reducción global se ejecutan
- al mismo tiempo sobre cada 
-\emph on
-bin
-\emph default
- y por lo tanto si existen 
-\emph on
-N
-\emph default
- 
-\emph on
-bins
-\emph default
-, cada uno de ellos se podría asignar a un proceso, hilo, o procesador.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Detalles de TM-score
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-Grupos que también tiene en cuenta la posición de los átomos entre las estructur
-as pero es menos sensible a las variaciones estructurales locales.
- La métrica para las comparaciones en esta fase es el TM-score que tiene
- en cuenta las propiedades globales de plegamiento y por lo tanto es adecuada
- para agrupar estructuras que están más alejadas o separadas tiempos más
- largos dentro de la trayectoria.
-\end_layout
-
-\begin_layout Plain Layout
-En la segunda fase, el algoritmo toma las estructuras representativas de
- cada grupo y realiza con ellas un nuevo agrupamiento utilizando la métrica
- TM-score que tiene en cuenta propiedades globales del plegamiento y que
- no es tan sensible a variaciones locales como sucede con el RMSD.
- Este nuevo agrupamiento forma 
-\emph on
-K
-\emph default
- grupos de los cuales se toman las estructuras centrales o medoides como
- representativas y que finalmente serán las que después del proceso de reducción
- representan a todo el 
-\emph on
-bin.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Detalles del agrupamiento lógico:
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-Tomando la primera estructura del 
-\emph on
-bin 
-\emph default
-(estado inicial) como representativa del primer grupo.
- Después, la siguiente estructura dentro del 
-\emph on
-bin,
-\emph default
- en orden de tiempo, se compara con la última representativa y si son semejantes
- de acuerdo a una métrica y a un umbral predeterminado, entonces la estructura
- se asigna a este grupo, de lo contrario se forma uno nuevo que toma a esta
- ultima estructura como la nueva representativa.
- La métrica para las comparaciones en esta fase es el 
-\emph on
-TM-score 
-\emph default
-que tiene en cuenta las propiedades globales de plegamiento y por lo tanto
- es adecuada para agrupar estructuras que están más alejadas o separadas
- tiempos más largos dentro de la trayectoria.
- Este proceso se sigue con las siguientes estructuras pero teniendo en cuenta
- que las comparaciones se realizan solo con las estructuras representativas
- de cada grupo y no con las estructuras que conforman el grupo, lo cual
- reduce el número de comparaciones en gran medida frente a un algoritmo
- convencional de agrupamiento.
- Además, para evitar más comparaciones, estas se realizan de atrás hacia
- adelante, es decir, las estructuras se comparan con la última representativa
- y si son semejantes entonces se agrega al grupo y no se siguen las comparacione
-s.
- Esto debido a que a medida que avanza la simulación de plegamiento, una
- nueva estructura no es más que una modificación de la anterior y por lo
- tanto se espera que sea más semejante a esta última.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Descripción del particionamiento:
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-Para la partición de la trayectoría se toma para cada 
-\emph on
-bin
-\emph default
- un número 
-\emph on
-M
-\emph default
- de estructuras contiguas en la trayectoría y se las asigna al 
-\emph on
-bin
-\emph default
-, de esta manera las primeras 
-\emph on
-M 
-\emph default
-estructuras se ubicarán en el bin1, las segunda 
-\emph on
-M
-\emph default
- se ubicarán en el bin2, y así sucesivamente, creándose un número de 
-\emph on
-bins
-\emph default
- igual al número total de estructuras sobre el tamaño 
-\emph on
-M
-\emph default
- de estructuras por bin.
- Por ejemplo si la trayectoría tiene N=1000 estructuras y se escoje M=200,
- entonces se crearán K=5 
-\emph on
-bins,
-\emph default
- cada uno con 200 estructuras (1000/2000.
- 
-\end_layout
-
-\end_deeper
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/diagrama-algoritmo.pdf
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Flujo de datos algoritmo
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
 Datos y Métodos
-\end_layout
-
-\begin_layout Subsection
-Comparación de Estructuras de Proteínas
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-
-\series bold
-TMscore and other metrics for structural comparison:
-\series default
- 
-\end_layout
-
-\begin_layout Description
-[
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Zhan2004"
-literal "true"
-
-\end_inset
-
-Seminal
-\begin_inset space ~
-\end_inset
-
-Paper] Scoring
-\begin_inset space ~
-\end_inset
-
-function
-\begin_inset space ~
-\end_inset
-
-for
-\begin_inset space ~
-\end_inset
-
-automated
-\begin_inset space ~
-\end_inset
-
-assessment
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-protein
-\begin_inset space ~
-\end_inset
-
-structure
-\begin_inset space ~
-\end_inset
-
-template
-\begin_inset space ~
-\end_inset
-
-quality
-\begin_inset space ~
-\end_inset
-
-Zhang
-\begin_inset space ~
-\end_inset
-
-Y.
-\begin_inset space ~
-\end_inset
-
-Skolnick
-\begin_inset space ~
-\end_inset
-
-J.: We have developed a new scoring function, the template modeling score
- (TM-score), to assess the quality of protein structure templates and predicted
- full-length models by extending the approaches used in Global Distance
- Test (GDT) and MaxSub.
- First, a protein size-dependent scale is exploited to eliminate the inherent
- protein size dependence of the previous scores and appropriately account
- for random protein structure pairs.
- Second, rather than setting specific distance cutoffs and calculating only
- the fractions with errors below the cutoff, all residue pairs in alignment/mode
-ling are evaluated in the proposed score.
- For comparison of various scoring functions, we have constructed a large-scale
- benchmark set of structure templates for 1489 small to medium size proteins
- using the threading program PROSPECTOR_3 and built the full-length models
- using MODELLER and TASSER.
- The TM-score of the initial threading alignments, compared to the GDT and
- MaxSub scoring functions, shows a much stronger correlation to the quality
- of the final full-length models.
- The TM-score is further exploited as an assessment of all 'new fold' targets
- in the recent CASP5 experiment and shows a close coincidence with the results
- of human-expert visual assessment.
- These data suggest that the TM-score is a useful complement to the fully
- automated assessment of protein structure predictions.
- © 2004 Wiley-Liss, Inc.
-\end_layout
-
-\begin_layout Description
-[https://zhanglab.ccmb.med.umich.edu/TM-score/]: TM-score is a metric for measuring
- the structural similarity of two protein models.
- It is designed to solve two major problems in the traditional metrics such
- as root-mean-square deviation (RMSD): (1) TM-score measures the global
- fold similarity and is less sensitive to the local structural variations;
- (2) magnitude of TM-score for random structure pairs is length-independent.
- TM-score has the value in (0,1], where 1 indicates a perfect match between
- two structures.
- Following strict statistics of structures in the PDB, scores below 0.17
- corresponds to randomly chosen unrelated proteins whereas with a score
- higher than 0.5 assume generally the same fold in SCOP/CATH.
- 
-\end_layout
-
-\begin_layout Description
-[https://en.wikipedia.org/wiki/Template_modeling_score] bioinformatics, the
- template modeling score or TM-score is a measure of similarity between
- two protein structures with different tertiary structures.
- The TM-score is intended as a more accurate measure of the quality of full-leng
-th protein structures than the often used RMSD and GDT measures.
- The TM-score indicates the difference between two structures by a score
- between ( 0 , 1 ] {
-\backslash
-displaystyle (0,1]} {
-\backslash
-displaystyle (0,1]}, where 1 indicates a perfect match between two structures
- (thus the higher the better).[1] Generally scores below 0.20 corresponds
- to randomly chosen unrelated proteins whereas structures with a score higher
- than 0.5 assume roughly the same fold.[2] A quantitative study [3] shows
- that proteins of TM-score = 0.5 have a posterior probability of 37% in the
- same CATH topology family and of 13% in the same SCOP fold family.
- The probabilities increase rapidly when TM-score > 0.5.
- The TM-score is designed to be independent of protein lengths.
- Contents
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Tanto para la primera y segunda fase de reducción utilizamos la medida de
- similitud entre estructuras de proteína llamada TM-score (Template Modeling
- score) 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Zhan2004"
-literal "false"
-
-\end_inset
-
-.
- Esta medida de similitud a diferencia de otras medidas ampliamente usadas
- en comparación de estructuras como el RMSD (Root Mean Square-Deviation)
- es más precisa ya que en el TM-score influyen poco sobre el puntaje final
- las secciones pequeñas de la proteína que alinean incorrectamente, tales
- como giros simples o términos flexibles, lo que reduce el chance de evaluacione
-s sesgadas.
-\end_layout
-
-\begin_layout Subsection
-Selección de Estructuras Representativas
-\end_layout
-
-\begin_layout Standard
-Las estructuras representativas de cada grupo o 
-\emph on
-bin
-\emph default
- resultante de la selección rápida de la primera fase se obtienen aplicando
- en cada uno de ellos un algoritmo de particionamiento alrededor de medoides
- (PAM) 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Park2009"
-literal "false"
-
-\end_inset
-
-.
- El algoritmo selecciona como representativa la estructura media o central
- de cada subgrupo resultante para la cual la suma de las distancias entre
- esta y las demás estructuras del subgrupo es mínima.
- Así, al final se obtienen por cada grupo o 
-\emph on
-bin
-\emph default
- inicial un conjunto reducido de estructuras que representan los eventos
- principales de esta sección de la trayectoria de plegamiento.
 \end_layout
 
 \begin_layout Subsection
@@ -1613,27 +1419,10 @@ name "subsec:Trayectorias-de-Plegamiento"
 \end_layout
 
 \begin_layout Standard
-Para mostrar los resultados del algoritmo de reducción propuesto, aplicamos
- las reducciónes a tres trayectorias de plegamiento de proteínas.
- La dos primeras corresponden a trayectorias cortas (200-300 conformaciones)
- para las proteínas: ferredoxina desde clostridium acidurici (PDB: 1FCA)
- y del Cyt férrico de levadura (iso-1-Cytc, PDB: 2YCC) que fueron simuladas
- por el grupo de Amato mediante el método 
-\emph on
-Probabilistic Roadmap Method 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "AmatoSong01"
-literal "true"
-
-\end_inset
-
-
-\emph default
- y que se caracterizan por ser trayectorias cortas que tratan de incluir
- los eventos principales de la simulación.
- Por el contrario, la tercera trayectoria corresponde a la simulación de
- plegamiento mediante la técnica de Dinámica Molecular 
+Para mostrar los resultados del algoritmo propuesto utilizamos las trayectorias
+ disponibles de tres proteínas.
+ La primera fue generada por la simulación de plegamiento por Dinámica Molecular
+ para la proteína Trp-cage (PDB: 2JOF) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Shaw2011"
@@ -1641,8 +1430,48 @@ literal "true"
 
 \end_inset
 
- para la proteína Trp-cage (PDB: 2JOF) y se caracteriza por ser una trayectoria
- mucho más extensa y detallada (más de 1 millón de conformaciones).
+.
+ Esta trayectoria se caracteriza por ser completa y muy extensa, con más
+ de 1 millón de conformaciones.
+ Las otras dos son las trayectorias de las proteínas ferredoxina clostridium
+ acidurici (PDB: 1FCA) y del Cyt férrico de levadura (PDB: 2YCC).
+ Estas fueron generadas mediante el método Probabilistic Roadmap Method
+\emph on
+ 
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AmatoSong01"
+literal "false"
+
+\end_inset
+
+ y se caracterizan por ser trayectorias cortas, de 200-300 conformaciones.
+ 
+\end_layout
+
+\begin_layout Subsection
+Métrica de Comparación de Estructuras de Proteínas
+\end_layout
+
+\begin_layout Standard
+Tanto para la reducción local y global el algoritmo utiliza la medida de
+ similitud entre estructuras de proteína llamada TM-score (Template Modeling
+ score) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang2004"
+literal "false"
+
+\end_inset
+
+.
+ Esta medida a diferencia de otras ampliamente usadas en comparación de
+ estructuras, como el RMSD (Root Mean Square-Deviation), es más precisa
+ porque evita evaluaciones sesgadas dando poco valor en el puntaje final
+ a las secciones pequeñas de la proteína que alinean incorrectamente, como
+ giros simples o términos flexibles.
 \end_layout
 
 \begin_layout Standard
@@ -1936,53 +1765,170 @@ parallel
 \end_layout
 
 \begin_layout Section
-Resultados y Discusión
+Algoritmo Propuesto
 \end_layout
 
 \begin_layout Standard
-Para mostrar las reducciónes que realiza nuestro algoritmo, presentamos
- aquí los resultados de la reducción realizada a tres trayectorias de proteínas.
- Las dos primeras son trayectorias cortas de menos de 300 conformaciones,
- mientras que la tercera es mucho mas larga con más de 1 millón de conformacione
-s.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+
+\series bold
+TMscore and other metrics for structural comparison:
+\series default
  
 \end_layout
 
-\begin_layout Subsection
-Reducción sobre un segmento de una trayectoría
+\begin_layout Description
+[
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhan2004"
+literal "true"
+
+\end_inset
+
+Seminal
+\begin_inset space ~
+\end_inset
+
+Paper] Scoring
+\begin_inset space ~
+\end_inset
+
+function
+\begin_inset space ~
+\end_inset
+
+for
+\begin_inset space ~
+\end_inset
+
+automated
+\begin_inset space ~
+\end_inset
+
+assessment
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+protein
+\begin_inset space ~
+\end_inset
+
+structure
+\begin_inset space ~
+\end_inset
+
+template
+\begin_inset space ~
+\end_inset
+
+quality
+\begin_inset space ~
+\end_inset
+
+Zhang
+\begin_inset space ~
+\end_inset
+
+Y.
+\begin_inset space ~
+\end_inset
+
+Skolnick
+\begin_inset space ~
+\end_inset
+
+J.: We have developed a new scoring function, the template modeling score
+ (TM-score), to assess the quality of protein structure templates and predicted
+ full-length models by extending the approaches used in Global Distance
+ Test (GDT) and MaxSub.
+ First, a protein size-dependent scale is exploited to eliminate the inherent
+ protein size dependence of the previous scores and appropriately account
+ for random protein structure pairs.
+ Second, rather than setting specific distance cutoffs and calculating only
+ the fractions with errors below the cutoff, all residue pairs in alignment/mode
+ling are evaluated in the proposed score.
+ For comparison of various scoring functions, we have constructed a large-scale
+ benchmark set of structure templates for 1489 small to medium size proteins
+ using the threading program PROSPECTOR_3 and built the full-length models
+ using MODELLER and TASSER.
+ The TM-score of the initial threading alignments, compared to the GDT and
+ MaxSub scoring functions, shows a much stronger correlation to the quality
+ of the final full-length models.
+ The TM-score is further exploited as an assessment of all 'new fold' targets
+ in the recent CASP5 experiment and shows a close coincidence with the results
+ of human-expert visual assessment.
+ These data suggest that the TM-score is a useful complement to the fully
+ automated assessment of protein structure predictions.
+ © 2004 Wiley-Liss, Inc.
+\end_layout
+
+\begin_layout Description
+[https://zhanglab.ccmb.med.umich.edu/TM-score/]: TM-score is a metric for measuring
+ the structural similarity of two protein models.
+ It is designed to solve two major problems in the traditional metrics such
+ as root-mean-square deviation (RMSD): (1) TM-score measures the global
+ fold similarity and is less sensitive to the local structural variations;
+ (2) magnitude of TM-score for random structure pairs is length-independent.
+ TM-score has the value in (0,1], where 1 indicates a perfect match between
+ two structures.
+ Following strict statistics of structures in the PDB, scores below 0.17
+ corresponds to randomly chosen unrelated proteins whereas with a score
+ higher than 0.5 assume generally the same fold in SCOP/CATH.
+ 
+\end_layout
+
+\begin_layout Description
+[https://en.wikipedia.org/wiki/Template_modeling_score] bioinformatics, the
+ template modeling score or TM-score is a measure of similarity between
+ two protein structures with different tertiary structures.
+ The TM-score is intended as a more accurate measure of the quality of full-leng
+th protein structures than the often used RMSD and GDT measures.
+ The TM-score indicates the difference between two structures by a score
+ between ( 0 , 1 ] {
+\backslash
+displaystyle (0,1]} {
+\backslash
+displaystyle (0,1]}, where 1 indicates a perfect match between two structures
+ (thus the higher the better).[1] Generally scores below 0.20 corresponds
+ to randomly chosen unrelated proteins whereas structures with a score higher
+ than 0.5 assume roughly the same fold.[2] A quantitative study [3] shows
+ that proteins of TM-score = 0.5 have a posterior probability of 37% in the
+ same CATH topology family and of 13% in the same SCOP fold family.
+ The probabilities increase rapidly when TM-score > 0.5.
+ The TM-score is designed to be independent of protein lengths.
+ Contents
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-En la figura 
+El algoritmo reduce una trayectoria de plegamiento en cuatro etapas: particionam
+iento, reducción local, reducción global, y ensamble (Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Reducción-Villin"
+reference "fig:Flujograma-del-algoritmo"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- se observa los resultados de aplicar nuestro algoritmo a un segmento de
- 1000000 conformaciones de la trayectoria de la proteína villin-headpiece
- (PDB 2F4K).
- En la figura A se presenta la trayectoria sin reducir, mientras que en
- la figura B se presenta los resultados de la primera reducción ó reducción
- ĺocal después del agrupamiento rápido, y en la figura C se observa la reducción
- final después de aplicar el agrupamiento global a los resultados de la
- reducción local.
+).
+ En ambas etapas de reducción el algoritmo utiliza la métrica TM-Score para
+ comparar las estructuras de dos conformaciones de proteína (Ver métodos).
  
-\end_layout
-
-\begin_layout Standard
-En la primera parte del algoritmo, la reducción local es de alrededor del
- 30% (de 100000 a 70000 conformaciones) y se observa que se conservan la
- mayoría de eventos principales aunque la amplitud de los mismos no es tan
- evidente.
- Sin embargo, en la segunda parte del algoritmo, la reducción global ya
- es alrededor del 90% (de 100000 a 10000 conformaciones), los principales
- eventos se siguen conservando, y la amplitud de los mismos se mejora considerab
-lemente respecto al número de conformaciones de la nueva trayectoria.
 \end_layout
 
 \begin_layout Standard
@@ -1994,135 +1940,8 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="1">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="1">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-A.
- Trayectoria sin reducir (Original)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/villin-cluslg-100k-100b06t10k45c-pdbs.pdf
-	lyxscale 30
-	scale 25
-	BoundingBox 0bp 10bp 1440bp 465bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-B.
- Reducción Parcial (Local)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/villin-cluslg-100k-100b06t10k45c-pdbsLocal.pdf
-	lyxscale 30
-	scale 25
-	BoundingBox 0bp 45bp 1440bp 465bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-C.
- Reducción Final (Global)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/villin-cluslg-100k-100b06t10k45c-pdbsGlobal.pdf
-	lyxscale 30
-	scale 25
-	BoundingBox 0bp 10bp 1440bp 465bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
+	filename img/diagrams/diagrama-algoritmo.pdf
 
 \end_inset
 
@@ -2133,14 +1952,15 @@ C.
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Reducción de una trayectoria larga de plegamiento.
+Flujograma del algoritmo propuesto.
+ 
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Reducción-Villin"
+name "fig:Flujograma-del-algoritmo"
 
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -2151,26 +1971,542 @@ name "fig:Reducción-Villin"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Reducción sobre una trayectoría completa
 \end_layout
 
 \begin_layout Standard
-Ahora mostramos en la Figura 
+El algoritmo primero particiona la trayectoria original en 
+\emph on
+M
+\emph default
+ segmentos de igual número de conformaciones.
+ Después, sobre cada segmento realiza una reducción local rápida (Algoritmo
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Reducción-local-rápida"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, descrito abajo) que extrae 
+\emph on
+N
+\emph default
+ conformaciones candidatas.
+ Para luego, sobre cada conjunto de candidatas realizar un agrupamiento
+ global mediante un algoritmo de particionamiento alrededor de medoides
+ (PAM) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Park2009"
+literal "false"
+
+\end_inset
+
+, que selecciona como representativas a 
+\emph on
+K
+\emph default
+ conformaciones centrales para las cuales la suma de las distancias entre
+ estas y las demás candidatas es mínima.
+ Al final, se ensamblan las conformaciones representativas de cada segmento
+ para producir la trayectoria reducida con 
+\emph on
+S
+\emph default
+ conformaciones (S << R), las cuales conservan tanto su estructura 3D como
+ su orden temporal, ya que el algoritmo organiza las conformaciones seleccionada
+s por cada segmento de acuerdo a su orden temporal original.
+\end_layout
+
+\begin_layout Standard
+La etapa más importante del algoritmo es la reducción local rápida (Algoritmo
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Reducción-local-rápida"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), donde se extraen rápidamente las conformaciones más disimilares de cada
+ segmento aprovechando su ordenamiento temporal dentro de la simulación.
+ Como consecuencia, las conformaciones que están más cercanas en el tiempo
+ se espera presenten pequeños cambios estructurales y por lo tanto sean
+ más similares que las que están más alejadas.
+ El algoritmo aprovecha está propiedad para realizar un agrupamiento local
+ rápido, pero en vez de extraer un conjunto de conformaciones similares
+ por segmento, extrae las conformaciones más disimilares, que son las que
+ caracterizan los cambios más importantes del proceso de plegamiento en
+ el segmento.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Para cada uno de los 
+\emph on
+bins
+\emph default
+ se toma la primera estructura como cabeza del primer grupo y se la compara
+ con la siguiente en orden de tiempo de simulación.
+ Si presentan similaridad se adicionan al grupo; de lo contrario si es disimilar
+ se crea un nuevo grupo y se toma a esta última estructura como cabeza del
+ nuevo grupo.
+ El proceso continua hasta terminar con todas las estructuras del 
+\emph on
+bin 
+\emph default
+y esto mismo se realiza para los demás 
+\emph on
+bins.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+La primera parte del algoritmo realiza un agrupamiento local rápido donde
+ se aprovecha el ordenamiento temporal de las conformaciones implícito en
+ la trayectoria.
+ Para esto, se toma la idea del algoritmo propuesto por Hobohm&Sander 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hobohm1992"
+literal "false"
+
+\end_inset
+
+ para la selección de conjuntos de proteínas.
+ Se particiona la trayectoria en 
+\emph on
+M bins
+\emph default
+ o secciones de 
+\emph on
+N 
+\emph default
+conformaciones contiguas en el tiempo de simulación.
+ Para cada uno de los 
+\emph on
+bins
+\emph default
+ se toma la primera estructura como cabeza del primer grupo y se la compara
+ con la siguiente en orden de tiempo de simulación.
+ Si presentan similaridad se adicionan al grupo; de lo contrario si es disimilar
+ se crea un nuevo grupo y se toma a esta última estructura como cabeza del
+ nuevo grupo.
+ El proceso continua hasta terminar con todas las estructuras del 
+\emph on
+bin 
+\emph default
+y esto mismo se realiza para los demás 
+\emph on
+bins.
+
+\emph default
+ En la segunda parte del algoritmo, toma cada conjunto de conformaciones
+ cabeza de grupo seleccionadas en cada 
+\emph on
+bin
+\emph default
+ y se crea una matriz de similaridades que se la usa para realizar un agrupamien
+to para seleccionar las 
+\emph on
+K
+\emph default
+ estructuras más representativas de cada conjunto tomando los
+\emph on
+ k-medoides
+\emph default
+.
+ La unión de estas 
+\emph on
+K
+\emph default
+ estructuras por 
+\emph on
+bin
+\emph default
+ crea un nuevo conjunto mucho más reducido que el creado en el agrupamiento
+ local.
+ El orden temporal no se pierde ya que las 
+\emph on
+K
+\emph default
+ estructuras seleccionadas por cada conjunto se las ordena de acuerdo a
+ su tiempo original de simulación.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Descripción general algoritmo:
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+El algoritmo contiene tres fases: primero inicia particionando la trayectoria
+ de plegamiento original en secciones o
+\emph on
+ bins
+\emph default
+ donde se ubican un número 
+\emph on
+N
+\emph default
+ de estructuras de proteínas contiguas en el tiempo.
+ Sobre cada 
+\emph on
+bin
+\emph default
+ se aplica un agrupamiento local rápido (descrito abajo) y se obtiene un
+ número mucho menor de estructuras representativas de ese 
+\emph on
+bin
+\emph default
+.
+ Adicionalmente, sobre esa primera reducción se realiza un agrupamiento
+ global detallado (descrito abajo) que simplifica cada 
+\emph on
+bin 
+\emph default
+a 
+\emph on
+K
+\emph default
+ representativas.
+ Al final, se obtienen dos conjuntos de estructuras que corresponden a las
+ dos reducciónes, local y global de la trayectoria de plegamiento original.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Notas sobre paralelización del algoritmo
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+El algoritmo es fácilmente paralelizable ya que una vez particionada la
+ trayectoría el proceso de reducción es el mismo para cada sección o 
+\emph on
+bin, 
+\emph default
+lo que permite que el procesamiento se reparta sobre cada 
+\emph on
+bin
+\emph default
+, es decir, tanto la reducción local como la reducción global se ejecutan
+ al mismo tiempo sobre cada 
+\emph on
+bin
+\emph default
+ y por lo tanto si existen 
+\emph on
+N
+\emph default
+ 
+\emph on
+bins
+\emph default
+, cada uno de ellos se podría asignar a un proceso, hilo, o procesador.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Detalles de TM-score
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+Grupos que también tiene en cuenta la posición de los átomos entre las estructur
+as pero es menos sensible a las variaciones estructurales locales.
+ La métrica para las comparaciones en esta fase es el TM-score que tiene
+ en cuenta las propiedades globales de plegamiento y por lo tanto es adecuada
+ para agrupar estructuras que están más alejadas o separadas tiempos más
+ largos dentro de la trayectoria.
+\end_layout
+
+\begin_layout Plain Layout
+En la segunda fase, el algoritmo toma las estructuras representativas de
+ cada grupo y realiza con ellas un nuevo agrupamiento utilizando la métrica
+ TM-score que tiene en cuenta propiedades globales del plegamiento y que
+ no es tan sensible a variaciones locales como sucede con el RMSD.
+ Este nuevo agrupamiento forma 
+\emph on
+K
+\emph default
+ grupos de los cuales se toman las estructuras centrales o medoides como
+ representativas y que finalmente serán las que después del proceso de reducción
+ representan a todo el 
+\emph on
+bin.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Detalles del agrupamiento lógico:
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+Tomando la primera estructura del 
+\emph on
+bin 
+\emph default
+(estado inicial) como representativa del primer grupo.
+ Después, la siguiente estructura dentro del 
+\emph on
+bin,
+\emph default
+ en orden de tiempo, se compara con la última representativa y si son semejantes
+ de acuerdo a una métrica y a un umbral predeterminado, entonces la estructura
+ se asigna a este grupo, de lo contrario se forma uno nuevo que toma a esta
+ ultima estructura como la nueva representativa.
+ La métrica para las comparaciones en esta fase es el 
+\emph on
+TM-score 
+\emph default
+que tiene en cuenta las propiedades globales de plegamiento y por lo tanto
+ es adecuada para agrupar estructuras que están más alejadas o separadas
+ tiempos más largos dentro de la trayectoria.
+ Este proceso se sigue con las siguientes estructuras pero teniendo en cuenta
+ que las comparaciones se realizan solo con las estructuras representativas
+ de cada grupo y no con las estructuras que conforman el grupo, lo cual
+ reduce el número de comparaciones en gran medida frente a un algoritmo
+ convencional de agrupamiento.
+ Además, para evitar más comparaciones, estas se realizan de atrás hacia
+ adelante, es decir, las estructuras se comparan con la última representativa
+ y si son semejantes entonces se agrega al grupo y no se siguen las comparacione
+s.
+ Esto debido a que a medida que avanza la simulación de plegamiento, una
+ nueva estructura no es más que una modificación de la anterior y por lo
+ tanto se espera que sea más semejante a esta última.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Descripción del particionamiento:
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+Para la partición de la trayectoría se toma para cada 
+\emph on
+bin
+\emph default
+ un número 
+\emph on
+M
+\emph default
+ de estructuras contiguas en la trayectoría y se las asigna al 
+\emph on
+bin
+\emph default
+, de esta manera las primeras 
+\emph on
+M 
+\emph default
+estructuras se ubicarán en el bin1, las segunda 
+\emph on
+M
+\emph default
+ se ubicarán en el bin2, y así sucesivamente, creándose un número de 
+\emph on
+bins
+\emph default
+ igual al número total de estructuras sobre el tamaño 
+\emph on
+M
+\emph default
+ de estructuras por bin.
+ Por ejemplo si la trayectoría tiene N=1000 estructuras y se escoje M=200,
+ entonces se crearán K=5 
+\emph on
+bins,
+\emph default
+ cada uno con 200 estructuras (1000/2000.
+ 
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\footnotesize},breaklines=true,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ALGORITMO ReducciónLocalRápida (entrada: segmento de trayectoria):
+\end_layout
+
+\begin_layout Plain Layout
+
+	Tomar del segmento la primera conformación en orden temporal como representativ
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+	MIENTRAS existan conformaciones en el segmento:
+\end_layout
+
+\begin_layout Plain Layout
+
+		Tomar la siguiente conformación en orden temporal
+\end_layout
+
+\begin_layout Plain Layout
+
+		Comparar las estructuras de ambas conformaciones 
+\end_layout
+
+\begin_layout Plain Layout
+
+		SI son similares, entonces:
+\end_layout
+
+\begin_layout Plain Layout
+
+			Remover la segunda conformación
+\end_layout
+
+\begin_layout Plain Layout
+
+			Continuar con las siguientes
+\end_layout
+
+\begin_layout Plain Layout
+
+		SINO, cuando son similares:
+\end_layout
+
+\begin_layout Plain Layout
+
+			Remover del segmento y adicionar la representativa a la trayectoria reducida
+\end_layout
+
+\begin_layout Plain Layout
+
+			Asignar la segunda conformación como nueva representativa
+\end_layout
+
+\begin_layout Plain Layout
+
+			Continuar con las siguientes
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	RETORNAR la trayectoria reducida
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Reducción local rápida para cada segmento.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:Reducción-local-rápida"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Resultados y Discusión
+\end_layout
+
+\begin_layout Standard
+Presentamos los resultados de tres reducciones producidas por nuestro algoritmo:
+ primero, una reducción sobre una trayectoria completa de más de un millón
+ de conformaciones que muestra el grado o porcentaje de reducción que logra
+ el algoritmo; segundo, una reducción sobre un segmento de 100000 (100k)
+ de la trayectoria anterior donde se muestra las reducciones parciales que
+ realiza el algoritmo; y tercero, dos reducciones de trayectorias pequeñas
+ donde se muestra como trabajan las dos fases de reducción local y global
+ del algoritmo.
+\end_layout
+
+\begin_layout Subsection
+Reducción sobre una trayectoria completa
+\end_layout
+
+\begin_layout Standard
+La Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Reducción-2JOF"
 
 \end_inset
 
- la reducción realizada sobre la trayectoria completa de la proteína TRP-Cage
- (PDB 2JOF) con más de 1 millón de conformaciones, donde la trayectoría
+ presenta la reducción realizada sobre la trayectoria completa de la proteína
+ TRP-Cage (PDB 2JOF) con más de 1 millón de conformaciones, donde la trayectoria
  se reduce en un 99% (de 1044004 a 10000 conformaciones).
- Observamos en general que las oscilaciones en el plegamiento mostradas
- en la trayectoria original (figura A), se pueden observar claramente en
- la reducción (figura B).
+ Se puede observar que las oscilaciones en el plegamiento presentes en la
+ trayectoria original (figura A), también están en la reducción (figura
+ B), lo que quiere decir que las conformaciones principales de la trayectoria
+ original se preservan en la reducción.
+ La parte sombreada (color rojo) es una subtrayectoria de 100K conformaciones
+ que se utiliza para mostrar en mayor detalle el proceso de reducción en
+ la siguiente sección.
 \end_layout
 
 \begin_layout Standard
@@ -2178,7 +2514,7 @@ reference "fig:Reducción-2JOF"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2202,9 +2538,10 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename img/2JOF-FULL-100b05t01k-pdbs-marked700k-box-small.pdf
-	lyxscale 30
+	lyxscale 20
 	scale 25
-	BoundingBox 0bp 10bp 1440bp 465bp
+	BoundingBox 0bp 15bp 1440bp 450bp
+	clip
 
 \end_inset
 
@@ -2219,8 +2556,10 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size footnotesize
 A.
- Trayectoria sin reducir (Original)
+ Trayectoria original sin reducir (1044004 conformaciones)
 \end_layout
 
 \end_inset
@@ -2233,9 +2572,10 @@ A.
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename img/2JOF-FULL-100b05t01k-pdbsGlobal.pdf
-	lyxscale 30
+	lyxscale 20
 	scale 25
-	BoundingBox 0bp 10bp 1440bp 465bp
+	BoundingBox 0bp 15bp 1440bp 450bp
+	clip
 
 \end_inset
 
@@ -2250,8 +2590,10 @@ A.
 \begin_inset Text
 
 \begin_layout Plain Layout
-C.
- Reducción Final (Global)
+
+\size footnotesize
+B.
+ Trayectoria reducida (10000 conformaciones, 99% de reducción)
 \end_layout
 
 \end_inset
@@ -2298,11 +2640,234 @@ name "fig:Reducción-2JOF"
 
 \end_layout
 
+\begin_layout Subsection
+Reducción sobre un segmento de una trayectoria
+\end_layout
+
+\begin_layout Standard
+En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Reducción-Villin"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ se presenta las reducciones parciales por etapas de una subtrayectoria
+ de 100k de la trayectoria de las sección anterior (bloque marcado de color
+ rojo, Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Reducción-2JOF"
+
+\end_inset
+
+).
+ En la figura A se presenta el segmento de trayectoria sin reducir; en la
+ figura B se presenta el resultado de la etapa de reducción local rápida;
+ y en la figura C se presenta el resultado final después de aplicar la reducción
+ global a los resultados de la etapa anterior.
+ 
+\end_layout
+
+\begin_layout Standard
+La reducción local es de alrededor del 30% (de 100000 a 70000 conformaciones)
+ y el agrupamiento rápido que se realiza en esta etapa selecciona tanto
+ eventos principales como otros eventos menos importantes que pueden ya
+ estar representados, por eso se observa que algunas partes de la trayectoria
+ están desproporcionadas con relación a la original.
+ Sin embargo, en la segunda parte del algoritmo, la reducción global es
+ más exhaustiva y alcanza a ser de alrededor del 90% (de 100000 a 10000
+ conformaciones), los eventos principales se destacan con mayor claridad,
+ y la amplitud de los mismos se mejora considerablemente respecto al número
+ de conformaciones de la nueva trayectoria.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/villin-cluslg-100k-100b06t10k45c-pdbs.pdf
+	lyxscale 30
+	scale 25
+	BoundingBox 0bp 10bp 1440bp 465bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+A.
+ Subtrayectoria original (sin reducir, 100k conformaciones, 100%)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/villin-cluslg-100k-100b06t10k45c-pdbsLocal.pdf
+	lyxscale 30
+	scale 25
+	BoundingBox 0bp 10bp 1440bp 465bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+B.
+ Reducción local rápida (reducción parcial, 70k conformaciones, 70%)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/villin-cluslg-100k-100b06t10k45c-pdbsGlobal.pdf
+	lyxscale 30
+	scale 25
+	BoundingBox 0bp 10bp 1440bp 465bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+C.
+ Reducción final (reducción global, 10k conformaciones, 30%)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Reducciones por etapas de una subtrayectoria de plegamiento.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Reducción-Villin"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
 \begin_layout Subsubsection
 Reducción dada por Gromacs
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Los resultados de nuestro algoritmo de reducción los comparamos con los
  resultados del agrupamiento producidos por la herramienta Gromacs, la cual
  es muy usada en ánalisis de trayectorias de plegamiento de proteínas.
@@ -2324,7 +2889,7 @@ gromos
  Al final, el algoritmo retorna una lista con el centroide de cada grupo.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Para esta comparación seleccionamos de la anterior trayectoría (proteína
  2JOF, Figura 
 \begin_inset CommandInset ref
@@ -2389,7 +2954,7 @@ C.
  el 70% (de 100000 a 30000)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float figure
 placement H
 wide false
@@ -2546,7 +3111,12 @@ name "fig:Reducción-Gromacs"
 
 \end_layout
 
-\begin_layout Subsubsection
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Reducción sobre trayectorias cortas
 \end_layout
 
@@ -2558,8 +3128,8 @@ reference "fig:dos-trayectorias"
 
 \end_inset
 
- mostramos las reducciónes de dos trayectorias cortas correspondientes a
- las proteínas 1FCA1 y 2YCC (ver sección 
+ se muestra las reducciones de dos trayectorias cortas correspondientes
+ a las proteínas 1FCA1 y 2YCC (ver sección 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Trayectorias-de-Plegamiento"
@@ -2584,6 +3154,265 @@ s azules), lo cual se logra después corregir en la reducción final.
  tanto de eventos principales como de eventos secundarios, mientras que
  la global se enfoca en dejar solo los eventos principales y por lo tanto
  el desplazamiento se reduce.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features rotate="90" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A.
+ 1FCA1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B.
+ 2YCC
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/1FCA1-40b05t10k-ann-pdbs.pdf
+	lyxscale 30
+	scale 20
+	BoundingBox 0bp 45bp 1008bp 445bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/2YCC-50b05t05k-ann-pdbs.pdf
+	lyxscale 30
+	scale 20
+	BoundingBox 0bp 45bp 1008bp 445bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A.
+ Trayectorias originales para las proteínas con código PDB 1FCA (derecha)
+ y 2YCC (izquierda)
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/1FCA1-40b05t10k-ann-pdbsLocal.pdf
+	lyxscale 30
+	scale 20
+	BoundingBox 0bp 45bp 1008bp 465bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/2YCC-50b05t05k-ann-pdbsLocal.pdf
+	lyxscale 30
+	scale 20
+	BoundingBox 0bp 45bp 1008bp 465bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B.
+ Reducción local rápida 
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/1FCA1-40b05t10k-ann-pdbsGlobal.pdf
+	lyxscale 30
+	scale 20
+	BoundingBox 0bp 10bp 1008bp 465bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/2YCC-50b05t05k-ann-pdbsGlobal.pdf
+	lyxscale 30
+	scale 20
+	BoundingBox 0bp 10bp 1008bp 465bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C.
+ Reducción global final
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Reducción de las trayectorias cortas de plegamiento para las proteínas 1FCA1
+ y 2YCC
+\series default
+.
+ 
+\size footnotesize
+En recuadros rojos se resaltan los eventos principales que se conservan
+ tanto en la trayectoria original como en la final.
+ Los recuadros rojos muestran como algunos eventos principales se desplazan
+ en la reducción local, pero logran ajustarse al final en la reducción global.
+ Para la proteína 1FCA1 la reducción se realizó con los parámetros de 40
+ bins, un umbral de TMscore de 0.5 y un K de 10.
+ Mientra que para la proteína 2YCC se usaron 50 bins, un TMscore de 0.5 y
+ un K de 5
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dos-trayectorias-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3931,7 +4760,7 @@ La implementación del algoritmo se realizó en el lenguaje R y Fortran para
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Section
 Journals
@@ -4124,7 +4953,8 @@ Algorithms implementation
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "reduccion-trayectorias"
+btprint "btPrintCited"
+bibfiles "reduccion-trajectorias-ccbcol"
 options "plain"
 
 \end_inset

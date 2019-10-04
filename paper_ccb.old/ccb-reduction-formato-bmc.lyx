@@ -369,119 +369,49 @@ cny{UK}
 \end_layout
 
 \begin_layout Abstract
-Actualmente las simulac
-\end_layout
-
-\begin_layout Abstract
 La simulación del proceso de plegamiento de proteínas es una de las principales
- herramientas para estudiar y comprender los mecanismos subyacentes en este
- proceso.
+ herramientas para estudiar y comprender los mecanismos subyacentes que
+ hacen que una proteína adquiera su estructura tridimensional que la hace
+ funcional.
  Hoy en día estas simulaciones están llegando a unos tiempos de simulación
  que hasta hace algunos años eran imposibles de alcanzar y como consecuencia
  las trayectorias generadas son muy grandes.
  Analizar este tipo de trayectorias trae complicaciones debido a su tamaño
- y por lo tanto se necesita crear herramientas que logren reducirlas de
- tal manera que se logren preservar tanto los eventos principales como el
- orden temporal en el que ellos ocurren.
-\end_layout
-
-\begin_layout Abstract
-Introducimos aquí un algoritmo de reducción para trayectorias grandes de
- plegamiento de proteínas que se caracteriza por dividir la trayectoria
- en segmentos y mediante una estrategia rápida de agrupamiento tomar los
- eventos más disimilares para luego seleccionar entre ellos a los 
+ y por lo tanto se necesita desarrollar estrategias que logren reducirlas
+ de tal manera que se logren preservar tanto los eventos principales como
+ el orden temporal en el que ellos ocurren.
+ En este artículo presentamos un algoritmo de reducción para trayectorias
+ largas de plegamiento de proteínas.
+ El algoritmo se caracteriza por dividir la trayectoria en segmentos y mediante
+ una estrategia rápida de agrupamiento, toma de cada segmento los eventos
+ más disimilares y posteriormente selecciona entre ellos a los 
 \emph on
 k
 \emph default
- eventos más representativos.
+ más representativos.
  El algoritmo aprovecha el orden temporal implícito en la trayectoria para
- realizar en cada segmento comparaciones locales, entre eventos vecinos,
- y así evitar realizar una comparación de todos contra todos que es muy
- costosa computacionalmente.
+ realizar en cada segmento comparaciones locales, entre conformaciones de
+ proteínas vecinas, evitando realizar una comparación de todos contra todos
+ que se vuelve impráctica computacionalmente cuando son miles o millones
+ de conformaciones.
+ De esta manera, el algoritmo reduce muy rápidamente la trayectoria y las
+ conformaciones seleccionadas conservan su orden temporal dentro de la trayector
+ia.
+ Además, el particionamiento en segmentos permite al algoritmo realizar
+ la reducción por cada segmento de forma independiente y por lo tanto realizar
+ las reducciones de forma paralela, lo que lo vuelve aún más rápido cuando
+ se ejecuta en máquinas multi-core, muy comunes hoy en día.
  
 \end_layout
 
 \begin_layout Abstract
-El esquema anterior permite que el algoritmo sea muy rápido y que los eventos
- seleccionados conserven su orden temporal dentro de la trayectoria.
- Además, el particionamiento en segmentos permite al algoritmo realizar
- la reducción por cada segmento de forma independiente y por lo tanto realizarse
- las reducciones de forma paralela lo que lo vuelve aún más rápido cuando
- se ejecuta en máquinas con procesadores de múltiples cores, como los PCs
- que se consiguen en el mercado hoy en día.
- Para mostrar la efectividad del algoritmo propuesto realizamos reducciones
- sobre tres conjuntos de trajectorias disponibles públicamente: las del
- supercomputador Anton, las del proyecto folding@home, y las del servidor
- de desplegamiento de Parasol.
-\end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{keyword}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-kwd{Protein folding simulations}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-kwd{Protein structure comparison}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-kwd{Protein structure clustering}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{keyword}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{abstractbox}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{fmbox}% uncomment this for two column layout 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{frontmatter}
-\end_layout
-
-\end_inset
-
-
+\series bold
+Palabras claves
+\series default
+: Reducción de trayectorias de plegamiento de proteína; Plegamiento de proteínas
+; Algoritmos de agrupamiento rápido; bioinformática.
+ 
 \end_layout
 
 \begin_layout Section*
@@ -824,7 +754,7 @@ Estos avances muestran un crecimiento notable en estas simulaciones con
  pero debido al gran número de conformaciones, su procesamiento y análisis
  en computadoras convencionales es muy costoso en tiempo computacional.
  Por lo tanto se necesiten nuevos algoritmos capaces de reducir estas trayectori
-as de una forma rápida, aprovechendo eficientemente los recursos de este
+as de una forma rápida, aprovechando eficientemente los recursos de este
  tipo de máquinas, y buscando conservar la mayor información posible tanto
  a nivel de representación como a nivel de orden temporal.
 \end_layout

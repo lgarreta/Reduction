@@ -1,0 +1,679 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+%% BioMed_Central_Tex_Template_v1.06
+\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+\usepackage{charter}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Estrategia de Agrupamiento Rápido para Reducir Trayectorias Largas de Plegamient
+o de Proteínas
+\end_layout
+
+\begin_layout Author
+
+\series bold
+Luis Garreta
+\series default
+, Mauricio Martinez, Pedro A.
+ Moreno
+\begin_inset Newline newline
+\end_inset
+
+
+\size footnotesize
+Grupo de Investigación en Bioinformática, Facultad de Ingeniería de la Universid
+ad del Valle (Cali, Colombia).
+ 
+\end_layout
+
+\begin_layout Abstract
+Gracias a los avances tanto en software como en hardware, las simulaciones
+ de plegamiento de proteínas están llegando a las escala de los micro y
+ milisegundos, generando trayectorias de plegamiento muy largas con miles
+ y millones de conformaciones de proteínas, lo cual vuelve difícil su procesamie
+nto y análisis.
+ En este artículo presentamos un algoritmo para reducir este tipo de trajectoria
+s, que mediante una estrategia paralela y de agrupamiento rápido, logra
+ obtener rápidamente las conformaciones más representativas de la trayectoria
+ conservando de estas tanto su estructura tridimensional (3D) como su orden
+ temporal.
+
+\color red
+ De acuerdo a los resultados, el algoritmo logra reducciones con una compresión
+ muy alta y en tiempos muy cortos, comparado con otros métodos típicos de
+ reducción de plegamiento de proteínas.
+\end_layout
+
+\begin_layout Abstract
+
+\series bold
+Palabras claves
+\series default
+: Reducción de trayectorias de plegamiento de proteína; Plegamiento de proteínas
+; Algoritmos de agrupamiento rápido; bioinformática.
+\end_layout
+
+\begin_layout Section
+Introducción
+\end_layout
+
+\begin_layout Standard
+Las proteínas desempeñan funciones fundamentales en todos los seres vivos,
+ pero para ser funcionales deben a partir de su cadena de aminoácidos plegarse
+ hasta alcanzar una forma 3D única, lo que se conoce como el proceso de
+ plegamiento de las proteínas.
+ Entender los mecanismos y reglas de este proceso es aún un problema vigente
+ y de los más perseguidos dentro de la biología y la computación biológica.
+ 
+\end_layout
+
+\begin_layout Standard
+Una 
+\color blue
+herramienta teórica importante para estudiar este proceso son las simulaciones
+ del plegamiento de las proteínas las cuales producen trayectorias de plegamient
+o, que describen la evolución del plegamiento de una proteína mediante la
+ secuencia de estados que esta atraviesa en función del tiempo.
+ 
+\color inherit
+Hoy en día, estas simulaciones están alcanzando unos tiempos de simulación
+ muy grandes en comparación a los que se tenían hace algunos años, del orden
+ de los milisegundos y microsegundos, y como consecuencia las trayectorias
+ generadas por estas simulaciones son muy extensas y analizarlas trae complicaci
+ones debido a los miles o millones de conformaciones que contienen.
+ 
+\end_layout
+
+\begin_layout Standard
+Este problema no es nuevo y se han usado diferentes estrategias basadas
+ principalmente en dos enfoques: la reducción de la dimensionalidad 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Duan2013"
+literal "false"
+
+\end_inset
+
+ y el agrupamiento 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Peng2018"
+literal "false"
+
+\end_inset
+
+.
+ En el primer enfoque se transforma una conformación a un conjunto reducido
+ de variables que la representan lo mejor posible.
+ Para esto se han usado tanto técnicas lineales como no-lineales (e.g.
+ análisis de componentes principales (PCA), escalamiento multi-dimensional
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RajanSchulten10"
+literal "false"
+
+\end_inset
+
+, Isomap 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Das2006"
+literal "false"
+
+\end_inset
+
+, diffusion maps 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kim2015"
+literal "false"
+
+\end_inset
+
+).
+ Sin embargo, aunque se logra la reducción de las conformaciones, se pierde
+ su representatividad como estructuras 3D.
+ Además, estas técnicas consumen mucho tiempo cuando las trayectorias son
+ muy grandes, ya que tienen que transformar todas sus conformaciones.
+\end_layout
+
+\begin_layout Standard
+En este artículo presentamos un algoritmo de reducción para trayectorias
+ largas de plegamiento de proteínas.
+ El algoritmo se caracteriza por dividir la trayectoria en segmentos y mediante
+ una estrategia rápida de agrupamiento, toma de cada uno de ellos a los
+ eventos más disimilares y posteriormente selecciona entre ellos a los 
+\emph on
+k
+\emph default
+ más representativos.
+ El algoritmo aprovecha el orden temporal implícito en la trayectoria para
+ realizar en cada segmento comparaciones locales, entre conformaciones de
+ proteínas vecinas, evitando realizar una comparación de todos contra todos
+ que se vuelve impráctica computacionalmente cuando son miles o millones
+ de conformaciones.
+ De esta manera, el algoritmo reduce muy rápidamente la trayectoria y las
+ conformaciones seleccionadas conservan su orden temporal dentro de la trayector
+ia.
+ Además, el particionamiento en segmentos permite al algoritmo realizar
+ la reducción por cada segmento de forma independiente y por lo tanto realizar
+ las reducciones de forma paralela, lo que lo vuelve aún más rápido cuando
+ se ejecuta en máquinas multi-core, muy comunes hoy en día.
+ 
+\end_layout
+
+\begin_layout Section
+Antecedentes
+\end_layout
+
+\begin_layout Standard
+Para la reducción de trayectorias de simulación de plegamiento se han utilizado
+ varios métodos como los basados en agrupamientos, basados en transformaciones
+ lineales como el análisis de componentes principales (PCA) y el escalamiento
+ multidimensional (MDS), y los que cambia la representación de la estructura
+ como los basados en mapas de contactos.
+ 
+\end_layout
+
+\begin_layout Standard
+Los basados en agrupamientos de estructuras se implementa en varias herramientas
+ de simulación de plegamiento como el algoritmo de agrupamiento de GROMACS
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Daura1999"
+literal "false"
+
+\end_inset
+
+ donde toman todas las estructuras, miden la distancia entre ellas, toman
+ como representativa la que más vecinos tenga de acuerdo a un valor de corte
+ 
+\emph on
+(cutoff),
+\emph default
+ la eliminan junto a sus vecinos, y repiten el prtooceso para las restantes
+\lang english
+.
+
+\lang spanish
+ Sin embargo, este tipo de algoritmos generalmente dependen de distintos
+ parámetros tales como la especificación inicial del rádio o número de grupos,
+ o la medida de similaridad para comparar las estructuras.
+ Estos parámetros tienden a hacer artificial el agrupamiento donde los cambios
+ del valor de alguno de los parámetros, pueden producir resultados que varian
+ de forma considerable.
+  
+\end_layout
+
+\begin_layout Standard
+Entre los basados en transformaciones tanto lineales como no-lineales están
+ los que usan PCA y MDS.
+ Los que usan PCA 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Duan2013"
+literal "false"
+
+\end_inset
+
+ transforman la estructura de la proteína desde un espacio N-dimensional–dado
+ por los puntos de datos de las N coordenadas de sus átomos–a un espacio
+ lineal K-dimensional (K < D) que corresponde a un nuevo sistema de coordenadas
+ llamado componentes principales.
+ Estos componentes representan los vectores tangentes que describen un hiperplan
+o que pasa a través de los puntos de datos tanto como sea posible cuando
+ se evalúan sus mínimos cuadrados.
+ Los componentes se ordenan de acuerdo a su varianza y los primeros (los
+ de mayor varianza) son los que resumen mejor los cambios conformacionales
+ globales de la proteína.
+ Sin embargo PCA tiene problemas cuando los espacios son no-lineales, como
+ se piensa que es el espacio conformacional de la proteína y por lo tanto
+ el nuevo espacio K-dimensional puede resultar distorsionado 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Das2006"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Para evitar el problema de la linearidad con el PCA, Rajan et al.
+ 2010 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RajanSchulten10"
+literal "false"
+
+\end_inset
+
+ adaptan un método de escalamiento multidimensional no métrico (
+\emph on
+nMDS)
+\emph default
+ para obtener una representación reducida 2D de toda la trayectoria.
+ Inicialmente transforman la estructura 3D de la proteina a sus respectivos
+ ángulos dihédricos para luego aplicarles el método de escalamiento y obtener
+ un conjunto de puntos que representa las estructuras de proteínas.
+ Estos puntos se despliegan sobre un espacio métrico (generalmente 2D) que
+ representa la trayectoria de tal manera que la distancia cada par de puntos
+ 
+\emph on
+x,y
+\emph default
+ es consistente con las distancias de cada par de estructuras 
+\emph on
+X,Y
+\emph default
+ representadas por los respectivos puntos.
+ Aunque esta forma de reducción simplifica a 2D las estructuras N dimensionales
+ (N coordenadas XYZ de sus átomos), la información de la estructura se pierde
+ y la reducción se vuelve específica para ciertos análisis como el de analizar
+ visualmente la ocurrencia de eventos en el tiempo.
+\end_layout
+
+\begin_layout Standard
+Entre los que cambian la representación de la estructura Yang et al.
+ 2007 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yang2007"
+literal "false"
+
+\end_inset
+
+ transforman la estructura a un mapa de contacto (matriz 2D binaria) a través
+ de lo que definen como SOAPs o patrones 2D no locales que se encuentran
+ en los mapas de la estructura.
+ Se encuentran los SOAPs de todas las estructuras, se los agrupa por SOAPs
+ comúnes de acuerdo a una medida de distancia, y se obtienen los más frecuentes.
+ Así, las principales partes de la estructura se representa con los SOAPs
+ más frecuentes y las otras partes se eliminan, lo que lleva a una representació
+n más concisa.
+ Sin embargo, la reducción cambia sustancialmente los elementos de la trayectori
+a al trasladar las estructuras 3D a representaciones 2D, perdiendo información
+ implicita en la estructura.
+\end_layout
+
+\begin_layout Section
+Descripción del Algoritmo
+\end_layout
+
+\begin_layout Standard
+
+\color blue
+El algoritmo propuesto reduce una trayectoria de plegamiento en tres fases
+ (Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Algorithm-Description"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+): primero divide la trayectoria en pequeñas subtrayectorias que luego las
+ reduce de manera individual, independiente y paralela.
+ Segundo toma cada subtrayectoria y extrae de forma muy rápida sus conformacione
+s características y elimina las redundantes utilizando la estrategia de
+ agrupamiento rápido de Hobohm and Sander (1992).
+ 
+\color purple
+Y tercero toma la conformaciones características y selecciona las más representa
+tivas mediante una estrategia tipo k-medoides 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kaufman1990"
+literal "false"
+
+\end_inset
+
+, la cual al trabajar sobre pocas conformaciones, mejora sustancialmente
+ su desempeño.
+ Al final, los resultados de cada reducción se unen para obtener la reducción
+ total de la trayectoria.
+\end_layout
+
+\begin_layout Standard
+Además, a diferencia de otras técnicas de reducción de trayectorias, el
+ algoritmo tiene la ventaja de no cambiar la representación de las conformacione
+s como lo hacen las técnicas de reducción de dimensionalidad, ni de perder
+ el orden temporal como lo hacen las técnicas de agrupamiento.
+ El resultado de nuestro algoritmo es un conjunto de conformaciones representati
+vas de la trayectoria que siguen conservando tanto su estructura 3D como
+ su orden temporal.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/ppath/Reduction/paper_ccb/img/algorithm-description-general.pdf
+	lyxscale 150
+	scale 120
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Algoritmo de reducción.
+
+\series default
+ La trayectoria se divide en subtrayectorias (líneas discontinuas) que se
+ reducen individualmente.
+ Mediante una estrategia de agrupamiento rápido 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hobohm1992"
+literal "false"
+
+\end_inset
+
+ se seleccionan las conformaciones características (puntos rojos) y se ignoran
+ las redundantes (puntos azules).
+ Después, mediante un agrupamiento tipo k-medoides 
+\color purple
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kaufman1990"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+ se extraen las representativas que forman la subtrayectoria reducida.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+La trayectoria se divide en subtrayectorias (líneas discontinuas) que se
+ reducen individualmente.
+ Mediante una estrategia de agrupamiento rápido 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hobohm1992"
+literal "false"
+
+\end_inset
+
+ se selecciona la primera conformación como primera característica (t0)
+ y se compara la siguiente con las características existentes.
+ Si son disimilares se adicionan como nueva características (puntos rojos),
+ de lo contrario, son redundantes y se ignora (puntos azules), y se sigue
+ así con el resto.
+ Después, mediante una estrategia tipo k-medoides 
+\color purple
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kaufman1990"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+ se agrupan las características y de cada grupo se extraen las representativas
+ que forman la subtrayectoria reducida.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Algorithm-Description"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El pseudocódigo del algoritmo propuesto se muestra en el listado 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Pseudocódigo-del-algoritmo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ La implementación del algoritmo se realizó en lenguaje R excepto la comparación
+ entre conformaciones, que usa la métrica TM-Score para comparar pares de
+ estructuras de proteínas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang2004"
+literal "false"
+
+\end_inset
+
+, y que por ser la parte que más se repite está implementada en lenguaje
+ Fortran.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "numbers=left,numberstyle={\scriptsize},basicstyle={\scriptsize}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Algoritmo de reducción
+\end_layout
+
+\begin_layout Plain Layout
+
+ENTRADA: T: Trayectoria original de plegamiento
+\end_layout
+
+\begin_layout Plain Layout
+
+SALIDA : Trayectoria reducida de plegamiento
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+AlgoritmoReduccion (T)
+\end_layout
+
+\begin_layout Plain Layout
+
+  Particionar la trayectoria en segmentos
+\end_layout
+
+\begin_layout Plain Layout
+
+  Para cada segmento de forma paralela
+\end_layout
+
+\begin_layout Plain Layout
+
+     Extraer rápidamente las conformaciones más disimilares
+\end_layout
+
+\begin_layout Plain Layout
+
+     Seleccionar de las disimilares a las más representativas 
+\end_layout
+
+\begin_layout Plain Layout
+
+  Concatenar los resultados de cada segmento
+\end_layout
+
+\begin_layout Plain Layout
+
+  Retornar la nueva trayectoria reducida
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pseudocódigo del algoritmo propuesto de reducción de trayectorias largas
+ de plegamiento.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:Pseudocódigo-del-algoritmo"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ccb-reduction"
+options "bmc-mathphys"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
