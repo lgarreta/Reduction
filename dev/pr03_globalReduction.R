@@ -32,6 +32,8 @@ options (width=300)
 #----------------------------------------------------------
 main <- function () {
 	args <- commandArgs (TRUE)
+	cat ("\n\n\n>>>>>>>>>>>>>>>>>>>> Main of Global Reduction...\n")
+	cat ("args: ", args, "\n")
 	#args = c("io/out1000/outbins", "io/out1000/outrepr", "1.5", "1")
 	if (length (args) < 4){
 		cat (USAGE)
@@ -46,8 +48,6 @@ main <- function () {
 
 	#createDir (OUTPUTDIR)
 
-	cat ("\n\n\n>>>>>>>>>>>>>>>>>>>> Main of Global Reduction...\n")
-	cat ("args: ", args, "\n")
 	listOfBinPaths    = list.files (INPUTDIR, pattern=".pdbs", full.names=T)
 	clusteringResults = mclapply (listOfBinPaths, reduceGlobal, K, mc.cores=NCORES)
 
@@ -116,16 +116,20 @@ calculateTmscore <- function (targetProtein, referenceProtein) {
 #----------------------------------------------------------
 writeClusteringResults <- function (clusteringResults, outputDir) {
 	listOfPDBs = c ()
+	reductionDir = paste0(outputDir, "/reduction")
+	createDir (reductionDir)
 	for (binResults in clusteringResults) 
 		for (pdbPath in binResults) {
 			#cmm <- sprintf ("ln -s %s/%s %s/%s", getwd(), pdbPath, outputDir, basename (pdbPath))
 			listOfPDBs = append (listOfPDBs, pdbPath)
+			file.copy (pdbPath, reductionDir)
 			#cat (paste (">>> ", cmm, "\n"))
 			#system (cmm)
 		}
-	filename = sprintf ("%s/%s", outputDir, "pdbsGlobal.pdbs")
+	filename = sprintf ("%s/tmp/%s", outputDir, "pdbsGlobal.pdbs")
 	listOfPDBs = sort (listOfPDBs)
-	listOfPDBs = paste ("pdbs/", basename(listOfPDBs),sep="")
+
+	listOfPDBs = paste ("tmp/pdbs/", basename(listOfPDBs),sep="")
 	write.table (listOfPDBs, file=filename, sep="\n",col.names=F, row.names=F, quote=F)
 }
 
@@ -153,4 +157,3 @@ createDir <- function (newDir) {
 #--------------------------------------------------------------
 #--------------------------------------------------------------
 main () 
-	

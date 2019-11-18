@@ -1,0 +1,19 @@
+Installación programa reducción rápida de trayectorias
+------------------------------------------------------
+Todavía no hay un instalador formal, pero aquí le muestro los requerimientos básicos.
+
+1. Utiliza las librerias de R: parallel y cluster que no estan en la base de R. Para instalarlas tiene que ir al prompt de R e instalarlas desde allí con "install.packages", así:
+
+	$ R
+	> install.packages ("parallel")
+	> install.packages ("cluster")
+
+2. Utiliza la función TM-score implementada en Fortran y que funciona como librería dinámica con R. En el software ya se entrega una versión compilada (Ubunto 18.04) pero si necesita recompilarla como librería dinámica para cargarla desde los programas en R, ejecute el siguiente comando desde el shell de linux:
+
+	$ R CMD SHLIB tmscorelg.f   # For the library
+
+Y esto debe crear el archivo "tmscorelg.so". Claro debe tener primero instaldo fortran.
+
+Cualquier inquietud:
+Luis Garreta
+lgarreta@gmail.com

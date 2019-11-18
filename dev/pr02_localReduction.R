@@ -16,12 +16,11 @@
 # OUTPUT:            An output dir with the clustering results for each bin
 #----------------------------------------------------------
 USAGE="USAGE: reduction.R <inputDir> <outputDir> <TM-score Threshold> <num cores>\n" 
-
 library (parallel)
 library (cluster)
 dyn.load ("tmscorelg.so")
 
-options (width=300)
+options (width=300, nwarnings=100)
 
 #THRESHOLD = 1.3
 #NCORES= 1
@@ -30,6 +29,8 @@ options (width=300)
 #----------------------------------------------------------
 main <- function () {
 	args <- commandArgs (TRUE)
+	cat ("\n\n\n>>>>>>>>>>>>>>>>>>>> Local Reduction...\n")
+	cat ("args: ", args, "\n")
 	#args = c("io/out1000/outbins", "io/out1000/outrepr", "1.5", "1")
 	print (args)
 	if (length (args) < 4){
@@ -41,7 +42,7 @@ main <- function () {
 	OUTPUTDIR = args [2]
 	THRESHOLD = as.numeric (args [3])
 	NCORES    = as.numeric (args [4])
-	dirBins = paste (OUTPUTDIR,"/binsLocal",sep="")
+	dirBins = paste (OUTPUTDIR,"/tmp/binsLocal",sep="")
 	dirPdbs = OUTPUTDIR
 
 	createDir (dirBins)
@@ -50,6 +51,7 @@ main <- function () {
 	clusteringResults  = mclapply (binPathLst, reduceLocal, outputDir=dirBins, 
 								        threshold=THRESHOLD,dirPdbs=dirPdbs, mc.cores=NCORES)
 	writeClusteringResults (clusteringResults, dirPdbs)
+	
 }
 
 #----------------------------------------------------------
@@ -118,7 +120,7 @@ writeClusteringResults <- function (clusteringResults, outputDir) {
 		for (pdbPath in binResults) {
 			listOfPDBs = append (listOfPDBs, pdbPath)
 		}
-	filename = sprintf ("%s/%s", outputDir, "pdbsLocal.pdbs")
+	filename = sprintf ("%s/tmp/%s", outputDir, "pdbsLocal.pdbs")
 	listOfPDBs = sort (listOfPDBs)
 	listOfPDBs = paste ("pdbs/", basename(listOfPDBs),sep="")
 	write.table (listOfPDBs, file=filename, sep="\n",col.names=F, row.names=F, quote=F)
@@ -148,4 +150,4 @@ createDir <- function (newDir) {
 #--------------------------------------------------------------
 #--------------------------------------------------------------
 main () 
-	
+#summary(warnings())

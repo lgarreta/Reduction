@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="es" > 
+<head><title>Algoritmo para Simplificar Trayectorias de Plegamiento de Prote<img 
+src="bchr8t-19.png" alt="i" class="x-x-19" />nas</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="reduccion-trajectorias-ccbcol-resumen.tex"> 
+<link rel="stylesheet" type="text/css" href="reduccion-trajectorias-ccbcol-resumen.css"> 
+</head><body 
+>
+   <div class="maketitle">
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+
+<h2 class="titleHead">Algoritmo para Simplificar Trayectorias de Plegamiento de
+Proteínas</h2>
+ <div class="author" ><span class="underline"><span 
+class="bchr8t-x-x-120">Luis Garreta</span></span><sup class="textsuperscript"><span 
+class="bchr8t-x-x-90">1</span></sup><span 
+class="bchr8t-x-x-120">, Mauricio Martinez</span><sup class="textsuperscript"><span 
+class="bchr8t-x-x-90">2</span></sup><span 
+class="bchr8t-x-x-120">, Pedro A. Moreno</span><sup class="textsuperscript"><span 
+class="bchr8t-x-x-90">3</span></sup>
+<br /><span 
+class="bchb8t-x-x-80">{luis.garreta, </span><span 
+class="bchr8t-x-x-80">mauricio.martinez.jimenez</span><span 
+class="bchb8t-x-x-80">,</span><span 
+class="bchr8t-x-x-80">pedro.moreno}</span><span 
+class="bchb8t-x-x-80">@</span><span 
+class="bchr8t-x-x-80">correounivalle.edu.co</span>
+<br />                          <span 
+class="bchr8t-x-x-120">&#x00A0;</span>
+<br />      <span 
+class="bchr8t-x-x-120">Grupo de Investigaci</span><span 
+class="bchr8t-x-x-120">ón en Bioinform</span><span 
+class="bchr8t-x-x-120">ática</span>
+<br />                <span 
+class="bchr8t-x-x-120">Universidad del Valle</span>
+<br />                    <span 
+class="bchr8t-x-x-120">Cali, Colombia</span></div><br />
+<div class="date" ></div>
+   </div>
+   <div 
+class="abstract" 
+>
+<div class="center" 
+>
+<!--l. 50--><p class="noindent" >
+<!--l. 50--><p class="noindent" ><span 
+class="bchb8t-x-x-90">Resumen</span></div>
+     <!--l. 51--><p class="indent" >     Las simulaciones del proceso de plegamiento de las proteínas han demostrado ser de gran
+     utilidad para estudiar las mecanismos subyacentes de este proceso, el cual permite a una cadena
+     de aminoácidos plegarse hasta alcanzar su estructura tridimensional única y convertirse en una
+     proteína activa habilitada para ejecutar una función biológica. Gracias a los avances en hardware
+     y software, estas simulaciones han experimentado grandes progresos, con tiempos de simulación
+     en el orden de los milisegundos, y llevadas a cabo usando diferentes tecnologías, desde costosas
+     supercomputadoras  especializadas  <span class="cite">[<a 
+href="#XShaw2011">4</a>]</span>,  hasta  arreglos  de  tarjetas  gráficas  <span class="cite">[<a 
+href="#XNguyen2014">5</a>]</span>,  e  incluso  PCs
+     distribuidos alrededor del mundo <span class="cite">[<a 
+href="#XPandeEnsign07">2</a>]</span>. Muchas de estas simulaciones alcanzan tiempos que antes
+     no se lograban debido a las limitaciones en el hardware, y las trayectorias que generan abarcan
+     miles  o  millones  de  conformaciones,  lo  cual  a  pesar  de  ser  una  gran  ventaja  porque  se  tiene
+     más detalle del proceso, así mismo es un problema debido al tiempo y recursos computacionales
+     necesarios para analizarlas. Por esta razón, se necesitan nuevos algoritmos capaces de simplificar
+     estas trayectorias de una forma rápida, y que logren preservar la mayor información posible tanto
+     a nivel de representación como a nivel de orden temporal de las conformaciones de la trayectoria.
+     <!--l. 72--><p class="indent" >     Para realizar estas reducciones se han utilizado diferentes técnicas que básicamente caen en
+     dos enfoques: la reducción de dimensionalidad <span class="cite">[<a 
+href="#XDuan2013">1</a>]</span> y el agrupamiento <span class="cite">[<a 
+href="#XPeng2018">7</a>]</span>, las cuales más que
+     simplificar las trayectorias realizan un análisis sobre ellas. En el primer enfoque se transforma
+     las conformaciones a una forma simplificada para poder interpretar los resultados, sin embargo,
+     aunque se conserva el orden temporal de las conformaciones, su estructura se pierde ya que su
+     representación se modifica. En cambio, en el segundo, se encuentran grupos de conformaciones
+     con  propiedades  comunes  donde  las  conformaciones  conservan  su  estructura,  pero  el  orden
+     temporal se pierde ya que los grupos pueden contener conformaciones de tiempos muy diferentes.
+     <!--l. 85--><p class="indent" >     En  este  trabajo  presentamos  un  algoritmo  para  simplificar  trayectorias  de  plegamiento  de
+     proteínas que divide una trayectoria de plegamiento en segmentos y por cada segmento extrae
+     rápidamente  las  conformaciones  más  disimilares,  tomando  como  base  la  estrategia  rápida  de
+                                                                                          
+                                                                                          
+     agrupamiento  de  Hobohm&amp;Sander  <span class="cite">[<a 
+href="#XHobohm1992">3</a>]</span>,  y  luego  selecciona  de  forma  más  exhaustiva  a  las
+     más  representativas,  mediante  una  estrategia  <span 
+class="bchr8t-x-x-90">de  particionamiento  alrededor  de  medoides  </span><span class="cite"><span 
+class="bchr8t-x-x-90">[</span><a 
+href="#XPark2009"><span 
+class="bchr8t-x-x-90">6</span></a><span 
+class="bchr8t-x-x-90">]</span></span><span 
+class="bchr8t-x-x-90">.  </span>El
+     algoritmo aprovecha el orden temporal implícito en la trayectoria para realizar en cada segmento
+     comparaciones locales y evitar la comparación de todos contra todos, que se vuelve impráctica
+     computacionalmente cuando son muchas conformaciones. De esta manera, el algoritmo reduce
+     muy rápidamente la trayectoria y las conformaciones seleccionadas conservan tanto su estructura
+     como su orden temporal. Además, la partición por segmentos permite al algoritmo simplificar
+     cada segmento de forma independiente y paralela, lo que lo vuelve aún más rápido cuando se
+     ejecuta en máquinas multi-núcleo, muy comunes hoy en día.
+</div>
+   <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>Referencias</h3>
+<!--l. 1--><p class="noindent" >
+    <div class="thebibliography">
+    <p class="bibitem" ><span class="biblabel">
+ [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDuan2013"></a>Mojie                Duan,                Jue                Fan,                Minghai                Li,                Li&#x00A0;Han,
+    and Shuanghong Huo. Evaluation of Dimensionality-reduction Methods from Peptide Folding-unfolding
+    Simulations. <span 
+class="bchri8t-">Journal of chemical theory and computation</span>, 9(5):2490&#8211;2497, may 2013.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [2]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XPandeEnsign07"></a>Daniel&#x00A0;L  Ensign,  Peter&#x00A0;M  Kasson,  and  Vijay&#x00A0;S  Pande.   Heterogeneity  even  at  the  speed  limit  of
+    folding : Large-scale molecular dynamics study of a fast-folding variant of the villin headpiece.  <span 
+class="bchri8t-">Journal</span>
+    <span 
+class="bchri8t-">of molecular biology</span>, 374(3):806&#8211;816, 2007.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [3]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XHobohm1992"></a>Uwe Hobohm, Michael Scharf, Reinhard Schneider, and Chris Sander.   Selection of representative
+    protein data sets. <span 
+class="bchri8t-">Protein Science</span>, 1(3):409&#8211;417, mar 1992.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [4]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XShaw2011"></a>Kresten Lindorff-Larsen, Stefano Piana, Ron&#x00A0;O. Dror, and David&#x00A0;E Shaw.  How fast-folding proteins
+    fold. <span 
+class="bchri8t-">Science</span>, 334(6055):517&#8211;520, oct 2011.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [5]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XNguyen2014"></a>Hai Nguyen, James Maier, He&#x00A0;Huang, Victoria Perrone, and Carlos Simmerling.  Folding simulations
+    for proteins with diverse topologies are accessible in days with a physics-based force field and implicit
+    solvent. <span 
+class="bchri8t-">Journal of the American Chemical Society</span>, 136(40):13959&#8211;13962, oct 2014.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [6]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XPark2009"></a>Hae-Sang Park and Chi-Hyuck Jun.   A simple and fast algorithm for K-medoids clustering.   <span 
+class="bchri8t-">Expert</span>
+    <span 
+class="bchri8t-">Systems with Applications</span>, 36(2):3336&#8211;3341, mar 2009.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [7]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XPeng2018"></a>Jun-hui Peng, Wei Wang, Ye-qing Yu, Han-lin Gu, and Xuhui Huang. Clustering algorithms to analyze
+    molecular dynamics simulation trajectories for complex chemical and biological systems. <span 
+class="bchri8t-">Chinese Journal</span>
+    <span 
+class="bchri8t-">of Chemical Physics</span>, 31(4):404&#8211;420, aug 2018.
+                                                                                          
+                                                                                          
+</p>
+    </div>
+    
+</body></html> 
+
+                                                                                          
+
+

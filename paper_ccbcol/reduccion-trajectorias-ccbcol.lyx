@@ -72,7 +72,7 @@
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date false
+\suppress_date true
 \justification true
 \use_refstyle 1
 \use_minted 0
@@ -105,14 +105,101 @@
 \begin_body
 
 \begin_layout Title
-Algoritmo Rápido de Reducción de Trajectorias de Plegamiento de Proteínas
+Algoritmo para Simplificar Trayectorias de Plegamiento de Proteínas
 \end_layout
 
 \begin_layout Author
-Luis Ernesto Garreta U.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+underline{Luis Garreta}
+\end_layout
+
+\end_inset
+
+
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+, Mauricio Martinez
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+, Pedro A.
+ Moreno
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\size footnotesize
+{luis.garreta, 
+\series default
+\lang english
+mauricio.martinez.jimenez
+\series bold
+\lang spanish
+,
+\series default
+\lang english
+pedro.moreno}
+\series bold
+\lang spanish
+@
+\series default
+correounivalle.edu.co
+\size default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Grupo de Investigación en Bioinformática
+\begin_inset Newline newline
+\end_inset
+
+Universidad del Valle
+\begin_inset Newline newline
+\end_inset
+
+Cali, Colombia
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -121,8 +208,6 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -132,22 +217,22 @@ LatexCommand tableofcontents
 Gracias a los avances en hardware y software, las simulaciones de plegamiento
  de proteínas están experimentando grandes progresos, alcanzando tiempos
  de simulación sin precedentes, en el orden de los microsegundos y milisegundos.
- Como consecuencia, las trayectorias generadas por estas simulaciones son
+ Como consecuencia, las trayectorias producidas por estas simulaciones son
  muy extensas, con miles y millones de conformaciones, lo que genera problemas
  tanto en tiempo como en espacio para procesarlas y analizarlas.
- Una manera de sobrepasar estos problemas es desarrollar algoritmos rápidos
- para generar trayectorias reducidas que preserven tanto como sea posible
- las características de las trayectorias originales, especialmente el orden
+ Una manera de sobrepasar estos problemas es desarrollar estrategias para
+ simplificar estas trayectorias que preserven tanto como sea posible las
+ características de las trayectorias originales, especialmente el orden
  temporal y la estructura de las conformaciones.
  
 \end_layout
 
 \begin_layout Abstract
-En este artículo presentamos un algoritmo para reducir este tipo de trayectorias
- que divide la trayectoria en segmentos y por cada segmento extrae los eventos
- más disimilares, mediante una estrategia rápida de agrupamiento, y luego
- selecciona a los más representativos, mediante una estrategia de agrupamiento
- global.
+En este artículo presentamos un algoritmo para simplificar trayectorias
+ de plegamiento de proteínas el cual divide la trayectoria en segmentos
+ y por cada segmento extrae los eventos más disimilares, mediante una estrategia
+ rápida de agrupamiento, y luego selecciona a los más representativos, mediante
+ una estrategia de agrupamiento global.
  El algoritmo aprovecha el orden temporal implícito en la trayectoria para
  realizar en cada segmento comparaciones locales y evitar la comparación
  de todos contra todos, que se vuelve impráctica computacionalmente cuando
@@ -155,9 +240,9 @@ En este artículo presentamos un algoritmo para reducir este tipo de trayectoria
  De esta manera, el algoritmo reduce muy rápidamente la trayectoria y las
  conformaciones seleccionadas conservan tanto su estructura como su orden
  temporal.
- Además, la partición por segmentos permite al algoritmo reducir cada segmento
- de forma independiente y paralela, lo que lo vuelve aún más rápido cuando
- se ejecuta en máquinas multi-core, muy comunes hoy en día.
+ Además, la partición por segmentos permite al algoritmo simplificar cada
+ segmento de forma independiente y paralela, lo que lo vuelve aún más rápido
+ cuando se ejecuta en máquinas multi-core, muy comunes hoy en día.
 \end_layout
 
 \begin_layout Abstract
@@ -170,7 +255,7 @@ Además, algo muy importante es que muchos de los proyectos que producen
  estas trayectorias de plegamiento para su análisis.
  Sin embargo, debido a la inmensa cantidad de conformaciones de proteínas
  que resultan en estas trayectorias, su análisis se vuelve complejo y se
- vuelve necesario desarrollar estrategias para reducirlas.
+ vuelve necesario desarrollar estrategias para simplificarlas.
  
 \end_layout
 
@@ -296,8 +381,6 @@ literal "true"
 \end_inset
 
 , hasta, económicos arreglos de tarjetas gráficas 
-\color blue
-
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Nguyen2014"
@@ -305,9 +388,7 @@ literal "false"
 
 \end_inset
 
-,
-\color inherit
- e incluso PCs distribuidos alrededor del mundo 
+, e incluso PCs distribuidos alrededor del mundo 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "PandeEnsign07"
@@ -322,9 +403,7 @@ literal "true"
  de conformaciones, lo cual a pesar de ser una gran ventaja porque se tiene
  más detalle del proceso, así mismo es un problema debido al tiempo y recursos
  computacionales necesarios para analizarlas.
- 
-\color purple
-Por esta razón, se necesitan nuevos algoritmos capaces de reducir estas
+ Por esta razón, se necesitan nuevos algoritmos capaces de simplificar estas
  trayectorias de una forma rápida, y que logren preservar la mayor información
  posible tanto a nivel de representación como a nivel de orden temporal
  de las conformaciones de la trayectoria.
@@ -348,35 +427,27 @@ literal "false"
 
 \end_inset
 
-, las cuales más que reducir las trayectorias realizan un análisis sobre
- ellas (Figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:lost-info-dimensionality"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-).
- Mientras que en el primer enfoque se transforma las conformaciones a una
- forma simplificada para poder interpretar los resultados; en el segundo,
- se obtienen conformaciones representativas de grupos de conformaciones
- con propiedades comunes.
- Sin embargo, aunque en el primer enfoque se conserva el orden temporal
- de las conformaciones, su estructura se pierda ya que su representación
- se modifica; por el contrario, aunque en el segundo enfoque se conserva
- la estructura de las conformaciones, el orden temporal se pierde ya que
- los grupos pueden contener conformaciones de tiempos muy diferentes.
+, las cuales más que simplificar las trayectorias realizan un análisis sobre
+ ellas.
+ En el primer enfoque se transforma las conformaciones a una forma simplificada
+ para poder interpretar los resultados, sin embargo, aunque se conserva
+ el orden temporal de las conformaciones, su estructura se pierda ya que
+ su representación se modifica.
+ En cambio, en el segundo, se encuentran grupos conformaciones con propiedades
+ comunes las cuales conservan su estructura, pero el orden temporal se pierde
+ ya que los grupos pueden contener conformaciones de tiempos muy diferentes.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Float figure
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -437,7 +508,8 @@ name "fig:lost-info-dimensionality"
 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
 
 \end_layout
 
@@ -447,9 +519,9 @@ name "fig:lost-info-dimensionality"
 \end_layout
 
 \begin_layout Standard
-En este artículo presentamos un algoritmo rápido para reducción de trayectorias
- largas de plegamiento de proteínas que toma como base la estrategia de
- Hobohm&Sander 
+En este artículo presentamos un algoritmo para simplificar trayectorias
+ de plegamiento de proteínas que toma como base la estrategia de Hobohm&Sander
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Hobohm1992"
@@ -480,10 +552,10 @@ Estos avances muestran un crecimiento notable en estas simulaciones con
  Muchas de estas trayectorias ya se están colocando a disposición pública,
  pero debido al gran número de conformaciones, su procesamiento y análisis
  en computadoras convencionales es muy costoso en tiempo computacional.
- Por lo tanto se necesiten nuevos algoritmos capaces de reducir estas trayectori
-as de una forma rápida, aprovechando eficientemente los recursos de este
- tipo de máquinas, y buscando conservar la mayor información posible tanto
- a nivel de representación como a nivel de orden temporal.
+ Por lo tanto se necesiten nuevos algoritmos capaces de simplificar estas
+ trayectorias de una forma rápida, aprovechando eficientemente los recursos
+ de este tipo de máquinas, y buscando conservar la mayor información posible
+ tanto a nivel de representación como a nivel de orden temporal.
 \end_layout
 
 \end_inset
@@ -578,23 +650,24 @@ http://parasol.tamu.edu/foldingserver/
 status collapsed
 
 \begin_layout Plain Layout
-Para reducir estas trayectorias los métodos actuales buscan conjuntos de
- conformaciones representativas, que generalmente utilizan métodos de agrupamien
-to donde se construye una matriz con las distancias entre cada una de las
- conformaciones, usualmente se usa la distancia conocida como RMSD o 
+Para simplificar estas trayectorias los métodos actuales buscan conjuntos
+ de conformaciones representativas, que generalmente utilizan métodos de
+ agrupamiento donde se construye una matriz con las distancias entre cada
+ una de las conformaciones, usualmente se usa la distancia conocida como
+ RMSD o 
 \emph on
 Root Mean Square-Deviation
 \emph default
 .
  Estos agrupamientos se vuelven muy costosos en tiempo y recursos computacionale
 s cuando se trata de muchas conformaciones y por esta razón los algoritmos
- buscan simplificar estos costos, como por ejemplo, reducir el número de
- átomos que comparar en las conformaciones (solo carbonos alfa).
+ buscan simplificar estos costos, como por ejemplo, simplificar el número
+ de átomos que comparar en las conformaciones (solo carbonos alfa).
  
 \end_layout
 
 \begin_layout Plain Layout
-Otra forma de reducir estas trayectorias es crear agrupamientos rápidos
+Otra forma de simplificar estas trayectorias es crear agrupamientos rápidos
  que no tengan que comparar todas las conformaciones, parecido a lo que
  realiza el algoritmo de Hobohm&Sander 
 \begin_inset CommandInset citation
@@ -732,7 +805,7 @@ snapshots
 \end_layout
 
 \begin_layout Itemize
-que pueden no estar disponibles y por lo tanto se necesita reducir esas
+que pueden no estar disponibles y por lo tanto se necesita simplificar esas
  trayectorias 
 \end_layout
 
@@ -849,7 +922,7 @@ literal "false"
  Estos parámetros tienden a hacer artificial el agrupamiento donde los cambios
  del valor de alguno de los parámetros, pueden producir resultados que varian
  de forma considerable.
-  
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1447,12 +1520,19 @@ literal "false"
 \end_inset
 
 .
- La reducción se realizó con los parámetros de 40 bins, un umbral de TMscore
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+La reducción se realizó con los parámetros de 40 bins, un umbral de TMscore
  de 0.5 y un K de 10.
  
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset Note Note
 status open
 
@@ -1608,7 +1688,7 @@ Input
 Dir:
 \series default
  Nombre del directorio de entrada donde están las conformaciones de la trayector
-ía de la proteína a reducir.
+ía de la proteína a simplificar.
 \end_layout
 
 \begin_layout Itemize
@@ -2578,7 +2658,7 @@ status open
 
 \size footnotesize
 A.
- Trayectoria original sin reducir (1044004 conformaciones)
+ Trayectoria original sin simplificar (1044004 conformaciones)
 \end_layout
 
 \end_inset
@@ -2684,10 +2764,10 @@ reference "fig:Reducción-2JOF"
 \end_inset
 
 ).
- En la figura A se presenta el segmento de trayectoria sin reducir; en la
- figura B se presenta el resultado de la etapa de reducción local rápida;
- y en la figura C se presenta el resultado final después de aplicar la reducción
- global a los resultados de la etapa anterior.
+ En la figura A se presenta el segmento de trayectoria sin simplificar;
+ en la figura B se presenta el resultado de la etapa de reducción local
+ rápida; y en la figura C se presenta el resultado final después de aplicar
+ la reducción global a los resultados de la etapa anterior.
  
 \end_layout
 
@@ -2764,7 +2844,7 @@ status open
 
 \size footnotesize
 A.
- Subtrayectoria original (sin reducir, 100k conformaciones, 100%)
+ Subtrayectoria original (sin simplificar, 100k conformaciones, 100%)
 \end_layout
 
 \end_inset
@@ -2936,7 +3016,7 @@ noprefix "false"
 
 \end_inset
 
-: el segmento sin reducir se presenta en la figura 
+: el segmento sin simplificar se presenta en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Reducción-Gromacs"
@@ -3022,7 +3102,7 @@ status collapsed
 
 \begin_layout Plain Layout
 A.
- Segmento sin reducir de 100000 conformaciones
+ Segmento sin simplificar de 100000 conformaciones
 \end_layout
 
 \end_inset
@@ -3405,8 +3485,9 @@ noprefix "false"
 
 \end_inset
 
- mostramos los resultados de reducir un segmento de una trayectoria de 100000
- conformaciones variando el número de procesadores desde 1 hasta 40 procesadores.
+ mostramos los resultados de simplificar un segmento de una trayectoria
+ de 100000 conformaciones variando el número de procesadores desde 1 hasta
+ 40 procesadores.
  En la gráfica puede observarse claramente la disminución de tiempo cuando
  de un procesador pasa a ajecutarse en paralelo con 2 y 5 procesadores.
  La ejecución se reduce de más de 16 minutos a la mitad del tiempo con dos
@@ -3438,7 +3519,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3618,41 +3699,6 @@ Tiempo (Segundos)
 \end_inset
 
 
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 0
-width "50col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/times-villin-100k-cores-pdfx.pdf
-	lyxscale 50
-	scale 30
-	BoundingBox 0bp 15bp 432bp 385bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -3671,10 +3717,6 @@ name "fig:Tiempos-de-ejecución"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -4420,8 +4462,7 @@ Conclusiones
 
 \begin_layout Standard
 En este trabajo presentamos una algoritmo para reducción de trayectorias
- largas de plegamiento de proteínas que se caracteriza por ser rápido y
- paralelo.
+ de plegamiento de proteínas que se caracteriza por ser rápido y paralelo.
  El algoritmo produce reducciones donde la dinámica de la trayectoria original
  se preserva en cuanto a los eventos principales y la relación temporal
  de los mismos.

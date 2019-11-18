@@ -3,27 +3,27 @@
 # LOG: Added read/writing scores
 
 library (parallel)
-tmscorelib = sprintf ("%s/%s", Sys.getenv("HOME_PPATH"), "/Reduction/dev/bin/tmscorelg.so")
+#tmscorelib = sprintf ("%s/%s", Sys.getenv("HOME_PPATH"), "/Reduction/dev/bin/tmscorelg.so")
 #cat ("\n>>> tmscoreslib: ", tmscorelib, "\n")
-dyn.load (tmscorelib)
+dyn.load ("tmscorelg.so")
 
 options (warn=0)
 
 nCores=4
-projectName="paper"
+projectName="standard"
 
 
 # Creates a .pdf plot for a protein trajectory o pathway
 # The input is either a compressed (.tgz) trajectory or
 # a directory name with the PDBs files inside it.
-USAGE="plotpath-tmscore.R <input pathway dir> <Reference Native> \n"
+USAGE="USAGE: plottrajectory.R <Input dir with PDB Files> <Native PDB File> \n"
 #--------------------------------------------------------------
 # Main function
 #--------------------------------------------------------------
 main <- function () {
+	message ("Plotting protein folding trajectory...")
 	args = commandArgs (TRUE)
-	print (length(args))
-	if (length (args) < 1) {
+	if (length (args) < 2) {
 		cat (USAGE)
 		quit ()
 	}
@@ -70,8 +70,8 @@ calculateScores <- function (pathname, pdbNames, proteinNative, nCores, scoresFi
 		scores = scoresTable 
 	}else {	
 		cat ("\nLoading PDBs from ", pathname, "...\n")
-		#pdbFiles   = getPDBFiles (pathname)
-		pdbFiles  = paste0 (pathname,"/",pdbNames)
+		pdbFiles   = getPDBFiles (pathname)
+		#pdbFiles  = paste0 (pathname,"/",pdbNames)
 		for (x in pdbFiles[1:5]) print(x)
 
 		cat ("\nCalculating scores...\n")	
@@ -102,7 +102,7 @@ calculateTmscore <- function (proteinModel, proteinNative) {
 #-------------------------------------------------------------
 #-------------------------------------------------------------
 plotPathwayPaper <- function (scores, outFile, label) {
-	cat ("\nStandard plotting of scores to ", outFile, "\n")
+	cat ("\nPaper plotting of scores to ", outFile, "\n")
 	cat ("width=20, cex.axis=2, cex.lab=2.5, margins\n")
 	pdf (outFile, width=20, height=5.0, compress=T)
 		n = nrow(scores)

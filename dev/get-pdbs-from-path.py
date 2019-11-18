@@ -1,1 +1,0 @@
-/home/lg/ppath/Reduction/dev/performance/pca/get-pdbs-from-path.py

@@ -83,7 +83,7 @@ def createDir (dir):
 
 			os.rename (dir, oldDir)
 	checkExistingDir (dir)
-	os.system ("mkdir %s" % dir)
+	os.system ("mkdir -p %s" % dir)
 #--------------------------------------------------------------------
 # Get the files containing the pattern from a inputDir 
 #--------------------------------------------------------------------
