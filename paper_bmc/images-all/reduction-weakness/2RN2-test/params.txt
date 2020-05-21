@@ -1,0 +1,4 @@
+Protein name: alphas
+Size of bins : 25
+TM-score trhreshold : 0.9
+K representatives : 10
