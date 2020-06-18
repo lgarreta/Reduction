@@ -39,7 +39,7 @@
 
 % For fixing placing wide figures in two-column doc
 \usepackage{dblfloatfix}
-\usepackage{multicol}
+%\usepackage{multicol}
 %\usepackage{float}
 
 %Controlling figure and table placement in LaTeX
@@ -142,7 +142,7 @@
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -171,346 +171,7 @@ dochead{Research}
 \end_layout
 
 \begin_layout Title
-A fast parallel algorithm to reduce protein folding trajectories
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-author[
-\end_layout
-
-\begin_layout Plain Layout
-
-   addressref={aff1},                   % id's of addresses, e.g.
- {aff1,aff2}   
-\end_layout
-
-\begin_layout Plain Layout
-
-   corref={aff1},                       % id of corresponding address, if
- any
-\end_layout
-
-\begin_layout Plain Layout
-
-   email={1uis.garreta@correounivalle.edu.co}   % email address
-\end_layout
-
-\begin_layout Plain Layout
-
-]{
-\backslash
-inits{LG}
-\backslash
-fnm{Luis} 
-\backslash
-snm{Garreta}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-author[
-\end_layout
-
-\begin_layout Plain Layout
-
-   addressref={aff2},
-\end_layout
-
-\begin_layout Plain Layout
-
-   email={mmartinez@ebi.ac.uk}
-\end_layout
-
-\begin_layout Plain Layout
-
-]{
-\backslash
-inits{MM}
-\backslash
-fnm{Mauricio} 
-\backslash
-snm{Martinez}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-author[
-\end_layout
-
-\begin_layout Plain Layout
-
-   addressref={aff3},
-\end_layout
-
-\begin_layout Plain Layout
-
-   email={nediaz@unicauca.edu.co}
-\end_layout
-
-\begin_layout Plain Layout
-
-]{
-\backslash
-inits{PM}
-\backslash
-fnm{Néstor A} 
-\backslash
-snm{Díaz}}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-author[
-\end_layout
-
-\begin_layout Plain Layout
-
-   addressref={aff4},
-\end_layout
-
-\begin_layout Plain Layout
-
-   email={pedro.moreno@correounivalle.edu.conediaz@unicauca.edu.co}
-\end_layout
-
-\begin_layout Plain Layout
-
-]{
-\backslash
-inits{ND}
-\backslash
-fnm{Pedro A} 
-\backslash
-snm{Moreno}}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-address[id=aff1]{%                           % unique id
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-orgname{Corporaci
-\backslash
-'{o}n Colombiana de Investigaci
-\backslash
-'{o}n Agropecuaria - AGROSAVIA, CI Tibaitat
-\backslash
-'{a},  Kil
-\backslash
-'{o}metro 14, V
-\backslash
-'{i}a a Mosquera, 250047, Colombia}, % university, etc
-\end_layout
-
-\begin_layout Plain Layout
-
-  %
-\backslash
-street{},                     %
-\end_layout
-
-\begin_layout Plain Layout
-
-  %
-\backslash
-postcode{}                                % post or zip code
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-city{Santiago de Cali},                              % city
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-cny{Colombia}                                    % country
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-address[id=aff2]{%
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-orgname{The European Bioinformatics Institute (EMBL-EBI)},
-\end_layout
-
-\begin_layout Plain Layout
-
-  %
-\backslash
-street{D
-\backslash
-"{u}sternbrooker Weg 20},
-\end_layout
-
-\begin_layout Plain Layout
-
-  %
-\backslash
-postcode{24105}
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-city{Hinxton, Cambridgeshire},
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-cny{UK}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-address[id=aff3]{%                           % unique id
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-orgname{Facultad de Ingeniería Electrónica y Telecomunicaciones,  Universidad
- del Cauca}, % university, etc
-\end_layout
-
-\begin_layout Plain Layout
-
-  %
-\backslash
-street{},                     %
-\end_layout
-
-\begin_layout Plain Layout
-
-  %
-\backslash
-postcode{}                                % post or zip code
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-city{Popayán},                              % city
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-cny{Colombia}                                    % country
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-address[id=aff4]{%                           % unique id
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-orgname{Escuela de Ingeniería de Sistemas y Computación, Universidad del
- Valle}, % university, etc
-\end_layout
-
-\begin_layout Plain Layout
-
-  %
-\backslash
-street{},                     %
-\end_layout
-
-\begin_layout Plain Layout
-
-  %
-\backslash
-postcode{}                                % post or zip code
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-city{Santiago de Cali},                              % city
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-cny{Colombia}                                    % country
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
+Fast parallel algorithm to reduce protein folding trajectories
 \end_layout
 
 \begin_layout Standard
@@ -521,21 +182,7 @@ status open
 
 
 \backslash
-begin{artnotes}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-note[id=n1]{Equal contributor} % note, connected to author
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{artnotes}
+input {Authors}
 \end_layout
 
 \end_inset
@@ -758,10 +405,10 @@ Understanding the protein folding mechanism remains a grand challenge in
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement th
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -778,7 +425,18 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Protein folding trajectory.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+csentence{Protein folding trajectory.}
+\end_layout
+
+\end_inset
+
  The evolution of the folding is measured at each step by comparing the
  structure at time 
 \begin_inset ERT
@@ -1016,7 +674,7 @@ reference "fig:lost-info-dimensionality"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement th
 wide false
 sideways false
 status open
@@ -1348,10 +1006,10 @@ reference "fig:Algorithm-Description"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement !h
+placement th
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1368,7 +1026,18 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Overview of the proposed algorithm.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+csentence{Overview of the proposed algorithm.}
+\end_layout
+
+\end_inset
+
  Step 1: Divide the trajectory into segments (vertical dashed lines) and
  reduce each individually.
  Each segment has n conformations from time 
@@ -1522,10 +1191,10 @@ S
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement th
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1542,7 +1211,18 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Parallel processing of trajectory segments.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+csentence{Parallel processing of trajectory segments.}
+\end_layout
+
+\end_inset
+
  The trajectory is divided into m segments (S1, ..., Sm), and each segment
  is processed separately and in parallel on a machine with n processing
  cores.
@@ -1722,49 +1402,8 @@ Three tests were carried out to evaluate the capacity and performance of
  reduction techniques; and third a performance comparison.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-three trajectories of different proteins were reduced using the proposed
- algorithm to show how the main folding events of the original trajectory
- are retained in the reductions; second, one trajectory was reduced by the
- proposed algorithm and extracted the intrinsic information using other
- reduction techniques to 
-\end_layout
-
-\begin_layout Plain Layout
-we reduced the trajectory of three proteins; second, we compare the results
- of the algorithm with the results of other reduction techniques; and third,
- we compare the performance of the algorithm against that of other techniques,
- as well as when it is executed in parallel.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection*
 Reduction of protein folding trajectories
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/tmp-datasets.png
-	lyxscale 80
-	scale 80
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1901,624 +1540,12 @@ s o distancias que presentan en su espacio original se mantengan lo mejor
 placement !t
 wide true
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align left
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 0
-width "98text%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "white"
-status open
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 0
-width "30col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-A:
-\begin_inset Newline newline
-\end_inset
-
-Protein name: 
-\series default
-Trp-cage
-\series bold
-
-\begin_inset Newline newline
-\end_inset
-
-PDB code: 
-\series default
-2JOF
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-Simulation time:
-\series default
- 208 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-us
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-Time step:
-\series default
- 200 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ps
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-No.
- of conformations:
-\series default
- 1044001 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
 \begin_inset Graphics
-	filename img/native-2jof.png
-	lyxscale 25
-	scale 25
-	rotateOrigin leftBottom
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "b"
-use_parbox 0
-use_makebox 0
-width "60col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/trajectory-2JOF-full-pdbs.png
-	lyxscale 20
-	scale 15
-	BoundingBox 0bp 0bp 1920bp 480bp
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename img/trajectory-2JOF-full-pdbsGlobal.pdf
-	lyxscale 30
-	scale 20
-	BoundingBox 0bp 0bp 1410bp 337bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hrule
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align left
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 0
-width "98text%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "white"
-status open
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "b"
-use_parbox 0
-use_makebox 0
-width "30col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-B:
-\begin_inset Newline newline
-\end_inset
-
-Protein name: 
-\series default
-Villin headpiece
-\series bold
-
-\begin_inset Newline newline
-\end_inset
-
-PDB code: 
-\series default
-2F4K
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-Simulation time:
-\series default
- 8 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-us
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-Time step:
-\series default
- 50 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ps
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-No.
- of conformations:
-\series default
- 15201 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename img/native-2f4k.png
-	lyxscale 25
-	scale 25
-	rotateOrigin leftBottom
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "b"
-use_parbox 0
-use_makebox 0
-width "60col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/trajectory-2F4Kfh-r5c1-full-pdbs.pdf
-	lyxscale 30
-	scale 20
-	BoundingBox 0bp 0bp 1440bp 360bp
-	clip
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename img/trajectory-2F4Kfh-r5c1-full-pdbsGlobal.pdf
-	lyxscale 30
-	scale 20
-	BoundingBox 0bp 0bp 1410bp 337bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hrule
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align left
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 0
-width "98text%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "white"
-status open
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "b"
-use_parbox 0
-use_makebox 0
-width "30col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-C:
-\begin_inset Newline newline
-\end_inset
-
-Protein name: 
-\series default
-Ribonuclease H
-\series bold
-
-\begin_inset Newline newline
-\end_inset
-
-PDB code: 
-\series default
-2RN2
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-No.
- of conformations
-\series default
- 429
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename img/native-2rn2.png
-	lyxscale 25
-	scale 25
-	rotateOrigin leftBottom
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "b"
-use_parbox 0
-use_makebox 0
-width "60col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/trajectory-2RN2-pdbs.pdf
-	lyxscale 30
-	scale 20
-	BoundingBox 0bp 0bp 1440bp 330bp
-	clip
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename img/trajectory-2RN2-pdbsGlobal.pdf
-	lyxscale 30
-	scale 20
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hrule
-\end_layout
+	filename img/path-comparisons.pdf
 
 \end_inset
 
@@ -2529,7 +1556,19 @@ hrule
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Plots of the TM-score values for the original and reduced trajectories.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+csentence{Plots of the TM-score values for the original and reduced trajectories.
+}
+\end_layout
+
+\end_inset
+
  Protein and simulation details on the left.
  Trajectories on the right: original (upper part), and reduced (lower part).
  (A) Trajectory of trp-cage protein, 
@@ -2660,300 +1699,8 @@ status open
 
 \begin_layout Plain Layout
 \align left
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-A: Original Trajectory
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/villinfh-fullk-nb-fullk-pdbs-trj-palette-ink.pdf
-	lyxscale 20
-	scale 22
-	BoundingBox 0bp 0bp 1004bp 239bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/villinfh-fullk-nmds-palette.pdf
-	lyxscale 20
-	scale 18
-	BoundingBox 0bp 0bp 504bp 432bp
-	clip
-
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Graphics
-	filename img/pca-villinfhrb-clus-hc-fviz-groups.pdf
-	lyxscale 20
-	scale 18
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset line
-LatexCommand rule
-offset "0.5ex"
-width "95col%"
-height "1pt"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-B: Reduded Trajectory by 52%
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/villinfhr-red7k-pdbsGlobal-trj-palette-ink.pdf
-	lyxscale 20
-	scale 22
-	BoundingBox 0bp 0bp 1004bp 239bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/villinfhr-red7k-pdbsGlobal-nmds-palette.pdf
-	lyxscale 20
-	scale 18
-	BoundingBox 0bp 0bp 504bp 432bp
-	clip
-
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Graphics
-	filename img/pca-villinfhb-reduced7k-clus-hc-fviz-groups.pdf
-	lyxscale 20
-	scale 18
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset line
-LatexCommand rule
-offset "0.5ex"
-width "95col%"
-height "1pt"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-C: Reduded Trajectory by 80%
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/villinfhr-red3k-pdbsGlobal-trj-palette-ink.pdf
-	lyxscale 20
-	scale 22
-	BoundingBox 0bp 0bp 1004bp 239bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/villinfhr-red3k-nmds-palette.pdf
-	lyxscale 20
-	scale 18
-	BoundingBox 0bp 0bp 504bp 432bp
-	clip
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename img/pca-villinfhr-reduced3k-clus-hc-fviz-groups.pdf
-	lyxscale 20
-	scale 18
-
-\end_inset
-
-
-\end_layout
+	filename img/paths-intrinsic-info.pdf
 
 \end_inset
 
@@ -2964,7 +1711,18 @@ C: Reduded Trajectory by 80%
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Intrinsic information is preserved in the reductions.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+csentence{Intrinsic information is preserved in the reductions.}
+\end_layout
+
+\end_inset
+
  Intrinsic information captured from the original trajectory of the villin-headp
 iece protein is largely preserved in the reduced trajectories produced by
  our algorithm.
@@ -3021,24 +1779,17 @@ Algorithm performance
 
 \begin_layout Standard
 The performance of the proposed algorithm was tested in two cases: first,
- comparing its runtime with the ones of three typical techniques for folding
- reduction: nMDS, clustering, and PCA (Figure 
+ a runtime comparison with other three typical techniques for folding reduction:
+ nMDS, clustering, and PCA; and second, a parallel comparison, running the
+ algorithm with several cores (Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Performance-methods"
 
 \end_inset
 
-); and second, comparing the runtimes when it runs in parallel on multi-core
- computers (Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Performance-methods-cores"
-
-\end_inset
-
 ).
- The trajectory for these tests was conformed by the first 100k conformations
+ For both tests, the trajectory corresponds to the first 100k conformations
  from the full trajectory of the trp-cage protein, described above in datasets
  section.
  
@@ -3052,10 +1803,10 @@ reference "fig:Performance-methods"
 
 \end_inset
 
-), several subtrajectories of different lengths were reduced by all the
+.A), several subtrajectories of different lengths were reduced by all the
  techniques.
- PCA showed the most efficient runtimes followed by the proposed algorithm
- FR1, contrary to nMDS and clustering that becomes impractical when faced
+ PCA showed the most efficient runtimes followed by our proposed algorithm
+ FR, contrary to nMDS and clustering that becomes impractical when faced
  with short to medium trajectories.
  However, the proposed algorithm has the advantage to easily run in parallel,
  contrary to the other techniques, and when it runs using two cores, its
@@ -3064,74 +1815,8 @@ reference "fig:Performance-methods"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\color blue
-El desempeño de nuestro algoritmo lo evaluamos en dos situaciones: comparándolo
- frente a otros métodos de reducción (Figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Performance-methods"
-
-\end_inset
-
-) y ejecutándolo en paralelo usando múltiples núcleos de procesamiento (Figura
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Performance-methods-cores"
-
-\end_inset
-
-).
- 
-\color inherit
-Para esto utilizamos las 100K primeras conformaciones de la trayectoria
- de la proteína Trp-cage (ver Métodos).
- Para la primera evaluación ejecutamos los métodos con diferentes tamaños
- de subtrayectorias, desde 100 hasta 100K conformaciones, y en la segunda
- evaluación ejecutamos nuestro algoritmo con diferente número de núcleos
- de procesamiento.
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-primero comparando los tiempos que toma en reducir subtrayectorias de diferentes
- tamaños frente a los tiempos que toman otros métodos de reducción (Figura
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Performance-methods-both"
-
-\end_inset
-
-.A); y segundo, comparando los tiempos que toma en reducir una subtrayectoria
- cuando utiliza múltiples núcleos (Figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Performance-methods-both"
-
-\end_inset
-
-.B).
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
-placement h
+placement th
 wide false
 sideways false
 status open
@@ -3139,10 +1824,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/performance-methods-multicore-sizes-jave.pdf
-	lyxscale 30
-	scale 30
-	clip
+	filename img/performance-times.pdf
 
 \end_inset
 
@@ -3153,26 +1835,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Runtime comparisons for the folding reduction techniques.
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-The proposed algorithm was run in two ways: using one core (FR1) and using
- two cores (FR2, blue line).
- The other techniques were run using one core.
- 
-\end_layout
-
-\end_inset
-
-PCA followed by the proposed algorithm FR1 are the most efficient techniques
- when run using one core.
- But when the proposed algorithm run using two cores (FR2), its runtime
- is reduced by half, being more efficient than PCA.
- On the contrary, nMDS and clustering take too long, inclusive with short
- trajectories.
+Performance of the algorithm.
+ (A) Runtime comparisons for four folding reduction techniques: nMDS, clustering
+, PCA, and our algorithm FR (running with one and two cores).
+ PCA is the most efficient algorithm followed by our algorithm FR with one
+ core, but when it runs with two cores, its runtime is reduced by half,
+ being more efficient than PCA.
+  (B) Evaluation of the algorithm paralellization.
+ When the number of processing cores is multiplied by two, the processing
+ time reduces by half with a quasi-linear speedup that maintains for up
+ to ~8 cores (8x).
  
 \begin_inset CommandInset label
 LatexCommand label
@@ -3223,60 +1895,14 @@ To test how the parallelization improves the algorithm performance, the
  The runtimes are shown in the Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Performance-methods-cores"
+reference "fig:Performance-methods"
 
 \end_inset
 
-, where it is notable a good speedup that reduces the time by half every
+.B, where it is notable a good speedup that reduces the time by half every
  time the number of cores is duplicated.
  This speedup maintains for up to ~8 cores, and then it reduces to the minimum
  after ~30 cores.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/times-villin-100k-cores-ink.pdf
-	lyxscale 30
-	scale 30
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Evaluation of the algorithm paralellization.
- When the number of processing cores is multiplied by two, the processing
- time reduces by half with a quasi-linear speedup that maintains for up
- to ~8 cores (8x).
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Performance-methods-cores"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3349,7 +1975,7 @@ Nevertheless, the reductions produced by the proposed algorithm are limited
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "references_reduction"
+bibfiles "references"
 options "bmc_mathphys"
 
 \end_inset
