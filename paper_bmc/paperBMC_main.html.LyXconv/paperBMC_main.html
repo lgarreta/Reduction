@@ -1,0 +1,1777 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title></title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="paperBMC_main.tex"> 
+<link rel="stylesheet" type="text/css" href="paperBMC_main.css"> 
+</head><body 
+>
+                                                                                            
+                                                                                            
+<div 
+class="colorbox" id="colorbox1"><span 
+class="ecss-1200">RESEARCH</span>                                                                               </div>
+<!--l. 26--><p class="noindent" ><span 
+class="ecss-2488">Fast</span>
+<span 
+class="ecss-2488">parallel</span>
+<span 
+class="ecss-2488">algorithm</span>
+<span 
+class="ecss-2488">to</span>
+<span 
+class="ecss-2488">reduce</span>
+<span 
+class="ecss-2488">protein</span>
+<span 
+class="ecss-2488">folding</span>
+<span 
+class="ecss-2488">trajectories</span>
+<!--l. 4--><p class="noindent" ><span 
+class="ecss-1095">Luis Garreta</span><sup class="textsuperscript"><span 
+class="ecss-0900">1</span></sup><span 
+class="ecss-1095">, Mauricio Martinez</span><sup class="textsuperscript"><span 
+class="ecss-0900">2</span></sup><span 
+class="ecss-1095">, N</span><span 
+class="ecss-1095">éstor A D</span><span 
+class="ecss-1095">íaz</span><sup class="textsuperscript"><span 
+class="ecss-0900">3</span></sup><span 
+class="ecss-1095">&#x00A0;and Pedro A Moreno</span><sup class="textsuperscript"><span 
+class="ecss-0900">4</span></sup><sup class="textsuperscript"><span 
+class="ecss-0900">*</span></sup>
+<div 
+class="colorbox" id="colorbox2"><div 
+class="abstract" 
+>
+<a 
+ id="Q1-1-1"></a>
+<!--l. 34--><p class="noindent" ><span 
+class="ecss-1000">Abstract</span>
+<!--l. 34--><p class="noindent" >
+<!--l. 34--><p class="noindent" ><span 
+class="ecss-1000">Background:</span>
+<span 
+class="ecss-1000">The</span>
+<span 
+class="ecss-1000">simulations</span>
+<span 
+class="ecss-1000">are</span>
+<span 
+class="ecss-1000">one</span>
+<span 
+class="ecss-1000">of</span>
+<span 
+class="ecss-1000">the</span>
+<span 
+class="ecss-1000">most</span>
+<span 
+class="ecss-1000">important</span>
+<span 
+class="ecss-1000">tools</span>
+<span 
+class="ecss-1000">for</span>
+<span 
+class="ecss-1000">studying</span>
+<span 
+class="ecss-1000">and</span>
+<span 
+class="ecss-1000">understanding</span>
+<span 
+class="ecss-1000">the</span>
+<span 
+class="ecss-1000">underlying</span>
+<span 
+class="ecss-1000">mechanisms</span>
+<span 
+class="ecss-1000">of</span>
+<span 
+class="ecss-1000">the</span>
+<span 
+class="ecss-1000">protein</span>
+<span 
+class="ecss-1000">folding</span>
+<span 
+class="ecss-1000">process.</span>
+<span 
+class="ecss-1000">Protein</span>
+<span 
+class="ecss-1000">folding</span>
+<span 
+class="ecss-1000">simulations</span>
+<span 
+class="ecss-1000">have</span>
+<span 
+class="ecss-1000">experienced</span>
+<span 
+class="ecss-1000">substantial</span>
+<span 
+class="ecss-1000">progress</span>
+<span 
+class="ecss-1000">in</span>
+<span 
+class="ecss-1000">the</span>
+<span 
+class="ecss-1000">last</span>
+<span 
+class="ecss-1000">years,</span>
+<span 
+class="ecss-1000">they</span>
+<span 
+class="ecss-1000">are</span>
+<span 
+class="ecss-1000">performed</span>
+<span 
+class="ecss-1000">using</span>
+<span 
+class="ecss-1000">diverse</span>
+<span 
+class="ecss-1000">technologies</span>
+<span 
+class="ecss-1000">and</span>
+<span 
+class="ecss-1000">they</span>
+<span 
+class="ecss-1000">are</span>
+<span 
+class="ecss-1000">reaching</span>
+<span 
+class="ecss-1000">the</span>
+<span 
+class="ecss-1000">microseconds</span>
+<span 
+class="ecss-1000">and</span>
+<span 
+class="ecss-1000">greater</span>
+<span 
+class="ecss-1000">timescales,</span>
+<span 
+class="ecss-1000">which</span>
+<span 
+class="ecss-1000">generates</span>
+<span 
+class="ecss-1000">very</span>
+<span 
+class="ecss-1000">long</span>
+<span 
+class="ecss-1000">trajectories.</span>
+<span 
+class="ecss-1000">As</span>
+<span 
+class="ecss-1000">a</span>
+<span 
+class="ecss-1000">result,</span>
+<span 
+class="ecss-1000">the</span>
+<span 
+class="ecss-1000">analysis</span>
+<span 
+class="ecss-1000">of</span>
+<span 
+class="ecss-1000">these</span>
+<span 
+class="ecss-1000">trajectories</span>
+<span 
+class="ecss-1000">entails</span>
+<span 
+class="ecss-1000">to</span>
+<span 
+class="ecss-1000">complications</span>
+<span 
+class="ecss-1000">and</span>
+<span 
+class="ecss-1000">is</span>
+<span 
+class="ecss-1000">necessary</span>
+<span 
+class="ecss-1000">to</span>
+<span 
+class="ecss-1000">create</span>
+<span 
+class="ecss-1000">tools</span>
+<span 
+class="ecss-1000">to</span>
+<span 
+class="ecss-1000">simplify</span>
+<span 
+class="ecss-1000">them,</span>
+<span 
+class="ecss-1000">so</span>
+<span 
+class="ecss-1000">that</span>
+<span 
+class="ecss-1000">both</span>
+<span 
+class="ecss-1000">the</span>
+<span 
+class="ecss-1000">main</span>
+<span 
+class="ecss-1000">events</span>
+<span 
+class="ecss-1000">and</span>
+<span 
+class="ecss-1000">the</span>
+<span 
+class="ecss-1000">temporal</span>
+<span 
+class="ecss-1000">order</span>
+<span 
+class="ecss-1000">in</span>
+<span 
+class="ecss-1000">which</span>
+<span 
+class="ecss-1000">they</span>
+<span 
+class="ecss-1000">occur</span>
+<span 
+class="ecss-1000">are</span>
+<span 
+class="ecss-1000">preserved.</span>
+<!--l. 36--><p class="noindent" ><span 
+class="ecss-1000">Results:</span>
+<span 
+class="ecss-1000">We</span>
+<span 
+class="ecss-1000">present</span>
+<span 
+class="ecss-1000">an</span>
+<span 
+class="ecss-1000">algorithm</span>
+<span 
+class="ecss-1000">to</span>
+<span 
+class="ecss-1000">reduce</span>
+<span 
+class="ecss-1000">long</span>
+<span 
+class="ecss-1000">protein</span>
+<span 
+class="ecss-1000">folding</span>
+<span 
+class="ecss-1000">trajectories</span>
+<span 
+class="ecss-1000">in</span>
+<span 
+class="ecss-1000">a</span>
+<span 
+class="ecss-1000">fast</span>
+<span 
+class="ecss-1000">and</span>
+<span 
+class="ecss-1000">parallel</span>
+<span 
+class="ecss-1000">way.</span>
+<span 
+class="ecss-1000">The</span>
+<span 
+class="ecss-1000">algorithm</span>
+<span 
+class="ecss-1000">divides</span>
+<span 
+class="ecss-1000">a</span>
+<span 
+class="ecss-1000">trajectory</span>
+<span 
+class="ecss-1000">into</span>
+<span 
+class="ecss-1000">segments</span>
+<span 
+class="ecss-1000">to</span>
+<span 
+class="ecss-1000">be</span>
+<span 
+class="ecss-1000">processed</span>
+<span 
+class="ecss-1000">in</span>
+<span 
+class="ecss-1000">parallel,</span>
+<span 
+class="ecss-1000">and</span>
+<span 
+class="ecss-1000">from</span>
+<span 
+class="ecss-1000">each</span>
+<span 
+class="ecss-1000">segment</span>
+<span 
+class="ecss-1000">selects</span>
+<span 
+class="ecss-1000">the</span>
+<span 
+class="ecss-1000">most</span>
+<span 
+class="ecss-1000">representative</span>
+<span 
+class="ecss-1000">conformations</span>
+<span 
+class="ecss-1000">using</span>
+<span 
+class="ecss-1000">a</span>
+<span 
+class="ecss-1000">rapid</span>
+<span 
+class="ecss-1000">clustering</span>
+<span 
+class="ecss-1000">strategy,</span>
+<span 
+class="ecss-1000">which</span>
+<span 
+class="ecss-1000">takes</span>
+<span 
+class="ecss-1000">advantage</span>
+<span 
+class="ecss-1000">of</span>
+<span 
+class="ecss-1000">the</span>
+<span 
+class="ecss-1000">temporal</span>
+<span 
+class="ecss-1000">order</span>
+<span 
+class="ecss-1000">of</span>
+<span 
+class="ecss-1000">the</span>
+<span 
+class="ecss-1000">conformations</span>
+<span 
+class="ecss-1000">to</span>
+<span 
+class="ecss-1000">compare</span>
+<span 
+class="ecss-1000">them</span>
+<span 
+class="ecss-1000">locally,</span>
+<span 
+class="ecss-1000">avoiding</span>
+<span 
+class="ecss-1000">an</span>
+<span 
+class="ecss-1000">all-versus-all</span>
+<span 
+class="ecss-1000">comparison.</span>
+<span 
+class="ecss-1000">The</span>
+<span 
+class="ecss-1000">algorithm</span>
+<span 
+class="ecss-1000">reduces</span>
+<span 
+class="ecss-1000">a</span>
+<span 
+class="ecss-1000">trajectory</span>
+<span 
+class="ecss-1000">in</span>
+<span 
+class="ecss-1000">a</span>
+<span 
+class="ecss-1000">high</span>
+<span 
+class="ecss-1000">percentage,</span>
+<span 
+class="ecss-1000">preserving</span>
+<span 
+class="ecss-1000">both</span>
+<span 
+class="ecss-1000">the</span>
+<span 
+class="ecss-1000">patterns</span>
+<span 
+class="ecss-1000">and</span>
+<span 
+class="ecss-1000">the</span>
+<span 
+class="ecss-1000">structure</span>
+<span 
+class="ecss-1000">obtained</span>
+<span 
+class="ecss-1000">by</span>
+<span 
+class="ecss-1000">other</span>
+<span 
+class="ecss-1000">more</span>
+<span 
+class="ecss-1000">complex</span>
+<span 
+class="ecss-1000">reduction</span>
+<span 
+class="ecss-1000">techniques.</span>
+<span 
+class="ecss-1000">In</span>
+<span 
+class="ecss-1000">addition,</span>
+<span 
+class="ecss-1000">its</span>
+<span 
+class="ecss-1000">performance</span>
+<span 
+class="ecss-1000">is</span>
+<span 
+class="ecss-1000">close</span>
+<span 
+class="ecss-1000">to</span>
+<span 
+class="ecss-1000">that</span>
+<span 
+class="ecss-1000">shown</span>
+<span 
+class="ecss-1000">by</span>
+<span 
+class="ecss-1000">other</span>
+<span 
+class="ecss-1000">efficient</span>
+<span 
+class="ecss-1000">reduction</span>
+<span 
+class="ecss-1000">techniques,</span>
+<span 
+class="ecss-1000">and</span>
+<span 
+class="ecss-1000">this</span>
+<span 
+class="ecss-1000">performance</span>
+<span 
+class="ecss-1000">is</span>
+<span 
+class="ecss-1000">improved</span>
+<span 
+class="ecss-1000">when</span>
+<span 
+class="ecss-1000">executed</span>
+<span 
+class="ecss-1000">in</span>
+<span 
+class="ecss-1000">parallel</span>
+<span 
+class="ecss-1000">using</span>
+<span 
+class="ecss-1000">more</span>
+<span 
+class="ecss-1000">than</span>
+<span 
+class="ecss-1000">one</span>
+<span 
+class="ecss-1000">core.</span>
+<!--l. 38--><p class="noindent" ><span 
+class="ecss-1000">Conclusions:</span>
+<span 
+class="ecss-1000">The</span>
+<span 
+class="ecss-1000">developed</span>
+<span 
+class="ecss-1000">algorithm</span>
+<span 
+class="ecss-1000">quickly</span>
+<span 
+class="ecss-1000">reduces</span>
+<span 
+class="ecss-1000">a</span>
+<span 
+class="ecss-1000">protein</span>
+<span 
+class="ecss-1000">folding</span>
+<span 
+class="ecss-1000">trajectory</span>
+<span 
+class="ecss-1000">by</span>
+<span 
+class="ecss-1000">selecting</span>
+<span 
+class="ecss-1000">its</span>
+<span 
+class="ecss-1000">most</span>
+<span 
+class="ecss-1000">representative</span>
+<span 
+class="ecss-1000">conformations</span>
+<span 
+class="ecss-1000">and</span>
+<span 
+class="ecss-1000">thus</span>
+<span 
+class="ecss-1000">preserving</span>
+<span 
+class="ecss-1000">both</span>
+<span 
+class="ecss-1000">its</span>
+<span 
+class="ecss-1000">structure</span>
+<span 
+class="ecss-1000">and</span>
+<span 
+class="ecss-1000">its</span>
+<span 
+class="ecss-1000">temporal</span>
+<span 
+class="ecss-1000">order.</span>
+<span 
+class="ecss-1000">The</span>
+<span 
+class="ecss-1000">reduced</span>
+<span 
+class="ecss-1000">trajectories</span>
+<span 
+class="ecss-1000">can</span>
+<span 
+class="ecss-1000">be</span>
+<span 
+class="ecss-1000">used</span>
+<span 
+class="ecss-1000">as</span>
+<span 
+class="ecss-1000">input</span>
+<span 
+class="ecss-1000">for</span>
+<span 
+class="ecss-1000">more</span>
+<span 
+class="ecss-1000">complex</span>
+<span 
+class="ecss-1000">analysis</span>
+<span 
+class="ecss-1000">techniques</span>
+<span 
+class="ecss-1000">and</span>
+<span 
+class="ecss-1000">even</span>
+<span 
+class="ecss-1000">for</span>
+<span 
+class="ecss-1000">other</span>
+<span 
+class="ecss-1000">reduction</span>
+<span 
+class="ecss-1000">techniques</span>
+<span 
+class="ecss-1000">that</span>
+<span 
+class="ecss-1000">become</span>
+<span 
+class="ecss-1000">impractical</span>
+<span 
+class="ecss-1000">when</span>
+<span 
+class="ecss-1000">faced</span>
+<span 
+class="ecss-1000">with</span>
+<span 
+class="ecss-1000">long</span>
+<span 
+class="ecss-1000">folding</span>
+<span 
+class="ecss-1000">trajectories.</span>
+<span 
+class="ecss-1000">The</span>
+<span 
+class="ecss-1000">algorithm</span>
+<span 
+class="ecss-1000">is</span>
+<span 
+class="ecss-1000">fast</span>
+<span 
+class="ecss-1000">and</span>
+<span 
+class="ecss-1000">is</span>
+<span 
+class="ecss-1000">designed</span>
+<span 
+class="ecss-1000">to</span>
+<span 
+class="ecss-1000">run</span>
+<span 
+class="ecss-1000">in</span>
+<span 
+class="ecss-1000">parallel</span>
+<span 
+class="ecss-1000">on</span>
+<span 
+class="ecss-1000">conventional</span>
+<span 
+class="ecss-1000">PCs</span>
+<span 
+class="ecss-1000">with</span>
+<span 
+class="ecss-1000">multi-core</span>
+<span 
+class="ecss-1000">technology,</span>
+<span 
+class="ecss-1000">which</span>
+<span 
+class="ecss-1000">are</span>
+<span 
+class="ecss-1000">present</span>
+<span 
+class="ecss-1000">in</span>
+<span 
+class="ecss-1000">most</span>
+<span 
+class="ecss-1000">typical</span>
+<span 
+class="ecss-1000">research</span>
+<span 
+class="ecss-1000">laboratories.</span>
+</div>
+<!--l. 41--><p class="noindent" ><span 
+class="ecss-1000">Keywords:  Protein</span>
+<span 
+class="ecss-1000">folding</span>
+<span 
+class="ecss-1000">simulations;</span>
+<span 
+class="ecss-1000">Protein</span>
+<span 
+class="ecss-1000">structure</span>
+<span 
+class="ecss-1000">comparison;</span>
+<span 
+class="ecss-1000">Protein</span>
+<span 
+class="ecss-1000">structure</span>
+<span 
+class="ecss-1000">clustering</span>                                                                                 </div>    
+                                                                                            
+  <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>Background</h3>
+<!--l. 52--><p class="noindent" >We present a parallel algorithm to reduce protein
+folding trajectories which quickly obtains representative
+conformations, conserving both their three-dimensional
+structure (3D) and their temporal order. Proteins play a
+fundamental role in all living beings, but to be functional,
+they must fold from their linear amino acid (AA) sequence
+to a unique 3D or native state, which is known as the
+protein folding process. Understanding the mechanisms
+and rules of this process has been one of the most pursued
+objectives of computational biology, and an important
+theoretical tool to study it has been the simulations of
+protein folding. These simulations generate folding
+trajectories (Figure <a 
+href="#x1-1001r1">1<!--tex4ht:ref: fig:Folding-Trajectory --></a>), which describe the sequence of
+states that proteins follow as a function of time during
+their folding process.
+<!--l. 54--><p class="indent" >  <hr class="figure"><div class="figure" 
+>
+___________________________________________
+<a 
+ id="x1-2r1"></a><sup class="textsuperscript"><span 
+class="ecss-0900">*</span></sup><span 
+class="ecss-0700">Correspondence:</span>
+<span 
+class="ecss-0700">pedro.moreno@correounivalle.edu.co</span>
+<!--l. 47--><p class="noindent" ><sup class="textsuperscript"><span 
+class="ecss-0900">4</span></sup><span 
+class="ecss-0700">Escuela</span>
+<span 
+class="ecss-0700">de</span>
+<span 
+class="ecss-0700">Ingenier</span><span 
+class="ecss-0700">ía</span>
+<span 
+class="ecss-0700">de</span>
+<span 
+class="ecss-0700">Sistemas</span>
+<span 
+class="ecss-0700">y</span>
+<span 
+class="ecss-0700">Computaci</span><span 
+class="ecss-0700">ón,</span>
+<span 
+class="ecss-0700">Universidad</span>
+<span 
+class="ecss-0700">del</span>
+<span 
+class="ecss-0700">Valle,</span>
+<span 
+class="ecss-0700">Santiago</span>
+<span 
+class="ecss-0700">de</span>
+<span 
+class="ecss-0700">Cali,</span>
+<span 
+class="ecss-0700">Colombia</span>
+<!--l. 47--><p class="noindent" ><span 
+class="ecss-0700">Full</span>
+<span 
+class="ecss-0700">list</span>
+<span 
+class="ecss-0700">of</span>
+<span 
+class="ecss-0700">author</span>
+<span 
+class="ecss-0700">information</span>
+<span 
+class="ecss-0700">is</span>
+<span 
+class="ecss-0700">available</span>
+<span 
+class="ecss-0700">at</span>
+<span 
+class="ecss-0700">the</span>
+<span 
+class="ecss-0700">end</span>
+<span 
+class="ecss-0700">of</span>
+<span 
+class="ecss-0700">the</span>
+<span 
+class="ecss-0700">article</span>
+<!--l. 47--><p class="noindent" ><a 
+ id="x1-3r2"></a><sup class="textsuperscript"><span 
+class="cmsy-9">&#8224;</span></sup><span 
+class="ecss-0700">Equal</span>
+<span 
+class="ecss-0700">contributor</span>                                                                                     
+                                                                                            
+<a 
+ id="x1-1002r2"></a>
+                                                                                            
+                                                                                            
+<div 
+class="colorbox" id="colorbox3"><!--l. 55--><p class="noindent" > <img 
+src="0_home_lg_lgdocs_Proteins_paper_bmc_images_trajectory-description-2RN2-pdbs-.png" alt="PIC"  
+>
+<a 
+ id="x1-1001r1"></a>
+<br />   <div class="caption" 
+><span class="id">Figure&#x00A0;1:      </span><span  
+class="content"><span 
+class="bchb8t-">Protein      folding      trajectory.</span>
+The  evolution  of  the  folding  is  measured  at  each
+step  by  comparing  the  structure  at  time  <span 
+class="cmmi-10">t</span><sub><span 
+class="cmmi-7">i</span></sub> to  the
+native  structure  (black  image  background)  using
+a  structure  comparison  metric,  in  this  work  we
+use the TM-score (see Methods). X-axis: Simulation
+time from <span 
+class="cmmi-10">t</span><sub><span 
+class="cmr-7">0</span></sub> to <span 
+class="cmmi-10">t</span><sub><span 
+class="cmmi-7">n</span></sub>. Y-axis: TM-score value, from 0
+(different) to 1 (similar).</span></div><!--tex4ht:label?: x1-1001r1 -->                      </div>
+                                                                                            
+                                                                                            
+<!--l. 58--><p class="indent" >  </div><hr class="endfigure">
+<!--l. 60--><p class="indent" >  Folding simulations mainly use the molecular dynamics
+(DM) method, which due to its computational cost is
+limited to small proteins (&#x003C;100 AA) and very short times
+(picoseconds or microseconds). However, technological
+innovations have allowed significant advances in these
+simulations, both on time scales and technology to
+execute them. In 2011, using the Anton supercomputer,
+specially designed for protein folding <span class="cite">[<a 
+href="#XShaw2008">1</a>]</span>, full simulations
+of 12 proteins were published, several on the order of
+milliseconds <span class="cite">[<a 
+href="#XShaw2011">2</a>]</span>. And more recently, in 2016, the Anton 2
+supercomputer became operational <span class="cite">[<a 
+href="#XShaw2014">3</a>]</span>, being up to ten
+times faster than its predecessor Anton. As an economic
+alternative, in 2014 graphic processing units (GPU)
+were used to simulate, on the order of microseconds,
+the folding of 17 proteins <span class="cite">[<a 
+href="#XNguyen2014">4</a>]</span>. And years earlier, in
+2007, the ~folding@home~ distributed computing
+platform utilized as many as 250,000 PCs, voluntarily
+available around the world, to simulate on the order of
+microseconds the folding of the villin-headpiece protein
+<span class="cite">[<a 
+href="#XLarson2009">5</a>]</span>.
+<!--l. 62--><p class="indent" >  These innovations show significant progress in protein
+folding simulations, both on time scales and technology
+to execute them, and as a result the generation of
+trajectories with millions of conformations. But due to
+their large number of conformations, their processing and
+analysis in conventional PCs is computationally expensive,
+and new algorithms are needed to efficiently simplify
+them, seeking to preserve as much information as
+possible.
+<!--l. 64--><p class="indent" >  Two approaches used to reduce these simulations have
+been the dimensionality reduction <span class="cite">[<a 
+href="#XDuan2013">6</a>]</span> and clustering <span class="cite">[<a 
+href="#XPeng2018">7</a>]</span>.
+In the dimensionality reduction approach, conformations
+are transformed into reduced sets of variables that
+represent them as well as possible. Here, both linear and
+non-linear techniques have been used (e.g. principal
+component analysis (PCA) and multidimensional scaling
+<span class="cite">[<a 
+href="#XRajanSchulten10">8</a>]</span>, Isomap <span class="cite">[<a 
+href="#XDas2006">9</a>]</span>, diffusion maps <span class="cite">[<a 
+href="#XKim2015">10</a>]</span>). However, many of
+these techniques, instead of reducing a trajectory, analyze
+it, losing the structural information of the conformations
+(Figure <a 
+href="#x1-1002r2">2<!--tex4ht:ref: fig:lost-info-dimensionality --></a>, top) and making the results explainable only
+when observed together. In addition, many of these
+techniques require pairwise comparisons, which are
+computationally expensive when trajectories are very
+large.
+<!--l. 66--><p class="indent" >  In the clustering approach, the conformations are
+assigned to groups that share similar characteristics (e.g.,
+similarity with the native structure), and from each group
+an average representative or its general characteristics can
+be taken. Here, hierarchical and partitioned groupings
+have been used (e.g., k-means <span class="cite">[<a 
+href="#XDoerr2017">11</a>]</span>, link <span class="cite">[<a 
+href="#XShao2007">12</a>]</span>). However,
+the groups lose their temporal order since they can
+include conformations that occur in very distant times
+(Figure <a 
+href="#x1-1002r2">2<!--tex4ht:ref: fig:lost-info-dimensionality --></a>, bottom). And also they require pairwise       comparisons, which are computationally expensive when
+   trajectories are very large.
+   <!--l. 68--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                                            
+                                                                                            
+<a 
+ id="x1-7001r3"></a>
+                                                                                            
+                                                                                            
+<div 
+class="colorbox" id="colorbox4"><!--l. 69--><p class="noindent" > <img 
+src="1_home_lg_lgdocs_Proteins_paper_bmc_images_2RN2-trajectory-weakness-.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;2: </span><span  
+class="content"><span 
+class="bchb8t-">Loss of information in dimensionality</span>
+<span 
+class="bchb8t-">reduction   and   clustering.   </span>The   dimensionality
+reduction  (above)  transforms  the  conformations
+(c1, c2 and c3) into a new set of values (c&#8217;1, c&#8217;2 and,
+c&#8217;3), but their structural information is lost. While
+the clustering (bottom) forms two groups (G1 and
+G2),  but  their  temporal  order  is  lost  since  they
+contain conformations that overlap in time (c2, c3,
+c4, c5). </span></div><!--tex4ht:label?: x1-1002r2 -->                                    </div>
+                                                                                            
+                                                                                            
+<!--l. 72--><p class="indent" >  </div><hr class="endfigure">
+<!--l. 74--><p class="indent" >  To reduce a folding trajectory, the proposed algorithm
+divides the path into segments that are processed in
+parallel. For each segment, characteristic events are
+quickly extracted using the rapid clustering strategy
+of Hobohm and Sander (1992) adapted for protein
+folding trajectories; and from these results, the most
+representative events are selected by a strategy of
+k-medoids <span class="cite">[<a 
+href="#XKaufman1990">13</a>]</span>.The results of each segment are joined to
+form the reduced trajectory with the most representative
+conformations of the original trajectory, while retaining
+both its 3D representation as their temporal order.
+<!--l. 76--><p class="indent" >  The algorithm is implemented in the R language,
+except the function for pairwise structure comparison,
+the TM-score <span class="cite">[<a 
+href="#XZhang2004">14</a>]</span>, which is the function executed
+more times and that is implemented in the Fortran
+language.
+  <h3 class="likesectionHead"><a 
+ id="x1-2000"></a>Methods</h3>
+<!--l. 80--><p class="noindent" >
+  <h4 class="likesubsectionHead"><a 
+ id="x1-3000"></a>Datasets of protein folding trajectories</h4>
+<!--l. 82--><p class="noindent" >We used the folding trajectories of three proteins taken
+from different simulation projects. First, the trajectory of
+the trp-cage protein, simulated with molecular dynamics
+(MD) using the Anton supercomputer <span class="cite">[<a 
+href="#XShaw2011">2</a>]</span>, with a
+simulation time of 208 <span 
+class="bchr8c-"> </span>s, a 200 ps&#x00A0;time step, and
+1044001 conformations. Second, the trajectory of the
+villin-headpiece protein, also simulated with DM using
+the folding@home distributed platform <span class="cite">[<a 
+href="#XPandeEnsign07">15</a>]</span>, with
+a simulation time of 8 <span 
+class="bchr8c-"> </span>s, a 50 ps&#x00A0; time step, and
+15201 conformations. And third, the trajectory of the
+ribonuclease H protein, simulated with the Probabilistic
+Roadmap Method using the Parasol folding server <span class="cite">[<a 
+href="#XAmato2010">16</a>]</span>,
+with 429 folding steps (instead of time steps, see below)
+each corresponding to 429 conformations.
+<!--l. 84--><p class="noindent" >
+  <h4 class="likesubsectionHead"><a 
+ id="x1-4000"></a>Time steps and Folding steps</h4>
+<!--l. 86--><p class="noindent" >A time step in MD trajectories is the time length at which
+conformations are sampled or evaluated during the
+simulation. While a folding step, in the PRM and in
+the reduced trajectories produced by our algorithm,
+represents the most likely conformation occurring
+during a time interval or from a set of likely candidate
+conformations.
+                                                 <!--l. 88--><p class="noindent" >
+     <h4 class="likesubsectionHead"><a 
+ id="x1-5000"></a>Pairwise comparison of protein structures using the
+   TM-score <a 
+ id="x1-5000doc"></a></h4>
+   <!--l. 90--><p class="noindent" >In this work, we used the TM-score metric for pairwise
+   comparison of protein structures <span class="cite">[<a 
+href="#XZhang2004">14</a>]</span>. This metric is used
+   in both the proposed algorithm and in the techniques for
+   reduction of protein folding used to compare its results.
+   The TM-score is more sensitive to the global topology than
+   local variations, and so it estimates the pairwise similarity
+   of protein structures much more accurately than the
+   Root Mean Square-Deviation (RMSD), a common
+   metric used for the same purpose. The TM-score ranges
+   from 0 to 1, where 1 is a perfect match. Based on
+   statistics <span class="cite">[<a 
+href="#Xzhang2010">17</a>]</span>, a TM-score lower than 0.17 indicates
+   two random structures with no relation of similarity,
+   and a TM-score higher than 0.5 indicates that the
+   structures have a degree of similarity that is not given by
+   chance.
+   <!--l. 92--><p class="noindent" >
+     <h4 class="likesubsectionHead"><a 
+ id="x1-6000"></a>Other techniques for protein folding reduction <a 
+ id="x1-6000doc"></a></h4>
+   <!--l. 94--><p class="noindent" >nMDS and clustering techniques were used to get the
+   intrinsic information from both the original and two
+   reduced trajectories of the villin-headpiece protein <span class="cite">[<a 
+href="#XLarson2009">5</a>]</span>,
+   and then compare them (See results).
+   <!--l. 96--><p class="indent" >   nMDS reductions were carried out using the R-function
+   monoMDS <span class="cite">[<a 
+href="#XOksanen2019">18</a>]</span>, taking as input the dissimilarity matrix
+   obtained from the pairwise comparison of all the protein
+   conformations of the folding trajectory. And, the
+   complete-linkage clustering reductions were carried out
+   using the R-function hclust <span class="cite">[<a 
+href="#XRCoreTeam2018">19</a>]</span>, taking as input a matrix
+   with the first two principal components from a PCA
+   analysis. This PCA analysis was carried out using the
+   R-function pca.xyz <span class="cite">[<a 
+href="#XGrant2006">20</a>]</span>, taking as input a matrix with the
+   3D coordinates of the <span 
+class="cmmi-10">C&#x03B1; </span>atoms of all the protein
+   conformations of the folding trajectory.
+   <!--l. 98--><p class="indent" >   The reduced trajectories were calculated with the
+   proposed algorithm from the villin-headpiece trajectory
+   with 15201 conformations. The first with 7197
+   conformations (reduced by 52%), and the second with
+   2258 conformations (reduced by 80%).
+   
+<!--l. 100--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-7000"></a>Implementation</h3>
+<!--l. 102--><p class="noindent" >The proposed algorithm reduces a trajectory of protein
+folding in three steps: partitioning, extraction, and
+selection. The first step runs only once, while the other
+two runs several times independently, allowing them to
+run in parallel. Each step involves a strategy to improve
+the efficiency of the algorithm when working with
+large protein folding trajectories. Figure <a 
+href="#x1-7001r3">3<!--tex4ht:ref: fig:Algorithm-Description --></a> shows the 
+                                                                                            
+overview of the algorithm and the steps are given
+below.
+<!--l. 104--><p class="indent" >  <hr class="figure"><div class="figure" 
+>
+                                                                                            
+                                                                                            
+<a 
+ id="x1-8001r4"></a>
+                                                                                            
+                                                                                            
+<div 
+class="colorbox" id="colorbox5"><!--l. 105--><p class="noindent" > <img 
+src="2_home_lg_lgdocs_Proteins_paper_bmc_images_algorithm-description-general-.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;3: </span><span  
+class="content"><span 
+class="bchb8t-">Overview of the proposed algorithm.</span>
+Step 1: Divide the trajectory into segments (vertical
+dashed  lines)  and  reduce  each  individually.  Each
+segment  has  n  conformations  from  time  <span 
+class="cmmi-10">t</span><sub><span 
+class="cmr-7">1</span></sub>  to  <span 
+class="cmmi-10">t</span><sub><span 
+class="cmmi-7">n</span></sub>.
+Step  2:  For  each  segment,  extract  characteristic
+conformations (blue dots) and remove redundant
+ones   (red   dots).   Stage   3:   Select   the   most
+representatives from the previous conformations. </span></div><!--tex4ht:label?: x1-7001r3 --> </div>
+                                                                                            
+                                                                                            
+<!--l. 108--><p class="indent" >  </div><hr class="endfigure">
+  <h4 class="likesubsectionHead"><a 
+ id="x1-8000"></a>Step 1: Partitioning</h4>
+<!--l. 113--><p class="noindent" >Divide the trajectory into segments to reduce them locally
+and in parallel (dotted vertical lines, Figure <a 
+href="#x1-7001r3">3<!--tex4ht:ref: fig:Algorithm-Description --></a>). This is
+carried out by dividing the trajectory from the start to the
+end in segments with <span 
+class="bchri8t-">N </span>conformations each, where <span 
+class="bchri8t-">N </span>is
+an input parameter. Local reductions allow to focus on the
+particular characteristics of each segment that will
+determine the global characteristics of the trajectory. And
+parallel reductions allow to improve the algorithm
+efficiency when it runs on machines with more than
+one processor (e.g. multi-core computers) (Figura
+<a 
+href="#x1-8001r4">4<!--tex4ht:ref: fig:Algorithm-Parallel --></a>).
+<!--l. 115--><p class="indent" >  <hr class="figure"><div class="figure" 
+>
+                                                                                            
+                                                                                            
+<a 
+ id="x1-12001r5"></a>
+                                                                                            
+                                                                                            
+<div 
+class="colorbox" id="colorbox6"><!--l. 117--><p class="noindent" > <img 
+src="3_home_lg_lgdocs_Proteins_paper_bmc_images_algorithm-description-parallel-.png" alt="PIC"  
+>
+<br />  <div class="caption" 
+><span class="id">Figure&#x00A0;4:   </span><span  
+class="content"><span 
+class="bchb8t-">Parallel   processing   of   trajectory</span>
+<span 
+class="bchb8t-">segments.   </span>The   trajectory   is   divided   into   m
+segments   (S1,   ...,   Sm),   and   each   segment   is
+processed separately and in parallel on a machine
+with   n   processing   cores.   The   results   of   the
+extraction  and  selection  steps  (S1  &#8217;,  ...,  Sm&#8217;)  are
+independent  of  each  other  and  join  to  form  the
+reduced trajectory. </span></div><!--tex4ht:label?: x1-8001r4 -->                          </div>
+                                                                                            
+                                                                                            
+<!--l. 120--><p class="indent" >  </div><hr class="endfigure">
+  <h4 class="likesubsectionHead"><a 
+ id="x1-9000"></a>Stage 2: Extraction</h4>
+<!--l. 125--><p class="noindent" >Quickly extract the characteristic conformations of each
+segment and eliminate the redundant ones. This is carried
+out efficiently by means of a rapid clustering approach
+that performs relatively few pairwise comparisons and,
+instead of grouping similar conformations of a segment,
+extracts the most dissimilar ones.
+<!--l. 127--><p class="indent" >  Here, we improved the fast clustering algorithm of
+Hobohm and Sander (1992) to work with a trajectory
+segment and exploit the implicit order of its conformations
+given by its simulation time (black horizontal line, Figure
+<a 
+href="#x1-7001r3">3<!--tex4ht:ref: fig:Algorithm-Description --></a>). The algorithm selects the initial conformation at
+time <span 
+class="cmmi-10">t</span><sub><span 
+class="cmr-7">1</span></sub> as the first characteristic. Then, the algorithm
+compares the previous characteristic with the following
+conformation. If dissimilar, then the conformation becomes
+a new characteristic, otherwise, the conformation is
+redundant and is removed (red dots, Figure <a 
+href="#x1-7001r3">3<!--tex4ht:ref: fig:Algorithm-Description --></a>). The
+process continues with the rest of conformations until
+finishing in the final one at time <span 
+class="cmmi-10">t</span><sub><span 
+class="cmmi-7">n</span></sub>, thus producing the set
+of representative characteristics of the segment (green
+dots, Figure <a 
+href="#x1-7001r3">3<!--tex4ht:ref: fig:Algorithm-Description --></a>)
+<!--l. 129--><p class="noindent" >
+  <h4 class="likesubsectionHead"><a 
+ id="x1-10000"></a>Step 3: Selection</h4>
+<!--l. 131--><p class="noindent" >Take the conformations of previously extracted
+characteristics and cluster them to select the most
+representative characteristics. To find these representatives,
+the algorithm uses a k-medoids strategy (PAM algorithm
+<span class="cite">[<a 
+href="#XKaufman1990">13</a>]</span>) that calculates the k conformations (medoids)
+whose average difference between all the other members
+of the group is minimal.
+<!--l. 133--><p class="indent" >  However, the PAM algorithm needs as input the
+dissimilarity matrix with the pairwise comparison of
+all-versus-all conformations of the trajectory segment,
+which is an intensive computational task when the
+number of conformations is very large. But, this task is
+feasible to perform since the algorithm is working here
+with a reduced set of characteristic conformations
+(previous step) of a trajectory segment and not of the
+complete trajectory.
+<!--l. 136--><p class="noindent" >
+  <h3 class="likesectionHead"><a 
+ id="x1-11000"></a>Results and Discussion</h3>
+<!--l. 138--><p class="noindent" >Three tests were carried out to evaluate the capacity and
+performance of the proposed algorithm: first, reduction of
+three trajectories using the proposed algorithm; second,
+comparison of the intrinsic information preserved by the reductions from both the proposed algorithm and
+ two other folding reduction techniques; and third a
+ performance comparison.
+ <!--l. 140--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-12000"></a>Reduction of protein folding trajectories</h4>
+ <!--l. 142--><p class="noindent" >Figure <a 
+href="#x1-12001r5">5<!--tex4ht:ref: fig:Trajectory-Results --></a> shows the TM-score plots of the reduced
+ trajectories produced by the proposed algorithm. It can be
+ seen from the plots that the algorithm try to find the
+ most representative conformations from their original
+ trajectories, conserving two fundamental properties: the
+ structure and the temporal ordering of the original
+ conformations. Other folding reduction methods lose
+ these properties in their reductions, as we will see in the
+ next section.
+ <!--l. 144--><p class="indent" >   As a result, these reduced trajectories become a
+ summary of the original ones and can be used as inputs
+ for more complex analyzes, or even for other reduction
+ methods that require pairwise comparisons and become
+ impractical for large trajectories.
+                                                                                            
+                                                                                            
+<!--l. 151--><p class="indent" >  <a 
+ id="x1-13001r6"></a><hr class="float"><div class="float" 
+>
+                                                                                            
+                                                                                            
+<div 
+class="colorbox" id="colorbox7"><!--l. 148--><p class="noindent" >
+<img 
+src="4_home_lg_lgdocs_Proteins_paper_bmc_images_path-comparisons-.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;5: </span><span  
+class="content"><span 
+class="bchb8t-">Plots of the TM-score values for the original and reduced trajectories. </span>Protein and simulation
+details on the left. Trajectories on the right: original (upper part), and reduced (lower part). (A) Trajectory
+of  trp-cage  protein,  reduced  by  98%,  from  1044001  to  20881  conformations.  (B)  Trajectory  of  the
+villin-headpiece protein, reduced by 80%, from 15201 to 3011 conformations. (C) Trajectory of ribonuclease
+H protein, reduced by 49%, from 429 to 217 conformations.</span></div><!--tex4ht:label?: x1-12001r5 -->                                        </div>
+                                                                                            
+                                                                                            
+  </div><hr class="endfloat" />
+  <h4 class="likesubsectionHead"><a 
+ id="x1-13000"></a>Comparison with other methods <a 
+ id="x1-13000doc"></a></h4>
+<!--l. 156--><p class="noindent" >Here, we compared how the intrinsic information
+captured by other folding reductions techniques from a
+folding trajectory is also preserved in the reductions
+produced by the proposed algorithm. First, two reduced
+trajectories were computed from the original trajectory of
+the villin-headpiece protein using the proposed algorithm
+(Figure 6), and then the intrinsic information was
+computed on these trajectories using nMDS and clustering
+reductions (Figure 7) (see Methods for the details of the
+trajectory and techniques).
+<!--l. 158--><p class="indent" >  As it can be seen from the Figure 7, the pattern
+of circles of points from nMDS, and the structure
+of three groups from clustering, repeat in both the
+original and the reduced trajectories. This shows that the
+reductions produced by the proposed algorithm largely
+preserve the intrinsic information observed in the original
+trajectory. Furthermore, the proposed algorithm has
+several advantages. First, it avoids the calculation of
+the dissimilarity matrix as it is done by nMDS and
+clustering, that is a computationally expensive task for
+medium to large trajectories. Second, its reductions are a
+set of protein conformations, contrary to reduced
+transformations as the produced with other techniques as
+nMDS, PCA, Isomap or diffusion maps <span class="cite">[<a 
+href="#XRajanSchulten10">8</a>,&#x00A0;<a 
+href="#XDuan2014">21</a>,&#x00A0;<a 
+href="#XKim2015">10</a>]</span>
+that lose structural information and that can only be
+interpreted when viewed together. And third, temporal
+ordering of conformations is conserved, contrary to
+clustering methods <span class="cite">[<a 
+href="#XPeng2018">7</a>]</span> that merge configurations from
+different simulation times into clusters.
+<!--l. 160--><p class="indent" >  <hr class="figure"><div class="figure" 
+>
+                                                                                            
+                                                                                            
+<a 
+ id="x1-14001r7"></a>
+                                                                                            
+                                                                                            
+<div 
+class="colorbox" id="colorbox8"><!--l. 162--><p class="noindent" >
+<img 
+src="5_home_lg_lgdocs_Proteins_paper_bmc_images_paths-intrinsic-info-.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;6:  </span><span  
+class="content"><span 
+class="bchb8t-">Intrinsic  information  is  preserved</span>
+<span 
+class="bchb8t-">in the reductions. </span>Intrinsic information captured
+from the original trajectory of the villin-headpiece
+protein   is   largely   preserved   in   the   reduced
+trajectories  produced  by  our  algorithm.  TM-score
+plot,   nMDS   pattern   and   clustering   groups   at
+the  top,  bottom  left,  and  bottom  right  of  each
+figure. (A) Original trajectory (B and C) Reduced
+trajectories  by  52%.  and  80%,  respectively.  The
+nMDS produces a set of circular patterns associated
+with  conformations  occurring  in  different  times
+of  the  simulation,  while  clustering  produces  a
+structure of three clusters associated with the first
+two principal components of the <span 
+class="cmmi-10">C&#x03B1; </span>atoms of the
+conformations. </span></div><!--tex4ht:label?: x1-13001r6 -->                             </div>
+                                                                                            
+                                                                                            
+<!--l. 165--><p class="indent" >  </div><hr class="endfigure">
+  <h4 class="likesubsectionHead"><a 
+ id="x1-14000"></a>Algorithm performance</h4>
+<!--l. 170--><p class="noindent" >The performance of the proposed algorithm was tested in
+two cases: first, a runtime comparison with other three
+typical techniques for folding reduction: nMDS, clustering,
+and PCA; and second, a parallel comparison, running the
+algorithm with several cores (Figure <a 
+href="#x1-14001r7">7<!--tex4ht:ref: fig:Performance-methods --></a>). For both tests, the
+trajectory corresponds to the first 100k conformations
+from the full trajectory of the trp-cage protein, described
+above in datasets section.
+<!--l. 172--><p class="indent" >  For the comparison between techniques (Figure <a 
+href="#x1-14001r7">7<!--tex4ht:ref: fig:Performance-methods --></a>.A),
+several subtrajectories of different lengths were reduced
+by all the techniques. PCA showed the most efficient
+runtimes followed by our proposed algorithm FR (1 core),
+contrary to nMDS and clustering that becomes impractical
+when faced with short to medium trajectories. However,
+the proposed algorithm has the advantage to easily run in
+parallel, contrary to the other techniques, and when it
+runs using two cores, its runtime is reduced by half and
+becomes faster than PCA. (FR (2 cores), black dashed
+line).
+<!--l. 174--><p class="indent" >  <hr class="figure"><div class="figure" 
+>
+                                                                                            
+                                                                                            
+                                                                                            
+                                                                                            
+<div 
+class="colorbox" id="colorbox9"><!--l. 176--><p class="noindent" > <img 
+src="6_home_lg_lgdocs_Proteins_paper_bmc_images_performance-times-.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;7:  </span><span  
+class="content"><span 
+class="bchb8t-">Performance  of  the  algorithm.  </span>(A)
+Runtime  comparisons  for  four  folding  reduction
+techniques:   nMDS,   clustering,   PCA,   and   our
+algorithm  FR  (running  with  one  and  two  cores).
+PCA  is  the  most  efficient  algorithm  followed  by
+our algorithm FR with one core, but when it runs
+with  two  cores,  its  runtime  is  reduced  by  half,
+being  more  efficient  than  PCA.  (B)  Evaluation  of
+the  algorithm  paralellization.  When  the  number
+of   processing   cores   is   multiplied   by   two,   the
+processing time reduces by half with a quasi-linear
+speedup that maintains for up to ~8 cores (8x). <br 
+class="newline" /></span></div><!--tex4ht:label?: x1-14001r7 -->                                          </div>
+                                                                                            
+                                                                                            
+<!--l. 180--><p class="indent" >  </div><hr class="endfigure">
+<!--l. 182--><p class="indent" >  To test how the parallelization improves the algorithm
+performance, the full dataset of 100k conformations was
+reduced by the algorithm using different number of cores.
+The runtimes are shown in the Figure <a 
+href="#x1-14001r7">7<!--tex4ht:ref: fig:Performance-methods --></a>.B, where it is
+notable a good speedup that reduces the time by half
+every time the number of cores is duplicated. This
+speedup maintains for up to ~8 cores, and then it reduces
+to the minimum after ~30 cores.
+<!--l. 184--><p class="indent" >  These results show that the algorithm has a good
+performance when compared with the other techniques,
+and this performance improves more when it is run in
+parallel using more than one core. As a consequence, the
+speedup of the algorithm scale quasi-linearly with the
+number of processing cores, almost until 8x, and with
+32 cores the algorithm still achieves a speedup of
+16x. Now, considering that multi-core technology is
+quite commonplace for even desktop computers, the
+proposed algorithm has the capacity to take advantage
+of this technology to reduce large protein folding
+trajectories in a fast parallel manner, with runtimes closer
+or better than other techniques commonly used for this
+task.
+  <h3 class="likesectionHead"><a 
+ id="x1-15000"></a>Conclusions</h3>
+<!--l. 188--><p class="noindent" >Although the progress in long timescale simulations of
+protein folding has enabled the generation of large folding
+trajectories, the new challenge is in their analysis, but due
+to the millions of conformations they can contain,
+their processing and analysis becomes difficult or
+impractical.
+<!--l. 190--><p class="indent" >  Here, we have proposed a fast and parallel algorithm to
+simplify large protein folding trajectories. The algorithm
+reduces a trajectory by splitting it into segments and
+then reducing each in parallel using a fast clustering
+strategy which avoids the pairwise comparison of all
+structures.
+<!--l. 192--><p class="indent" >  According to the results, the algorithm can achieve
+resumed trajectories with high compression of data and
+preserving their main conformations, what was confirmed
+when patterns and clusters produced by other folding
+reduction techniques were also observed in the algorithm
+reductions. Furthermore, the algorithm outperformed the
+performance of the other techniques, apart from the PCA
+technique. However if the algorithm uses additional
+processing cores, it outperforms all the other techniques at
+larger values.
+<!--l. 194--><p class="indent" >  Nevertheless, the reductions produced by the proposed
+algorithm are limited to create a summary of the main
+events of a protein folding trajectory without performing
+any kind of analysis, as other techniques do. But, these
+summarized trajectories can be used as input to these andother techniques that serve the same purpose and which
+ were not designed to handle large protein folding
+ trajectories.
+ <!--l. 3--><p class="noindent" ><span 
+class="ecss-0700">Author</span>
+ <span 
+class="ecss-0700">details</span>
+ <a 
+ id="x1-15001r1"></a>
+ <!--l. 3--><p class="noindent" ><sup class="textsuperscript"><span 
+class="ecss-0900">1</span></sup><span 
+class="ecss-0700">Corporaci</span><span 
+class="ecss-0700">ón</span>
+ <span 
+class="ecss-0700">Colombiana</span>
+ <span 
+class="ecss-0700">de</span>
+ <span 
+class="ecss-0700">Investigaci</span><span 
+class="ecss-0700">ón</span>
+ <span 
+class="ecss-0700">Agropecuaria</span>
+ <span 
+class="ecss-0700">-</span>
+ <span 
+class="ecss-0700">AGROSAVIA,</span>
+ <span 
+class="ecss-0700">CI</span>
+ <span 
+class="ecss-0700">Tibaitat</span><span 
+class="ecss-0700">á,</span>
+ <span 
+class="ecss-0700">Kil</span><span 
+class="ecss-0700">ómetro</span>
+ <span 
+class="ecss-0700">14,</span>
+ <span 
+class="ecss-0700">V</span><span 
+class="ecss-0700">ía</span>
+ <span 
+class="ecss-0700">a</span>
+ <span 
+class="ecss-0700">Mosquera,</span>
+ <span 
+class="ecss-0700">Colombia.</span>
+ <a 
+ id="x1-15002r2"></a><sup class="textsuperscript"><span 
+class="ecss-0900">2</span></sup><span 
+class="ecss-0700">The</span>
+ <span 
+class="ecss-0700">European</span>
+ <span 
+class="ecss-0700">Bioinformatics</span>
+ <span 
+class="ecss-0700">Institute</span>
+ <span 
+class="ecss-0700">(EMBL-EBI),</span>
+ <span 
+class="ecss-0700">Hinxton,</span>
+ <span 
+class="ecss-0700">Cambridgeshire,</span>
+ <span 
+class="ecss-0700">UK.</span>
+ <a 
+ id="x1-15003r3"></a><sup class="textsuperscript"><span 
+class="ecss-0900">3</span></sup><span 
+class="ecss-0700">Facultad</span>
+ <span 
+class="ecss-0700">de</span>
+ <span 
+class="ecss-0700">Ingenier</span><span 
+class="ecss-0700">ía</span>
+ <span 
+class="ecss-0700">Electr</span><span 
+class="ecss-0700">ónica</span>
+ <span 
+class="ecss-0700">y</span>
+ <span 
+class="ecss-0700">Telecomunicaciones,</span>
+ <span 
+class="ecss-0700">Universidad</span>
+ <span 
+class="ecss-0700">del</span>
+ <span 
+class="ecss-0700">Cauca,</span>
+ <span 
+class="ecss-0700">Popay</span><span 
+class="ecss-0700">án,</span>
+ <span 
+class="ecss-0700">Colombia.</span>
+ <a 
+ id="x1-15004r4"></a><sup class="textsuperscript"><span 
+class="ecss-0900">4</span></sup><span 
+class="ecss-0700">Escuela</span>
+ <span 
+class="ecss-0700">de</span>
+ <span 
+class="ecss-0700">Ingenier</span><span 
+class="ecss-0700">ía</span>
+ <span 
+class="ecss-0700">de</span>
+ <span 
+class="ecss-0700">Sistemas</span>
+ <span 
+class="ecss-0700">y</span>
+ <span 
+class="ecss-0700">Computaci</span><span 
+class="ecss-0700">ón,</span>
+ <span 
+class="ecss-0700">Universidad</span>
+ <span 
+class="ecss-0700">del</span>
+ <span 
+class="ecss-0700">Valle,</span>
+ <span 
+class="ecss-0700">Santiago</span>
+ <span 
+class="ecss-0700">de</span>
+ <span 
+class="ecss-0700">Cali,</span>
+ <span 
+class="ecss-0700">Colombia.</span>
+ <!--l. 3--><p class="noindent" >
+ <!--l. 3--><p class="noindent" ><span 
+class="ecss-0700">References</span>
+ <!--l. 3--><p class="noindent" >
+    <div class="thebibliography">
+    <p class="bibitem" ><span class="biblabel">
+   <span 
+class="ecss-0700">1.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XShaw2008"></a><span 
+class="ecss-0700">Shaw, D.E., Chao, J.C., Eastwood, M.P., Gagliardo, J., Grossman,</span>
+    <span 
+class="ecss-0700">J.P., Ho, C.R., Lerardi, D.J., Kolossv</span><span 
+class="ecss-0700">áry, I., Klepeis, J.L., Layman, T.,</span>
+    <span 
+class="ecss-0700">McLeavey, C., Deneroff, M.M., Moraes, M.A., Mueller, R., Priest, E.C.,</span>
+    <span 
+class="ecss-0700">Shan, Y., Spengler, J., Theobald, M., Towles, B., Wang, S.C., Dror, R.O.,</span>
+    <span 
+class="ecss-0700">Kuskin, J.S., Larson, R.H., Salmon, J.K., Young, C., Batson, B.,</span>
+    <span 
+class="ecss-0700">Bowers, K.J.: Anton, a special-purpose machine for molecular</span>
+    <span 
+class="ecss-0700">dynamics simulation. Communications of the ACM 51(7), 91 (2008).</span>
+                                                                                            
+   <span 
+class="ecss-0700">doi:10.1145/1364782.1364802</span>
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+  <span 
+class="ecss-0700">2.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XShaw2011"></a><span 
+class="ecss-0700">Lindorff-Larsen, K., Piana, S., Dror, R.O., Shaw, D.E.: How</span>
+   <span 
+class="ecss-0700">fast-folding proteins fold. Science 334(6055), 517&#8211;520 (2011).</span>
+   <span 
+class="ecss-0700">doi:10.1126/science.1208351. arXiv:1011.1669v3</span>
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+  <span 
+class="ecss-0700">3.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XShaw2014"></a><span 
+class="ecss-0700">Shaw, D.E., Grossman, J.P., Bank, J.A., Batson, B., Butts, J.A.,</span>
+   <span 
+class="ecss-0700">Chao, J.C., Deneroff, M.M., Dror, R.O., Even, A., Fenton, C.H., Forte,</span>
+   <span 
+class="ecss-0700">A., Gagliardo, J., Gill, G., Greskamp, B., Ho, C.R., Ierardi, D.J., Iserovich,</span>
+   <span 
+class="ecss-0700">L., Kuskin, J.S., Larson, R.H., Layman, T., Lee, L.-S., Lerer, A.K., Li, C.,</span>
+   <span 
+class="ecss-0700">Killebrew, D., Mackenzie, K.M., Mok, S.Y.-H., Moraes, M.A., Mueller,</span>
+   <span 
+class="ecss-0700">R., Nociolo, L.J., Peticolas, J.L., Quan, T., Ramot, D., Salmon,</span>
+   <span 
+class="ecss-0700">J.K., Scarpazza, D.P., Schafer, U.B., Siddique, N., Snyder, C.W.,</span>
+   <span 
+class="ecss-0700">Spengler, J., Tang, P.T.P., Theobald, M., Toma, H., Towles, B.,</span>
+   <span 
+class="ecss-0700">Vitale, B., Wang, S.C., Young, C.: Anton 2: Raising the Bar for</span>
+   <span 
+class="ecss-0700">Performance and Programmability in a Special-Purpose Molecular</span>
+   <span 
+class="ecss-0700">Dynamics Supercomputer. In: Shaw2014 (ed.) SC14: International</span>
+   <span 
+class="ecss-0700">Conference for High Performance Computing, Networking, Storage</span>
+   <span 
+class="ecss-0700">and Analysis, pp. 41&#8211;53. IEEE, Los Alamitos, CA, USA (2014).</span>
+   <span 
+class="ecss-0700">doi:10.1109/SC.2014.9. http://ieeexplore.ieee.org/document/7012191/</span>
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+  <span 
+class="ecss-0700">4.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XNguyen2014"></a><span 
+class="ecss-0700">Nguyen, H., Maier, J., Huang, H., Perrone, V., Simmerling, C.:</span>
+   <span 
+class="ecss-0700">Folding simulations for proteins with diverse topologies are accessible in</span>
+   <span 
+class="ecss-0700">days with a physics-based force field and implicit solvent. Journal of</span>
+   <span 
+class="ecss-0700">the American Chemical Society 136(40), 13959&#8211;13962 (2014).</span>
+   <span 
+class="ecss-0700">doi:10.1021/ja5032776</span>
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+  <span 
+class="ecss-0700">5.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XLarson2009"></a><span 
+class="ecss-0700">Larson, S.M., Snow, C.D., Shirts, M., Pande, V.S.: Folding@Home and</span>
+   <span 
+class="ecss-0700">Genome@Home: Using distributed computing to tackle previously</span>
+   <span 
+class="ecss-0700">intractable problems in computational biology (2009). 0901.0866</span>
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+  <span 
+class="ecss-0700">6.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XDuan2013"></a><span 
+class="ecss-0700">Duan, M., Fan, J., Li, M., Han, L., Huo, S.: Evaluation of</span>
+   <span 
+class="ecss-0700">Dimensionality-reduction Methods from Peptide Folding-unfolding</span>
+   <span 
+class="ecss-0700">Simulations. Journal of chemical theory and computation 9(5), 2490&#8211;2497</span>
+   <span 
+class="ecss-0700">(2013). doi:10.1021/ct400052y</span>
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+  <span 
+class="ecss-0700">7.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XPeng2018"></a><span 
+class="ecss-0700">Peng, J.-h., Wang, W., Yu, Y.-q., Gu, H.-l., Huang, X.: Clustering</span>
+   <span 
+class="ecss-0700">algorithms to analyze molecular dynamics simulation trajectories for</span>
+   <span 
+class="ecss-0700">complex chemical and biological systems. Chinese Journal of Chemical</span>
+   <span 
+class="ecss-0700">Physics 31(4), 404&#8211;420 (2018). doi:10.1063/1674-0068/31/cjcp1806147</span>
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+  <span 
+class="ecss-0700">8.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XRajanSchulten10"></a><span 
+class="ecss-0700">Rajan, A., Freddolino, P.L., Schulten, K.: Going beyond clustering in</span>
+   <span 
+class="ecss-0700">MD trajectory analysis: An application to villin headpiece folding.</span>
+   <span 
+class="ecss-0700">PLoS ONE 5(4), 9890 (2010). doi:10.1371/journal.pone.0009890</span>
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+  <span 
+class="ecss-0700">9.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XDas2006"></a><span 
+class="ecss-0700">Das, P., Moll, M., Stamati, H.: Low-dimensional, free-energy</span>
+   <span 
+class="ecss-0700">landscapes of protein-folding reactions by nonlinear dimensionality</span>
+   <span 
+class="ecss-0700">reduction. Proceedings of the </span><span 
+class="ecss-0700">&#x2026; 103(26) (2006)</span>
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+                                                   <span 
+class="ecss-0700">10.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XKim2015"></a><span 
+class="ecss-0700">Kim, S.B., Dsilva, C.J., Kevrekidis, I.G., Debenedetti, P.G.: Systematic</span>
+        <span 
+class="ecss-0700">characterization of protein folding pathways using diffusion maps:</span>
+        <span 
+class="ecss-0700">Application to Trp-cage miniprotein. The Journal of Chemical Physics</span>
+        <span 
+class="ecss-0700">142(8), 85101 (2015). doi:10.1063/1.4913322</span>
+        </p>
+        <p class="bibitem" ><span class="biblabel">
+     <span 
+class="ecss-0700">11.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XDoerr2017"></a><span 
+class="ecss-0700">Doerr, S., Ariz-Extreme, I., Harvey, M.J., De Fabritiis, G.:</span>
+        <span 
+class="ecss-0700">Dimensionality reduction methods for molecular simulations (2017).</span>
+        <span 
+class="ecss-0700">1710.10629</span>
+        </p>
+        <p class="bibitem" ><span class="biblabel">
+     <span 
+class="ecss-0700">12.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XShao2007"></a><span 
+class="ecss-0700">Shao, J., Tanner, S.W., Thompson, N., Cheatham, T.E.: Clustering</span>
+        <span 
+class="ecss-0700">Molecular Dynamics Trajectories: 1. Characterizing the Performance</span>
+        <span 
+class="ecss-0700">of Different Clustering Algorithms. Journal of chemical theory</span>
+        <span 
+class="ecss-0700">and computation 3(6), 2312&#8211;34 (2007). doi:10.1021/ct700119m</span>
+        </p>
+        <p class="bibitem" ><span class="biblabel">
+     <span 
+class="ecss-0700">13.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XKaufman1990"></a><span 
+class="ecss-0700">Rousseeuw, P.J., Kaufman, L., Rousseeuw, P.J.: Finding groups in</span>
+        <span 
+class="ecss-0700">data. Hoboken: Wiley Online Library (1990)</span>
+        </p>
+        <p class="bibitem" ><span class="biblabel">
+     <span 
+class="ecss-0700">14.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XZhang2004"></a><span 
+class="ecss-0700">Zhang, Y., Skolnick, J.: Scoring function for automated assessment of</span>
+        <span 
+class="ecss-0700">protein structure template quality. Proteins: Structure, Function,</span>
+        <span 
+class="ecss-0700">and Bioinformatics 68(4), 1020 (2007). doi:10.1002/prot.21643</span>
+        </p>
+        <p class="bibitem" ><span class="biblabel">
+     <span 
+class="ecss-0700">15.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XPandeEnsign07"></a><span 
+class="ecss-0700">Ensign, D.L., Kasson, P.M., Pande, V.S.: Heterogeneity even at the</span>
+        <span 
+class="ecss-0700">speed limit of folding : Large-scale molecular dynamics study of a</span>
+        <span 
+class="ecss-0700">fast-folding variant of the villin headpiece. Journal of molecular biology</span>
+        <span 
+class="ecss-0700">374(3), 806&#8211;816 (2007)</span>
+        </p>
+        <p class="bibitem" ><span class="biblabel">
+     <span 
+class="ecss-0700">16.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XAmato2010"></a><span 
+class="ecss-0700">Amato, N.M., Tapia, L., Thomas, S.: A Motion Planning Approach to</span>
+        <span 
+class="ecss-0700">Studying Molecular Motions. Communications in Information and</span>
+        <span 
+class="ecss-0700">Systems 10(1), 53&#8211;68 (2010). doi:10.4310/CIS.2010.v10.n1.a4</span>
+        </p>
+        <p class="bibitem" ><span class="biblabel">
+     <span 
+class="ecss-0700">17.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="Xzhang2010"></a><span 
+class="ecss-0700">Xu, J., Zhang, Y.: How significant is a protein structure similarity</span>
+        <span 
+class="ecss-0700">with TM-score = 0.5? Bioinformatics 26(7), 889&#8211;895 (2010).</span>
+        <span 
+class="ecss-0700">doi:10.1093/bioinformatics/btq066</span>
+        </p>
+        <p class="bibitem" ><span class="biblabel">
+     <span 
+class="ecss-0700">18.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XOksanen2019"></a><span 
+class="ecss-0700">Oksanen, J., Blanchet, F.G., Friendly, M., Kindt, R., Legendre, P.,</span>
+        <span 
+class="ecss-0700">McGlinn, D., Minchin, P.R., O&#8217;Hara, R.B., Simpson, G.L., Solymos, P.,</span>
+        <span 
+class="ecss-0700">Stevens, M.H.H., Szoecs, E., Wagner, H.: vegan: Community</span>
+        <span 
+class="ecss-0700">Ecology Package (2019). https://cran.r-project.org/package=vegan</span>
+        </p>
+        <p class="bibitem" ><span class="biblabel">
+     <span 
+class="ecss-0700">19.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XRCoreTeam2018"></a><span 
+class="ecss-0700">R Core Team: R: A Language and Environment for Statistical</span>
+        <span 
+class="ecss-0700">Computing, Vienna, Austria (2018). https://www.r-project.org</span>
+        </p>
+        <p class="bibitem" ><span class="biblabel">
+     <span 
+class="ecss-0700">20.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XGrant2006"></a><span 
+class="ecss-0700">Grant, B.J., Rodrigues, A.P.C., ElSawy, K.M., McCammon, J.A.,</span>
+        <span 
+class="ecss-0700">Caves, L.S.D.: Bio3D: An R package for the comparative analysis</span>
+        <span 
+class="ecss-0700">of protein structures. Bioinformatics 22(21), 2695&#8211;2696 (2006).</span>
+        <span 
+class="ecss-0700">doi:10.1093/bioinformatics/btl461</span>
+                                                                                            
+                                                                                            
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+ <span 
+class="ecss-0700">21.</span><span class="bibsp"><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span><span 
+class="ecss-0700">&#x00A0;</span></span></span><a 
+ id="XDuan2014"></a><span 
+class="ecss-0700">Duan, M., Han, L., Rudolph, L., Huo, S., Carlson, G.H.: Geometric</span>
+   <span 
+class="ecss-0700">Issues in Dimensionality Reduction and Protein Conformation Space.</span>
+   <span 
+class="ecss-0700">(2014)</span>
+</p>
+   </div>
+                                                                                            
+                                                                                            
+   
+</body></html> 
+
+                                                                                            
+
+
