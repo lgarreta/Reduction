@@ -1,0 +1,1844 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass bmcart
+\begin_preamble
+\usepackage{paperBMC_preamble}
+\end_preamble
+\options twocolumn
+\use_default_options true
+\maintain_unincluded_children false
+\language american
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frontmatter}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{fmbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dochead{Research}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+A fast parallel algorithm to reduce protein folding trajectories
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+input {paperBMC_authors}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+end{fmbox}% comment this for two column layout
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{abstractbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+parttitle{Background}
+\end_layout
+
+\end_inset
+
+ Simulations are among the most important tools for studying the mechanisms
+ underlying protein folding.
+ Protein folding simulations have experienced substantial progress in recent
+ years.
+ Diverse technologies are employed, and simulations are reaching the microsecond
+ timescale and greater, which generate very long trajectories.
+ However, the analysis of these trajectories is complicated, and tools are
+ necessary to simplify them so that both the main events and the temporal
+ order in which they occur are preserved.
+\end_layout
+
+\begin_layout Abstract
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+parttitle{Results}
+\end_layout
+
+\end_inset
+
+ We present an algorithm to reduce long protein-folding trajectories in
+ a fast and parallel way.
+ The algorithm divides a trajectory into segments to be processed in parallel
+ and then selects from each segment the most representative conformations
+ using a rapid clustering strategy.
+ This strategy leverages the temporal order of the conformations to compare
+ them locally, avoiding an all-versus-all comparison.
+ The algorithm reduces a trajectory by a high percentage, preserving both
+ the patterns and the structure obtained by other, more complex reduction
+ techniques.
+ In addition, its performance is close to that of other efficient reduction
+ techniques and is improved when executed in parallel using more than one
+ core.
+\end_layout
+
+\begin_layout Abstract
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+parttitle{Conclusions}
+\end_layout
+
+\end_inset
+
+ The proposed algorithm quickly reduces a protein folding trajectory by
+ selecting its most representative conformations and preserves both the
+ structure and temporal order of the trajectory.
+ The reduced trajectories can be used as input for more complex analysis
+ techniques and for other reduction techniques that are impractical for
+ use with long folding trajectories.
+ The algorithm is fast and is designed to run in parallel on conventional
+ PCs with multicore technology, which are present in most typical research
+ laboratories.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{keyword}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+kwd{Protein folding simulations}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+kwd{Protein structure comparison}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+kwd{Protein structure clustering}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{keyword}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{abstractbox}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{fmbox}% uncomment this for two column layout 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frontmatter}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Background
+\end_layout
+
+\begin_layout Standard
+We present a parallel algorithm to reduce protein folding trajectories that
+ quickly obtains representative conformations, conserving both the three-dimensi
+onal (3D) structure and temporal order of the trajectories.
+ Proteins play fundamental roles in all living organisms, but to be functional,
+ they must fold from their linear amino acid (AA) sequence into a unique
+ 3D or native state; this process is known as protein folding.
+ Understanding the mechanisms and rules of this process has been one of
+ the most pursued objectives of computational biology, and an important
+ theoretical tool to study these phenomena is simulation.
+ Simulations are used to generate folding trajectories (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Folding-Trajectory"
+
+\end_inset
+
+), which describe the sequence of states that proteins follow as a function
+ of time during the folding process.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement th
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/01-trajectory-description-2RN2-pdbs.pdf
+	lyxscale 200
+	BoundingBox 0bp 0bp 224bp 125bp
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+csentence{Protein folding trajectory.}
+\end_layout
+
+\end_inset
+
+ Some protein conformations with their three-dimensional structure are marked
+ as blue dots along the trajectory.
+ The evolution of folding is measured at each step by comparing the structure
+ at time 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ to the native structure (black image background) using a structure comparison
+ metric; in this work, we use the TM-score as the metric (see Methods).
+ X-axis: Simulation time from 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ to 
+\begin_inset Formula $t_{n}$
+\end_inset
+
+.
+ Y-axis: TM-score value from 0 (different) to 1 (similar).
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Folding-Trajectory"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Most folding simulations use the molecular dynamics (MD) method, which,
+ due to its computational cost, is limited to small proteins (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$<100$
+\end_layout
+
+\end_inset
+
+ AA) and very short times (picoseconds or microseconds).
+ However, technological innovations have allowed significant advances in
+ these simulations, both with respect to time scale and the technology employed
+ to execute them.
+\end_layout
+
+\begin_layout Standard
+In 2011, using the Anton supercomputer, specifically designed for protein
+ folding 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shaw2008"
+
+\end_inset
+
+, full simulations of 12 proteins were published, several on the order of
+ milliseconds 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shaw2011"
+
+\end_inset
+
+.
+ And more recently, in 2020, several trajectories related to the study of
+ the SARS-Cov2 virus were released by DE Shaw Research 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shaw2020"
+
+\end_inset
+
+.
+ The trajectories, on the order of microseconds, were simulated on Anton
+ 2 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shaw2014"
+
+\end_inset
+
+, a supercomputer up to ten times faster than its predecessor Anton.
+ As an economic alternative, in 2014, graphic processing units (GPU) were
+ used to simulate the folding of 17 proteins on the order of microseconds,
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nguyen2014"
+
+\end_inset
+
+.
+ And years earlier, in 2007, the Folding@home distributed computing platform
+ utilized as many as 250,000 PCs, voluntarily available around the world,
+ to simulate on the order of microseconds the folding of the villin-headpiece
+ protein 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Larson2009"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+These innovations have allowed significant progress in protein folding simulatio
+ns, both with respect to time scale and the technology used to execute them,
+ resulting in the generation of trajectories with millions of conformations.
+ However, due to the large number of conformations, their processing and
+ analysis with conventional PCs is computationally expensive, and new algorithms
+ are needed to simplify them while preserving as much information as possible.
+\end_layout
+
+\begin_layout Standard
+Two approaches that have been used to reduce protein folding trajectories
+ are dimensionality reduction 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Duan2013"
+
+\end_inset
+
+ and clustering 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Peng2018"
+
+\end_inset
+
+.
+ In the dimensionality reduction approach, conformations are transformed
+ into reduced sets of variables that represent the original conformations
+ as well as possible.
+ Both linear and non-linear techniques have been used (e.g., principal component
+ analysis (PCA) and multidimensional scaling 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RajanSchulten10"
+
+\end_inset
+
+, Isomap 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Das2006"
+
+\end_inset
+
+, diffusion maps 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kim2015"
+
+\end_inset
+
+).
+ However, the reductions produced by these techniques lose the structural
+ information of the conformations (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:lost-info-dimensionality"
+
+\end_inset
+
+, top), and their interpretation becomes difficult since the new dimensions
+ lack a clear relationship with the initial folding trajectory 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cavallo2018"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the clustering approach, the conformations are assigned to groups that
+ share similar characteristics (e.g., similarity with the native structure),
+ and from each group, an average representative or its general characteristics
+ can be obtained.
+ Hierarchical and partitioned clustering have been used for this approach
+ (e.g., k-means 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Doerr2017"
+
+\end_inset
+
+, link 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shao2007"
+
+\end_inset
+
+).
+ However, the groups lose their temporal order since they can include conformati
+ons that occur in very distant times (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:lost-info-dimensionality"
+
+\end_inset
+
+, bottom).
+\end_layout
+
+\begin_layout Standard
+In addition, the techniques of both approaches often require pair-wise compariso
+ns, which are computationally costly when the trajectories are very large.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement th
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/02-2RN2-trajectory-weakness.pdf
+	scale 105
+	BoundingBox 0bp 0bp 210bp 104bp
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+csentence{Loss of information in dimensionality reduction and clustering.}
+\end_layout
+
+\end_inset
+
+ The dimensionality reduction method (above) transforms the conformations
+ ( 
+\begin_inset Formula $c_{1},c_{5}$
+\end_inset
+
+, and 
+\begin_inset Formula $c_{7}$
+\end_inset
+
+) into a new set of values ( 
+\begin_inset Formula $c'_{1},c'_{5}$
+\end_inset
+
+, and 
+\begin_inset Formula $c'_{7}$
+\end_inset
+
+), but their structural information is lost, whereas the clustering method
+ (bottom) forms two groups (G1 and G2), but their temporal order is lost
+ since they contain conformations that overlap in time (
+\begin_inset Formula $c_{2},c_{3},c_{4},c_{5}$
+\end_inset
+
+).
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:lost-info-dimensionality"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To reduce a folding trajectory, the proposed algorithm divides the path
+ into segments that are processed in parallel.
+ For each segment, characteristic events are quickly extracted using the
+ rapid clustering strategy of Hobohm and Sander (1992) adapted here for
+ protein folding trajectories.
+ From these results, the most representative events are selected by a strategy
+ of k-medoids 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kaufman1990"
+
+\end_inset
+
+.
+ The results of each segment are joined to form the reduced trajectory with
+ the most representative conformations of the original trajectory while
+ retaining both its 3D representation and temporal order.
+\end_layout
+
+\begin_layout Standard
+The algorithm is implemented in the R language except for the function used
+ for pairwise structure comparison, the TM-score 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang2004"
+
+\end_inset
+
+, this function is executed many times and is implemented in the Fortran
+ language.
+\end_layout
+
+\begin_layout Section*
+Methods
+\end_layout
+
+\begin_layout Subsection*
+Datasets of protein folding trajectories
+\end_layout
+
+\begin_layout Standard
+We used the folding trajectories of three proteins obtained from different
+ simulation projects.
+ One of the trajectories was that of the trp-cage protein (PDB: 2JOF), simulated
+ with MD using the Anton supercomputer 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shaw2011"
+
+\end_inset
+
+, with a simulation time of 208 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+us
+\end_layout
+
+\end_inset
+
+, a time step of 200 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ps
+\end_layout
+
+\end_inset
+
+, and 1044001 conformations.
+ The second trajectory was that of the apo papain-like protease of SARS-CoV-2
+ (6WX4), simulated with MD using the Anton 2 supercomputer 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shaw2020"
+
+\end_inset
+
+, with a simulation time of 100 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+us
+\end_layout
+
+\end_inset
+
+, a time step of 1 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ns
+\end_layout
+
+\end_inset
+
+, and 100000 conformations.
+ And the third trajectory was that of the villin-headpiece protein (2F4K),
+ also simulated with MD using the Folding@home distributed platform 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PandeEnsign07"
+
+\end_inset
+
+, with a simulation time of 8 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+us
+\end_layout
+
+\end_inset
+
+, a time step of 50 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ps
+\end_layout
+
+\end_inset
+
+, and 15201 conformations.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The third trajectory was that of the ribonuclease H protein, simulated with
+ the Probabilistic Roadmap Method using the Parasol folding server 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Amato2010"
+
+\end_inset
+
+, with 429 folding steps (instead of time steps, see below), each corresponding
+ to 429 conformations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Time steps and folding steps
+\end_layout
+
+\begin_layout Standard
+A time step in MD trajectories is the time length at which conformations
+ are sampled or evaluated during the simulation, whereas a folding step,
+ as employed in the reduced trajectories produced by our algorithm, represents
+ the most likely conformation occurring during a time interval or from a
+ set of likely candidate conformations.
+\end_layout
+
+\begin_layout Subsection*
+Pairwise comparison of protein structures using the TM-score 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Comparing-Structures"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this work, we used the TM-score metric for the pairwise comparison of
+ protein structure 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang2004"
+
+\end_inset
+
+.
+ This metric is used in both the proposed algorithm and in the techniques
+ for reduction of protein folding used for benchmarking the algorithm against
+ existing methods.
+ The TM-score is more sensitive to the global topology than local variations;
+ thus, it estimates the pairwise similarity of protein structures much more
+ accurately than the Root Mean Square-Deviation (RMSD), a common metric
+ used for the same purpose.
+ The TM score between two structures ranges from 0 to 1, where 1 is a perfect
+ match.
+ According to a previous analysis 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zhang2010"
+
+\end_inset
+
+, a TM score below 0.17 indicates no similarity between the two structures,
+ while a TM score above 0.5 indicates a degree of similarity between them
+ beyond what is expected by chance.
+\end_layout
+
+\begin_layout Subsection*
+Other techniques for protein folding reduction 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Techniques-for-reduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+nMDS and clustering techniques were used to obtain the intrinsic information
+ of both the original and reduced trajectories, and their results were compared
+ (see Results).
+\end_layout
+
+\begin_layout Standard
+nMDS reductions were carried out using the R-function monoMDS 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Oksanen2019"
+
+\end_inset
+
+, taking as input the dissimilarity matrix obtained from the pairwise comparison
+s of all the protein conformations of the folding trajectory.
+ The complete-linkage clustering reductions were carried out using the R-functio
+n hclust 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RCoreTeam2018"
+
+\end_inset
+
+, taking as input a matrix with the first two principal components from
+ a PCA analysis.
+ This PCA analysis was carried out using the R-function pca.xyz 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Grant2006"
+
+\end_inset
+
+, taking as input a matrix with the 3D coordinates of the 
+\begin_inset Formula $C\alpha$
+\end_inset
+
+ atoms of all the protein conformations of the folding trajectory.
+\end_layout
+
+\begin_layout Standard
+The reduced trajectories were calculated with our algorithm from the villin-head
+piece trajectory with 15201 conformations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Larson2009"
+
+\end_inset
+
+.
+ The first reduced trajectory had 7197 conformations (representing a reduction
+ of 52%), and the second had 2258 conformations (representing a reduction
+ of 80%).
+\end_layout
+
+\begin_layout Section*
+Implementation
+\end_layout
+
+\begin_layout Standard
+The proposed algorithm reduces a trajectory of protein folding in three
+ steps: partitioning, extraction, and selection.
+ The first step runs only once, whereas the other two runs several times
+ independently, allowing them to run in parallel.
+ Each step involves a strategy to improve the efficiency of the algorithm
+ when working with large protein-folding trajectories.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Algorithm-Description"
+
+\end_inset
+
+ shows the overview of the algorithm, and the steps are given below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement th
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/03-algorithm-description-general.pdf
+	lyxscale 150
+	scale 120
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+csentence{Overview of the proposed algorithm.}
+\end_layout
+
+\end_inset
+
+ Step 1: Divide the trajectory into segments (vertical dashed lines) and
+ reduce each individually.
+ Each segment has 
+\begin_inset Formula $k$
+\end_inset
+
+ conformations from time 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+ to 
+\begin_inset Formula $t_{k}$
+\end_inset
+
+.
+ Step 2: For each segment, extract characteristic conformations (blue dots)
+ and remove redundant ones (red dots).
+ Step 3: Select the most representative conformations among the previous
+ conformations to obtain a reduced segment.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Algorithm-Description"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Step 1: Partitioning
+\end_layout
+
+\begin_layout Standard
+In step 1, the trajectory is divided into segments to reduce them locally
+ and in parallel (dotted vertical lines, Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Algorithm-Description"
+
+\end_inset
+
+).
+ This process is carried out by dividing the trajectory from the start to
+ the end in segments with 
+\begin_inset Formula $k$
+\end_inset
+
+ conformations each, where 
+\begin_inset Formula $k$
+\end_inset
+
+ is an input parameter for the algorithm.
+ Local reductions allow focus on the particular characteristics of each
+ segment that will determine the global characteristics of the trajectory.
+ The parallel reductions allow improved algorithm efficiency when it runs
+ on machines with more than one processor (e.g., multicore computers) (Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Algorithm-Parallel"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement th
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/04-algorithm-description-parallel.pdf
+	lyxscale 150
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+csentence{Parallel processing of segments.}
+\end_layout
+
+\end_inset
+
+ The trajectory is divided into 
+\begin_inset Formula $m$
+\end_inset
+
+ segments (
+\begin_inset Formula $S_{1}$
+\end_inset
+
+, ..., 
+\begin_inset Formula $S_{m}$
+\end_inset
+
+), and each segment is processed separately and in parallel on a machine
+ with n processing cores.
+ The results of the extraction and selection steps (
+\begin_inset Formula $S'_{1}$
+\end_inset
+
+, ..., 
+\begin_inset Formula $S'_{m}$
+\end_inset
+
+) are independent of each other and are joined to form the reduced trajectory.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Algorithm-Parallel"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Stage 2: Extraction
+\end_layout
+
+\begin_layout Standard
+In step 2, the characteristic conformations of each segment are rapidly
+ extracted, and the redundant ones are eliminated.
+ This step is efficiently carried out by means of a rapid clustering approach
+ that performs few pairwise comparisons and extracts the most dissimilar
+ conformations of a segment instead of grouping similar ones.
+\end_layout
+
+\begin_layout Standard
+Here, we improved the fast clustering algorithm of Hobohm and Sander (1992)
+ to work with a trajectory segment and exploit the implicit order of its
+ conformations given by its simulation time (black horizontal line, Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Algorithm-Description"
+
+\end_inset
+
+).
+ Our algorithm selects the initial conformation at time 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+as the first characteristic.
+ Then, it compares this characteristic with the next conformation.
+ If dissimilar, the last conformation becomes a new characteristic; otherwise,
+ the last conformation is redundant and is removed (red dots, Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Algorithm-Description"
+
+\end_inset
+
+).
+ The process continues with the remaining conformations until finishing
+ with the final one at time 
+\begin_inset Formula $t_{k}$
+\end_inset
+
+, thus producing the set of representative characteristics of the segment
+ (purple dots, Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Algorithm-Description"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsection*
+Step 3: Selection
+\end_layout
+
+\begin_layout Standard
+In step 3, the conformations of the previously extracted characteristics
+ are clustered to select the most representative characteristics.
+ To identify these representatives, the algorithm uses a k-medoids strategy
+ (PAM algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kaufman1990"
+
+\end_inset
+
+) that calculates the k conformations (medoids) with the minimal average
+ difference between all the other members of the group.
+\end_layout
+
+\begin_layout Standard
+The PAM algorithm needs as input a dissimilarity matrix with the pairwise
+ comparisons of all-versus-all conformations of the trajectory segment;
+ generating this matrix is an intensive computational task when the number
+ of conformations is very large.
+ However, this task is feasible here since the algorithm is working with
+ a reduced set of characteristic conformations (attained in the previous
+ step) of a trajectory segment and not the complete trajectory.
+\end_layout
+
+\begin_layout Section*
+Results and Discussion
+\end_layout
+
+\begin_layout Standard
+Three tests were carried out to evaluate the capacity and performance of
+ the proposed algorithm.
+ In the first test, reduction of three trajectories was performed using
+ the proposed algorithm.
+ In the second, the intrinsic information preserved by the reductions was
+ compared between our algorithm and two other folding reduction techniques.
+ In the third, the performance of the methods was compared.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Reduction of protein folding trajectories
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Trajectory-Results"
+
+\end_inset
+
+ shows the TM-score plots of the reduced trajectories produced by the proposed
+ algorithm.
+ The plots show that the algorithm attempts to find the most representative
+ conformations from the original trajectories while conserving two fundamental
+ properties: the structure and the temporal ordering of the original conformatio
+ns.
+ The other folding reduction methods investigated lose these properties
+ in their reductions, as described in the next section.
+\end_layout
+
+\begin_layout Standard
+As a result, these reduced trajectories become a summary of the original
+ ones and can be used as inputs for more complex analyses or other reduction
+ methods that require pairwise comparisons but are impractical for large
+ trajectories.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !t
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/05-path-comparisons.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+csentence{Plots of the TM-score values for the original and reduced trajectories.
+}
+\end_layout
+
+\end_inset
+
+ Protein and simulation details on the left.
+ Trajectories on the right: original (upper part), and reduced (lower part).
+ (A) Trajectory of trp-cage protein, reduced by 98%, from 1044001 to 20881
+ conformations.
+ (B) Trajectory of SARS CoV2 protein, reduced by 80%, from 100000 to 2000
+ conformations.
+ (C) Trajectory of the villin-headpiece protein, reduced by 80%, from 15201
+ to 3011 conformations.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(C) Trajectory of ribonuclease H protein, reduced by 49%, from 429 to 217
+ conformations.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Trajectory-Results"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Comparison with other methods 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Comparing-other-methods"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We compared how the intrinsic information captured from a folding trajectory
+ by other folding reduction techniques is also preserved in the reductions
+ produced by our algorithm.
+ First, two reduced trajectories were computed from the original trajectory
+ of the villin-headpiece protein using our algorithm, and then the intrinsic
+ information was computed on these trajectories using nMDS and clustering
+ reductions (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Comparaciones-PCA-nMDS"
+
+\end_inset
+
+) (see Methods for the details of the trajectory and techniques).
+\end_layout
+
+\begin_layout Standard
+As shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Comparaciones-PCA-nMDS"
+
+\end_inset
+
+, the pattern of circles of points from nMDS and the structure of the three
+ groups from clustering are consistent between the original and reduced
+ trajectories.
+ This result shows that the reductions produced by the proposed algorithm
+ largely preserve the intrinsic information observed in the original trajectory.
+ Furthermore, the proposed algorithm has several advantages.
+ First, contrary to nMDS and clustering, our algorithm avoids the calculation
+ of the dissimilarity matrix, which is a computationally expensive task
+ for medium to large trajectories.
+ Second, its reductions are a set of protein conformations, in contrast
+ to the transformations produced with other techniques, such as nMDS, PCA,
+ Isomap or diffusion maps 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RajanSchulten10,Duan2014,Kim2015"
+
+\end_inset
+
+, which, in addition to losing the structural information of the conformations,
+ the reductions can only be interpreted with the knowledge or experience
+ in the intrinsic algorithm used by the technique 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cavallo2018"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Third, in the proposed algorithm, the temporal ordering of conformations
+ is conserved, in contrast to clustering methods 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Peng2018"
+
+\end_inset
+
+ that merge configurations from different simulation times into clusters.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !th
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/06-paths-intrinsic-info.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+csentence{Comparison with other methods.}
+\end_layout
+
+\end_inset
+
+ Intrinsic information captured from the original trajectory of the villin-headp
+iece protein is largely preserved in the reduced trajectories produced by
+ our algorithm.
+ TM-score plot, nMDS pattern and clustering groups are presented at the
+ top, bottom left, and bottom right of each panel.
+ (A) Original trajectory.
+ (B and C) Trajectories reduced by 52% and 80%, respectively.
+ The nMDS produces a set of circular patterns associated with conformations
+ occurring in different times of the simulation, whereas clustering produces
+ a structure of three clusters associated with the first two principal component
+s of the 
+\begin_inset Formula $C_{α}$
+\end_inset
+
+atoms of the conformations.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Comparaciones-PCA-nMDS"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Algorithm performance
+\end_layout
+
+\begin_layout Standard
+The performance of the proposed algorithm was tested via two tests: a runtime
+ comparison of the proposed algorithm with the three other typical techniques
+ for folding reduction, i.e., nMDS, clustering, and PCA (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Performance-methods"
+
+\end_inset
+
+.A); and a parallel comparison in which the algorithm was run with several
+ cores (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Performance-methods"
+
+\end_inset
+
+.B).
+ For both tests, the trajectory corresponded to the first 100k conformations
+ from the full trajectory of the 
+\emph on
+trp-cage
+\emph default
+ protein, described above in Methods.
+\end_layout
+
+\begin_layout Standard
+For the comparison among techniques (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Performance-methods"
+
+\end_inset
+
+.A), several subtrajectories of different lengths were reduced by all the
+ techniques.
+ When the techniques were run with one core, PCA showed the most efficient
+ runtimes, followed by our proposed algorithm, whereas nMDS and clustering
+ became impractical when used with short to medium trajectories.
+ Furthermore, in contrast to the other techniques, the proposed algorithm
+ has the advantage of being able to run easily in parallel.
+ When it was run using two cores, the runtime was reduced by half and was
+ shorter than that achieved with PCA.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement th
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/07-performance-times.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+csentence{Performance of the algorithm.}
+\end_layout
+
+\end_inset
+
+ (A) Runtime comparisons for four folding reduction techniques: nMDS, clustering
+, PCA, and our proposed algorithm (running with one and two cores).
+ With one core, PCA was the most efficient algorithm, followed by our algorithm.
+ However, when the proposed algorithm was run with two cores, its runtime
+ was reduced by half, being more efficient than PCA.
+ (B) Evaluation of algorithm parallelization.
+ When the number of processing cores is multiplied by two, the processing
+ time reduces by half with a quasi-linear speedup that is maintained for
+ up to ~8 cores (8x).
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Performance-methods"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Kopylova2014
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename tmp-runtime-description.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To test how parallelization improves the algorithm performance, the full
+ dataset of 100k conformations was reduced by the algorithm using a different
+ number of cores.
+ The runtimes are shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Performance-methods"
+
+\end_inset
+
+.B, which reveals a good acceleration, with the processing time reduced by
+ half with every doubling of core number.
+ This speedup is maintained up to ~8 cores and decreases to a minimum after
+ ~30 cores.
+\end_layout
+
+\begin_layout Standard
+These results show that the algorithm has good performance compared with
+ that of the other techniques and that this performance is improved when
+ the algorithm is run in parallel using more than one core.
+ As a consequence, the speedup of the algorithm scales quasilinearly with
+ the number of processing cores to almost 8x, and with 32 cores, the algorithm
+ achieves a speedup of 16x.
+ Considering that multicore technology is commonplace even for desktop computers
+, the proposed algorithm has the capacity to take advantage of this technology
+ to reduce large protein folding trajectories in a fast parallel manner,
+ with runtimes closer or better than those of other techniques commonly
+ used for this task.
+\end_layout
+
+\begin_layout Section*
+Conclusions
+\end_layout
+
+\begin_layout Standard
+Although the progress in long timescale simulations of protein folding has
+ enabled the generation of large folding trajectories, a new challenge lies
+ in their analysis.
+ Due to the millions of conformations they can contain, their processing
+ and analysis is difficult or impractical.
+\end_layout
+
+\begin_layout Standard
+Here, we have proposed a fast and parallel algorithm to simplify large protein-f
+olding trajectories.
+ The algorithm reduces a trajectory by splitting it into segments and then
+ reducing each in parallel using a fast clustering strategy that avoids
+ the pairwise comparison of all structures.
+\end_layout
+
+\begin_layout Standard
+According to the results, our algorithm can summarize a folding trajectory
+ with high data compression and preserve its main conformations and intrinsic
+ information.
+ This was confirmed by comparing the patterns and groups obtained in the
+ original trajectory and the reduced trajectories through the use of nMDS
+ and clustering techniques.
+ Besides, the algorithm runtime shows a linear trend with a performance
+ close to that of PCA, the technique with the best performance among the
+ three evaluated in this work.
+ And, when the algorithm utilizes two or more processing cores, its performance
+ is much better, with quasi-linear acceleration maintained up to ~8 cores
+ (8x).
+\end_layout
+
+\begin_layout Standard
+Nevertheless, the proposed algorithm is limited to creating a summary of
+ the main events of a protein folding trajectory without performing any
+ kind of analysis, as other techniques do, such as nMDS and clustering However,
+ these summarized trajectories can be used as input to these and other technique
+s that serve the same purpose and but which were not designed to handle
+ large protein- folding trajectories.
+\end_layout
+
+\begin_layout Section*
+Availability and requirements
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Project
+\begin_inset space ~
+\end_inset
+
+name:
+\series default
+ FastFoldingReduction
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Operating
+\begin_inset space ~
+\end_inset
+
+System
+\series default
+: Platform-independent
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Programming
+\begin_inset space ~
+\end_inset
+
+Languajes
+\series default
+: R and Fortran (Source code to work with many OS systems)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+License
+\series default
+: GNU GPL
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{backmatter}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+The authors would like to thank the Bioinformatics research group at Universidad
+ del Valle for use of the computer facilities.
+ The authors would also like to thank D.E.
+ Shaw Research for providing the all-atom Molecular Dynamics simulation
+ data.
+ 
+\end_layout
+
+\begin_layout Section*
+Authors’ contributions 
+\end_layout
+
+\begin_layout Standard
+LG and MM designed the algorithm.
+ LG implemented the algorithm and wrote the manuscript.
+ NM carried out the data collection and analysis.
+ PM guided the study and helped to draft the manuscript.
+ All authors read and approved the final manuscript.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "paperBMC_references"
+options "bmc_mathphys"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{backmatter}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{document}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

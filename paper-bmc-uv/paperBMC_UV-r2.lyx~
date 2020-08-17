@@ -1634,17 +1634,6 @@ s that serve the same purpose and but which were not designed to handle
  large protein- folding trajectories.
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-bibfiles "paperBMC_references"
-options "bmc_mathphys"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section*
 Availability and requirements
 \end_layout
@@ -1676,13 +1665,13 @@ System
 \begin_layout Itemize
 
 \series bold
-Programmin
+Programming
 \begin_inset space ~
 \end_inset
 
 Languajes
 \series default
-: R for the algorithm, Fortran for the TM-score function.
+: R and Fortran (Source code to work with many OS systems)
 \end_layout
 
 \begin_layout Itemize
@@ -1732,6 +1721,17 @@ LG and MM designed the algorithm.
  NM carried out the data collection and analysis.
  PM guided the study and helped to draft the manuscript.
  All authors read and approved the final manuscript.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "paperBMC_references"
+options "bmc_mathphys"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

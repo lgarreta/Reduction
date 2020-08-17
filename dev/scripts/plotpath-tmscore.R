@@ -5,7 +5,7 @@
 library (parallel)
 tmscorelib = sprintf ("%s/%s", Sys.getenv("HOME_PPATH"), "/Reduction/dev/bin/tmscorelg.so")
 #cat ("\n>>> tmscoreslib: ", tmscorelib, "\n")
-dyn.load (tmscorelib)
+dyn.load ("tmscorelg.so")
 
 options (warn=0)
 
@@ -109,8 +109,10 @@ plotPathwayPaper <- function (scores, outFile, label) {
 		rd = scores[,2]
 		time = 0:(n-1)
 		par (mar=c(4.2,4.6,1.0,2)+0.1)
+		yLimits = c (min (rd), max (rd))
+		# original:  ylim=range(c(0,0.6)
 		plot(time, rd, typ = "l", ylab = "TM-score", xlab = "Time steps (ps)", 
-			 ylim=range(c(0,0.6)),bty="l",
+			 ylim=yLimits,bty="l",
 			 axes=T,cex.axis=2.0,cex.lab=2.5, cex.main=2)
 		mtext (label, side=1, line=-2, cex=2.5, col="red")
 
