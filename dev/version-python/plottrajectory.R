@@ -221,9 +221,12 @@ getInOutNames <- function (pathname) {
 		inDir = pathname
 		name = pathname
 	}
+	print (pathname)
+	print (inDir)
+	print (name)
 
-	outFile = sprintf ("%s.pdf", name)
-	scoresFile = sprintf ("%s.scores", name)
+	outFile = sprintf ("%s.pdf", basename (name))
+	scoresFile = sprintf ("%s.scores", basename (name))
 	return (list (inDir=inDir, pdbNames=pdbNames, outFile=outFile, scoresFile=scoresFile))
 }
 #--------------------------------------------------------------

@@ -1,0 +1,152 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+BACKGROUND:
+\end_layout
+
+\begin_layout Standard
+Como resultado de los últimos progresos en la tecnología de las simulaciones
+ de plegamiento, estas están alcanzando tiempos mucho más largos que los
+ que se lograban hasta hace algunos años, y como consecuencia están generando
+ trayectorias de plegamiento muy grandes.
+ Analizar estas trayectorias se está volviendo costoso en tiempo computacional
+ debido a su gran número de conformaciones.
+ Técnicas de reducción de datos pueden ayudar a simplificar estas trayectorias
+ y así los análisis realizarse más eficientemente.
+ Sin embargo, debido a los millones de conformaciones que puede tener una
+ trayectoria, las técnicas de reducción actuales se están volviendo poco
+ prácticas.
+\end_layout
+
+\begin_layout Section*
+RESULTADOS:
+\end_layout
+
+\begin_layout Standard
+Presentamos aquí un algoritmo de reducción para trayectorias grandes de
+ plegamiento de proteínas basado en tres estrategias: dividir la trayectoria
+ en subtrayectorias para reducirlas individualmente y en paralelo.
+ Seleccionar las conformaciones más disimilares de cada trayectoria realizando
+ comparaciones solo entre vecinas en el tiempo.
+ Y particionar las conformaciones disimilares y extraer las más representativas.
+ Para mostrar el desempeño del algoritmo realizamos reducciones sobre tres
+ conjuntos de trajectorias disponibles públicamente: las del supercomputador
+ Anton, las del proyecto folding@home, y las del servidor de desplegamiento
+ de Parasol.
+\end_layout
+
+\begin_layout Section*
+CONCLUSIONES:
+\end_layout
+
+\begin_layout Standard
+El desempeño del algoritmos es alto ya que no necesita comparar todas las
+ conformaciones y si además se ejecuta en paralelo, utilizando las tecnologías
+ multi-core de las máquinas actuales, el desempeño se incrementa mucho más.
+ Los resultados de la reducción son las conformaciones más representativas
+ de toda la trayectoria lo que a diferencia de otras técnicas de reducción,
+ permite conservar la representación estructural y su orden temporal.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+El esquema anterior permite que el algoritmo sea muy rápido y que los eventos
+ seleccionados conserven su orden temporal dentro de la trayectoria.
+ Además, el particionamiento en segmentos permite al algoritmo realizar
+ la reducción por cada segmento de forma independiente y por lo tanto realizarse
+ las reducciones de forma paralela lo que lo vuelve aún más rápido cuando
+ se ejecuta en máquinas con procesadores de múltiples cores, como los computador
+a actuales.
+ Para mostrar la efectividad del algoritmo propuesto realizamos reducciones
+ sobre tres conjuntos de trajectorias disponibles públicamente: las del
+ supercomputador Anton, las del proyecto folding@home, y las del servidor
+ de desplegamiento de Parasol.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

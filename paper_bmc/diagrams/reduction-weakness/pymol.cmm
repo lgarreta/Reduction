@@ -1,2 +1,0 @@
-set bg_rgb, white
-hide lines;show cartoon;color red,ss h; color yellow,ss s;color green,ss l+""

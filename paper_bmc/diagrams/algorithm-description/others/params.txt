@@ -1,4 +1,0 @@
-Protein name: 2RN2
-Size of bins : 25
-TM-score trhreshold : 0.9
-K representatives : 10
