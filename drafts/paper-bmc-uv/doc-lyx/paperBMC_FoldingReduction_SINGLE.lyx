@@ -191,7 +191,7 @@ begin{fmbox}
 
 
 \backslash
-dochead{Research}
+dochead{Software}
 \end_layout
 
 \end_inset
@@ -2851,7 +2851,7 @@ https://github.com/bioinfolg/pfoldred-foldingreduction
 \series bold
 Operating System
 \series default
-: Linux
+: Linux and macOS
 \end_layout
 
 \begin_layout Itemize
@@ -2867,7 +2867,7 @@ Programming Languajes
 \series bold
 License
 \series default
-: GNU GPL v3.0
+: GNU GPL
 \end_layout
 
 \begin_layout Standard
@@ -2974,6 +2974,24 @@ https://simtk.org/projects/foldvillin
 \end_inset
 
 , project 3036.
+\end_layout
+
+\begin_layout Section*
+Ethics approval and consent to participate
+\end_layout
+
+\begin_layout Standard
+Not applicable.
+ 
+\end_layout
+
+\begin_layout Section*
+Consent for publication 
+\end_layout
+
+\begin_layout Standard
+Not applicable.
+ 
 \end_layout
 
 \begin_layout Section*
